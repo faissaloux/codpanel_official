@@ -28,7 +28,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
 				Route::post('/store', 'UsersController@store')->name('store');
 				Route::get('/edit', 'UsersController@edit')->name('edit');
 				Route::post('/update', 'UsersController@update')->name('update');
-				Route::get('/delete', 'UsersController@delete')->name('store');
+				Route::get('/delete', 'UsersController@delete')->name('delete');
 				Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
 			});
 
@@ -40,7 +40,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
 				Route::post('/store', 'ProductsController@store')->name('store');
 				Route::get('/edit', 'ProductsController@edit')->name('edit');
 				Route::post('/update', 'ProductsController@update')->name('update');
-				Route::get('/delete', 'ProductsController@delete')->name('store');
+				Route::get('/delete', 'ProductsController@delete')->name('delete');
 			});
 
 
@@ -74,8 +74,8 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
 				Route::get('/edit', 'ListingController@edit')->name('edit');
 				Route::post('/update', 'ListingController@update')->name('update');
 				Route::post('/delete', 'ListingController@delete')->name('delete');
-				Route::post('/destroy', 'ListingController@assign')->name('destroy');
-				Route::post('/assign', 'ListingController@delete')->name('assign');
+				Route::post('/destroy', 'ListingController@destroy')->name('destroy');
+				Route::post('/assign', 'ListingController@assign')->name('assign');
 				Route::post('/restore', 'ListingController@restore')->name('restore');
 				Route::post('/export', 'ListingController@export')->name('export');
 				Route::post('/import', 'ListingController@import')->name('import');
