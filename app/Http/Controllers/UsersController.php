@@ -13,12 +13,12 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderby('id','desc')->paginate(10);
-        return view('admin.users.index',compact('users'));
+        return view('dashboard.users.index',compact('users'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('dashboard.users.create');
     }
 
     public function store(Request $request)
@@ -49,7 +49,8 @@ class UsersController extends Controller
           $user->role    = $request->role;
           $user->password = Hash::make($request->password);          
           $user->save();
-          return redirect()->route('admin.users.home')->with('success', trans('user.created'));
+          
+          return redirect()->route('dashboard.users.index')->with('success', trans('user.created'));
     }
 
     public function edit($id)

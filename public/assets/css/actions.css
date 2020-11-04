@@ -1,0 +1,45 @@
+/* Actions CSS */
+.actions-menu{
+    position: fixed;
+    display: none;
+    width: 100%;
+    z-index: 999;
+    height: 60px;
+    background-color: #201F2B;
+    color: #FFF;
+}
+.actions-menu > div{
+    padding-top: 12px;
+}
+.actions-number {
+    background: white;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    display: inline-block !important;
+    border-radius: 0;
+    max-width: initial;
+    border-radius: 25px;
+    color: #2d353e;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 5px !important;
+}
+.action{
+    background-color: #3C3B4C;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    line-height: 22px;
+}
+.action-delete{
+    background-color: #EC3751;
+}
+.close-actions-menu{
+    cursor: pointer;
+}
+@media(max-width: 600px){
+    .sm-hide{
+        display: none;
+    }
+}
