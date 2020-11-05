@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
+                            <th scope="col" class="arabic" data-type="reference">الصورة</th>
                             <th scope="col" class="arabic" data-type="reference">اسم<br class="sm-break"> المستخدم</th>
                             <th scope="col" class="arabic" data-type="email">الإميل</th>
                             <th scope="col" class="arabic" data-type="registration">تاريخ<br class="sm-break"> التسجيل</th>
@@ -31,246 +32,41 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($users as $user)
                         <tr>
                             <th scope="row"><input type="checkbox"/></th>
                             <td data-type="reference">
-                                <span>SN62</span>
+                                <span>{{$user->name}}</span>
+                            </td>
+                            <td data-type="avatar">
+                                @if(!empty ( $user->image ))  
+                                <div class="avatar mr-2"><img src="/uploads/{{$user->image}}" class="rounded-circle" alt=""></div>
+                                @else
+                            <div class="avatar mr-2"><span style="background-color: {{ $user->color() }}" class="avatar-initial rounded-circle">{{ Str::limit($user->name, 1 , "") }}</span></div>
+                                @endif
                             </td>
                             <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
+                                <a href="mailto:{{$user->email}}">{{$user->email}}</a>
                             </td>
                             <td data-type="registration">
                                 <span>منذ<br class="sm-break"> أسبوعين</span>
                             </td>
                             <td data-type="job">
-                                <span class="bg-success text-white p-1">موظفة</span>
+                                <span @if($user->role == "admin"){ class="bg-success text-white p-1" }
+                                    @elseif($user->role == "employee"){ class="bg-primary text-white p-1" }
+                                    @elseif($user->role == "provider"){ class="bg-warning text-white p-1" } @endif >{{$user->role}}</span>
                             </td>
                             <td data-type="phone">
-                                <a href="tel: 06########"><a href="tel: 06########">0# ## ## ## ##</a></a>
+                                <a href="tel:{{$user->phone}}">{{$user->phone}}</a>
                             </td>
                             <td>
-                                <a  type="button"
+                                <a  type="button" href="{{route('dashboard.users.edit' , ['id' => $user->id ])}}"
                                     class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
                                     تعديل
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-success text-white p-1">موظفة</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-success text-white p-1">موظفة</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a type="button" 
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-primary text-white p-1">موزع</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-danger text-white p-1">مضيف بيانات</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-warning text-white p-1">لجنة المتابعة</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-primary text-white p-1">موزع</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-primary text-white p-1">موزع</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button" 
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-danger text-white p-1">مضيف بيانات</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td data-type="reference">
-                                <span>SN62</span>
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:example@email.com">example@email.com</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span class="bg-danger text-white p-1">مضيف بيانات</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel: 06########">0# ## ## ## ##</a>
-                            </td>
-                            <td>
-                                <a  type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
-                                    تعديل
-                                </a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -47,7 +47,16 @@ class UsersController extends Controller
           $user->email    = $request->email;
           $user->phone    = $request->phone;
           $user->role    = $request->role;
-          $user->password = Hash::make($request->password);          
+          $user->password = Hash::make($request->password);
+          
+          $user->image = '';
+
+            if($request->hasFile('image')){
+                $user->image = $request->image->store('users',['disk' => 'public']);
+                //dd("ss");
+            }
+            
+
           $user->save();
           
           return redirect()->route('dashboard.users.index')->with('success', trans('user.created'));
@@ -56,7 +65,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $content = User::find($id);
-        return view ('admin.users.edit',compact('content'));
+        return view ('dashboard.users.edit',compact('content'));
     }
 
     public function update(Request $request, $id)
@@ -66,9 +75,21 @@ class UsersController extends Controller
         $user->email    = $request->email;
         $user->phone    = $request->phone;
         $user->role     = $request->role;
-        $user->password = Hash::make($request->password);
+
+        if(!empty ( $request->password )){
+            $user->password = Hash::make($request->password);
+        }
+
+        // delete the old image
+        if($request->hasFile('image') and !empty($request->image) ){
+            $file = public_path().'/uploads/'.$user->image;
+            if(file_exists($file)) {
+                unlink($file);
+            }
+        }
+        
         $user->save();
-        return redirect()->route('admin.users.home')->with('success',trans('user.updated'));
+        return redirect()->route('dashboard.users.index')->with('success',trans('user.updated'));
     }
 
     public function delete($id)
