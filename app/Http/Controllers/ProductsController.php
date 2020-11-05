@@ -48,7 +48,7 @@ class ProductsController extends Controller
         }
 
         $Product->save();
-        return redirect()->route('dashboard.products.index')->with('success',trans('product.created'));
+        return redirect()->route('dashboard.products.index')->with('success', trans('product.created'));
     }
 
     public function edit($id)
@@ -79,13 +79,13 @@ class ProductsController extends Controller
 
         $Product->save();
 
-        return redirect()->route('dashboard.products.index')->with('success',trans('product.updated'));
+        return redirect()->route('dashboard.products.index')->with('success', trans('product.updated'));
     }
 
     public function delete($id)
     {
         $Product = Products::find($id);
         $Product->delete();
-        return redirect()->route('dashboard.products.index')->with('success',trans('product.deleted'));
+        return redirect()->route('dashboard.products.index')->with('success', trans('product.deleted'));
     }
 }
