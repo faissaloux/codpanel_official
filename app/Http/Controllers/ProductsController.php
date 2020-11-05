@@ -42,20 +42,10 @@ class ProductsController extends Controller
         $Product->name     = $request->name;
         $Product->reference    = $request->reference;
         $Product->prix_jmla    = $request->prix_jmla;
-        
-        // $Product->thumbnail = '';
 
-        // if($request->hasFile('ProductThumbnail')){
-        //     $Product->thumbnail = $request->ProductThumbnail->store('product',['disk' => 'public']);     
-        // }
-
-        // delete the old image
-        // if($request->hasFile('ProductThumbnail') and !empty($request->thumbnail) ){
-        //     $file = public_path().'/uploads/'.$request->thumbnail;
-        //     if(file_exists($file)) {
-        //         unlink($file);
-        //     }
-        // }
+        if($request->hasFile('image')){
+            $Product->image = $request->image->store('products',['disk' => 'public']);
+        }
 
         $Product->save();
         return redirect()->route('dashboard.products.index')->with('success',trans('product.created'));
@@ -72,6 +62,7 @@ class ProductsController extends Controller
         $Product = Products::find($id);
         $Product->name     = $request->name;
         $Product->reference    = $request->reference;
+        $Product->price = $request->price;
         $Product->prix_jmla    = $request->prix_jmla;        
         
         if($request->hasFile('ProductThumbnail')){
@@ -79,8 +70,8 @@ class ProductsController extends Controller
         }
 
         // delete the old image
-        if($request->hasFile('ProductThumbnail') and !empty($request->thumbnail) ){
-            $file = public_path().'/uploads/'.$request->thumbnail;
+        if($request->hasFile('image') and !empty($request->image) ){
+            $file = public_path().'/uploads/'.$Product->image;
             if(file_exists($file)) {
                 unlink($file);
             }

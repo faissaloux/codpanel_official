@@ -186,7 +186,7 @@
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
-                            <th scope="col" data-type="image"></th>
+                            <th scope="col" data-type="avatar"></th>
                             <th scope="col" class="arabic" data-type="reference">Reference</th>
                             <th scope="col" class="arabic" data-type="product">اسم المنتوج</th>
                             <th scope="col" class="arabic" data-type="prix_jmla">سعر الجملة</th>
@@ -198,10 +198,15 @@
                             <tr>
                                 <th scope="row"><input type="checkbox"/></th>
                                 <td data-type="image">
-                                    <div class="img-cont">
-                                        <img    src="{{ $product->image }}"
-                                                alt="{{ $product->name }}">
-                                    </div>
+                                    @if(!empty ( $product->image ))  
+                                        <div class="avatar mr-2 img-cont">
+                                            <img src="/uploads/{{$product->image}}" class="rounded-circle" alt="">
+                                        </div>
+                                    @else
+                                        <div class="avatar mr-2 img-cont">
+                                            <span style="background-color: {{ $product->color() }}" class="avatar-initial rounded-circle">{{ Str::limit($product->name, 1 , "") }}</span>
+                                        </div>
+                                    @endif
                                 </td>
                                 <td data-type="reference">
                                     <span>{{ $product->reference }}</span>
