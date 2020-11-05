@@ -15,7 +15,9 @@ body {
     overflow-x: hidden;
     font-family: 'Tajawal';
 }
-
+.page-container{
+    height: 100vh;
+}
 a {
     font-weight: 400;
 }
