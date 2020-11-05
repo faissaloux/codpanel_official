@@ -38,4 +38,9 @@ class User extends Authenticatable
     ];
 
 
+    public function color(){
+        return (new \App\System\Helper())->random_color();
+    }
+
+
 }

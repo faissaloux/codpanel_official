@@ -30,8 +30,8 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
             Route::get('/', 'UsersController@index')->name('index');
             Route::get('/create', 'UsersController@create')->name('create');
             Route::post('/store', 'UsersController@store')->name('store');
-            Route::get('/edit', 'UsersController@edit')->name('edit');
-            Route::post('/update', 'UsersController@update')->name('update');
+            Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
+            Route::post('/update/{id}', 'UsersController@update')->name('update');
             Route::get('/delete', 'UsersController@delete')->name('delete');
             Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
         });
