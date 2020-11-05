@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="products.php" class="tx-right">
+                    <a href="{{ route('dashboard.products.index') }}" class="tx-right">
                         <i data-feather="shopping-bag"></i>
                         <span>المنتجات</span>
                     </a>
