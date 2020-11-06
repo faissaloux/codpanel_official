@@ -707,3 +707,11 @@ div.show-columns-container.show button .show-columns-icon {
     height: 102%;
     border-radius: initial;
 }
+
+.deletemarginright {
+    margin-right: 0;
+}
+
+.deletemarginright ul {
+    padding-right: 0;
+}
