@@ -54,7 +54,7 @@
             <?=
                 "<script>
                     $(()=>{
-                        UIkit.notification({message: '".\Session::get('success')."', pos: 'top-left'});
+                        UIkit.notification({message: '".\Session::get('success')."', pos: 'bottom-left'});
                     })
                 </script>";
             ?>
