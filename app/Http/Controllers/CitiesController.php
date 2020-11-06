@@ -34,7 +34,7 @@ class CitiesController extends Controller
         ];
         
         $request->validate($rules,$messages);
-        
+
         $city           = new Cities();
         $city->name     = $request->name;
         $city->reference    = $request->reference;
@@ -54,7 +54,6 @@ class CitiesController extends Controller
         $city = Cities::find($id);
         $city->name     = $request->name;
         $city->reference    = $request->reference;
-        $city->provider_id    = $request->provider;
         $city->save();
         return redirect()->route('dashboard.cities.index')->with('success',trans('city.updated'));
     }
