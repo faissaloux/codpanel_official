@@ -62,6 +62,6 @@ class CitiesController extends Controller
     {
         $city = Cities::find($id);
         $city->delete();
-        return redirect()->route('dashboard.cities.index')->with('success',trans('city.deleted'));
+        return redirect()->route('dashboard.cities.index')->with('failed',trans('city.deleted'));
     }
 }
