@@ -24,21 +24,17 @@ class CitiesController extends Controller
         $rules = [
             'name'     => 'required|min:3',
             'reference'   => 'required|min:4',
-            'provider' => 'required|min:3',
+            'provider_id' => 'required|min:1',
         ];
   
         $messages = [
-            'email.required'    => trans("email.required"),
-            'email.email'       => trans("email.unique"),
-            'email.unique'      => trans("name.required"),
-            'password.required' => trans("password.required"),
-            'password.min'      => trans("password.min"),
             'name.required'     => trans("name.required"),
-            'phone.required'    => trans("phone.required"),
+            'reference.required'     => trans("reference.required"),
+            'provider_id.required'    => trans("provider_id.required"),
         ];
-
+        
         $request->validate($rules,$messages);
-
+        
         $city           = new Cities();
         $city->name     = $request->name;
         $city->reference    = $request->reference;
@@ -58,7 +54,7 @@ class CitiesController extends Controller
         $city = Cities::find($id);
         $city->name     = $request->name;
         $city->reference    = $request->reference;
-        $city->user_id    = $request->provider;
+        $city->provider_id    = $request->provider;
         $city->save();
         return redirect()->route('dashboard.cities.index')->with('success',trans('city.updated'));
     }

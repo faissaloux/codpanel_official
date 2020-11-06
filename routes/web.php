@@ -55,7 +55,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
             Route::post('/store', 'CitiesController@store')->name('store');
             Route::get('/edit/{id}', 'CitiesController@edit')->name('edit');
             Route::post('/update/{id}', 'CitiesController@update')->name('update');
-            Route::get('/delete', 'CitiesController@delete')->name('store');
+            Route::get('/delete', 'CitiesController@delete')->name('delete');
         });
 
 

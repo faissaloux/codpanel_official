@@ -741,23 +741,24 @@
             </div>
             <div class="modal-content add-new-city-modal">
                 <div class="modal-body d-flex flex-column">
-                    <div class="">
+                    <form action="{{ route('dashboard.cities.store') }}" method="POST">
+                        @csrf
                         <div class="d-flex flex-column">
                             <div class="form-group">
                                 <input  type="text"
                                         class="form-control tx-right"
                                         name="name"
-                                        placeholder="الإسم الكامل للزبون">
+                                        placeholder="إسم المدينة">
                             </div>
                             <div class="form-group">
                                 <input  type="text"
                                         class="form-control tx-right"
-                                        name="name"
-                                        placeholder="الإسم الكامل للزبون">
+                                        name="reference"
+                                        placeholder="رمز المدينة">
                             </div>
-                            <select class="form-control" name="provider">
+                            <select class="form-control" name="provider_id">
                                 <option value="notselected">Aucun</option>
-                                <option value="Axa assurance maroc">Axa assurance maroc</option>
+                                <option value="24">24</option>
                                 <option value="Allianz">Allianz</option>
                                 <option value="Saham assurance">Saham assurance</option>
                                 <option value="Sanad">Sanad</option>
@@ -776,7 +777,7 @@
                                 <button type="submit" class="btn btn-success btn-block">إضافة مدينة جديدة</button>
                             </p>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

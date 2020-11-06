@@ -41,7 +41,7 @@
                                     <p>{{ $city->reference }}</p>
                                 </td>
                                 <td data-type="provider">
-                                    <p>{{ $city->user_id }}</p>
+                                    <p>{{ $city->provider_id }}</p>
                                 </td>
                                 <td>
                                     <a  type="button"
