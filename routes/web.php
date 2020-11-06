@@ -79,8 +79,8 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/', 'ListingController@index')->name('index');
             Route::get('/create', 'ListingController@create')->name('create');
             Route::post('/store', 'ListingController@store')->name('store');
-            Route::get('/edit', 'ListingController@edit')->name('edit');
-            Route::post('/update', 'ListingController@update')->name('update');
+            Route::get('/edit/{id}', 'ListingController@edit')->name('edit');
+            Route::post('/update/{id}', 'ListingController@update')->name('update');
             Route::post('/delete', 'ListingController@delete')->name('delete');
             Route::post('/destroy', 'ListingController@destroy')->name('destroy');
             Route::post('/assign', 'ListingController@assign')->name('assign');
