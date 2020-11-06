@@ -235,10 +235,10 @@
                                                                         name="cityID"
                                                                         placeholder="المدينة">
                                                                     <option value='N-A'>اختيار المدينة</option>
-                                                                                <option value="29">agadir</option>
-                                                                                <option value="30">marakech</option>
-                                                                                <option value="31">casablanca</option>
-                                                                                <option value="32">dakhla</option>
+                                                                                <option value="1">agadir</option>
+                                                                                <option value="2">marakech</option>
+                                                                                <option value="3">casablanca</option>
+                                                                                <option value="4">dakhla</option>
                                                                                 <option value="33">Fes</option>
                                                                                 <option value="34">النواحي</option>
                                                                                 <option value="35">Tanger</option>
@@ -446,7 +446,7 @@
                                                                 <select class="form-control frequired"
                                                                         name="ProductID[]"
                                                                         placeholder="السلعة">
-                                                                    <option>اختيار المنتوج</option>
+                                                                    <option value="N-A">اختيار المنتوج</option>
                                                                     <option value="28">المفرمة الكهربائية صنع الماني</option>
                                                                     <option value="29">جهاز للقضاء على الناموس وغيرها من الحشرات</option>
                                                                     <option value="30">رشاش دوش بمميزات عجيبة</option>
