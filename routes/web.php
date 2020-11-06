@@ -42,8 +42,8 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
             Route::get('/', 'ProductsController@index')->name('index');
             Route::get('/create', 'ProductsController@create')->name('create');
             Route::post('/store', 'ProductsController@store')->name('store');
-            Route::get('/edit', 'ProductsController@edit')->name('edit');
-            Route::post('/update', 'ProductsController@update')->name('update');
+            Route::get('/edit/{id}', 'ProductsController@edit')->name('edit');
+            Route::post('/update/{id}', 'ProductsController@update')->name('update');
             Route::get('/delete', 'ProductsController@delete')->name('delete');
         });
 
@@ -137,3 +137,7 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

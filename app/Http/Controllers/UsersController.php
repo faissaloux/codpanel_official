@@ -53,7 +53,6 @@ class UsersController extends Controller
 
             if($request->hasFile('image')){
                 $user->image = $request->image->store('users',['disk' => 'public']);
-                //dd("ss");
             }
             
 

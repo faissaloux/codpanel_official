@@ -50,6 +50,15 @@
         <!--================================-->
         <script src="../../assets/js/all.js"></script>
         <script src="../../assets/js/custom.js"></script>
+        @if(\Session::has('success'))
+            <?=
+                "<script>
+                    $(()=>{
+                        UIkit.notification({message: '".\Session::get('success')."', pos: 'top-left'});
+                    })
+                </script>";
+            ?>
+        @endif
         
     </body>
 
