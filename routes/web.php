@@ -22,8 +22,11 @@ Route::post('/attempt', 'Auth\LoginController@attempt')->name('attempt');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 
-Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
+Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => 'IsAdmin' ], function () {
 
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
         // users 
         Route::group(['prefix' => '/users', 'as' => 'users.' ], function () {
