@@ -8,7 +8,8 @@
     <div class="d-flex flex-column">
         <div class="col-12 mb-2">
             <div class="form mb-4">
-                <form action="/profile/edit" method="GET">
+                <form action="{{ route('dashboard.users.update' , ['id' => $content->id ]) }}" method="POST">
+                    @csrf
                     <div class="panel">
                         <div class="panel-body">
                             <div class="row">
@@ -21,7 +22,8 @@
                                                         class="form-control col-10"
                                                         placeholder="اسم الموظفة"
                                                         aria-label="Username"
-                                                        aria-describedby="basic-addon3">
+                                                        name="name"
+                                                        value="{{$content->name}}">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text d-flex justify-content-center" id="basic-addon3">
                                                         <i class="fa fa-user"></i>
@@ -33,8 +35,8 @@
                                                 <input  type="text"
                                                         class="form-control col-10"
                                                         placeholder="البريد الإلكتروني"
-                                                        aria-label="Recipient's username"
-                                                        aria-describedby="basic-addon4">
+                                                        name="email"
+                                                        value="{{$content->email}}">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text d-flex justify-content-center" id="basic-addon4">
                                                         <i class="fa fa-envelope"></i>
@@ -46,8 +48,7 @@
                                                 <input  type="password"
                                                         class="form-control col-10"
                                                         placeholder="كلمة المرور"
-                                                        aria-label="Recipient's password"
-                                                        aria-describedby="basic-addon4">
+                                                        name="password">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text d-flex justify-content-center" id="basic-addon4">
                                                         <i class="fa fa-key"></i>
@@ -59,8 +60,8 @@
                                                 <input  type="text"
                                                         class="form-control col-10"
                                                         placeholder="رقم الهاتف"
-                                                        aria-label="Recipient's password"
-                                                        aria-describedby="basic-addon4">
+                                                        value="{{$content->phone}}"
+                                                        name="phone">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text d-flex justify-content-center" id="basic-addon4">
                                                         <i class="fa fa-phone"></i>

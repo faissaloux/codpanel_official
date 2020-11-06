@@ -73,7 +73,9 @@ class UsersController extends Controller
         $user->name     = $request->name;
         $user->email    = $request->email;
         $user->phone    = $request->phone;
-        $user->role     = $request->role;
+        if( !empty ( $request->role ) ){
+            $user->role     = $request->role;
+        }        
 
         if(!empty ( $request->password )){
             $user->password = Hash::make($request->password);
@@ -95,7 +97,7 @@ class UsersController extends Controller
     {
         $content= User::find($id);
         $content->delete();
-        return redirect()->route('admin.users.home')->with('success',trans('user.deleted'));
+        return redirect()->route('dashboard.users.index')->with('failed',trans('user.deleted'));
     }
 
     public function profile($id)

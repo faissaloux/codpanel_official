@@ -35,7 +35,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::post('/store', 'UsersController@store')->name('store');
             Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
             Route::post('/update/{id}', 'UsersController@update')->name('update');
-            Route::get('/delete', 'UsersController@delete')->name('delete');
+            Route::get('/delete/{id}', 'UsersController@delete')->name('delete');
             Route::get('/profile/{id}', 'UsersController@profile')->name('profile');
             Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
         });
