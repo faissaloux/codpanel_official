@@ -101,8 +101,7 @@ class UsersController extends Controller
     public function profile($id)
     {
         $content= User::find($id);
-        $content->delete();
-        return view('dashboard.users.profile');
+        return view('dashboard.users.profile' ,compact('content'));
     }
 
     public function updatePassword(Request $request)
