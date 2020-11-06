@@ -21,7 +21,7 @@ class ListingController extends Controller {
 
     public function index()
     {
-        $lists = Lists::orderby('id','desc')->with('provider')->paginate(10);
+        $lists = Lists::orderby('id','desc')->with('provider')->with('item')->paginate(10);
         // dd($lists);
         return view('dashboard.listing.index',compact('lists'));
     }
@@ -88,19 +88,20 @@ class ListingController extends Controller {
         }
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.users.create');
+        $content = Lists::find($id);
+        return view('dashboard.listing.edit', compact('content'));
     }
 
     public function update(Request $request,$id)
     {
-        $post =  $request->getParams();
+        $post =  $request->All();
         $Lists = Lists::find($id);
         $list_id = $this->saveList($Lists,$post);
         $this->saveMultiSale($post,$list_id,true);
         
-        return redirect()->route('admin.citys.home')->with('success', trans('user.created'));
+        return redirect()->route('dashboard.listing.index')->with('success', trans('listing.updated'));
     }
 
     public function delete($id)

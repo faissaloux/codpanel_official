@@ -610,7 +610,7 @@
                             قيد المعالجة<br/>
                         </td>
                         <td data-type="name">
-                            de
+                            {{ $list->name }}
                         </td>
                         <td data-type="phone">
                             <a href="tel: 06########">{{ $list->tel }}</a>
@@ -647,8 +647,9 @@
                                 data-target="#historyModalCenter">
                                 الأحداث
                             </a>
-                            <a type="button"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
+                            <a  type="button"
+                                href="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}"
+                                class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
                                 تعديل
                             </a>
                         </td>
