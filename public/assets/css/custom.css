@@ -15,9 +15,6 @@ body {
     overflow-x: hidden;
     font-family: 'Tajawal';
 }
-.page-container{
-    height: 100vh;
-}
 a {
     font-weight: 400;
 }
@@ -99,6 +96,9 @@ input[type="checkbox"] {
 
 .edit {
     background: linear-gradient(to right, #4f93b2, #66cfb5);
+}
+.delete{
+    background-image: linear-gradient(to right,#cb2a6a,#ed135a);
 }
 
 .input-group-text {

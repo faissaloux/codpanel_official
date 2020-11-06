@@ -14,15 +14,15 @@ class ListingController extends Controller {
     
 
 	public function __construct() {
-        if(Auth::user()->role != 'admin'){
-        	return response()->json([	'error'=> 'you are not allowed to do this' ]);
-        }
+        // if(Auth::user()->role != 'admin'){
+        // 	return response()->json([	'error'=> 'you are not allowed to do this' ]);
+        // }
     }
 
     public function index()
     {
         $lists = Lists::orderby('id','desc')->paginate(10);
-        return view('admin.cities.index',compact('lists'));
+        return view('dashboard.listing.index',compact('lists'));
     }
 
     public function create()
@@ -32,33 +32,46 @@ class ListingController extends Controller {
 
     public function store(Request $request)
     {
-        $post =  $request->getParams();
+        $post =  $request->All();
+        // dd($post);
+        /*
+        name
+        adress
+        tel
+        cityID
+        employee
+        prix_de_laivraison
+        notes
+        ProductID[]
+        prix[]
+        quantity[]
+        */
         $Lists = new Lists();
         $list_id = $this->saveList($Lists,$post,true);
         $this->saveMultiSale($post,$list_id);
         
-        return redirect()->route('admin.citys.home')->with('success', trans('user.created'));
+        return redirect()->route('dashboard.listing.index')->with('success', trans('listing.created'));
     }
 
     // creating the list OR update 
     public function saveList($model,$post,$checkNumber = false){
         
-        $model->name               = $post['name'];
-        $model->adress             = $post['adress'];
-        $model->tel                = $post['tel'];
-        $model->city_id             = $post['city_id'];
-        $model->provider_id          = Cities::find($post['city_id'])->user_id;
-        $model->shipping            = $post['shipping'] ;
-        $model->employee_id         = $post['employee'] ?? $model->employee_id  ;
+        $model->name            = $post['name'];
+        $model->adress          = $post['adress'];
+        $model->tel             = $post['tel'];
+        $model->city_id         = $post['cityID'];
+        $model->provider_id     = Cities::find($post['cityID'])->provider_id;
+        $model->laivraison      = $post['prix_de_laivraison'] ;
+        $model->employee_id     = $post['employee'] ?? $model->employee_id  ;
        
 
-        if( Auth::user()->role != 'employee' ){
-            if($checkNumber  == true ){
-               if( $this->checkDuplicatedNumber($post['tel'])){
-                   $model->duplicated_at = Carbon::NOW();
-               } 
-            }
-        }
+        // if( Auth::user()->role != 'employee' ){
+        //     if($checkNumber  == true ){
+        //        if( $this->checkDuplicatedNumber($post['tel'])){
+        //            $model->duplicated_at = Carbon::NOW();
+        //        } 
+        //     }
+        // }
 
         $model->save();
         return $model->id;
@@ -66,12 +79,12 @@ class ListingController extends Controller {
 
     // the action of saving the products of the listing 
     public function multiSaleProductsSave($post,$list_id){
-       for($x=0;$x< count($post['Product_id']);$x++){
+       for($x=0;$x< count($post['ProductID']);$x++){
             $pro = new Items();
             $pro->list_id    = $list_id;
-            $pro->product_id = $post['Product_id'][$x];
+            $pro->product_id = $post['ProductID'][$x];
             $pro->price     = $post['prix'][$x];
-            $pro->quanity   = $post['quantity'][$x];
+            $pro->quantity   = $post['quantity'][$x];
             $pro->save();
         } 
     }

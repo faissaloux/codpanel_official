@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="users.php" class="d-flex justify-content-between tx-right">
+                    <a href="{{ route('dashboard.users.index') }}" class="d-flex justify-content-between tx-right">
                         <i>
                             <i data-feather="users"></i>
                             <span>المستخدمين</span>
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="cities.php" class="tx-right">
+                    <a href="{{ route('dashboard.cities.index') }}" class="tx-right">
                         <i data-feather="flag"></i>
                         <span>المدن</span>
                     </a>

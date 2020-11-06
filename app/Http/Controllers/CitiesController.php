@@ -11,33 +11,28 @@ class CitiesController extends Controller
     public function index()
     {
         $cities = Cities::orderby('id','desc')->paginate(10);
-        return view('admin.cities.index',compact('cities'));
+        return view('dashboard.cities.index',compact('cities'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('dashboard.cities.create');
     }
 
     public function store(Request $request)
     {
         $rules = [
-            'email'    => 'required|email|unique:users', 
-            'password' => 'required|min:3',
-            'name'     => 'required|string|min:4',
-            'phone'    => 'required',
+            'name'     => 'required|min:3',
+            'reference'   => 'required|min:4',
+            'provider_id' => 'required|min:1',
         ];
   
         $messages = [
-            'email.required'    => trans("email.required"),
-            'email.email'       => trans("email.unique"),
-            'email.unique'      => trans("name.required"),
-            'password.required' => trans("password.required"),
-            'password.min'      => trans("password.min"),
             'name.required'     => trans("name.required"),
-            'phone.required'    => trans("phone.required"),
+            'reference.required'     => trans("reference.required"),
+            'provider_id.required'    => trans("provider_id.required"),
         ];
-
+        
         $request->validate($rules,$messages);
 
         $city           = new Cities();
@@ -45,13 +40,13 @@ class CitiesController extends Controller
         $city->reference    = $request->reference;
         $city->provider_id    = $request->provider_id;
         $city->save();
-        return redirect()->route('admin.citys.home')->with('success', trans('user.created'));
+        return redirect()->route('dashboard.cities.index')->with('success', trans('city.created'));
     }
 
     public function edit($id)
     {
         $content = Cities::find($id);
-        return view ('admin.users.edit',compact('content'));
+        return view ('dashboard.cities.edit',compact('content'));
     }
 
     public function update(Request $request, $id)
@@ -59,15 +54,14 @@ class CitiesController extends Controller
         $city = Cities::find($id);
         $city->name     = $request->name;
         $city->reference    = $request->reference;
-        $city->provider_id    = $request->provider_id;
         $city->save();
-        return redirect()->route('admin.users.home')->with('success',trans('user.updated'));
+        return redirect()->route('dashboard.cities.index')->with('success',trans('city.updated'));
     }
 
     public function delete($id)
     {
         $city = Cities::find($id);
         $city->delete();
-        return redirect()->route('admin.users.home')->with('success',trans('user.deleted'));
+        return redirect()->route('dashboard.cities.index')->with('success',trans('city.deleted'));
     }
 }

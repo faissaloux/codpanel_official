@@ -47,7 +47,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::post('/store', 'ProductsController@store')->name('store');
             Route::get('/edit/{id}', 'ProductsController@edit')->name('edit');
             Route::post('/update/{id}', 'ProductsController@update')->name('update');
-            Route::get('/delete', 'ProductsController@delete')->name('delete');
+            Route::get('/delete/{id}', 'ProductsController@delete')->name('delete');
         });
 
 
@@ -56,9 +56,9 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/', 'CitiesController@index')->name('index');
             Route::get('/create', 'CitiesController@create')->name('create');
             Route::post('/store', 'CitiesController@store')->name('store');
-            Route::get('/edit', 'CitiesController@edit')->name('edit');
-            Route::post('/update', 'CitiesController@update')->name('update');
-            Route::get('/delete', 'CitiesController@delete')->name('store');
+            Route::get('/edit/{id}', 'CitiesController@edit')->name('edit');
+            Route::post('/update/{id}', 'CitiesController@update')->name('update');
+            Route::get('/delete/{id}', 'CitiesController@delete')->name('delete');
         });
 
 
