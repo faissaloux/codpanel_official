@@ -24,9 +24,9 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">
-                    <img src="assets/images/users-face/1.png"
-                        class="img-fluid wd-30 ht-30 rounded-circle"
-                        alt="">
+                        <img    src="{{ asset('assets/images/users-face/1.png') }}"
+                                class="img-fluid wd-30 ht-30 rounded-circle"
+                                alt="user-face">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-profile">
                         <div class="user-profile-area d-flex flex-column tx-right">
