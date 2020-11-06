@@ -1,7 +1,7 @@
 <div class="page-header">
     <nav class="navbar navbar-default">
         <div class="navbar-header">
-            <div class="navbar-brand">
+            <div class="navbar-brand deletemarginright">
             <ul class="list-inline">
                 <li class="list-inline-item">
                     <a class="hidden-md hidden-lg" href="#" id="sidebar-toggle-button">
