@@ -24,9 +24,20 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">
+<<<<<<< HEAD
+                    
+                        @if(!empty ( $user->image ))  
+                        <img src="/uploads/{{$user->image}}"
+                        class="img-fluid wd-30 ht-30 rounded-circle"
+                        alt="">
+                        @else
+                        <div class="avatar mr-2"><span style="background-color: {{ $user->color() }}" class="avatar-initial rounded-circle">{{ Str::limit($user->name, 1 , "") }}</span></div>
+                        @endif
+=======
                         <img    src="{{ asset('assets/images/users-face/1.png') }}"
                                 class="img-fluid wd-30 ht-30 rounded-circle"
                                 alt="user-face">
+>>>>>>> 4b10b37e36ed0bb4e8502379eff228382d687646
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-profile">
                         <div class="user-profile-area d-flex flex-column tx-right">
