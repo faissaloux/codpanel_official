@@ -98,6 +98,13 @@ class UsersController extends Controller
         return redirect()->route('admin.users.home')->with('success',trans('user.deleted'));
     }
 
+    public function profile($id)
+    {
+        $content= User::find($id);
+        $content->delete();
+        return view('dashboard.users.profile');
+    }
+
     public function updatePassword(Request $request)
     {
         $user = Auth::user();

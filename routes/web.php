@@ -25,7 +25,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => 'IsAdmin' ], function () {
 
     Route::get('/', function () {
-        return view('welcome');
+        return view('dashboard/index');
     });
 
         // users 
@@ -36,6 +36,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
             Route::post('/update/{id}', 'UsersController@update')->name('update');
             Route::get('/delete', 'UsersController@delete')->name('delete');
+            Route::get('/profile', 'UsersController@profile')->name('profile');
             Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
         });
 
