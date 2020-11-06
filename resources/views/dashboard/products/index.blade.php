@@ -223,6 +223,11 @@
                                         class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
                                         تعديل
                                     </a>
+                                    <a  type="button"
+                                        href="{{ route('dashboard.products.delete' , ['id' => $product->id ]) }}"
+                                        class="btn btn-danger btn-lg border-none loadactions rounded text-white delete">
+                                        حذف
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

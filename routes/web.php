@@ -44,7 +44,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
             Route::post('/store', 'ProductsController@store')->name('store');
             Route::get('/edit/{id}', 'ProductsController@edit')->name('edit');
             Route::post('/update/{id}', 'ProductsController@update')->name('update');
-            Route::get('/delete', 'ProductsController@delete')->name('delete');
+            Route::get('/delete/{id}', 'ProductsController@delete')->name('delete');
         });
 
 
@@ -55,7 +55,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' ], function () {
             Route::post('/store', 'CitiesController@store')->name('store');
             Route::get('/edit/{id}', 'CitiesController@edit')->name('edit');
             Route::post('/update/{id}', 'CitiesController@update')->name('update');
-            Route::get('/delete', 'CitiesController@delete')->name('delete');
+            Route::get('/delete/{id}', 'CitiesController@delete')->name('delete');
         });
 
 
