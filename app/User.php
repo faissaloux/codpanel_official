@@ -37,6 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function lists(){
+        return  $this->belongsTo('App\User', 'id', 'provider_id');
+    }
 
     public function color(){
         return (new \App\System\Helper())->random_color();

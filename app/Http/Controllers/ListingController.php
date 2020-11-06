@@ -21,7 +21,8 @@ class ListingController extends Controller {
 
     public function index()
     {
-        $lists = Lists::orderby('id','desc')->paginate(10);
+        $lists = Lists::orderby('id','desc')->with('provider')->paginate(10);
+        // dd($lists);
         return view('dashboard.listing.index',compact('lists'));
     }
 
@@ -33,19 +34,6 @@ class ListingController extends Controller {
     public function store(Request $request)
     {
         $post =  $request->All();
-        // dd($post);
-        /*
-        name
-        adress
-        tel
-        cityID
-        employee
-        prix_de_laivraison
-        notes
-        ProductID[]
-        prix[]
-        quantity[]
-        */
         $Lists = new Lists();
         $list_id = $this->saveList($Lists,$post,true);
         $this->saveMultiSale($post,$list_id);
@@ -60,7 +48,7 @@ class ListingController extends Controller {
         $model->adress          = $post['adress'];
         $model->tel             = $post['tel'];
         $model->city_id         = $post['cityID'];
-        $model->provider_id     = Cities::find($post['cityID'])->provider_id;
+        $model->provider_id     = Cities::find($post['cityID'])->provider_id ?? NULL;
         $model->laivraison      = $post['prix_de_laivraison'] ;
         $model->employee_id     = $post['employee'] ?? $model->employee_id  ;
        
