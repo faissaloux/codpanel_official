@@ -19,16 +19,19 @@ class StatistiquesController extends Controller
         $unanswered = Lists::unanswered()->count() ?? 0;
         $recall = Lists::recall()->count() ?? 0;
         $delivred = Lists::delivred()->count() ?? 0;
-        $employee = User::employee()->count() ?? 0;
-        $provider = User::provider()->count() ?? 0;
+        $employees = User::employees()->count() ?? 0;
+        $providers = User::providers()->count() ?? 0;
         $cities = Cities::count() ?? 0;
         $products = Products::count() ?? 0;
+
+
+
         return view('dashboard.statistiques.index', compact('canceled',
                                                             'unanswered',
                                                             'recall',
                                                             'delivred',
-                                                            'employee',
-                                                            'provider',
+                                                            'employees',
+                                                            'providers',
                                                             'cities',
                                                             'products'));
     }
