@@ -643,12 +643,6 @@
                                 التفاصيل
                             </a>
                             <a  type="button"
-                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white history"
-                                data-toggle="modal"
-                                data-target="#historyModalCenter">
-                                الأحداث
-                            </a>
-                            <a  type="button"
                                 href="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}"
                                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
                                 تعديل
