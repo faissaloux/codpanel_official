@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('dashboard.statistiques.index') }}" class="tx-right">
+                    <a href="{{ route('dashboard.statistiques.cash') }}" class="tx-right">
                         <i data-feather="dollar-sign"></i>
                         <span>التكاليف</span>
                     </a>
