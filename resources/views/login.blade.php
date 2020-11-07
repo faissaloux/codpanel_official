@@ -1,9 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
-    
-<!-- Mirrored from shreethemes.in/landrick/layouts/auth-cover-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Nov 2020 12:35:42 GMT -->
 <head>
         <meta charset="utf-8" />
         <title>{{ config('app.name', 'Laravel') }}</title>
@@ -28,16 +25,6 @@
     </head>
 
     <body>
-        <!-- Loader -->
-        <!-- <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Loader -->
         
         <div class="back-to-home rounded d-none d-sm-block">
             <a href="{{route('index')}}" class="btn btn-icon btn-soft-primary"><i data-feather="home" class="icons"></i></a>
@@ -116,50 +103,7 @@
         </section><!--end section-->
         <!-- Hero End -->
 
-        <!-- Start Style switcher -->
-        <div id="style-switcher" style="left: 0px;" class="bg-light border p-3 pt-2 pb-2">
-            <h3 class="title text-center">Select Your Color</h3>
-            <ul class="pattern text-center mb-2">
-                <li class="list-inline-item">
-                    <a class="default" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="green" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="purple" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="red" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="skyblue" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="skobleoff" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="cyan" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="slateblue" href="#"></a>
-                </li>
-            </ul>
-
-            <h3 class="title text-center pt-3 mb-0 border-top">Theme Option</h3>
-            <div class="text-center">
-                <a href="#" class="btn btn-sm w-100 btn-primary rtl-version t-rtl-light mt-2">RTL</a>
-                <a href="#" class="btn btn-sm w-100 btn-primary ltr-version t-ltr-light mt-2">LTR</a>
-                <a href="#" class="btn btn-sm w-100 btn-primary dark-rtl-version t-rtl-dark mt-2">RTL</a>
-                <a href="#" class="btn btn-sm w-100 btn-primary dark-ltr-version t-ltr-dark mt-2">LTR</a>
-                <a href="#" class="btn btn-sm w-100 btn-dark dark-version t-dark mt-2">Dark</a>
-                <a href="#" class="btn btn-sm w-100 btn-dark light-version t-light mt-2">Light</a>
-            </div>
-            <div class="bottom">
-                <a href="#" class="settings bg-white shadow d-block"><i class="mdi mdi-cog ml-1 mdi-24px position-absolute mdi-spin text-primary"></i></a>
-            </div>
-        </div>
-        <!-- End Style switcher -->
+        
 
         <!-- javascript -->
         <script src="js/jquery-3.5.1.min.js"></script>
@@ -174,6 +118,5 @@
         <!-- Main Js -->
         <script src="js/app.js"></script>
     </body>
-
-<!-- Mirrored from shreethemes.in/landrick/layouts/auth-cover-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Nov 2020 12:35:46 GMT -->
+ 
 </html>
