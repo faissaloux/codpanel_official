@@ -33,7 +33,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 
 
 
-        // users 
+        // users
         Route::group(['prefix' => '/users', 'as' => 'users.' ], function () {
             Route::get('/', 'UsersController@index')->name('index');
             Route::get('/create', 'UsersController@create')->name('create');
@@ -45,7 +45,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         });
 
 
-        // products 
+        // products
         Route::group(['prefix' => '/products', 'as' => 'products.' ], function () {
             Route::get('/', 'ProductsController@index')->name('index');
             Route::get('/create', 'ProductsController@create')->name('create');
@@ -56,7 +56,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         });
 
 
-        // cities 
+        // cities
         Route::group(['prefix' => '/cities', 'as' => 'cities.' ], function () {
             Route::get('/', 'CitiesController@index')->name('index');
             Route::get('/create', 'CitiesController@create')->name('create');
@@ -67,7 +67,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         });
 
 
-        // stock 
+        // stock
         Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
             Route::get('/', 'StockController@index')->name('index');
             Route::get('/reception', 'StockController@reception')->name('reception');
@@ -79,7 +79,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         });
 
 
-        // lists 
+        // lists
         Route::group(['prefix' => '/listing', 'as' => 'listing.' ], function () {
 
             Route::get('/', 'ListingController@index')->name('index');
@@ -87,7 +87,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/employees', 'ListingController@employees')->name('employees');
             Route::get('/providers', 'ListingController@providers')->name('providers');
 
-            Route::post('/create', 'ListingController@create')->name('create');
+            Route::get('/create', 'ListingController@create')->name('create');
             Route::post('/store', 'ListingController@store')->name('store');
             Route::get('/edit/{id}', 'ListingController@edit')->name('edit');
             Route::post('/update/{id}', 'ListingController@update')->name('update');
@@ -103,7 +103,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/listing', 'ListingController@listing')->name('listing');
         });
 
-        // statistiques 
+        // statistiques
         Route::group(['prefix' => '/statistiques', 'as' => 'statistiques.' ], function () {
             Route::get('/', 'StatistiquesController@index')->name('index');
             Route::get('/revenue', 'StatistiquesController@revenue')->name('revenue');
@@ -114,7 +114,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/providers', 'StatistiquesController@providers')->name('providers');
         });
 
-        // statistiques 
+        // statistiques
         Route::group(['prefix' => '/settings', 'as' => 'settings.' ], function () {
             Route::get('/revenue', 'SettingsController@revenue')->name('revenue');
             Route::get('/cash', 'SettingsController@cash')->name('cash');
