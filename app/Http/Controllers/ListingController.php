@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Items;
 use App\Lists;
 use App\Cities;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Products;
 use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller {
@@ -21,14 +23,35 @@ class ListingController extends Controller {
 
     public function index()
     {
-        $lists = Lists::orderby('id','desc')->with('provider')->with('item')->paginate(10);
+        $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
         // dd($lists);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
+    public function employees()
+    {
+        $lists = Lists::employees()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
+    public function providers()
+    {
+        $lists = Lists::providers()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
+    public function new()
+    {
+        $lists = Lists::new()->paginate(10);
         return view('dashboard.listing.index',compact('lists'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        $cities = Cities::orderby('id','desc')->get();
+        $users = User::orderby('id','desc')->get();
+        $products = Products::orderby('id','desc')->get();
+        return response()->view('dashboard.elements.add_list' ,compact('cities','users','products'))->setStatusCode(200);
     }
 
     public function store(Request $request)
@@ -142,14 +165,19 @@ class ListingController extends Controller {
         return view('admin.users.create');
     }
 
-    public function statue()
+    public function statue(Request $request , $id)
     {
-        return view('admin.users.create');
+        $List = Lists::find($id);
+        $List->statue = $request->statue;
+
+        $List->save();
+        return redirect()->route('dashboard.listing.index')->with('success', trans('listing.updated'));
     }
 
-    public function load()
+    public function load($id)
     {
-        return view('admin.users.create');
+        $list = Lists::with("items")->find($id);
+        return response()->view('dashboard.elements.list_details' , compact('list'))->setStatusCode(200);
     }
 
     public function history()

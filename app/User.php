@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -43,6 +44,14 @@ class User extends Authenticatable
 
     public function color(){
         return (new \App\System\Helper())->random_color();
+    }
+
+    public function scopeEmployees($query){
+        return  $query->where('role', 'employee');
+    }
+
+    public function scopeProviders($query){
+        return  $query->where('role', 'provider');
     }
 
 

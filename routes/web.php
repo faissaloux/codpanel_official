@@ -39,6 +39,11 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         return view('dashboard/index');
     });
 
+
+        Route::get('/profile', 'ProfileController@show')->name('profile');
+
+
+
         // users 
         Route::group(['prefix' => '/users', 'as' => 'users.' ], function () {
             Route::get('/', 'UsersController@index')->name('index');
@@ -47,7 +52,6 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
             Route::post('/update/{id}', 'UsersController@update')->name('update');
             Route::get('/delete/{id}', 'UsersController@delete')->name('delete');
-            Route::get('/profile/{id}', 'UsersController@profile')->name('profile');
             Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
         });
 
@@ -77,6 +81,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         // stock 
         Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
             Route::get('/', 'StockController@index')->name('index');
+            Route::get('/reception', 'StockController@reception')->name('reception');
             Route::get('/create', 'StockController@create')->name('create');
             Route::post('/store', 'StockController@store')->name('store');
             Route::get('/edit', 'StockController@edit')->name('edit');
@@ -87,8 +92,13 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 
         // lists 
         Route::group(['prefix' => '/listing', 'as' => 'listing.' ], function () {
+
             Route::get('/', 'ListingController@index')->name('index');
-            Route::get('/create', 'ListingController@create')->name('create');
+            Route::get('/new', 'ListingController@new')->name('new');
+            Route::get('/employees', 'ListingController@employees')->name('employees');
+            Route::get('/providers', 'ListingController@providers')->name('providers');
+
+            Route::post('/create', 'ListingController@create')->name('create');
             Route::post('/store', 'ListingController@store')->name('store');
             Route::get('/edit/{id}', 'ListingController@edit')->name('edit');
             Route::post('/update/{id}', 'ListingController@update')->name('update');
@@ -98,14 +108,15 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::post('/restore', 'ListingController@restore')->name('restore');
             Route::post('/export', 'ListingController@export')->name('export');
             Route::post('/import', 'ListingController@import')->name('import');
-            Route::post('/statue', 'ListingController@statue')->name('statue');
-            Route::post('/load', 'ListingController@load')->name('load');
+            Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
+            Route::post('/load/{id}', 'ListingController@load')->name('load');
             Route::post('/history', 'ListingController@history')->name('history');
             Route::get('/listing', 'ListingController@listing')->name('listing');
         });
 
         // statistiques 
         Route::group(['prefix' => '/statistiques', 'as' => 'statistiques.' ], function () {
+            Route::get('/', 'StatistiquesController@index')->name('index');
             Route::get('/revenue', 'StatistiquesController@revenue')->name('revenue');
             Route::get('/cash', 'StatistiquesController@cash')->name('cash');
             Route::get('/products', 'StatistiquesController@products')->name('products');
@@ -116,12 +127,12 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 
         // statistiques 
         Route::group(['prefix' => '/settings', 'as' => 'settings.' ], function () {
-            Route::get('/revenue', 'StatistiquesController@revenue')->name('revenue');
-            Route::get('/cash', 'StatistiquesController@cash')->name('cash');
-            Route::get('/products', 'StatistiquesController@products')->name('products');
-            Route::get('/cities', 'StatistiquesController@cities')->name('cities');
-            Route::get('/employees', 'StatistiquesController@employees')->name('employees');
-            Route::get('/providers', 'StatistiquesController@providers')->name('providers');
+            Route::get('/revenue', 'SettingsController@revenue')->name('revenue');
+            Route::get('/cash', 'SettingsController@cash')->name('cash');
+            Route::get('/products', 'SettingsController@products')->name('products');
+            Route::get('/cities', 'SettingsController@cities')->name('cities');
+            Route::get('/employees', 'SettingsController@employees')->name('employees');
+            Route::get('/providers', 'SettingsController@providers')->name('providers');
         });
 
 

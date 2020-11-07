@@ -439,8 +439,8 @@
                     </div>
                     <div class="btn-container">
                         <a  class="btn-add-order table-top-btn btn btn-default-custom d-flex align-items-center"
-                            data-toggle="modal"
-                            data-target="#addOrderModalCenter">
+                            id="addnewlist"
+                            data-link="{{ route('dashboard.listing.create') }}">
                             <i class="mdi mdi-plus"></i>
                             <span class="mr-2">أضف طلب</span>
                         </a>
@@ -598,7 +598,7 @@
             </thead>
             <tbody>
                 @foreach($lists as $list)
-                    <tr>
+                    <tr class="{{ 'list_'.$list->id }}" >
                         <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                         <td data-type="requestId" class="tx-right">
                             {{ '#'.$list->id }}
@@ -636,20 +636,15 @@
                         </td>
                         <td>
                             <a type="button" 
-                                class="btn btn-primary btn-lg border-none loadactions rounded text-white details"
-                                data-toggle="modal"
-                                data-target="#detailsModalCenter">
+
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"
+                                data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
+
                                 التفاصيل
                             </a>
                             <a  type="button"
-                                class="btn btn-primary btn-lg border-none loadactions rounded text-white history"
-                                data-toggle="modal"
-                                data-target="#historyModalCenter">
-                                الأحداث
-                            </a>
-                            <a  type="button"
                                 href="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}"
-                                class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
                                 تعديل
                             </a>
                         </td>
