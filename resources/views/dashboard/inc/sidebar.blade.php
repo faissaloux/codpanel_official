@@ -9,7 +9,7 @@
         <div class="page-sidebar-menu">
             <ul class="accordion-menu">
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard.listing.new') }}" class="tx-right">
+                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
                         <i data-feather="package"></i>
                         <span>الطلبات الجديدة</span>
                     </a>
