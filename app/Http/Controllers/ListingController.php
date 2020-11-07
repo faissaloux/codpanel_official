@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Products;
+use Dotenv\Result\Success;
 use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller {
@@ -28,6 +29,24 @@ class ListingController extends Controller {
         return view('dashboard.listing.index',compact('lists'));
     }
 
+    public function employees()
+    {
+        $lists = Lists::employees()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
+    public function providers()
+    {
+        $lists = Lists::providers()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
+    public function new()
+    {
+        $lists = Lists::new()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
     public function create()
     {
         $cities = Cities::orderby('id','desc')->get();
@@ -37,12 +56,20 @@ class ListingController extends Controller {
     }
 
     public function store(Request $request)
-    {
+    {        
+
+
+
+        //dd($_POST);
         $post =  $request->All();
         $Lists = new Lists();
         $list_id = $this->saveList($Lists,$post,true);
         $this->saveMultiSale($post,$list_id);
+<<<<<<< HEAD
 
+=======
+        return response()->json(["Success" => "saved successfuly"]);
+>>>>>>> b3be3a8785c69a637f234088aab776d297020ed4
         return redirect()->route('dashboard.listing.index')->with('success', trans('listing.created'));
     }
 

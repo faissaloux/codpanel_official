@@ -15,13 +15,13 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
+                    <a href="{{ route('dashboard.listing.employees') }}" class="tx-right">
                         <i data-feather="headphones"></i>
                         <span>عملاء الإتصال</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
+                    <a href="{{ route('dashboard.listing.providers') }}" class="tx-right">
                         <i data-feather="truck"></i>
                         <span>مندوب التوصيل</span>
                     </a>

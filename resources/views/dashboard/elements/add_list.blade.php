@@ -50,7 +50,9 @@
                                             <div class="form-group col-md-12">
                                                 <select class="form-control frequired"
                                                         name="cityID"
-                                                        placeholder="المدينة">
+                                                        placeholder="المدينة"
+                                                        required>
+                                                        <option value="N-A">اختار المدينة</option>
                                                         @foreach ($cities as $city)
                                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
                                                         @endforeach
@@ -64,7 +66,9 @@
                                                 <select class="form-control frequired"
                                                         id='choseEmployee'
                                                         name="employee"
-                                                        placeholder="الموظفة">
+                                                        placeholder="الموظفة"
+                                                        required>
+                                                        <option value="N-A">اختار عميل الإتصال</option>
                                                         @foreach ($users as $user)
                                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                         @endforeach
@@ -79,7 +83,8 @@
                                                         class="form-control frequired"
                                                         name="prix_de_laivraison"
                                                         id="prix_de_laivraison"
-                                                        placeholder="ثمن الإرسال بالدرهم - أرقام فقط">
+                                                        placeholder="ثمن الإرسال بالدرهم - أرقام فقط"
+                                                        required>
                                             </div>
                                         </div>
 
@@ -101,7 +106,7 @@
                 </div>
             </div>
             <div class="row">
-                <div>
+                <div class="col-md-12">
                     <div class="panel mg-t-45 mg-b-25 panel-flat">
                         <div class="panel-heading">
                             <h4 class="tx-right">المنتجات</h4>
