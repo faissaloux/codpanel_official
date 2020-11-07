@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class StatistiquesController extends Controller
 {
     public function cash(){
-        return view('dashboard.cash.index');
+        return view('dashboard.statistiques.cash');
     }
 }
