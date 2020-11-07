@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Products;
+use Dotenv\Result\Success;
 use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller {
@@ -55,12 +56,16 @@ class ListingController extends Controller {
     }
 
     public function store(Request $request)
-    {
+    {        
+
+
+
+        //dd($_POST);
         $post =  $request->All();
         $Lists = new Lists();
         $list_id = $this->saveList($Lists,$post,true);
         $this->saveMultiSale($post,$list_id);
-        
+        return response()->json(["Success" => "saved successfuly"]);
         return redirect()->route('dashboard.listing.index')->with('success', trans('listing.created'));
     }
 
