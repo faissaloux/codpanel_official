@@ -17,77 +17,11 @@
             </button>
         </div>
         <div class="modal-body d-flex flex-column">
-            <div class="modal-cont modal-top mb-3 float-right">
-                <div class="d-flex flex-column">
-                    <p class="row">
-                        <span class="col-3 text-right">اسم العميل</span>
-                        <span class="col text-right">Name</span>
-                    </p>
-                    <p class="row">
-                        <span class="col-3 text-right">رقم الهاتف</span>
-                        <span class="col text-right">+212652145896</span>
-                    </p>
-                    <p class="row">
-                        <span class="col-3 text-right">العنوان</span>
-                        <span class="col text-right">Agadir Bay</span>
-                    </p>
-                    <p class="row">
-                        <span class="col-3 text-right">المدينة</span>
-                        <span class="col text-right">Agadir</span>
-                    </p>
-                    <p class="row">
-                        <span class="col-3 text-right">المصدر</span>
-                        <span class="col text-right">Store</span>
-                    </p>
-                    <p class="row">
-                        <span class="col-3 text-right">المنتوج</span>
-                        <span class="col text-right">Kit Voiture X6</span>
-                    </p>
-                    <p class="row">
-                        <span class="col-3 text-right">الكمية</span>
-                        <span class="col text-right">1</span>
-                    </p>
-                    <p class="row">
-                        <span class="col-3 text-right">الثمن</span>
-                        <span class="col text-right">199.99 درهم</span>
-                    </p>
-                    <p class="row">
-                        <span class="col text-right">الملاحظة</span>
-                        <span class="col"></span>
-                    </p>
-                </div>
-            </div>
-            <div class="d-flex align-items-center float-right">
-                <div class="col-md-12 col-lg-12 text-right">
-                    <div class="card mg-b-30">
-                        <div class="card-body pd-0">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>المنتوج</th>
-                                        <th>الكمية</th>
-                                        <th>الثمن</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Kit Voiture X6</td>
-                                        <td>1</td>
-                                        <td>199.99</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+
         </div>
-        <div class="modal-footer d-flex justify-content-around">
-            <button type="button" class="btn btn-primary rounded">لا يجيب</button>
-            <button type="button" class="btn btn-primary rounded">إعادة الإتصال</button>
-            <button type="button" class="btn btn-primary rounded">ملغى</button>
-            <button type="button" class="btn btn-primary rounded">تأكيد</button>
-        </div>
+        
+        
         </div>
     </div>
 </div>

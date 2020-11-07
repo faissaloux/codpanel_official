@@ -21,7 +21,7 @@ class ListingController extends Controller {
 
     public function index()
     {
-        $lists = Lists::orderby('id','desc')->with('provider')->with('item')->paginate(10);
+        $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
         // dd($lists);
         return view('dashboard.listing.index',compact('lists'));
     }
@@ -147,9 +147,10 @@ class ListingController extends Controller {
         return view('admin.users.create');
     }
 
-    public function load()
+    public function load($id)
     {
-        return view('admin.users.create');
+        $list = Lists::with("items")->find($id);
+        return response()->view('dashboard.elements.list_details' , compact('list'))->setStatusCode(200);
     }
 
     public function history()

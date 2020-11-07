@@ -14,7 +14,7 @@ class Lists extends Model
         return  $this->belongsTo('App\User', 'employee_id')->withDefault(['name' => 'N-A']);
     }
 
-    public function item(){
+    public function items(){
         return  $this->hasMany('App\Items', 'list_id');
     }
 }

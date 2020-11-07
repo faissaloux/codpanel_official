@@ -598,7 +598,7 @@
             </thead>
             <tbody>
                 @foreach($lists as $list)
-                    <tr>
+                    <tr data-id="{{ 'list_'.$list->id }}" >
                         <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                         <td data-type="requestId" class="tx-right">
                             {{ '#'.$list->id }}
@@ -636,9 +636,8 @@
                         </td>
                         <td>
                             <a type="button" 
-                                class="btn btn-primary btn-lg border-none loadactions rounded text-white details"
-                                data-toggle="modal"
-                                data-target="#detailsModalCenter">
+                                class="btn btn-primary btn-lg border-none loadactions rounded text-white details showdetails"
+                                data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
                                 التفاصيل
                             </a>
                             <a  type="button"
