@@ -78,7 +78,7 @@
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">عملاء الإتصال</p>
                 <div class="d-flex justify-content-end align-items-center">
-                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">451</h2>
+                  <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $employee }}</h2>
                 </div>
                 <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                    منذ اليوم الماضي
@@ -95,7 +95,7 @@
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">مندوب التوصيل</p>
                 <div class="d-flex justify-content-end align-items-center">
-                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">542</h2>
+                  <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $provider }}</h2>
                 </div>
                 <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                    منذ اليوم الماضي
@@ -112,7 +112,7 @@
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">المدن</p>
                 <div class="d-flex justify-content-end align-items-center">
-                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">45</h2>
+                  <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $cities }}</h2>
                 </div>
                 <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                    منذ اليوم الماضي
@@ -129,7 +129,7 @@
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">المنتوجات</p>
                 <div class="d-flex justify-content-end align-items-center">
-                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">145</h2>
+                  <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $products }}</h2>
                 </div>
                 <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                    منذ اليوم الماضي
