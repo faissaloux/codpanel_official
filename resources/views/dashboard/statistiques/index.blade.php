@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex flex-column bg-white pt-4">
-    <div class="row align-items-center pr-4 pl-4">
+    <div class="row align-items-center pr-4 pl-4 mb-3">
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card">
                <div class="card-body">
@@ -72,6 +72,76 @@
             </div>
         </div>
     </div>
+    <div class="row align-items-center pr-4 pl-4">
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="card">
+             <div class="card-body">
+                <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">عملاء الإتصال</p>
+                <div class="d-flex justify-content-end align-items-center">
+                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">451</h2>
+                </div>
+                <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
+                   منذ اليوم الماضي
+                   <span class="tx-success mr-2 d-flex align-items-center">
+                      +1,551
+                      <i class="ti-arrow-up tx-8 mr-1 tx-8"></i>
+                   </span>
+                </div>
+             </div>
+          </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="card">
+             <div class="card-body">
+                <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">مندوب التوصيل</p>
+                <div class="d-flex justify-content-end align-items-center">
+                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">542</h2>
+                </div>
+                <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
+                   منذ اليوم الماضي
+                   <span class="tx-success mr-2 d-flex align-items-center">
+                      +1,551
+                      <i class="ti-arrow-up tx-8 mr-1 tx-8"></i>
+                   </span>
+                </div>
+             </div>
+          </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="card">
+             <div class="card-body">
+                <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">المدن</p>
+                <div class="d-flex justify-content-end align-items-center">
+                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">45</h2>
+                </div>
+                <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
+                   منذ اليوم الماضي
+                   <span class="tx-success mr-2 d-flex align-items-center">
+                      +1,551
+                      <i class="ti-arrow-up tx-8 mr-1 tx-8"></i>
+                   </span>
+                </div>
+             </div>
+          </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-3">
+          <div class="card">
+             <div class="card-body">
+                <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">المنتوجات</p>
+                <div class="d-flex justify-content-end align-items-center">
+                   <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">145</h2>
+                </div>
+                <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
+                   منذ اليوم الماضي
+                   <span class="tx-success mr-2 d-flex align-items-center">
+                      +1,551
+                      <i class="ti-arrow-up tx-8 mr-1 tx-8"></i>
+                   </span>
+                </div>
+             </div>
+          </div>
+      </div>
+  </div>
     <hr>
 </div>
 <div class="page-inner" style="background-color: #FFF">
