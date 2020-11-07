@@ -220,12 +220,12 @@
                                 <td>
                                     <a  type="button"
                                         href="{{ route('dashboard.products.edit' , ['id' => $product->id ]) }}"
-                                        class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
+                                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
                                         تعديل
                                     </a>
                                     <a  type="button"
                                         href="{{ route('dashboard.products.delete' , ['id' => $product->id ]) }}"
-                                        class="btn btn-danger btn-lg border-none loadactions rounded text-white delete">
+                                        class="btn btn-danger btn-lg border-none loadactions rounded-custom text-white delete">
                                         حذف
                                     </a>
                                 </td>

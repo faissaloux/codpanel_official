@@ -636,19 +636,25 @@
                         </td>
                         <td>
                             <a type="button" 
+<<<<<<< HEAD
                                 class="btn btn-primary btn-lg border-none loadactions rounded text-white details showdetails"
                                 data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
+=======
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details"
+                                data-toggle="modal"
+                                data-target="#detailsModalCenter">
+>>>>>>> c294e279d5469e637cfe66cd28cc20366a2d1f50
                                 التفاصيل
                             </a>
                             <a  type="button"
-                                class="btn btn-primary btn-lg border-none loadactions rounded text-white history"
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white history"
                                 data-toggle="modal"
                                 data-target="#historyModalCenter">
                                 الأحداث
                             </a>
                             <a  type="button"
                                 href="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}"
-                                class="btn btn-primary btn-lg border-none loadactions rounded text-white edit">
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
                                 تعديل
                             </a>
                         </td>

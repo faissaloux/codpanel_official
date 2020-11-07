@@ -9,19 +9,19 @@
         <div class="page-sidebar-menu">
             <ul class="accordion-menu">
                 <li>
-                    <a href="#" class="tx-right">
+                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
                         <i data-feather="package"></i>
                         <span>الطلبات الجديدة</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="tx-right">
+                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
                         <i data-feather="headphones"></i>
                         <span>عملاء الإتصال</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="tx-right">
+                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
                         <i data-feather="truck"></i>
                         <span>مندوب التوصيل</span>
                     </a>
@@ -63,13 +63,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('dashboard.statistiques.cash') }}" class="tx-right">
+                    <a href="{{ route('dashboard.statistiques.index') }}" class="tx-right">
                         <i data-feather="dollar-sign"></i>
                         <span>التكاليف</span>
                     </a>
                 </li>
                 <li>
-                    <a href="reception.php" class="tx-right">
+                    <a href="{{ route('dashboard.stock.reception') }}" class="tx-right">
                         <i data-feather="grid"></i>
                         <span>استقبال</span>
                     </a>
