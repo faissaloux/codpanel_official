@@ -17,4 +17,28 @@ class Lists extends Model
     public function items(){
         return  $this->hasMany('App\Items', 'list_id');
     }
+
+
+    public function scopeCanceled($query){
+        return  $query->where('status', 'canceled');
+    }
+
+    public function scopeUnanswered($query){
+        return  $query->where('status', 'unanswered');
+    }
+
+    public function scopeRecall($query){
+        return  $query->where('status', 'recall');
+    }
+
+    public function scopeDelivred($query){
+        return  $query->where('status', 'delivred');
+    }
+
+
+
+
+
+
+
 }
