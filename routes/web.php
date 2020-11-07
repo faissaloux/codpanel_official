@@ -98,7 +98,6 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/', 'StatistiquesController@index')->name('index');
             Route::get('/revenue', 'StatistiquesController@revenue')->name('revenue');
             Route::get('/cash', 'StatistiquesController@cash')->name('cash');
-            
             Route::get('/products', 'StatistiquesController@products')->name('products');
             Route::get('/cities', 'StatistiquesController@cities')->name('cities');
             Route::get('/employees', 'StatistiquesController@employees')->name('employees');
