@@ -724,3 +724,8 @@ div.show-columns-container.show button .show-columns-icon {
 .deletemarginright ul {
     padding-right: 0;
 }
+
+
+.sidebar-item {
+    padding: 8px 12px;
+}
