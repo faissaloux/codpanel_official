@@ -439,8 +439,8 @@
                     </div>
                     <div class="btn-container">
                         <a  class="btn-add-order table-top-btn btn btn-default-custom d-flex align-items-center"
-                            data-toggle="modal"
-                            data-target="#addOrderModalCenter">
+                            id="addnewlist"
+                            data-link="{{ route('dashboard.listing.create') }}">
                             <i class="mdi mdi-plus"></i>
                             <span class="mr-2">أضف طلب</span>
                         </a>
