@@ -37,4 +37,8 @@ class StockController extends Controller
     {
         return view('admin.users.create');
     }
+
+    public function reception(){
+        return view('dashboard.stock.reception');
+    }
 }

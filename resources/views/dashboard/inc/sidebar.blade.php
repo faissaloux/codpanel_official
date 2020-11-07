@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="reception.php" class="tx-right">
+                    <a href="{{ route('dashboard.stock.reception') }}" class="tx-right">
                         <i data-feather="grid"></i>
                         <span>استقبال</span>
                     </a>
