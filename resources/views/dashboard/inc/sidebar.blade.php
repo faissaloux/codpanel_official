@@ -8,67 +8,65 @@
     <div class="page-sidebar-inner">
         <div class="page-sidebar-menu">
             <ul class="accordion-menu">
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
                         <i data-feather="package"></i>
                         <span>الطلبات الجديدة</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
                         <i data-feather="headphones"></i>
                         <span>عملاء الإتصال</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
                         <i data-feather="truck"></i>
                         <span>مندوب التوصيل</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.users.index') }}" class="d-flex justify-content-between tx-right">
                         <i>
                             <i data-feather="users"></i>
                             <span>المستخدمين</span>
                         </i>
-                        <span class="d-flex align-items-center mr-2 quantity">141</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.cities.index') }}" class="tx-right">
                         <i data-feather="flag"></i>
                         <span>المدن</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.products.index') }}" class="tx-right">
                         <i data-feather="shopping-bag"></i>
                         <span>المنتجات</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="employeesStats.php" class="tx-right">
                         <i data-feather="trending-up"></i>
                         <span>احصائيات الموظفات</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="#" class="d-flex justify-content-between tx-right">
                         <i>
                             <i data-feather="archive"></i>
                             <span>المخزون</span>
                         </i>
-                        <span class="d-flex align-items-center mr-2 quantity">26</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.statistiques.index') }}" class="tx-right">
                         <i data-feather="dollar-sign"></i>
                         <span>التكاليف</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.stock.reception') }}" class="tx-right">
                         <i data-feather="grid"></i>
                         <span>استقبال</span>
