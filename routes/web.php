@@ -18,8 +18,19 @@ Auth::routes();
 
 Auth::routes();
 
+
 Route::post('/attempt', 'Auth\LoginController@attempt')->name('attempt');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/', 'IndexController@index')->name('index');
+Route::get('/index', 'IndexController@index')->name('index');
+Route::get('/about', 'AboutUsController@index')->name('about');
+Route::get('/contact', 'ContactController@index')->name('contact');
+Route::get('/faq', 'FaqController@index')->name('faq');
+Route::get('/singin', 'LoginController@index')->name('singin');
+Route::get('/re-password', 'LoginController@repassword')->name('re-password');
+Route::get('/singup', 'SingupController@index')->name('singup');
+
 
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => 'IsAdmin' ], function () {
