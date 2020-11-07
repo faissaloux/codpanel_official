@@ -8,7 +8,7 @@
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">الطلبات الملغية</p>
                   <div class="d-flex justify-content-end align-items-center">
-                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
+                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $canceled }}</h2>
                   </div>
                   <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                      منذ اليوم الماضي
@@ -25,7 +25,7 @@
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات لا تجيب</p>
                   <div class="d-flex justify-content-end align-items-center">
-                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
+                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $unanswered }}</h2>
                   </div>
                   <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                      منذ اليوم الماضي
@@ -42,7 +42,7 @@
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات إعادة الإتصال</p>
                   <div class="d-flex justify-content-end align-items-center">
-                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
+                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $recall }}</h2>
                   </div>
                   <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                      منذ اليوم الماضي
@@ -59,7 +59,7 @@
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات موزعة</p>
                   <div class="d-flex justify-content-end align-items-center">
-                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
+                     <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $delivred }}</h2>
                   </div>
                   <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                      منذ اليوم الماضي
