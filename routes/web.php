@@ -24,6 +24,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/index', 'IndexController@index')->name('index');
+Route::get('/privacy', 'IndexController@privacy')->name('privacy');
+Route::get('/terms', 'IndexController@terms')->name('terms');
 Route::get('/about', 'AboutUsController@index')->name('about');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::get('/faq', 'FaqController@index')->name('faq');
