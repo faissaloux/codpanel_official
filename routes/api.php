@@ -23,6 +23,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::prefix('user')->middleware('auth:api')->group(function () {
         Route::get('/profile', 'ApiController@profile');
         Route::get('/logout', 'ApiController@logout');
+        Route::post('/update', 'ApiController@updateInfo');
+        Route::post('/updatePassword', 'ApiController@updatePassword');
     });
 
     Route::post('/forgot', 'ApiController@forgot');

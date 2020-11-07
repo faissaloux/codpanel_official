@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
 class ApiController extends Controller
@@ -99,6 +100,8 @@ class ApiController extends Controller
         try {
             $list = Lists::find($id);
             $list->statue = $request->statue;
+
+            $list->save();
         }
         catch (\ErrorException $e) {
             return new JsonResponse([
@@ -106,8 +109,6 @@ class ApiController extends Controller
                 'message' => $e->getMessage()
             ], 500);
         }
-
-        $list->save();
 
         return new JsonResponse([
             'statue' => 'success',
@@ -169,13 +170,14 @@ class ApiController extends Controller
      * UPDATE LIST
      *
      * @param Request $request
+     * @param $id
      * @return JsonResponse
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         try {
             $post = $request->all();
-            $lists = new Lists();
+            $lists = Lists::find($id);
             $list_id = $this->saveList($lists, $post);
             $this->saveMultiSale($list_id, $post, true);
         }
@@ -189,6 +191,79 @@ class ApiController extends Controller
         return new JsonResponse([
             'status' => 'success',
             'message' => 'The list was updated with success !'
+        ]);
+    }
+
+    /**
+     * UPDATE THE INFO OF THE CURRENT USER
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function updateInfo(Request $request)
+    {
+        $user = Auth::user();
+        if ( strtolower($user->email) === strtolower($request->email) ) {
+            $rules = [
+                'email' => 'required | email',
+                'phone' => 'required | string',
+                'name'  => 'required | string'
+            ];
+        }
+        else {
+            $rules = [
+                'email' => 'required | email | unique:users',
+                'phone' => 'required | string',
+                'name'  => 'required | string'
+            ];
+        }
+
+        $messages = [
+            'email.email'       => trans("email.email"),
+            'email.unique'      => trans("email.unique"),
+            'name.required'     => trans("name.required"),
+        ];
+
+        $credentials = $request->validate($rules, $messages);
+        $user->name     = $credentials['name'];
+        $user->email    = $credentials['email'];
+        $user->phone    = $credentials['phone'];
+        $user->full_name = $user->name;
+
+        $user->save();
+
+        return new JsonResponse([
+            'status'  => 'success',
+            'message' => 'The infos was updated with successfully !',
+        ]);
+    }
+
+    /**
+     * UPDATE THE PASSWORD OF THE USER
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+        $rules = [
+            'password' => 'required | string | min:3',
+        ];
+
+        $message = [
+            'password.required' => trans('password.required'),
+            'password.min'      => trans('password.min'),
+        ];
+
+        $credentials = $request->validate($rules, $message);
+
+        $user->password = Hash::make($credentials['password']);
+        $user->save();
+
+        return new JsonResponse([
+            'status'  => 'success',
+            'message' => 'The password was updated with successfully !'
         ]);
     }
 
@@ -218,6 +293,7 @@ class ApiController extends Controller
         }
 
         Password::sendResetLink($credentials);
+
         return new JsonResponse([
             'code'    => 'success',
             'message' => 'The password link has been sent to your mail box'
@@ -250,7 +326,7 @@ class ApiController extends Controller
      *
      * @param $list_id
      * @param $post
-     * @param false $update
+     * @param false $update`
      */
     private function saveMultiSale($list_id, $post, $update = false)
     {
