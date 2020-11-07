@@ -28,6 +28,11 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         return view('dashboard/index');
     });
 
+
+        Route::get('/profile', 'ProfileController@show')->name('profile');
+
+
+
         // users 
         Route::group(['prefix' => '/users', 'as' => 'users.' ], function () {
             Route::get('/', 'UsersController@index')->name('index');
@@ -36,7 +41,6 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
             Route::post('/update/{id}', 'UsersController@update')->name('update');
             Route::get('/delete/{id}', 'UsersController@delete')->name('delete');
-            Route::get('/profile/{id}', 'UsersController@profile')->name('profile');
             Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
         });
 
