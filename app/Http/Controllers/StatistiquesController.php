@@ -12,9 +12,8 @@ use Illuminate\Http\Request;
 class StatistiquesController extends Controller
 {
 
-    public function index(){
-
-
+    public function index()
+    {
         $canceled = Lists::canceled()->count() ?? 0;
         $unanswered = Lists::unanswered()->count() ?? 0;
         $recall = Lists::recall()->count() ?? 0;
@@ -24,16 +23,7 @@ class StatistiquesController extends Controller
         $cities = Cities::count() ?? 0;
         $products = Products::count() ?? 0;
 
-
-
-        return view('dashboard.statistiques.index', compact('canceled',
-                                                            'unanswered',
-                                                            'recall',
-                                                            'delivred',
-                                                            'employees',
-                                                            'providers',
-                                                            'cities',
-                                                            'products'));
+        return view('dashboard.statistiques.index', compact('canceled', 'unanswered', 'recall', 'delivred', 'employees', 'providers', 'cities', 'products'));
     }
     public function cash(){
         return view('dashboard.statistiques.cash');

@@ -28,6 +28,24 @@ class ListingController extends Controller {
         return view('dashboard.listing.index',compact('lists'));
     }
 
+    public function employees()
+    {
+        $lists = Lists::employees()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
+    public function providers()
+    {
+        $lists = Lists::providers()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
+    public function new()
+    {
+        $lists = Lists::new()->paginate(10);
+        return view('dashboard.listing.index',compact('lists'));
+    }
+
     public function create()
     {
         $cities = Cities::orderby('id','desc')->get();

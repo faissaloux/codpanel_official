@@ -9,19 +9,19 @@
         <div class="page-sidebar-menu">
             <ul class="accordion-menu">
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
+                    <a href="{{ route('dashboard.listing.new') }}" class="tx-right">
                         <i data-feather="package"></i>
                         <span>الطلبات الجديدة</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
+                    <a href="{{ route('dashboard.listing.employees') }}" class="tx-right">
                         <i data-feather="headphones"></i>
                         <span>عملاء الإتصال</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard.listing.index') }}" class="tx-right">
+                    <a href="{{ route('dashboard.listing.providers') }}" class="tx-right">
                         <i data-feather="truck"></i>
                         <span>مندوب التوصيل</span>
                     </a>
