@@ -6,7 +6,7 @@
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card">
                <div class="card-body">
-                  <h5 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right">الطلبات الملغية</h5>
+                  <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">الطلبات الملغية</p>
                   <div class="d-flex justify-content-end align-items-center">
                      <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
                   </div>
@@ -23,7 +23,7 @@
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card">
                <div class="card-body">
-                  <h5 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right">طلبات لا تجيب</h5>
+                  <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات لا تجيب</p>
                   <div class="d-flex justify-content-end align-items-center">
                      <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
                   </div>
@@ -40,7 +40,7 @@
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card">
                <div class="card-body">
-                  <h5 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right">طلبات إعادة الإتصال</h5>
+                  <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات إعادة الإتصال</p>
                   <div class="d-flex justify-content-end align-items-center">
                      <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
                   </div>
@@ -57,7 +57,7 @@
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card">
                <div class="card-body">
-                  <h5 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right">طلبات موزعة</h5>
+                  <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات موزعة</p>
                   <div class="d-flex justify-content-end align-items-center">
                      <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">$1,181</h2>
                   </div>
@@ -190,7 +190,7 @@
          </div>
         <div class="d-flex flex-column col-8">
             <div class="row mb-2 d-flex justify-content-center">
-                <div class="col ml-5 p-2">
+                <div class="col ml-5 px-2">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
@@ -201,9 +201,9 @@
                          </div>
                         <div class="card-body pd-0">
                             <div class="table-responsive">
-                               <table class="table table-primary table-striped table-hover">
+                               <table class="table table-primary table-striped table-hover text-right">
                                   <thead>
-                                     <tr>
+                                     <tr class="stats-table-row">
                                         <th scope="col">المدينة</th>
                                         <th scope="col">عدد الطلبات</th>
                                         <th scope="col">موزعة</th>
@@ -241,7 +241,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col p-2">
+                <div class="col px-2">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
@@ -252,9 +252,9 @@
                         </div>
                         <div class="card-body pd-0">
                             <div class="table-responsive">
-                               <table class="table table-primary table-striped table-hover">
+                               <table class="table table-primary table-striped table-hover text-right">
                                   <thead>
-                                     <tr>
+                                     <tr class="stats-table-row">
                                         <th scope="col">المنتوج</th>
                                         <th scope="col">عدد الطلبات</th>
                                         <th scope="col">موزعة</th>
@@ -305,9 +305,9 @@
                         </div>
                         <div class="card-body pd-0">
                             <div class="table-responsive">
-                               <table class="table table-primary table-striped table-hover">
+                               <table class="table table-primary table-striped table-hover text-right">
                                   <thead>
-                                     <tr>
+                                     <tr class="stats-table-row">
                                         <th scope="col">عميل الإتصال</th>
                                         <th scope="col">عدد الطلبات</th>
                                         <th scope="col">موزعة</th>
@@ -356,9 +356,9 @@
                         </div>
                         <div class="card-body pd-0">
                             <div class="table-responsive">
-                               <table class="table table-primary table-striped table-hover">
+                               <table class="table table-primary table-striped table-hover text-right">
                                   <thead>
-                                     <tr>
+                                     <tr class="stats-table-row">
                                         <th scope="col">مندوب التوصيل</th>
                                         <th scope="col">عدد الطلبات</th>
                                         <th scope="col">موزعة</th>

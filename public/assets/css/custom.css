@@ -640,6 +640,13 @@ td.provider {
     background: linear-gradient(to right, #4f93b2, #66cfb5);
 }
 
+.stats-table-row > th{
+    font-size: 14px !important;
+}
+.stat-title{
+    font-size: 18px;
+}
+
 
 /* Add New User CSS */
 
