@@ -6,11 +6,11 @@
         </p>
         <p class="row">
             <span class="col-3 text-right">رقم الهاتف</span>
-            <span class="col text-right">{{ $list->phone }}</span>
+            <span class="col text-right">{{ $list->tel }}</span>
         </p>
         <p class="row">
             <span class="col-3 text-right">العنوان</span>
-            <span class="col text-right">{{ $list->adresse }}</span>
+            <span class="col text-right">{{ $list->adress }}</span>
         </p>
         <p class="row">
             <span class="col-3 text-right">المدينة</span>
@@ -22,7 +22,7 @@
         </p>
         <p class="row">
             <span class="col-3 text-right">المنتوج</span>
-            <span class="col text-right">{{ $list->product }}</span>
+            <span class="col text-right">{{ $list->items }}</span>
         </p>
         <p class="row">
             <span class="col-3 text-right">الكمية</span>
@@ -59,10 +59,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-12 text-center">
-        <button type="button" class="btn btn-primary rounded">لا يجيب</button>
-        <button type="button" class="btn btn-primary rounded">إعادة الإتصال</button>
-        <button type="button" class="btn btn-primary rounded">ملغى</button>
-        <button type="button" class="btn btn-primary rounded">تأكيد</button>
+    <div class="col-md-12 col-lg-12 text-center chnage_statue" data-id="{{ $list->id }}" data-link="{{ route('dashboard.listing.statue' , ['id' => $list->id ]) }}">
+        <a href="javascript:;" data-type="unanswered" class="btn btn-primary rounded ">لا يجيب</a>
+        <a href="javascript:;" data-type="recall" class="btn btn-primary rounded ">إعادة الإتصال</a>
+        <a href="javascript:;" data-type="canceled" class="btn btn-primary rounded ">ملغى</a>
+        <a href="javascript:;" data-type="confirmed" class="btn btn-primary rounded ">تأكيد</a>
     </div>
 </div>

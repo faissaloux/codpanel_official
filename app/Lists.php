@@ -18,7 +18,6 @@ class Lists extends Model
         return  $this->hasMany('App\Items', 'list_id');
     }
 
-
     public function scopeCanceled($query){
         return  $query->where('status', 'canceled');
     }
