@@ -142,9 +142,13 @@ class ListingController extends Controller {
         return view('admin.users.create');
     }
 
-    public function statue()
+    public function statue(Request $request , $id)
     {
-        return view('admin.users.create');
+        $List = Lists::find($id);
+        $List->status = $request->statue;
+
+        $List->save();
+        return redirect()->route('dashboard.listing.index')->with('success', trans('listing.updated'));
     }
 
     public function load($id)

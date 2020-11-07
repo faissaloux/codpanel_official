@@ -17,4 +17,8 @@ class Lists extends Model
     public function items(){
         return  $this->hasMany('App\Items', 'list_id');
     }
+
+    public function product(){
+        return  $this->belongsTo('App\Items', 'list_id')->withDefault(['name' => 'N-A']);
+    }
 }

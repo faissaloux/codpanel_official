@@ -88,7 +88,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::post('/restore', 'ListingController@restore')->name('restore');
             Route::post('/export', 'ListingController@export')->name('export');
             Route::post('/import', 'ListingController@import')->name('import');
-            Route::post('/statue', 'ListingController@statue')->name('statue');
+            Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
             Route::post('/load/{id}', 'ListingController@load')->name('load');
             Route::post('/history', 'ListingController@history')->name('history');
             Route::get('/listing', 'ListingController@listing')->name('listing');

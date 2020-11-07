@@ -598,7 +598,7 @@
             </thead>
             <tbody>
                 @foreach($lists as $list)
-                    <tr data-id="{{ 'list_'.$list->id }}" >
+                    <tr class="{{ 'list_'.$list->id }}" >
                         <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                         <td data-type="requestId" class="tx-right">
                             {{ '#'.$list->id }}
