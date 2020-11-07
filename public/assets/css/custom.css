@@ -46,7 +46,7 @@ i>span {
     font-style: normal;
 }
 
-.rounded {
+.rounded-custom {
     border-radius: 50px !important;
 }
 
