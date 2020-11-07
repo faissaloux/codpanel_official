@@ -637,7 +637,7 @@
                         <td>
                             <a type="button" 
 
-                                class="btn btn-primary btn-lg border-none loadactions rounded text-white details showdetails"
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"
                                 data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
 
                                 التفاصيل
