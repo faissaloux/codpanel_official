@@ -53,7 +53,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="d-flex justify-content-between tx-right">
+                    <a href="{{ route('dashboard.stock.index') }}" class="d-flex justify-content-between tx-right">
                         <i>
                             <i data-feather="archive"></i>
                             <span>المخزون</span>

@@ -139,7 +139,16 @@ input[type="checkbox"] {
 .sm-break {
     display: none;
 }
-
+.add-stock-btn > a{
+    width: 206px;
+}
+.return-btn{
+    width: 97px !important;
+}
+.export-stock-btn > a {
+    background-color: #26a69a;
+    width: 227px;
+}
 @media(max-width: 580px) {
     .header-title {
         font-size: 20px;
@@ -149,6 +158,20 @@ input[type="checkbox"] {
     }
     .add-new-icon {
         width: 100%;
+    }
+}
+@media(max-width: 580px) {
+    .add-stock-btn {
+        height: 40px;
+        width: 40px !important;
+    }
+    .return-btn {
+        height: 40px;
+        width: 40px !important;
+    }
+    .export-stock-btn {
+        height: 40px;
+        width: 40px !important;
     }
 }
 
