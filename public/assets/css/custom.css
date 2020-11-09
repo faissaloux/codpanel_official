@@ -744,3 +744,12 @@ div.show-columns-container.show button .show-columns-icon {
 .sidebar-item {
     padding: 8px 12px;
 }
+
+@media(max-width: 1200px){
+    .mb-sm{
+        margin-bottom: 12px;
+    }
+    .reset-mb-sm{
+        margin-bottom: 0 !important;
+    }
+}
