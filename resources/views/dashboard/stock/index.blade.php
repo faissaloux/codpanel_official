@@ -12,7 +12,7 @@
                     </span>
                     <span   class="add-new-text"
                             data-toggle="modal"
-                            data-target="#addCityModalCenter">
+                            data-target="#addToStockModalCenter">
                         إضافة السلعة للمخزون
                     </span>
                 </a>
@@ -24,7 +24,7 @@
                     </span>
                     <span   class="add-new-text"
                             data-toggle="modal"
-                            data-target="#addCityModalCenter">
+                            data-target="#returnStockModalCenter">
                         Retour
                     </span>
                 </a>
@@ -36,7 +36,7 @@
                     </span>
                     <span   class="add-new-text"
                             data-toggle="modal"
-                            data-target="#addCityModalCenter">
+                            data-target="#exportStockModalCenter">
                         تصدير السلعة من المخزون
                     </span>
                 </a>
