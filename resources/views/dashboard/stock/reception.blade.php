@@ -72,22 +72,21 @@
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
-                            <th scope="col" class="latin" data-type="reference">Reference</th>
+                            <th scope="col" class="latin" data-type="reference">الرمز</th>
                             <th scope="col" class="latin" data-type="productname">
-                                Nom de<br class="sm-break">
-                                produit
+                                المنتوج
                             </th>
-                            <th scope="col" class="latin" data-type="retour">Retour</th>
-                            <th scope="col" class="latin" data-type="received">Recue</th>
-                            <th scope="col" class="latin" data-type="real">Réel</th>
-                            <th scope="col" class="latin" data-type="delivered">Livré</th>
+                            <th scope="col" class="latin" data-type="retour">المرتجعات</th>
+                            <th scope="col" class="latin" data-type="received">المرسلة</th>
+                            <th scope="col" class="latin" data-type="real">الحقيقي</th>
+                            <th scope="col" class="latin" data-type="delivered">تم شحنه</th>
                             <th scope="col" class="latin" data-type="physicalStock">
-                                Stock<br class="sm-break">
-                                physique
+                                المخزون<br class="sm-break">
+                                الحالي
                             </th>
                             <th scope="col" class="latin" data-type="theoreticalStock">
-                                Stock<br class="sm-break">
-                                theorique
+                                المخزون<br class="sm-break">
+                                الإفتراضي
                             </th>
                             <th scope="col" class="latin" data-type="currentStock">
                                 Stock<br class="sm-break">
