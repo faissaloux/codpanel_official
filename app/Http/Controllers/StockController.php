@@ -9,8 +9,8 @@ class StockController extends Controller
 {
     public function index()
     {
-        $stock = Stock::orderby('id','desc')->paginate(10);
-        return view('admin.cities.index',compact('stock'));
+        // $stock = Stock::orderby('id','desc')->paginate(10);
+        return view('dashboard.stock.index',compact('stock'));
     }
 
     public function create()

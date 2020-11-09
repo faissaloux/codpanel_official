@@ -32,7 +32,7 @@
                 <div class="d-flex flex-column bg-white pt-4">
                     <div class="row align-items-center pr-4 pl-4">
                         <div class="col-md-6 col-sm-12 mb-md-0 mb-sm-5">
-                            <h3 class="tx-right">احصائيات الموظفات</h3>
+                            <h3 class="tx-right">التقارير و الإحصائيات</h3>
                         </div>
                         <div class="heading-elements stastsForm col-md-6 col-sm-12">
                             <form class="heading-form d-flex" id="form-stats-From-To" autocomplete="off" method="GET" action="">

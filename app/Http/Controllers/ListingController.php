@@ -14,7 +14,7 @@ use Dotenv\Result\Success;
 use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller {
-    
+
 
 	public function __construct() {
         // if(Auth::user()->role != 'admin'){
@@ -69,9 +69,9 @@ class ListingController extends Controller {
         return redirect()->route('dashboard.listing.index')->with('success', trans('listing.created'));
     }
 
-    // creating the list OR update 
-    public function saveList($model,$post,$checkNumber = false){
-        
+    // creating the list OR update
+    public function saveList($model,$post, $checkNumber = false){
+
         $model->name            = $post['name'];
         $model->adress          = $post['adress'];
         $model->tel             = $post['tel'];
@@ -79,13 +79,13 @@ class ListingController extends Controller {
         $model->provider_id     = Cities::find($post['cityID'])->provider_id ?? NULL;
         $model->laivraison      = $post['prix_de_laivraison'] ;
         $model->employee_id     = $post['employee'] ?? $model->employee_id  ;
-       
+
 
         // if( Auth::user()->role != 'employee' ){
         //     if($checkNumber  == true ){
         //        if( $this->checkDuplicatedNumber($post['tel'])){
         //            $model->duplicated_at = Carbon::NOW();
-        //        } 
+        //        }
         //     }
         // }
 
@@ -93,7 +93,7 @@ class ListingController extends Controller {
         return $model->id;
     }
 
-    // the action of saving the products of the listing 
+    // the action of saving the products of the listing
     public function multiSaleProductsSave($post,$list_id){
        for($x=0;$x< count($post['ProductID']);$x++){
             $pro = new Items();
@@ -102,13 +102,13 @@ class ListingController extends Controller {
             $pro->price     = $post['prix'][$x];
             $pro->quantity   = $post['quantity'][$x];
             $pro->save();
-        } 
+        }
     }
 
     // save OR update the products of the order
     public function saveMultiSale($post,$list_id,$update = false){
         if($update){
-                Items::where('list_id', $list_id)->delete(); 
+                Items::where('list_id', $list_id)->delete();
                 $this->multiSaleProductsSave($post,$list_id);
         }
         else{
@@ -128,7 +128,7 @@ class ListingController extends Controller {
         $Lists = Lists::find($id);
         $list_id = $this->saveList($Lists,$post);
         $this->saveMultiSale($post,$list_id,true);
-        
+
         return redirect()->route('dashboard.listing.index')->with('success', trans('listing.updated'));
     }
 

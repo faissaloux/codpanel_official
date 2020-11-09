@@ -4,7 +4,7 @@
 <div class="d-flex flex-column bg-white pt-4">
     <div class="d-flex justify-content-between align-items-center pr-4 pl-4">
         <div class="d-flex">
-            <h3 class="header-title">استقبال</h3>
+            <h3 class="header-title">عمليات المخزون</h3>
         </div>
     </div>
     <hr>

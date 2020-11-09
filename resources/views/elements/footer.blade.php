@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                        <a href="#" class="logo-footer">
+                        <a href="{{route('index')}}" class="logo-footer">
                             <img src="images/logo-light.png" height="24" alt="">
                         </a>
                         <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
@@ -34,8 +34,8 @@
                     <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h4 class="text-light footer-head">Usefull Links</h4>
                         <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="page-terms.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
-                            <li><a href="page-privacy.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
+                            <li><a href="{{route('terms')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
+                            <li><a href="{{route('privacy')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
                              
                              
                              
@@ -86,50 +86,7 @@
         </footer><!--end footer-->
         <!-- Footer End -->
 
-        <!-- Start Style switcher -->
-        <div id="style-switcher" style="left: 0px;" class="bg-light border p-3 pt-2 pb-2">
-            <h3 class="title text-center">Select Your Color</h3>
-            <ul class="pattern text-center mb-2">
-                <li class="list-inline-item">
-                    <a class="default" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="green" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="purple" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="red" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="skyblue" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="skobleoff" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="cyan" href="#"></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="slateblue" href="#"></a>
-                </li>
-            </ul>
-
-            <h3 class="title text-center pt-3 mb-0 border-top">Theme Option</h3>
-            <div class="text-center">
-                <a href="#" class="btn btn-sm w-100 btn-primary rtl-version t-rtl-light mt-2">RTL</a>
-                <a href="#" class="btn btn-sm w-100 btn-primary ltr-version t-ltr-light mt-2">LTR</a>
-                <a href="#" class="btn btn-sm w-100 btn-primary dark-rtl-version t-rtl-dark mt-2">RTL</a>
-                <a href="#" class="btn btn-sm w-100 btn-primary dark-ltr-version t-ltr-dark mt-2">LTR</a>
-                <a href="#" class="btn btn-sm w-100 btn-dark dark-version t-dark mt-2">Dark</a>
-                <a href="#" class="btn btn-sm w-100 btn-dark light-version t-light mt-2">Light</a>
-            </div>
-            <div class="bottom">
-                <a href="#" class="settings bg-white shadow d-block"><i class="mdi mdi-cog ml-1 mdi-24px position-absolute mdi-spin text-primary"></i></a>
-            </div>
-        </div>
-        <!-- End Style switcher -->
+         
 
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-soft-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
