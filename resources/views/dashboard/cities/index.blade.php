@@ -20,7 +20,7 @@
     <div class="d-flex">
         <div class="col-12">
             <div class="card-body pd-0 tx-center">
-                <table class="table table-primary">
+                <table class="table table-primary table-hover">
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -33,15 +33,15 @@
                     <tbody>
                         @foreach($cities as $city)
                             <tr>
-                                <th scope="row"><input type="checkbox"/></th>
+                                <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                                 <td data-type="city">
-                                    <p>{{ $city->name }}</p>
+                                    <span>{{ $city->name }}</span>
                                 </td>
                                 <td data-type="reference">
-                                    <p>{{ $city->reference }}</p>
+                                    <span>{{ $city->reference }}</span>
                                 </td>
                                 <td data-type="provider">
-                                    <p>{{ $city->user->name }}</p>
+                                    <span>{{ $city->user->name }}</span>
                                 </td>
                                 <td>
                                     <a  type="button"

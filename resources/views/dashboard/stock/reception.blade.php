@@ -68,7 +68,7 @@
     <div class="d-flex flex-column">
         <div class="col-12">
             <div class="card-body pd-0 pt-4 tx-center">
-                <table class="table table-primary">
+                <table class="table table-primary table-hover">
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -103,7 +103,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -133,7 +133,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -163,7 +163,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -193,7 +193,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -223,7 +223,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -253,7 +253,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -283,7 +283,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -313,7 +313,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -343,7 +343,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
@@ -373,7 +373,7 @@
                             </td>
                         </tr>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>SN27</span>
                             </td>
