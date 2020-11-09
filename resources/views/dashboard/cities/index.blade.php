@@ -1,9 +1,9 @@
 @extends('dashboard/layout')
 @section('content')
 
-<div class="d-flex justify-content-between p-2 bg-white p-4">
+<div class="d-flex justify-content-between align-items-center p-2 bg-white p-4">
     <h3 class="header-title">المدن والموزعين المكلفين بهم</h3>
-    <div class="btn-group btn-top d-flex justify-content-end" role="group">
+    <div class="btn-group btn-top d-flex justify-content-end btn-action-sm-box" role="group">
         <a href="#" class="btn btn-primary d-flex col-4 border-none">
             <span class="d-flex justify-content-center add-new-icon">
                 <i class="mdi mdi-plus d-flex align-items-center text-white"></i>

@@ -151,7 +151,7 @@ input[type="checkbox"] {
 }
 @media(max-width: 580px) {
     .header-title {
-        font-size: 20px;
+        font-size: 14px;
     }
     .add-new-text {
         display: none;
@@ -161,15 +161,7 @@ input[type="checkbox"] {
     }
 }
 @media(max-width: 580px) {
-    .add-stock-btn {
-        height: 40px;
-        width: 40px !important;
-    }
-    .return-btn {
-        height: 40px;
-        width: 40px !important;
-    }
-    .export-stock-btn {
+    .btn-action-sm-box {
         height: 40px;
         width: 40px !important;
     }

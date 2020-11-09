@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between align-items-center pr-4 pl-4">
         <h3 class="header-title">المخزون</h3>
         <div class="d-flex justify-content-around">
-            <div class="btn-group btn-top d-flex justify-content-end add-stock-btn" role="group">
+            <div class="btn-group btn-top d-flex justify-content-end add-stock-btn btn-action-sm-box" role="group">
                 <a href="#" class="btn btn-primary d-flex col border-none">
                     <span class="d-flex justify-content-center add-new-icon">
                         <i class="mdi mdi-plus d-flex align-items-center text-white"></i>
@@ -17,7 +17,7 @@
                     </span>
                 </a>
             </div>
-            <div class="btn-group btn-top d-flex justify-content-center mx-2 return-btn" role="group">
+            <div class="btn-group btn-top d-flex justify-content-center mx-2 return-btn btn-action-sm-box" role="group">
                 <a href="#" class="btn btn-primary d-flex col-12 border-none">
                     <span class="d-flex justify-content-center add-new-icon">
                         <i class="mdi mdi-keyboard-backspace d-flex align-items-center text-white"></i>
@@ -29,7 +29,7 @@
                     </span>
                 </a>
             </div>
-            <div class="btn-group btn-top d-flex justify-content-end export-stock-btn" role="group">
+            <div class="btn-group btn-top d-flex justify-content-end export-stock-btn btn-action-sm-box" role="group">
                 <a href="#" class="btn btn-primary d-flex col-12 border-none">
                     <span class="d-flex justify-content-center add-new-icon">
                         <i class="mdi mdi-export d-flex align-items-center text-white"></i>

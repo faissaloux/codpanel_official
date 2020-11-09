@@ -65,11 +65,7 @@ class ListingController extends Controller {
         $Lists = new Lists();
         $list_id = $this->saveList($Lists,$post,true);
         $this->saveMultiSale($post,$list_id);
-<<<<<<< HEAD
-
-=======
         return response()->json(["Success" => "saved successfuly"]);
->>>>>>> b3be3a8785c69a637f234088aab776d297020ed4
         return redirect()->route('dashboard.listing.index')->with('success', trans('listing.created'));
     }
 
