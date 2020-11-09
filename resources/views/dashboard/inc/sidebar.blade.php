@@ -49,7 +49,7 @@
                 <li class="sidebar-item">
                     <a href="employeesStats.php" class="tx-right">
                         <i data-feather="trending-up"></i>
-                        <span>احصائيات الموظفات</span>
+                        <span>التقارير و الإحصائيات</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -67,9 +67,15 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="{{ route('dashboard.statistiques.revenue') }}" class="tx-right">
+                        <i data-feather="dollar-sign"></i>
+                        <span>المداخيل</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.stock.reception') }}" class="tx-right">
                         <i data-feather="grid"></i>
-                        <span>استقبال</span>
+                        <span>عمليات المخزون</span>
                     </a>
                 </li>
             </ul>

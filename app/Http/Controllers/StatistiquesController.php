@@ -25,7 +25,8 @@ class StatistiquesController extends Controller
 
         return view('dashboard.statistiques.index', compact('canceled', 'unanswered', 'recall', 'delivred', 'employees', 'providers', 'cities', 'products'));
     }
-    public function cash(){
-        return view('dashboard.statistiques.cash');
+
+    public function revenue(){
+        return view('dashboard.statistiques.revenue');
     }
 }

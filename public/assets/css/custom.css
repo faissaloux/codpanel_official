@@ -605,7 +605,7 @@ td.provider {
 }
 
 .by-vendor-dropdown {
-    left: -76px !important;
+    left: 8px !important;
 }
 
 @media(max-width: 1198px) {
