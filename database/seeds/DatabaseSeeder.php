@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
         factory(App\User::class, 10)->create();
         factory(App\Products::class, 10)->create();
         factory(App\Cities::class, 10)->create();
-        factory(App\Items::class, 10)->create();
-        factory(App\Lists::class, 10)->create();
+        factory(App\Lists::class, 10)->create()->each(function($list){
+            $list->items()->saveMany(factory(App\Items::class, rand(1,10))->make());
+        });
     }
 }
