@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lists;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,5 +44,10 @@ class ApiController extends Controller
 
     public function index(Request $request) {
         return new JsonResponse(['user' => Auth::user()]);
+    }
+
+    public function listing(Request $request ){
+        $list = Lists::where('statue' , $request->type)->where('handler' , $request->handler)->get();
+        return new JsonResponse(['list' => $list ]);
     }
 }

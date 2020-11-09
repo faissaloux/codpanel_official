@@ -9,7 +9,7 @@
                             <h4 class="tx-right">معلومات الزبون</h4> <hr>
                         </div>
                         <div class="panel-body">
-                            <input type="hidden" name="mowadafaID" value=''>
+                            
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
@@ -18,8 +18,7 @@
                                                 <input  type="text"
                                                         class="form-control" 
                                                         name="name"
-                                                        placeholder="الإسم الكامل للزبون"
-                                                        required>
+                                                        placeholder="الإسم الكامل للزبون">
                                             </div>
                                         </div>
                                         <div class="col-md-6 p-0">
@@ -27,8 +26,7 @@
                                             <input  type="text"
                                                     class="form-control frequired"
                                                     name="adress"
-                                                    placeholder="العنوان"
-                                                    required>
+                                                    placeholder="العنوان">
                                         </div>
                                         </div>
                                     </div>
@@ -41,8 +39,7 @@
                                                         name="tel"
                                                         id="tel"
                                                         maxlength="10"
-                                                        placeholder="رقم الهاتف"
-                                                        required>
+                                                        placeholder="رقم الهاتف">
                                             </div>
                                         </div>  
                                         
@@ -50,8 +47,7 @@
                                             <div class="form-group col-md-12">
                                                 <select class="form-control frequired"
                                                         name="cityID"
-                                                        placeholder="المدينة"
-                                                        required>
+                                                        placeholder="المدينة">
                                                         <option value="N-A">اختار المدينة</option>
                                                         @foreach ($cities as $city)
                                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -66,8 +62,7 @@
                                                 <select class="form-control frequired"
                                                         id='choseEmployee'
                                                         name="employee"
-                                                        placeholder="الموظفة"
-                                                        required>
+                                                        placeholder="الموظفة">
                                                         <option value="N-A">اختار عميل الإتصال</option>
                                                         @foreach ($users as $user)
                                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -83,8 +78,7 @@
                                                         class="form-control frequired"
                                                         name="prix_de_laivraison"
                                                         id="prix_de_laivraison"
-                                                        placeholder="ثمن الإرسال بالدرهم - أرقام فقط"
-                                                        required>
+                                                        placeholder="ثمن الإرسال بالدرهم - أرقام فقط">
                                             </div>
                                         </div>
 
@@ -136,7 +130,7 @@
                                                     class="form-control frequired"
                                                     name="prix[]"
                                                     placeholder="سعر البيع"
-                                                    required="">
+                                                    >
                                         </div>
                                     </div>
                                     <div class="col-md-3 p-0">
@@ -146,7 +140,7 @@
                                                     class="form-control frequired"
                                                     id="produit"
                                                     placeholder="الكمية"
-                                                    required="">
+                                                    >
                                         </div>
                                     </div>
                                     <div class="col-md-1 p-0">

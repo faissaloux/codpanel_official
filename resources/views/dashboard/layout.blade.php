@@ -3,7 +3,6 @@
    
     <head>
         @include('dashboard.inc.head')
-        <link rel="stylesheet" href="https://colorlibcode.xyz/avesta/html/assets/plugins/toastr/toastr.min.css">
     </head>
     <body dir="rtl" data-auth-id="" data-auth-type="">
         @include('dashboard.inc.actions')
@@ -51,7 +50,6 @@
         <!--================================-->
         <script src="../../assets/js/all.js"></script>
         <script src="../../assets/js/custom.js"></script>
-        <script src="https://colorlibcode.xyz/avesta/html/assets/plugins/toastr/toastr.min.js"></script>
         @if(\Session::has('success'))
             <?=
                 "<script>
@@ -284,11 +282,13 @@ $('#addnewlisting').submit(function(e){
          beforeSend:function(){
         },
         success: function(response) {
-          $('body #addOrderModalCenter').modal('hide');
-          $('body #addOrderModalCenter').reset();
+          $('body #addnewlisting').modal('hide');
+          
             $.each(response, function(key, value) { 
               statue_toast("success",value)
           });
+
+          $('body #addnewlisting').reset();
         },
         error : function(response){
           default_error();

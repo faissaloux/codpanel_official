@@ -18,6 +18,8 @@ Auth::routes();
 
 Auth::routes();
 
+Route::post('/apilisting', 'ApiController@listing')->name('apilisting');
+
 
 Route::post('/attempt', 'Auth\LoginController@attempt')->name('attempt');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
@@ -163,7 +165,5 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 });
 
 
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
