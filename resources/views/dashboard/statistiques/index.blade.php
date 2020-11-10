@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="d-flex flex-column bg-white pt-4">
-    <div class="row align-items-center pr-4 pl-4 mb-3">
-        <div class="col-md-6 col-lg-6 col-xl-3">
+    <div class="row align-items-center pr-4 pl-4 mb-3 reset-mb-sm">
+        <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
             <div class="card">
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">الطلبات الملغية</p>
@@ -20,7 +20,7 @@
                </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
             <div class="card">
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات لا تجيب</p>
@@ -37,7 +37,7 @@
                </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
             <div class="card">
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات إعادة الإتصال</p>
@@ -54,7 +54,7 @@
                </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 col-xl-3">
+        <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
             <div class="card">
                <div class="card-body">
                   <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">طلبات موزعة</p>
@@ -73,7 +73,7 @@
         </div>
     </div>
     <div class="row align-items-center pr-4 pl-4">
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
           <div class="card">
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">عملاء الإتصال</p>
@@ -90,7 +90,7 @@
              </div>
           </div>
       </div>
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
           <div class="card">
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">مندوب التوصيل</p>
@@ -107,7 +107,7 @@
              </div>
           </div>
       </div>
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
           <div class="card">
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">المدن</p>
@@ -124,7 +124,7 @@
              </div>
           </div>
       </div>
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3 mb-sm">
           <div class="card">
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">المنتوجات</p>
@@ -146,7 +146,7 @@
 </div>
 <div class="page-inner" style="background-color: #FFF">
     <div class="row">
-        <div class="col-4">
+        <div class="col-xl-4 pt-2">
             <div class="card mg-b-30 text-right">
                <div class="row">
                   <div class="col-sm-4 col-md-4 col-lg-4 col-xl-12">
@@ -258,9 +258,9 @@
                </div>
             </div>
          </div>
-        <div class="d-flex flex-column col-8">
+        <div class="d-flex flex-column col-xl-8">
             <div class="row mb-2 d-flex justify-content-center">
-                <div class="col ml-5 px-2">
+                <div class="col p-2">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
@@ -311,7 +311,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col px-2">
+                <div class="col p-2">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
@@ -364,7 +364,7 @@
                 </div>
             </div>
             <div class="row mb-2 d-flex justify-content-center">
-                <div class="col ml-5 p-2">
+                <div class="col p-2">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">

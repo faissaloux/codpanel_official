@@ -69,7 +69,7 @@
     <div class="d-flex flex-column">
         <div class="col-12 mt-3">
             <div class="card-body pd-0 tx-center">
-                <table class="table table-primary tx-right">
+                <table class="table table-primary table-hover tx-right">
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -81,7 +81,7 @@
                     </thead>
                     <tbody>
                         <tr height="50">
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="product">
                                 <span>آخــر صــيـحـات القبعة والمـعـطـف السـاخــن NOIR</span>
                             </td>

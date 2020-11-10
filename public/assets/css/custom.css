@@ -128,7 +128,9 @@ input[type="checkbox"] {
     height: 36px;
     border-radius: 0;
 }
-
+.page-sidebar-menu ul li a svg {
+    margin-right: 0;
+}
 .sort-dropdown {
     left: -117px !important;
     height: 200px;
@@ -742,5 +744,14 @@ div.show-columns-container.show button .show-columns-icon {
 
 
 .sidebar-item {
-    padding: 8px 12px;
+    padding: 8px 0 8px 12px;
+}
+
+@media(max-width: 1200px){
+    .mb-sm{
+        margin-bottom: 12px;
+    }
+    .reset-mb-sm{
+        margin-bottom: 0 !important;
+    }
 }

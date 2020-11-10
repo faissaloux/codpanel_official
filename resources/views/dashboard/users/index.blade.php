@@ -18,7 +18,7 @@
     <div class="d-flex">
         <div class="col-12">
             <div class="card-body pd-0 tx-center">
-                <table class="table table-primary">
+                <table class="table table-primary table-hover">
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -34,7 +34,7 @@
                     <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <th scope="row"><input type="checkbox"/></th>
+                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="reference">
                                 <span>{{$user->name}}</span>
                             </td>

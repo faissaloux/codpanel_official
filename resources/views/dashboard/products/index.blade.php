@@ -182,7 +182,7 @@
         </div>
         <div class="col-12">
             <div class="card-body pd-0 tx-center">
-                <table class="table table-primary">
+                <table class="table table-primary table-hover">
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -196,7 +196,7 @@
                     <tbody>
                         @foreach($products as $product)
                             <tr>
-                                <th scope="row"><input type="checkbox"/></th>
+                                <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                                 <td data-type="image">
                                     @if(!empty ( $product->image ))  
                                         <div class="avatar mr-2 img-cont">
