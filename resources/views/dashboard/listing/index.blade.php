@@ -487,7 +487,7 @@ data-type=""
                                             <label for="city_selector" class="float-right">
                                                 <b>المدينة</b>
                                             </label>
-                                            <select class="form-control" name="city_selector">
+                                            <select class="selectpicker form-control" name="city_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 <option value="agadir">أكادير</option>
                                                 <option value="Marrakech">مراكش</option>
@@ -500,7 +500,7 @@ data-type=""
                                             <label for="employee_selector" class="float-right" >
                                                 <b>عميل الإتصال</b>
                                             </label>
-                                            <select class="form-control" name="employee_selector">
+                                            <select class="selectpicker form-control" name="employee_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 <option value="139">bassiri soulaiman</option>
                                                 <option value="141">abdelilah</option>
@@ -520,7 +520,7 @@ data-type=""
                                             <label for="provider" class="float-right">
                                                 <b>مندوب التوصيل</b>
                                             </label>
-                                            <select class="form-control" name="provider">
+                                            <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 <option value="Axa assurance maroc">Axa assurance maroc</option>
                                                 <option value="Allianz">Allianz</option>
@@ -542,7 +542,7 @@ data-type=""
                                             <label for="product" class="float-right">
                                                 <b>المنتوج</b>
                                             </label>
-                                            <select class="form-control" name="product">
+                                            <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 <option value="Axa assurance maroc">Axa assurance maroc</option>
                                                 <option value="Allianz">Allianz</option>

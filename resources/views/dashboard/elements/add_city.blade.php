@@ -13,12 +13,14 @@
                     name="reference"
                     placeholder="رمز المدينة">
         </div>
-        <select class="form-control" name="provider_id">
-            <option value="N-A">اختيار الموزع</option>
-            @foreach ($providers as $provider)
-                <option value="{{ $provider->id }}">{{ $provider->name }}</option>
-            @endforeach                
-        </select>
+        <div class="form-group">
+            <select class="selectpicker form-control mt-2" name="provider_id" data-style="btn-default" data-live-search="true">
+                <option value="N-A">اختيار الموزع</option>
+                @foreach ($providers as $provider)
+                    <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                @endforeach 
+            </select>
+        </div>
     </div>
     <div class="d-flex justify-content-center mt-4">
         <p class="row col p-0">
@@ -26,3 +28,9 @@
         </p>
     </div>
 </form>
+
+<script>
+    $(function () {
+        $('.selectpicker').selectpicker();
+    });
+</script>
