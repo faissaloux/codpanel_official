@@ -1,30 +1,35 @@
  @include('elements/header')
         
+          
+
         <!-- Hero Start -->
-        <section class="bg-half-170  d-table w-100" id="home">
+        <section class="bg-home d-flex align-items-center" style="height: auto;" id="home">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 col-md-7">
-                        <div class="title-heading mt-4">
-                            <h1 class="heading mb-3">Our Creativity Is Your <span class="text-primary">Success</span> </h1>
-                            <p class="para-desc text-muted">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
-                            <div class="mt-4">
-                                <a href="contact-us.html" class="btn btn-primary mt-2 mr-2"><i class="mdi mdi-email"></i> Get Started</a>
-                                <a href="documentation.html" class="btn btn-outline-primary mt-2"><i class="mdi mdi-book-outline"></i> Documentation</a>
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 text-center mt-0 mt-md-5 pt-0 pt-md-5">
+                        <div class="title-heading margin-top-100">
+                            <h1 class="heading font-weight-bold mb-3">We Build A Design <br> For Email Inbox</h1>
+                            <p class="para-desc mx-auto text-muted">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
+                            <div class="mt-4 pt-2">
+                                <a href="#about" class="btn btn-primary">Start Free Trial <i class="mdi mdi-chevron-right"></i></a>
                             </div>
                         </div>
-                    </div><!--end col-->
 
-                    <div class="col-lg-5 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0">
-                        <img src="images/illustrator/Startup_SVG.svg" alt="">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="home-dashboard">
+                                    <img src="images/email/home.png" alt="" class="img-fluid rounded-md shadow-lg" style="z-index: -1;">
+                                </div>
+                            </div>
+                        </div><!--end row-->
                     </div><!--end col-->
                 </div><!--end row-->
-            </div><!--end container-->
+            </div><!--end container--> 
         </section><!--end section-->
         <!-- Hero End -->
-
+        
         <!-- Partners start -->
-        <section class="py-4 border-bottom border-top">
+        <section class="section py-4 bg-light">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-2 col-md-2 col-6 text-center py-4">
@@ -55,9 +60,104 @@
         </section><!--end section-->
         <!-- Partners End -->
 
-        <!-- How It Work Start -->
-         
-<section class="section">
+        <!-- Start -->
+        <section class="section border-bottom">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="section-title text-center mb-4 pb-2">
+                            <h4 class="title mb-4">Our Features</h4>
+                            <p class="text-muted para-desc mb-0 mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="media features">
+                            <div class="icons m-0 rounded h2 text-primary text-center px-3">
+                                <i class="uil uil-comment-verify"></i>
+                            </div>
+                            <div class="content ml-4">
+                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Instant Chat</a></h5>
+                                <p class="text-muted mb-0">The most well-known dummy text is the, which is said to have originated in the 16th century.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="media features">
+                            <div class="icons m-0 rounded h2 text-primary text-center px-3">
+                                <i class="uil uil-image"></i>
+                            </div>
+                            <div class="content ml-4">
+                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Media Messages</a></h5>
+                                <p class="text-muted mb-0">The most well-known dummy text is the, which is said to have originated in the 16th century.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="media features">
+                            <div class="icons m-0 rounded h2 text-primary text-center px-3">
+                                <i class="uil uil-video"></i>
+                            </div>
+                            <div class="content ml-4">
+                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Video Messages</a></h5>
+                                <p class="text-muted mb-0">The most well-known dummy text is the, which is said to have originated in the 16th century.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="media features">
+                            <div class="icons m-0 rounded h2 text-primary text-center px-3">
+                                <i class="uil uil-database-alt"></i>
+                            </div>
+                            <div class="content ml-4">
+                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Dedicated Server</a></h5>
+                                <p class="text-muted mb-0">The most well-known dummy text is the, which is said to have originated in the 16th century.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="media features">
+                            <div class="icons m-0 rounded h2 text-primary text-center px-3">
+                                <i class="uil uil-users-alt"></i>
+                            </div>
+                            <div class="content ml-4">
+                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Team Collaboration</a></h5>
+                                <p class="text-muted mb-0">The most well-known dummy text is the, which is said to have originated in the 16th century.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                    
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="media features">
+                            <div class="icons m-0 rounded h2 text-primary text-center px-3">
+                                <i class="uil uil-apps"></i>
+                            </div>
+                            <div class="content ml-4">
+                                <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">Responsive App</a></h5>
+                                <p class="text-muted mb-0">The most well-known dummy text is the, which is said to have originated in the 16th century.</p>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+                <div class="row justify-content-center">
+                    <div class="col-12 mt-5">
+                        <div class="watch-video text-center">
+                            <a href="javascript:void(0)" class="btn btn-primary mb-2 mr-2">Get Started <i class="mdi mdi-chevron-right"></i></a>
+                            <a href="http://vimeo.com/99025203" class="video-play-icon watch title-dark text-dark mb-2"><i class="mdi mdi-play play-icon-circle text-center d-inline-block mr-2 rounded-circle text-white title-dark position-relative play play-iconbar"></i> WATCH VIDEO</a>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section>
+
+        <section class="section">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -100,9 +200,14 @@
                 </div><!--end row-->
             </div><!--end container-->
 
-        </section>
-        <section>
-                     <div class="container mt-100 mt-60">
+        </section><!--end section-->
+        <!-- End -->
+
+    
+
+
+
+    <div class="container mt-100 mt-60">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-6 order-2 order-md-1 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="section-title">
@@ -158,138 +263,15 @@
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
-            </div>
-        </section><!--end section-->
-        <!-- How It Work End -->
-
-        <!-- Testi Start -->
-        <section class="section pb-0">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <h6>We believe in building each other and hence</h6>
-                            <h4 class="title mb-4">Work with some amazing partners</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-
-                <div class="row">
-                    <div class="col-12 mt-4 pt-2">
-                        <div id="customer-testi" class="owl-carousel owl-theme">
-                            <div class="card customer-testi text-center border rounded mx-2">
-                                <div class="card-body">
-                                    <img src="images/client/amazon.svg" class="img-fluid avatar avatar-ex-sm mx-auto" alt="">
-                                    <p class="text-muted mt-4">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. "</p>
-                                    <h6 class="text-primary">- Thomas Israel</h6>
-                                </div>
-                            </div>
-                            <div class="card customer-testi text-center border rounded mx-2">
-                                <div class="card-body">
-                                    <img src="images/client/google.svg" class="img-fluid avatar avatar-ex-sm mx-auto" alt="">
-                                    <p class="text-muted mt-4">" The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>
-                                    <h6 class="text-primary">- Carl Oliver</h6>
-                                </div>
-                            </div>
-                            <div class="card customer-testi text-center border rounded mx-2">
-                                <div class="card-body">
-                                    <img src="images/client/lenovo.svg" class="img-fluid avatar avatar-ex-sm mx-auto" alt="">
-                                    <p class="text-muted mt-4">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others. "</p>
-                                    <h6 class="text-primary">- Barbara McIntosh</h6>
-                                </div>
-                            </div>
-                            <div class="card customer-testi text-center border rounded mx-2">
-                                <div class="card-body">
-                                    <img src="images/client/paypal.svg" class="img-fluid avatar avatar-ex-sm mx-auto" alt="">
-                                    <p class="text-muted mt-4">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. "</p>
-                                    <h6 class="text-primary">- Jill Webb</h6>
-                                </div>
-                            </div>
-                            <div class="card customer-testi text-center border rounded mx-2">
-                                <div class="card-body">
-                                    <img src="images/client/shopify.svg" class="img-fluid avatar avatar-ex-sm mx-auto" alt="">
-                                    <p class="text-muted mt-4">" There is now an abundance of readable dummy texts. These are usually used when a text is required. "</p>
-                                    <h6 class="text-primary">- Dean Tolle</h6>
-                                </div>
-                            </div>
-                            <div class="card customer-testi text-center border rounded mx-2">
-                                <div class="card-body">
-                                    <img src="images/client/spotify.svg" class="img-fluid avatar avatar-ex-sm mx-auto" alt="">
-                                    <p class="text-muted mt-4">" According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero. "</p>
-                                    <h6 class="text-primary">- Christa Smith</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
             </div><!--end container-->
-        </section><!--end section-->
-        <!-- Testi End -->
+        <!--end section-->
+        <!-- Feature End -->
 
-        <!-- Pricing Start -->
+
+
+
+ <!-- Feature Start -->
         <section class="section">
-            <div class="container">
-                <div class="row mt-lg-4 align-items-center">
-                    <div class="col-lg-5 col-md-12 text-center text-lg-left">
-                        <div class="section-title mb-4 mb-lg-0 pb-2 pb-lg-0">
-                            <h4 class="title mb-4">Our Comfortable Rates</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                            <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary mt-4">Buy Now <span class="badge badge-pill badge-danger ml-2">v2.5</span></a>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-7 col-md-12">
-                        <div class="row align-items-center ml-lg-5">
-                            <div class="col-md-6 col-12 mt-4 pt-4 px-md-0">
-                                <div class="card pricing-rates starter-plan text-center shadow rounded border-0">
-                                    <div class="card-body py-5">
-                                        <h2 class="title text-uppercase text-primary mb-4">Starter</h2>
-                                        <div class="d-flex justify-content-center mb-4">
-                                            <span class="h4 mb-0 mt-2">$</span>
-                                            <span class="price h1 mb-0">39</span>
-                                            <span class="h4 align-self-end mb-1">/mo</span>
-                                        </div>
-
-                                        <ul class="list-unstyled mb-0 pl-0">
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Full Access</li>
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Source Files</li>
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Free Appointments</li>
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Enhanced Security</li>
-                                        </ul>
-                                        <a href="javascript:void(0)" class="btn btn-primary mt-4">Get Started</a>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-
-                            <div class="col-md-6 col-12 mt-4 pt-2 pt-md-4 px-md-0">
-                                <div class="card pricing-rates bg-light text-center shadow rounded border-0">
-                                    <div class="card-body py-5">
-                                        <h2 class="title text-uppercase text-primary mb-4">Professional</h2>
-                                        <div class="d-flex justify-content-center mb-4">
-                                            <span class="h4 mb-0 mt-2">$</span>
-                                            <span class="price h1 mb-0">59</span>
-                                            <span class="h4 align-self-end mb-1">/mo</span>
-                                        </div>
-
-                                        <ul class="list-unstyled mb-0 pl-0">
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Full Access</li>
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Source Files</li>
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Free Appointments</li>
-                                            <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uim uim-check-circle"></i></span>Enhanced Security</li>
-                                        </ul>
-                                        <a href="javascript:void(0)" class="btn btn-primary mt-4">Try it now</a>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                        </div><!--end row-->
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section-->
-       
-        <!-- Pricing End -->
-<section class="section">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
@@ -384,21 +366,21 @@
 
 
 
-        </section>
-         <div class="position-relative">
-            <div class="shape overflow-hidden text-light">
-                <svg viewBox="0 0 2880 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M720 125L2160 0H2880V250H0V125H720Z" fill="currentColor"></path>
-                </svg>
-            </div>
-        </div>
-        <!-- FAQ n Contact Start -->
-        <section class="section bg-light">
+        </section><!--end section-->
+        <!-- End feature -->
+
+
+
+
+
+
+
+<section class="section bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="media">
-                            <i data-feather="help-circle" class="fea icon-ex-md text-primary mr-2 mt-1"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0">How our <span class="text-primary">Landrick</span> work ?</h5>
                                 <p class="answer text-muted mb-0">Due to its widespread use as filler text for layouts, non-readability is of great importance: human perception is tuned to recognize certain patterns and repetitions in texts.</p>
@@ -408,7 +390,7 @@
                     
                     <div class="col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="media">
-                            <i data-feather="help-circle" class="fea icon-ex-md text-primary mr-2 mt-1"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0"> What is the main process open account ?</h5>
                                 <p class="answer text-muted mb-0">If the distribution of letters and 'words' is random, the reader will not be distracted from making a neutral judgement on the visual impact</p>
@@ -418,7 +400,7 @@
                     
                     <div class="col-md-6 col-12 mt-4 pt-2">
                         <div class="media">
-                            <i data-feather="help-circle" class="fea icon-ex-md text-primary mr-2 mt-1"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0"> How to make unlimited data entry ?</h5>
                                 <p class="answer text-muted mb-0">Furthermore, it is advantageous when the dummy text is relatively realistic so that the layout impression of the final publication is not compromised.</p>
@@ -428,7 +410,7 @@
                     
                     <div class="col-md-6 col-12 mt-4 pt-2">
                         <div class="media">
-                            <i data-feather="help-circle" class="fea icon-ex-md text-primary mr-2 mt-1"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0"> Is <span class="text-primary">Landrick</span> safer to use with my account ?</h5>
                                 <p class="answer text-muted mb-0">The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. Lorem Ipsum is composed in a pseudo-Latin language which more or less corresponds to 'proper' Latin.</p>
@@ -437,24 +419,34 @@
                     </div><!--end col-->
                 </div><!--end row-->
 
-                <div class="row my-md-5 pt-md-3 my-4 pt-2 pb-lg-5 mt-sm-0 pt-sm-0 justify-content-center">
+                <div class="row mt-md-5 pt-md-3 mt-4 pt-2 mt-sm-0 pt-sm-0 justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title">
                             <h4 class="title mb-4">Have Question ? Get in touch!</h4>
                             <p class="text-muted para-desc mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                            <a href="contact-us.html" class="btn btn-primary mt-4"><i class="mdi mdi-phone"></i> Contact us</a>
+                            <div class="mt-4 pt-2">
+                                <a href="page-contact-two.html" class="btn btn-primary">Contact us <i class="mdi mdi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
-        </section><!--end section-->
- <div class="position-relative">
-            <div class="shape overflow-hidden text-footer">
-                <svg viewBox="0 0 2880 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M720 125L2160 0H2880V250H0V125H720Z" fill="currentColor"></path>
-                </svg>
-            </div>
-        </div>
-        <!-- FAQ n Contact End -->
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 @include('elements/footer')
