@@ -25,7 +25,7 @@ class CitiesController extends Controller
     {
         $rules = [
             'name'     => 'required|min:3',
-            'reference'   => 'required|min:4',
+            'reference'   => 'required|min:2',
             'provider_id' => 'required|min:1',
         ];
   
@@ -42,13 +42,16 @@ class CitiesController extends Controller
         $city->reference    = $request->reference;
         $city->provider_id    = $request->provider_id;
         $city->save();
+
+        return response()->json(["Success" => "saved successfuly"]);
         return redirect()->route('dashboard.cities.index')->with('success', trans('city.created'));
     }
 
     public function edit($id)
     {
         $content = Cities::find($id);
-        return view ('dashboard.cities.edit',compact('content'));
+        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        return response()->view('dashboard.elements.edit_city' ,compact('content','providers'))->setStatusCode(200);
     }
 
     public function update(Request $request, $id)
@@ -57,6 +60,7 @@ class CitiesController extends Controller
         $city->name     = $request->name;
         $city->reference    = $request->reference;
         $city->save();
+        return response()->json(["Success" => "saved successfuly"]);
         return redirect()->route('dashboard.cities.index')->with('success',trans('city.updated'));
     }
 
@@ -64,6 +68,6 @@ class CitiesController extends Controller
     {
         $city = Cities::find($id);
         $city->delete();
-        return redirect()->route('dashboard.cities.index')->with('failed',trans('city.deleted'));
+        return redirect()->route('dashboard.cities.index')->with('Success',trans('city.deleted'));
     }
 }

@@ -76,7 +76,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/', 'CitiesController@index')->name('index');
             Route::post('/create', 'CitiesController@create')->name('create');
             Route::post('/store', 'CitiesController@store')->name('store');
-            Route::get('/edit/{id}', 'CitiesController@edit')->name('edit');
+            Route::post('/edit/{id}', 'CitiesController@edit')->name('edit');
             Route::post('/update/{id}', 'CitiesController@update')->name('update');
             Route::get('/delete/{id}', 'CitiesController@delete')->name('delete');
         });

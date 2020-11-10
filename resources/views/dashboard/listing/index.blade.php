@@ -1,5 +1,13 @@
 @extends('dashboard/layout')
 
+
+@section('body_class')
+
+data-handler=""
+data-type=""
+    
+@endsection
+
 @section('content')
 <div class="page-inner mt-4">
 

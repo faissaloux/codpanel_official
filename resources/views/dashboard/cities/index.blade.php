@@ -45,8 +45,8 @@
                                 </td>
                                 <td>
                                     <a  type="button"
-                                        href="{{ route('dashboard.cities.edit' , ['id' => $city->id ]) }}"
-                                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
+                                        data-link="{{ route('dashboard.cities.edit' , ['id' => $city->id ]) }}"
+                                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editcitymodal">
                                         تعديل
                                     </a>
                                     <a  type="button"

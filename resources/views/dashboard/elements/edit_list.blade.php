@@ -42,7 +42,7 @@
                                                         id="tel"
                                                         maxlength="10"
                                                         placeholder="رقم الهاتف"
-                                                        value="{{ $content->tel }}">
+                                                        value="{{ $content->phone }}">
                                             </div>
                                         </div>  
                                         
