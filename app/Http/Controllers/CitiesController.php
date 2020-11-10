@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Cities;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,8 @@ class CitiesController extends Controller
 
     public function create()
     {
-        return view('dashboard.cities.create');
+        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        return response()->view('dashboard.elements.add_city' ,compact('providers'))->setStatusCode(200);
     }
 
     public function store(Request $request)

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Items extends Model
 {
     public function product(){
-        return  $this->hasOne('App\Products');
+        return  $this->belongsTo('App\Products', 'product_id')->withDefault(['name' => 'N-A']);
     }
 }

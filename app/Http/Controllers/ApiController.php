@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use App\Lists;
-=======
+
 use App\Cities;
 use App\Items;
 use App\Lists;
 use App\Products;
 use App\User;
->>>>>>> bebbbe546aea145b02df618af698d7e0ea27e61e
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

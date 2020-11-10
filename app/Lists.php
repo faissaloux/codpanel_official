@@ -19,6 +19,12 @@ class Lists extends Model
         return  $this->hasMany('App\Items', 'list_id');
     }
 
+    public function cityy(){
+        return  $this->belongsTo('App\Cities', 'city_id')->withDefault(['name' => 'N-A']);
+    }
+
+    
+
     public function scopeCurrentProvider($query){
         return $query->where('provider_id', Auth::user()->id);
     }

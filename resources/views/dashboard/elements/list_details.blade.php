@@ -14,7 +14,7 @@
         </p>
         <p class="row">
             <span class="col-3 text-right">المدينة</span>
-            <span class="col text-right">{{ $list->city }}</span>
+            <span class="col text-right">{{ $list->cityy->name }}</span>
         </p>
         <p class="row">
             <span class="col-3 text-right">المصدر</span>
@@ -22,7 +22,7 @@
         </p>
         <p class="row">
             <span class="col-3 text-right">المنتوج</span>
-            <span class="col text-right">{{ $list->items }}</span>
+            <span class="col text-right">{{ $list->product }}</span>
         </p>
         <p class="row">
             <span class="col-3 text-right">الكمية</span>
@@ -34,7 +34,7 @@
         </p>
         <p class="row">
             <span class="col text-right">الملاحظة</span>
-            <span class="col">{{ $list->statue }}</span>
+            <span class="col">{{ $list->status }}</span>
         </p>
     </div>
     <div class="col-md-12 col-lg-12 text-right">
@@ -49,11 +49,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($list->items as $item)
                         <tr>
-                            <td>Kit Voiture X6</td>
-                            <td>1</td>
-                            <td>199.99</td>
+                            <td>{{ $item->product->name }}</td>
+                            <td>{{ $item->quantity }}</td>
+                            <td>{{ $item->price }}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -9,8 +9,8 @@
                 <i class="mdi mdi-plus d-flex align-items-center text-white"></i>
             </span>
             <span   class="add-new-text"
-                    data-toggle="modal"
-                    data-target="#addCityModalCenter">
+                    id="addnewcity"
+                    data-link="{{ route('dashboard.cities.create') }}">
                 إضافة مدينة جديدة
             </span>
         </a>

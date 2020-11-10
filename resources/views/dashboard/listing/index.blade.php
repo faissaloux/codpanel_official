@@ -643,8 +643,9 @@
                                 التفاصيل
                             </a>
                             <a  type="button"
-                                href="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}"
-                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
+                                href="javascript:;"
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editlist"
+                                data-link="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}">
                                 تعديل
                             </a>
                         </td>

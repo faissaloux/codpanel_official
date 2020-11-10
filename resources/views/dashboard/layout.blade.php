@@ -264,9 +264,9 @@ $('#addnewlist').click(function(e){
 
 ///add new list_id
 $('.modal').on('shown.bs.modal', function(e) {
-$('#addnewlisting').submit(function(e){  
+$('#addnewlisting').submit(function(event){  
   
-  CreateOrder();
+  CreateOrder(event);
   
   var link = $(this).attr('data-link');
 
@@ -288,7 +288,7 @@ $('#addnewlisting').submit(function(e){
               statue_toast("success",value)
           });
 
-          $('body #addnewlisting').reset();
+          $('body #addnewlisting')[0].reset();
         },
         error : function(response){
           default_error();
@@ -296,6 +296,39 @@ $('#addnewlisting').submit(function(e){
   });
   
 });
+});
+
+///////show moda addneworder
+
+$('#addnewcity').click(function(e){
+  
+  var token   = $('meta[name="csrf-token"]').attr('content');
+  var link = $(this).attr('data-link');
+
+
+  var formData = new FormData();
+  formData.append('_token', token);
+
+
+  $.ajax({
+      url: link,
+      type: 'POST',
+      processData: false, // important
+      contentType: false, // important
+      data: formData,
+      cache:false,
+      dataType: "HTML",
+       beforeSend:function(){
+      },
+      success: function(response) {
+        $('body #addCityModalCenter').modal('show');
+        $('body #addCityModalCenter .modal-body').html(response);
+      },
+      error : function(response){
+         default_error();
+      }
+});
+
 });
 
         </script>

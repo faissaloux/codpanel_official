@@ -74,7 +74,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         // cities
         Route::group(['prefix' => '/cities', 'as' => 'cities.' ], function () {
             Route::get('/', 'CitiesController@index')->name('index');
-            Route::get('/create', 'CitiesController@create')->name('create');
+            Route::post('/create', 'CitiesController@create')->name('create');
             Route::post('/store', 'CitiesController@store')->name('store');
             Route::get('/edit/{id}', 'CitiesController@edit')->name('edit');
             Route::post('/update/{id}', 'CitiesController@update')->name('update');
@@ -104,7 +104,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 
             Route::post('/create', 'ListingController@create')->name('create');
             Route::post('/store', 'ListingController@store')->name('store');
-            Route::get('/edit/{id}', 'ListingController@edit')->name('edit');
+            Route::post('/edit/{id}', 'ListingController@edit')->name('edit');
             Route::post('/update/{id}', 'ListingController@update')->name('update');
             Route::post('/delete', 'ListingController@delete')->name('delete');
             Route::post('/destroy', 'ListingController@destroy')->name('destroy');

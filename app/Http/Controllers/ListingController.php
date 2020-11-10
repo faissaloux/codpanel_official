@@ -74,7 +74,7 @@ class ListingController extends Controller {
 
         $model->name            = $post['name'];
         $model->adress          = $post['adress'];
-        $model->tel             = $post['tel'];
+        $model->phone             = $post['tel'];
         $model->city_id         = $post['cityID'];
         $model->provider_id     = Cities::find($post['cityID'])->provider_id ?? NULL;
         $model->laivraison      = $post['prix_de_laivraison'] ;
@@ -118,8 +118,11 @@ class ListingController extends Controller {
 
     public function edit($id)
     {
-        $content = Lists::find($id);
-        return view('dashboard.listing.edit', compact('content'));
+        $cities = Cities::orderby('id','desc')->get();
+        $users = User::orderby('id','desc')->get();
+        $products = Products::orderby('id','desc')->get();
+        $content = Lists::find($id);        
+        return response()->view('dashboard.elements.edit_list' ,compact('cities','users','products','content'))->setStatusCode(200);
     }
 
     public function update(Request $request,$id)
@@ -128,7 +131,7 @@ class ListingController extends Controller {
         $Lists = Lists::find($id);
         $list_id = $this->saveList($Lists,$post);
         $this->saveMultiSale($post,$list_id,true);
-
+        return response()->json(["Success" => "updated successfuly"]);
         return redirect()->route('dashboard.listing.index')->with('success', trans('listing.updated'));
     }
 

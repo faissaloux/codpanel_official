@@ -307,43 +307,7 @@
             </div>
             <div class="modal-content add-new-city-modal">
                 <div class="modal-body d-flex flex-column">
-                    <form action="{{ route('dashboard.cities.store') }}" method="POST">
-                        @csrf
-                        <div class="d-flex flex-column">
-                            <div class="form-group">
-                                <input  type="text"
-                                        class="form-control tx-right"
-                                        name="name"
-                                        placeholder="إسم المدينة">
-                            </div>
-                            <div class="form-group">
-                                <input  type="text"
-                                        class="form-control tx-right"
-                                        name="reference"
-                                        placeholder="رمز المدينة">
-                            </div>
-                            <select class="form-control" name="provider_id">
-                                <option value="notselected">اختيار الموزع</option>
-                                <option value="24">24</option>
-                                <option value="Allianz">Allianz</option>
-                                <option value="Saham assurance">Saham assurance</option>
-                                <option value="Sanad">Sanad</option>
-                                <option value="Mamda">Mamda</option>
-                                <option value="Mcma">Mcma</option>
-                                <option value="Matu">Matu</option>
-                                <option value="Cat">Cat</option>
-                                <option value="Atlanta">Atlanta</option>
-                                <option value="wafa assurence">wafa assurence</option>
-                                <option value="JUDICIARE">JUDICIARE</option>
-                                <option value="CAE">CAE</option>
-                            </select>
-                        </div>
-                        <div class="d-flex justify-content-center mt-4">
-                            <p class="row col p-0">
-                                <button type="submit" class="btn btn-success btn-block">إضافة مدينة جديدة</button>
-                            </p>
-                        </div>
-                    </form>
+
                 </div>
             </div>
         </div>
