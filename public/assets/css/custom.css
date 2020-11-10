@@ -755,3 +755,11 @@ div.show-columns-container.show button .show-columns-icon {
         margin-bottom: 0 !important;
     }
 }
+
+/* Bootstrap-select custom CSS */
+.filter-option-inner-inner {
+    text-align: right !important;
+}
+.bootstrap-select .dropdown-menu.inner {
+    text-align: right;
+}
