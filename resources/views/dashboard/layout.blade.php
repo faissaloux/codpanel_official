@@ -89,6 +89,13 @@
         @endif
 
         <script>
+
+
+$('.modal').on('shown.bs.modal', function(e) {
+  $(function () {
+        $('.selectpicker').selectpicker();
+    });
+});
             //////default success
 
 function statue_toast(type,msg){

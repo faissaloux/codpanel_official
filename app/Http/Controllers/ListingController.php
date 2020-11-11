@@ -26,19 +26,36 @@ class ListingController extends Controller {
     {
         $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
         // dd($lists);
-        return view('dashboard.listing.index',compact('lists'));
+        $cities = Cities::orderby('id','desc')->get();
+        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        $employees = User::orderby('id','desc')->where('role','employee')->get();
+        $products = Products::orderby('id','desc')->get();
+
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function employees()
     {
         $lists = Lists::employees()->paginate(10);
-        return view('dashboard.listing.index',compact('lists'));
+        
+        $cities = Cities::orderby('id','desc')->get();
+        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        $employees = User::orderby('id','desc')->where('role','employee')->get();
+        $products = Products::orderby('id','desc')->get();
+
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function providers()
     {
         $lists = Lists::providers()->paginate(10);
-        return view('dashboard.listing.index',compact('lists'));
+        
+        $cities = Cities::orderby('id','desc')->get();
+        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        $employees = User::orderby('id','desc')->where('role','employee')->get();
+        $products = Products::orderby('id','desc')->get();
+
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function new()
@@ -50,16 +67,13 @@ class ListingController extends Controller {
     public function create()
     {
         $cities = Cities::orderby('id','desc')->get();
-        $users = User::orderby('id','desc')->get();
+        $users = User::orderby('id','desc')->where('role','provider')->get();
         $products = Products::orderby('id','desc')->get();
         return response()->view('dashboard.elements.add_list' ,compact('cities','users','products'))->setStatusCode(200);
     }
 
     public function store(Request $request)
-    {        
-
-
-
+    {
         //dd($_POST);
         $post =  $request->All();
         $Lists = new Lists();
@@ -119,7 +133,7 @@ class ListingController extends Controller {
     public function edit($id)
     {
         $cities = Cities::orderby('id','desc')->get();
-        $users = User::orderby('id','desc')->get();
+        $users = User::orderby('id','desc')->where('role','provider')->get();
         $products = Products::orderby('id','desc')->get();
         $content = Lists::find($id);        
         return response()->view('dashboard.elements.edit_list' ,compact('cities','users','products','content'))->setStatusCode(200);

@@ -28,9 +28,3 @@
         </p>
     </div>
 </form>
-
-<script>
-    $(function () {
-        $('.selectpicker').selectpicker();
-    });
-</script>
