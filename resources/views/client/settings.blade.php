@@ -9,32 +9,55 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <form id="login-form" action="/settings" method="post">
+                    <form   id="login-form"
+                            action="{{ route('client.editSettings') }}"
+                            method="post">
                         @csrf
                         <fieldset>
                             <div class="alert alert-danger error-text error-summary alert alert-danger hidden"></div>
                             <div class="form-group">
                                 <div class="field-signupform-first_name required">
                                     <label class="control-label" for="settingsform-first_name">First name</label>
-                                    <input type="text" id="settingsform-first_name" class="input" name="SettingsForm[first_name]" value="brahim" autofocus="" placeholder="John" aria-required="true">
+                                    <input  type="text"
+                                            id="settingsform-first_name"
+                                            class="input"
+                                            name="firstName"
+                                            value="brahim"
+                                            placeholder="John"
+                                            aria-required="true">
                                     <p class="help-block help-block-error"></p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="settingsform-last_name">Last name</label>
-                                <input type="text" id="settingsform-last_name" class="input" name="SettingsForm[last_name]" value="gallab" placeholder="Doe" aria-required="true">
+                                <input  type="text"
+                                        id="settingsform-last_name"
+                                        class="input"
+                                        name="lastName"
+                                        value="gallab"
+                                        placeholder="Doe"
+                                        aria-required="true">
                                 <p class="help-block help-block-error"></p>
                             </div>
                             <div class="form-group disable-input">        
                                 <label class="control-label" for="settingsform-email">Email</label>
-                                <input type="text" id="settingsform-email" class="input" name="SettingsForm[email]" value="gallab2k@gmail.com" placeholder="Email">
+                                <input  type="text"
+                                        id="settingsform-email"
+                                        class="input"
+                                        name="email"
+                                        value="gallab2k@gmail.com"
+                                        placeholder="Email">
 
                                 <p class="help-block help-block-error"></p>
                                 <a href="#" id="changeEmailBtn">Change email</a>
                             </div>
                             <div class="form-group disable-input">
                                 <label class="control-label" for="settingsform-password">Password</label>
-                                <input type="text" id="settingsform-password" class="input" name="SettingsForm[password]" placeholder="●●●●●●●●●●●●●●●">
+                                <input  type="text"
+                                        id="settingsform-password"
+                                        class="input"
+                                        name="password"
+                                        placeholder="●●●●●●●●●●●●●●●">
 
                                 <p class="help-block help-block-error"></p>
                                 <a href="#" id="changePasswordBtn">Change password</a>
@@ -45,7 +68,10 @@
                                         <label for="select-timezone">Timezone</label>
                                     </div>
                                     <div class="select-wrapper">
-                                        <select id="select-timezone" class="form-control no-radius" name="SettingsForm[timezone]" aria-required="true">
+                                        <select id="select-timezone"
+                                                class="form-control no-radius"
+                                                name="timezone"
+                                                aria-required="true">
                                             <option value="-43200">(UTC -12:00) Baker/Howland Island</option>
                                             <option value="-39600">(UTC -11:00) Niue</option>
                                             <option value="-36000">(UTC -10:00) Hawaii-Aleutian Standard Time, Cook Islands, Tahiti</option>
@@ -92,7 +118,9 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end mb-2">
-                                <button type="submit" class="btn purple-button save-changes btn-block">Save changes</button>
+                                <button type="submit" class="btn purple-button save-changes btn-block">
+                                    Save changes
+                                </button>
                             </div>
                         </fieldset>
                     </form>

@@ -6,7 +6,7 @@
                 <div class="title-name title-table d-flex flex-sm-row flex-column justify-content-sm-between align-items-sm-center">
                     <h2 class="title-bottom">Stores</h2>
                     <a href="{{ route('client.ordernow') }}"
-                        class="btn purple-button" >
+                        class="btn purple-button d-flex justify-content-center align-items-center" >
                         Order store
                     </a>
                 </div>

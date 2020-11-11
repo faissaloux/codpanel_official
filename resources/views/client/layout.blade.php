@@ -6,10 +6,8 @@
     <title>Stores</title>
 
     <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
-    <link href="{{ asset('assets/client/css/bootstrap-select.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/client/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('assets/client/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/all.css') }}" rel="stylesheet">
 
     <style>
         i {
@@ -20,6 +18,10 @@
         .container-ordernow,
         .container-ticket{
             margin-top: 100px !important;
+        }
+
+        .form-group.disable-input a {
+            top: 37px !important;
         }
     </style>
 </head>
@@ -84,12 +86,6 @@
         </nav>
     </div>
     @yield('content')
-    <script src="{{ asset('assets/client/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/client/js/yii.js') }}"></script>
-    <script src="{{ asset('assets/client/js/underscore-min.js') }}"></script>
-    <script src="{{ asset('assets/client/js/bootstrap-select.js') }}"></script>
-    <script src="{{ asset('assets/client/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/client/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/client/js/clipboard.min.js') }}"></script>
+    <script src="{{ asset('assets/js/all.js') }}"></script>
     
 </body>

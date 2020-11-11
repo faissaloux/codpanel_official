@@ -176,7 +176,9 @@
                         <i class="fa fa-times"></i>
                     </button>
                 </div>
-                <form id="support-form" action="/create-ticket" method="post">
+                <form   id="support-form"
+                        action="{{ route('client.createTicket') }}"
+                        method="post">
                     @csrf
                     <div class="modal-body">
                         <div id="createTicketError" class="alert alert-danger error-text error-summary alert alert-danger hidden"></div>
@@ -186,7 +188,7 @@
                                 type="text"
                                 id="createticketform-subject"
                                 class="input"
-                                name="CreateTicketForm[subject]"
+                                name="subject"
                                 maxlength="300"
                                 required
                                 placeholder="Type your ticket subject"
@@ -197,7 +199,7 @@
                         <div class="form-group">
                             <textarea   id="createticketform-message"
                                         class="form-control"
-                                        name="CreateTicketForm[message]"
+                                        name="problem"
                                         maxlength="1000"
                                         rows="5"
                                         required
