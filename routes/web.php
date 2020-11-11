@@ -115,7 +115,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
             Route::post('/load/{id}', 'ListingController@load')->name('load');
             Route::post('/history', 'ListingController@history')->name('history');
-            Route::get('/listing', 'ListingController@listing')->name('listing');
+            Route::post('/listing/{id}', 'ListingController@listing')->name('listing');
         });
 
         // statistiques

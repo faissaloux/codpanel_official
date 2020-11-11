@@ -273,7 +273,7 @@ $('#addnewlist').click(function(e){
 $('.modal').on('shown.bs.modal', function(e) {
 $('#addnewlisting').submit(function(event){  
   
-  CreateOrder(event);
+  //CreateOrder(event);
   
   var link = $(this).attr('data-link');
 
@@ -289,7 +289,7 @@ $('#addnewlisting').submit(function(event){
          beforeSend:function(){
         },
         success: function(response) {
-          $('body #addnewlisting').modal('hide');
+          $('body #addOrderModalCenter').modal('hide');
           
             $.each(response, function(key, value) { 
               statue_toast("success",value)
@@ -445,7 +445,7 @@ $('.editcitymodal').click(function(e){
 $('.modal').on('shown.bs.modal', function(e) {
 $('#updatecities').submit(function(event){  
   
-  //CreateOrder(event);
+  ////CreateOrder(event);
   
   var link = $(this).attr('data-link');
 

@@ -59,6 +59,7 @@ class CitiesController extends Controller
         $city = Cities::find($id);
         $city->name     = $request->name;
         $city->reference    = $request->reference;
+        $city->provider_id    = $request->provider_id;
         $city->save();
         return response()->json(["Success" => "saved successfuly"]);
         return redirect()->route('dashboard.cities.index')->with('success',trans('city.updated'));

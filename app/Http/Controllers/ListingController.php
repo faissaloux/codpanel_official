@@ -207,9 +207,15 @@ class ListingController extends Controller {
         return view('admin.users.create');
     }
 
-    public function listing()
+    public function listing($id)
     {
-        return view('admin.users.create');
+        if($id == "all"){
+            $lists = Lists::with("items")->get();
+        }else{
+            $lists = Lists::with("items")->where('status',$id)->get();
+        }
+        
+        return response()->view('dashboard.elements.listing-table' , compact('lists'))->setStatusCode(200);
     }
 
 

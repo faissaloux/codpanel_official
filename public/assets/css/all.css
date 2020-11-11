@@ -3199,7 +3199,7 @@ input[type=submit].btn-block {
     position: relative
 }
 
-.dropdown-toggle::after {
+.dropdown-toggle::before {
     display: inline-block;
     width: 0;
     height: 0;

@@ -15,6 +15,7 @@ body {
     overflow-x: hidden;
     font-family: 'Tajawal';
 }
+
 a {
     font-weight: 400;
 }
@@ -97,8 +98,9 @@ input[type="checkbox"] {
 .edit {
     background: linear-gradient(to right, #4f93b2, #66cfb5);
 }
-.delete{
-    background-image: linear-gradient(to right,#cb2a6a,#ed135a);
+
+.delete {
+    background-image: linear-gradient(to right, #cb2a6a, #ed135a);
 }
 
 .input-group-text {
@@ -128,9 +130,11 @@ input[type="checkbox"] {
     height: 36px;
     border-radius: 0;
 }
+
 .page-sidebar-menu ul li a svg {
     margin-right: 0;
 }
+
 .sort-dropdown {
     left: -117px !important;
     height: 200px;
@@ -141,16 +145,20 @@ input[type="checkbox"] {
 .sm-break {
     display: none;
 }
-.add-stock-btn > a{
+
+.add-stock-btn>a {
     width: 206px;
 }
-.return-btn{
+
+.return-btn {
     width: 97px !important;
 }
-.export-stock-btn > a {
+
+.export-stock-btn>a {
     background-color: #26a69a;
     width: 227px;
 }
+
 @media(max-width: 580px) {
     .header-title {
         font-size: 14px;
@@ -162,6 +170,7 @@ input[type="checkbox"] {
         width: 100%;
     }
 }
+
 @media(max-width: 580px) {
     .btn-action-sm-box {
         height: 40px;
@@ -657,10 +666,11 @@ td.provider {
     background: linear-gradient(to right, #4f93b2, #66cfb5);
 }
 
-.stats-table-row > th{
+.stats-table-row>th {
     font-size: 14px !important;
 }
-.stat-title{
+
+.stat-title {
     font-size: 18px;
 }
 
@@ -742,24 +752,33 @@ div.show-columns-container.show button .show-columns-icon {
     padding-right: 0;
 }
 
-
 .sidebar-item {
     padding: 8px 0 8px 12px;
 }
 
-@media(max-width: 1200px){
-    .mb-sm{
+@media(max-width: 1200px) {
+    .mb-sm {
         margin-bottom: 12px;
     }
-    .reset-mb-sm{
+    .reset-mb-sm {
         margin-bottom: 0 !important;
     }
 }
 
+
 /* Bootstrap-select custom CSS */
+
 .filter-option-inner-inner {
     text-align: right !important;
 }
+
 .bootstrap-select .dropdown-menu.inner {
     text-align: right;
+}
+
+.spinner-loader-container.d-table {
+    position: absolute;
+    width: calc(100% - 60px);
+    height: calc(100% - 189px);
+    background: #80808085;
 }
