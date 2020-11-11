@@ -4,14 +4,15 @@
 
 use Faker\Generator as Faker;
 use App\Lists;
-use App\User;
 use App\Cities;
+use App\Employee;
 use App\Products;
+use App\Provider;
 use \Carbon\Carbon;
 
 $factory->define(Lists::class, function (Faker $faker) {
-    $providers_id = User::where('role', 'provider')->get('id');
-    $employees_id = User::where('role', 'employee')->get('id');
+    $providers_id = Provider::get('id');
+    $employees_id = Employee::get('id');
     $cities_id = Cities::get('id');
     $products_name = Products::get('name');
     $cities_name = Cities::get('name');
@@ -39,5 +40,6 @@ $factory->define(Lists::class, function (Faker $faker) {
         'price' => $faker->numberBetween($min = 1, $max = 999),
         'status' => $faker->randomElement(['new', 'confirmed', 'recall', 'unanswered', 'canceled']),
         'unanswered_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        'accepted_at' => Carbon::now()->format('Y-m-d H:i:s'),
     ];
 });

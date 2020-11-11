@@ -24,7 +24,6 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => \Hash::make('1234'), // password
         'phone' => $faker->regexify('6[0-9]{8}'),
-        'role' => $faker->randomElement(['Employee', 'provider']),
         'deliver_price' => $faker->numberBetween($min = 1, $max = 999)
     ];
 });

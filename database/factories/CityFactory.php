@@ -4,13 +4,13 @@
 
 use Faker\Generator as Faker;
 use App\Cities;
-use App\User;
+use App\Provider;
 
 $factory->define(Cities::class, function (Faker $faker) {
-    $providers_id = User::where('role', 'provider')->get('id');
+    $providers_id = Provider::get('id');
     return [
         'name' => $faker->city,
-        'provider_id' => $faker->randomElement($providers_id) ,
+        'provider_id' => $faker->randomElement($providers_id),
         'reference' => $faker->isbn10
     ];
 });

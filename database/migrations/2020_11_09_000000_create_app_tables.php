@@ -50,7 +50,6 @@ class CreateAppTables extends Migration
 		    $table->string('city_id', 255)->nullable();
 		    $table->string('laivraison', 255)->nullable();
 		    $table->text('cancel_reason')->nullable();
-		    $table->string('statue', 255)->nullable();
 		    $table->text('history')->nullable();
 		    $table->string('product', 255)->nullable();
 		    $table->string('city', 255)->nullable();
@@ -71,23 +70,12 @@ class CreateAppTables extends Migration
 		
 		});
 
-		Schema::create('payments', function(Blueprint $table) {
-		
-		    $table->bigIncrements('id');
-		    $table->string('date', 255)->nullable();
-		    $table->string('deliver_id', 255)->nullable();
-		    $table->string('ammount', 255)->nullable();
-		
-		    $table->timestamps();
-		
-		});
-
 		Schema::create('products', function(Blueprint $table) {
 		
 		    $table->bigIncrements('id');
 		    $table->string('image', 255)->nullable();
 		    $table->string('name', 255)->nullable();
-		    $table->text('price')->default('0');
+		    $table->string('price', 255)->default('0');
 		    $table->string('prix_jmla', 255)->default('0');
 		    $table->string('reference', 255)->nullable();
 		    $table->time('deleted_at')->nullable();
