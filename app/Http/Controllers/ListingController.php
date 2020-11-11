@@ -31,19 +31,31 @@ class ListingController extends Controller {
         $employees = User::orderby('id','desc')->where('role','employee')->get();
         $products = Products::orderby('id','desc')->get();
 
-        return view('dashboard.listing.index',compact('lists','cities','provider','employee','products'));
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function employees()
     {
         $lists = Lists::employees()->paginate(10);
-        return view('dashboard.listing.index',compact('lists'));
+        
+        $cities = Cities::orderby('id','desc')->get();
+        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        $employees = User::orderby('id','desc')->where('role','employee')->get();
+        $products = Products::orderby('id','desc')->get();
+
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function providers()
     {
         $lists = Lists::providers()->paginate(10);
-        return view('dashboard.listing.index',compact('lists'));
+        
+        $cities = Cities::orderby('id','desc')->get();
+        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        $employees = User::orderby('id','desc')->where('role','employee')->get();
+        $products = Products::orderby('id','desc')->get();
+
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function new()
