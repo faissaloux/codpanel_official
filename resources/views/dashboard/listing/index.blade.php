@@ -489,9 +489,9 @@ data-type=""
                                             </label>
                                             <select class="selectpicker form-control" name="city_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                <option value="agadir">أكادير</option>
-                                                <option value="Marrakech">مراكش</option>
-                                                <option value="rabat">الرباط</option>
+                                                @foreach ($cities as $city)
+                                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -502,16 +502,10 @@ data-type=""
                                             </label>
                                             <select class="selectpicker form-control" name="employee_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
+                                                @foreach ($employee as $item)
+                                                    
+                                                @endforeach
                                                 <option value="139">bassiri soulaiman</option>
-                                                <option value="141">abdelilah</option>
-                                                <option value="143">soulaimane</option>
-                                                <option value="144">bassiri</option>
-                                                <option value="145">yassin</option>
-                                                <option value="146">mustapha</option>
-                                                <option value="147">youssef</option>
-                                                <option value="148">az-eddine</option>
-                                                <option value="149">hicham</option>
-                                                <option value="150">membre</option>
                                             </select>
                                         </div>
                                     </div>

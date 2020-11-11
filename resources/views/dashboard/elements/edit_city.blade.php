@@ -15,7 +15,7 @@
                     placeholder="رمز المدينة"
                     value="{{$content->reference}}">
         </div>
-        <select class="form-control" name="provider_id">
+        <select class="selectpicker form-control mt-2" name="provider_id" data-style="btn-default" data-live-search="true">
             <option value="N-A">اختيار الموزع</option>
             @foreach ($providers as $provider)
                 <option @if ( $provider->id == $content->provider_id ) { selected="selected" } @endif value="{{ $provider->id }}">{{ $provider->name }}</option>
