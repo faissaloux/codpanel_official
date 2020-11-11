@@ -43,7 +43,7 @@ class ListingController extends Controller {
         $employees = User::orderby('id','desc')->where('role','employee')->get();
         $products = Products::orderby('id','desc')->get();
 
-        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
+        return view('employees.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function providers()
@@ -55,7 +55,7 @@ class ListingController extends Controller {
         $employees = User::orderby('id','desc')->where('role','employee')->get();
         $products = Products::orderby('id','desc')->get();
 
-        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
+        return view('providers.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function new()
