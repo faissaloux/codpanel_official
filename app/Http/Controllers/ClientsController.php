@@ -17,6 +17,10 @@ class ClientsController extends Controller
         return view('client.ordernow');
     }
 
+    public function orderStore(Request $request){
+        dd($request);
+    }
+
     public function orders()
     {
         return view('client.orders');
@@ -25,6 +29,11 @@ class ClientsController extends Controller
     public function settings()
     {
         return view('client.settings');
+    }
+
+    public function editSettings(Request $request)
+    {
+        dd($request);
     }
 
     public function staff()
@@ -36,9 +45,14 @@ class ClientsController extends Controller
     {
         return view('client.stores');
     }
+
     public function support()
     {
         return view('client.support');
+    }
+
+    public function createTicket(Request $request){
+        dd($request);
     }
 
     public function ticketdetail()

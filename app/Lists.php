@@ -23,7 +23,7 @@ class Lists extends Model
         return  $this->hasMany('App\Items', 'list_id');
     }
 
-    public function cityy(){
+    public function city(){
         return  $this->belongsTo('App\Cities', 'city_id')->withDefault(['name' => 'N-A']);
     }
 
