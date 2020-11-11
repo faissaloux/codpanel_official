@@ -167,5 +167,3 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 });
 
 
-
-Route::get('/home', 'HomeController@index')->name('home');
