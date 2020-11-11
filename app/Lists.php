@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Lists extends Model
 {
+
+    protected $guarded = ['id'];
+
+    
     public function provider(){
         return  $this->belongsTo('App\User', 'provider_id')->withDefault(['name' => 'N-A']);
     }

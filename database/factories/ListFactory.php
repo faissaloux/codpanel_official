@@ -7,6 +7,7 @@ use App\Lists;
 use App\User;
 use App\Cities;
 use App\Products;
+use \Carbon\Carbon;
 
 $factory->define(Lists::class, function (Faker $faker) {
     $providers_id = User::where('role', 'provider')->get('id');
@@ -18,7 +19,7 @@ $factory->define(Lists::class, function (Faker $faker) {
         'name' => $faker->name,
         'adress' => $faker->streetAddress,
         'note' => $faker->realText($maxNbChars = 100),
-        'tel' => $faker->regexify('6[0-9]{8}'),
+        'phone' => $faker->regexify('6[0-9]{8}'),
         'source' => $faker->realText($maxNbChars = 10),
         'provider_id' => $faker->randomElement($providers_id),
         'employee_id' => $faker->randomElement($employees_id),
@@ -26,19 +27,17 @@ $factory->define(Lists::class, function (Faker $faker) {
         'city_id' => $faker->randomElement($cities_id),
         'laivraison' => $faker->numberBetween($min = 1, $max = 100),
         'cancel_reason' => $faker->realText($maxNbChars = 50),
-        'accepted_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'verified_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'delivred_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'canceled_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'duplicated_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'checked_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'recall_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'delivred_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        'canceled_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        'duplicated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        'checked_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        'recall_at' => Carbon::now()->format('Y-m-d H:i:s'),
         'history' => $faker->realText($maxNbChars = 50),
         'product' => ($faker->randomElement($products_name))->name,
         'city' => ($faker->randomElement($cities_name))->name,
         'quantity' => $faker->numberBetween($min = 1, $max = 9999),
         'price' => $faker->numberBetween($min = 1, $max = 999),
         'status' => $faker->randomElement(['new', 'confirmed', 'recall', 'unanswered', 'canceled']),
-        'unanswered_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'unanswered_at' => Carbon::now()->format('Y-m-d H:i:s'),
     ];
 });
