@@ -42,6 +42,7 @@ class ListingController extends Controller {
         $providers = User::orderby('id','desc')->get();
         $employees = User::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
+        
 
         return view('employees.index',compact('lists','cities','providers','employees','products'));
     }
