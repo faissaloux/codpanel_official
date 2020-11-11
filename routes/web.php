@@ -166,4 +166,13 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 	Route::get('/listing', 'ProvidersController@listing')->name('listing');
 });
 
-
+Route::group(['prefix' => '/client', 'as' => 'client.' ], function () {
+	Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
+	Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
+	Route::get('/orders', 'ClientsController@orders')->name('orders');
+	Route::get('/settings', 'ClientsController@settings')->name('settings');
+	Route::get('/staff', 'ClientsController@staff')->name('staff');
+    Route::get('/stores', 'ClientsController@stores')->name('stores');
+    Route::get('/support', 'ClientsController@support')->name('support');
+    Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+});
