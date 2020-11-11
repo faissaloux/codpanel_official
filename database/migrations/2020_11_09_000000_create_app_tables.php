@@ -86,10 +86,10 @@ class CreateAppTables extends Migration
 		
 		    $table->bigIncrements('id');
 		    $table->string('image', 255)->nullable();
-		    $table->string('name', 255);
-		    $table->text('price')->nullable();
+		    $table->string('name', 255)->nullable();
+		    $table->text('price')->default('0');
 		    $table->string('prix_jmla', 255)->default('0');
-		    $table->string('reference', 255);
+		    $table->string('reference', 255)->nullable();
 		    $table->time('deleted_at')->nullable();
 		
 		    $table->timestamps();
@@ -97,7 +97,6 @@ class CreateAppTables extends Migration
 		});
 
 		Schema::create('users', function(Blueprint $table) {
-		
 		    $table->bigIncrements('id');
 		    $table->string('image', 255)->nullable();
 		    $table->string('name', 255);
@@ -105,12 +104,9 @@ class CreateAppTables extends Migration
 		    $table->string('email', 255);
 		    $table->string('password', 255);
 		    $table->string('phone', 255)->nullable();
-		    $table->string('role', 255);
 		    $table->string('deliver_price', 255)->nullable();
 		    $table->time('deleted_at')->nullable();
-		
 		    $table->timestamps();
-		
 		});
 
 
