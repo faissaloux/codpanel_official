@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title> @yield('title')</title>
+    <title> @yield('title') </title>
 
     <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
     <link href="{{ asset('assets/client/css/style.css') }}" rel="stylesheet">
@@ -22,6 +22,11 @@
 
         .form-group.disable-input a {
             top: 37px !important;
+        }
+        .form-fix-padding{
+            padding-top: 40px !important;
+            padding-bottom: 10px !important;
+            min-height: 0 !important;
         }
     </style>
 </head>

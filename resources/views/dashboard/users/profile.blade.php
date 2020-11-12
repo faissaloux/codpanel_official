@@ -1,4 +1,9 @@
 @extends('dashboard/layout')
+
+@section('title')
+   Profile | {{ env('APP_NAME') }}
+@endsection
+
 @section('content')
 
 <div class="page-inner mt-4">

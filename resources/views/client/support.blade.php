@@ -1,4 +1,9 @@
 @extends('client/layout')
+
+@section('title')
+   Support | {{ env('APP_NAME') }}
+@endsection
+
 @section('content')
     <div class="container container-store container-top">
         <div class="row">

@@ -1,4 +1,9 @@
 @extends('dashboard/layout')
+
+@section('title')
+    Edit list | {{ env('APP_NAME') }}
+@endsection
+
 @section('content')
 <div class="d-flex justify-content-between p-2 bg-white p-4">
     <h3 class="header-title">تعديل  الليست </h3>

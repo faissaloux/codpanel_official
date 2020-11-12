@@ -1,5 +1,9 @@
 @extends('dashboard/layout')
 
+@section('title')
+    Revenue | {{ env('APP_NAME') }}
+@endsection
+
 @section('content')
 <div class="d-flex flex-column bg-white pt-4">
     <div class="row align-items-center pr-4 pl-4">

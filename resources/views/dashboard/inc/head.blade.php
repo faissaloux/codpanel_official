@@ -6,7 +6,7 @@
 <meta name="author"  content=""/>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Page Title -->
-<title>Google Chart | Avesta - Multipurpose Admin Dashboard Template</title>
+<title> @yield('title') </title>
 <!-- Main CSS -->
 <link type="text/css" rel="stylesheet" href="../../../assets/css/all.css"/>
 <link type="text/css" rel="stylesheet" href="../../../assets/css/custom.css"/>
