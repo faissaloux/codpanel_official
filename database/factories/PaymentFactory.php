@@ -10,6 +10,8 @@ $factory->define(Payment::class, function (Faker $faker) {
     $orders_id = Order::get('id');
     return [
         'order_id' => $faker->randomElement($orders_id),
+        'method' => $faker->randomElement(['Visa', 'Paypal']),
+        'transactionID' => $faker->isbn10,
         'amount' => $faker->numberBetween($min = 1, $max = 999),
         'paid' => $faker->randomElement(['0', '1'])
     ];

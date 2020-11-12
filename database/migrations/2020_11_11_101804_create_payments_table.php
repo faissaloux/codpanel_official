@@ -16,14 +16,14 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 		
-		    $table->integer('id');
+		    $table->bigIncrements('id');
 		    $table->string('order_id', 255)->default(null);
 		    $table->string('method', 255)->default(null);
             $table->string('transactionID', 255)->default(null);
             $table->string('amount', 255);
-		    $table->time('deleted_at')->nullable()->default(null);
-		
+            $table->integer('paid');
 		    $table->timestamps();
+		    $table->time('deleted_at')->nullable()->default(null);
         });
     }
 
