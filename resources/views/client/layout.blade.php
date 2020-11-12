@@ -23,6 +23,11 @@
         .form-group.disable-input a {
             top: 37px !important;
         }
+        .form-fix-padding{
+            padding-top: 40px !important;
+            padding-bottom: 10px !important;
+            min-height: 0 !important;
+        }
     </style>
 </head>
 <body>
