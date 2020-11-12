@@ -2,3 +2,16 @@
 .env.example
 .env.local
 .env.staging
+/vendor
+/app/storage/
+/bootstrap/compiled.php
+composer.lock
+
+
+
+
+
+
+
+
+

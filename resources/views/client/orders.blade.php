@@ -85,7 +85,7 @@
                                 </td>
                                 <td class="table-separator"></td>
                                 <td data-label="Actions" class="d-flex justify-content-between w-100">
-                                    <a href="{{ route('client.orderdetail') }}">
+                                    <a href="{{ route('client.orderUnpaid') }}">
                                         <i class="fa fa-file" aria-hidden="true"></i>
                                         View details
                                     </a>
