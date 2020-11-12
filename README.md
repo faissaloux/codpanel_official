@@ -1,10 +1,5 @@
 
 
-##	Step By Step To codpanel
-
-
-
-
 ### 1. clone the Package & install the packages
 
 ```
