@@ -167,9 +167,12 @@ $('#loginform').submit(function(e){
 
 ///////////load list details
 
-$('.showdetails').click(function(e){
-  
-    var token   = $('meta[name="csrf-token"]').attr('content');
+
+
+
+$('body').on('click','.showdetails',function(e){
+
+  var token   = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
 
     var formData = new FormData();
@@ -194,8 +197,10 @@ $('.showdetails').click(function(e){
            default_error();
         }
   });
-  
+
 });
+
+
 
 //////// change status
 
@@ -340,7 +345,7 @@ $('#addnewcity').click(function(e){
 
 ///////show moda editorder
 
-$('.editlist').click(function(e){
+$('body').on('click','.editlist',function(e){
   
     var token   = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
@@ -477,6 +482,13 @@ $('#updatecities').submit(function(event){
   
 });
 });
+
+
+// $( document ).ready(function() {
+//     if($('body').hasClass("employees-listing-page")){
+//       alert("frf");
+//     }
+// });
 
         </script>
         

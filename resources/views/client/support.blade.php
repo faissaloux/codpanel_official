@@ -1,4 +1,9 @@
 @extends('client/layout')
+
+@section('title')
+   Support | {{ env('APP_NAME') }}
+@endsection
+
 @section('content')
     <div class="container container-store container-top">
         <div class="row">
@@ -177,7 +182,7 @@
                     </button>
                 </div>
                 <form   id="support-form"
-                        action="{{ route('client.createTicket') }}"
+                        action="{{ route('tickets.create') }}"
                         method="post">
                     @csrf
                     <div class="modal-body">

@@ -115,7 +115,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
             Route::post('/load/{id}', 'ListingController@load')->name('load');
             Route::post('/history', 'ListingController@history')->name('history');
-            Route::post('/listing/{id}', 'ListingController@listing')->name('listing');
+            Route::post('/listing', 'ListingController@listing')->name('listing');
         });
 
         // statistiques
@@ -129,7 +129,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::get('/providers', 'StatistiquesController@providers')->name('providers');
         });
 
-        // statistiques
+        // settings
         Route::group(['prefix' => '/settings', 'as' => 'settings.' ], function () {
             Route::get('/revenue', 'SettingsController@revenue')->name('revenue');
             Route::get('/cash', 'SettingsController@cash')->name('cash');
@@ -143,6 +143,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 
 });
 
+// employee
 Route::group(['prefix' => '/employee', 'as' => 'employee.' ], function () {
 	Route::get('/', 'EmployeesController@index')->name('index');
 	Route::get('/create', 'EmployeesController@create')->name('create');
@@ -157,6 +158,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' ], function () {
 	Route::get('/listing', 'EmployeesController@listing')->name('listing');
 });
 
+// provider
 Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 	Route::get('/', 'ProvidersController@index')->name('index');
 	Route::post('/export', 'ProvidersController@export')->name('export');
@@ -166,16 +168,38 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 	Route::get('/listing', 'ProvidersController@listing')->name('listing');
 });
 
+// client
 Route::group(['prefix' => '/client', 'as' => 'client.' ], function () {
-	Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
     Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
     Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
-	Route::get('/orders', 'ClientsController@orders')->name('orders');
+    Route::get('/orders', 'ClientsController@orders')->name('orders');
+	Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
+    Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
     Route::get('/settings', 'ClientsController@settings')->name('settings');
     Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
 	Route::get('/staff', 'ClientsController@staff')->name('staff');
     Route::get('/stores', 'ClientsController@stores')->name('stores');
     Route::get('/support', 'ClientsController@support')->name('support');
-    Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
-    Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+});
+
+// supper
+Route::group(['prefix' => '/supper', 'as' => 'supper.' ], function () {
+    Route::get('/', 'SupperAdminController@index')->name('index');
+    Route::get('/create', 'SupperAdminController@create')->name('create');
+    Route::post('/store', 'SupperAdminController@store')->name('store');
+    Route::get('/edit/{id}', 'SupperAdminController@edit')->name('edit');
+    Route::post('/update/{id}', 'SupperAdminController@update')->name('update');
+    Route::get('/delete/{id}', 'SupperAdminController@delete')->name('delete');
+});
+
+// tickets
+Route::group(['prefix' => '/tickets', 'as' => 'tickets.' ], function () {
+    Route::get('/', 'TicketsController@index')->name('index');
+    Route::post('/create', 'TicketsController@create')->name('create');
+    Route::get('/details', 'TicketsController@details')->name('details');
+    Route::get('/create', 'TicketsController@create')->name('create');
+    Route::post('/store', 'TicketsController@store')->name('store');
+    Route::get('/edit/{id}', 'TicketsController@edit')->name('edit');
+    Route::post('/update/{id}', 'TicketsController@update')->name('update');
+    Route::get('/delete/{id}', 'TicketsController@delete')->name('delete');
 });

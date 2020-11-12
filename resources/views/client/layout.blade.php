@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Stores</title>
+    <title> @yield('title') </title>
 
     <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
     <link href="{{ asset('assets/client/css/style.css') }}" rel="stylesheet">
@@ -23,6 +23,11 @@
         .form-group.disable-input a {
             top: 37px !important;
         }
+        .form-fix-padding{
+            padding-top: 40px !important;
+            padding-bottom: 10px !important;
+            min-height: 0 !important;
+        }
     </style>
 </head>
 <body>
@@ -30,8 +35,8 @@
     <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="https://perfectcdn.com/2125cb68-0d04-48de-9dc5-b6dd319ce4a9/logo.svg" alt="Sommerce"/>
+                <a class="navbar-brand" href="{{ route('client.support') }}">
+                    <h5>Codpanel</h5>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                         data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -70,7 +75,6 @@
                                 <i class="fa fa-file" aria-hidden="true"></i>
                                 Orders
                             </a>
-                            <span class="oval">1</span>
                         </div>
 
                         <div class="menu-link-container">

@@ -9,7 +9,7 @@ class ClientsController extends Controller
 {
     public function orderdetail()
     {
-        return view('client.orderdetail');
+        return view('client.orderPaid');
     }
 
     public function ordernow()
@@ -24,6 +24,11 @@ class ClientsController extends Controller
     public function orders()
     {
         return view('client.orders');
+    }
+
+    public function order()
+    {
+        return view('client.orderUnpaid');
     }
 
     public function settings()
@@ -49,15 +54,6 @@ class ClientsController extends Controller
     public function support()
     {
         return view('client.support');
-    }
-
-    public function createTicket(Request $request){
-        dd($request);
-    }
-
-    public function ticketdetail()
-    {
-        return view('client.ticketdetail');
     }
 
 }
