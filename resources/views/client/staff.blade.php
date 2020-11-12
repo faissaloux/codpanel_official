@@ -1,7 +1,7 @@
 @extends('client/layout')
 
 @section('title')
-   Staff | Codpanel
+   Staff | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')

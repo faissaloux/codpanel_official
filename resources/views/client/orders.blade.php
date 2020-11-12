@@ -1,7 +1,7 @@
 @extends('client/layout')
 
 @section('title')
-    Orders | Codpanel
+    Orders | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')

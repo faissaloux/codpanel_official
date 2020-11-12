@@ -1,5 +1,8 @@
 @extends('dashboard/layout')
 
+@section('title')
+    Listing | {{ env('APP_NAME') }}
+@endsection
 
 @section('body_class')
 

@@ -1,7 +1,7 @@
 @extends('dashboard/layout')
 
 @section('title')
-    Users | Codpanel
+    Users | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')

@@ -1,7 +1,7 @@
 @extends('dashboard/layout')
 
 @section('title')
-    Edit list | Codpanel
+    Edit list | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')

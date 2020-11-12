@@ -1,7 +1,7 @@
 @extends('dashboard/layout')
 
 @section('title')
-    Revenue | Codpanel
+    Revenue | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')

@@ -1,7 +1,7 @@
 @extends('dashboard/layout')
 
 @section('title')
-    Listing | Codpanel
+    Listing | {{ env('APP_NAME') }}
 @endsection
 
 @section('body_class')

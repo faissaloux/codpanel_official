@@ -1,7 +1,7 @@
 @extends('dashboard/layout')
 
 @section('title')
-    Reception | Codpanel
+    Reception | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')

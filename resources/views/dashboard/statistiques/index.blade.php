@@ -1,7 +1,7 @@
 @extends('dashboard/layout')
 
 @section('title')
-   Statistiques | Codpanel
+   Statistiques | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')

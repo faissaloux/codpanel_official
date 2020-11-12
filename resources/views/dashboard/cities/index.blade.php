@@ -1,7 +1,7 @@
 @extends('dashboard/layout')
 
 @section('title')
-    Cities | Codpanel
+    Cities | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')
