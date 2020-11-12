@@ -135,7 +135,7 @@ class ListingController extends Controller {
         $cities = Cities::orderby('id','desc')->get();
         $users = User::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
-        $content = Lists::find($id);        
+        $content = Lists::with("items")->find($id);
         return response()->view('dashboard.elements.edit_list' ,compact('cities','users','products','content'))->setStatusCode(200);
     }
 
@@ -199,6 +199,7 @@ class ListingController extends Controller {
     public function load($id)
     {
         $list = Lists::with("items")->find($id);
+        //dd($list);
         return response()->view('dashboard.elements.list_details' , compact('list'))->setStatusCode(200);
     }
 

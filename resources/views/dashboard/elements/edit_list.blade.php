@@ -91,7 +91,7 @@
                                                 <label for="notes" class="float-right">ملاحظات</label>
                                                 <textarea   class="form-control frequired notes"
                                                             name="notes"
-                                                            placeholder="ملاحظات">
+                                                            placeholder="ملاحظات">{{ $content->note }}
                                                 </textarea>
                                             </div>
                                         </div>
@@ -112,6 +112,8 @@
                         </div>
                         <div class="panel-body">
                             <fieldset class="content-group productsList">
+                                @foreach ($content->items as $item)
+                                                                    
                                 <div class="row col productsTosale">
                                     <div class="col-md-4 p-0">
                                         <div class="form-group col-md-12">
@@ -120,7 +122,7 @@
                                                         name="ProductID[]"
                                                         placeholder="السلعة">
                                                         @foreach ($products as $product)
-                                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                            <option @if ( $item->product_id == $product->id){ selected="selected"} @endif value="{{ $product->id }}">{{ $product->name }}</option>
                                                         @endforeach
                                                     
                                                 </select>
@@ -134,6 +136,7 @@
                                                     class="form-control frequired"
                                                     name="prix[]"
                                                     placeholder="سعر البيع"
+                                                    value="{{$item->price}}"
                                                     >
                                         </div>
                                     </div>
@@ -144,6 +147,7 @@
                                                     class="form-control frequired"
                                                     id="produit"
                                                     placeholder="الكمية"
+                                                    value="{{$item->quantity}}"
                                                     >
                                         </div>
                                     </div>
@@ -151,6 +155,8 @@
                                         <a id="addmoreproducts" href="javascript:;" class="btn btn-primary">+</a>
                                     </div>
                                 </div>
+
+                                @endforeach
                             </fieldset>
                         </div>
                     </div>
