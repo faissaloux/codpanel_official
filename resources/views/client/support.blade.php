@@ -182,7 +182,7 @@
                     </button>
                 </div>
                 <form   id="support-form"
-                        action="{{ route('client.createTicket') }}"
+                        action="{{ route('tickets.create') }}"
                         method="post">
                     @csrf
                     <div class="modal-body">

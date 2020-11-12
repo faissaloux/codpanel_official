@@ -56,13 +56,4 @@ class ClientsController extends Controller
         return view('client.support');
     }
 
-    public function createTicket(Request $request){
-        dd($request);
-    }
-
-    public function ticketdetail()
-    {
-        return view('client.ticketdetail');
-    }
-
 }
