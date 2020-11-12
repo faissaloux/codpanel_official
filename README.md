@@ -1,6 +1,6 @@
 
 
-##	Step By Step To install the script
+##	Step By Step To codpanel
 
 
 1 ) Run this commands from the Terminal:
@@ -17,10 +17,10 @@
 	 php artisan make:admin
 	 php artisan make:data
 
+ 
 
+4 ) you can login to dashboard  /dashboard
 
-you can login to dashboard  /dashboard
-user : admin@admin.com
-pass : 1234
+	user : admin@admin.com
+	pass : 1234
 
-codpanel
