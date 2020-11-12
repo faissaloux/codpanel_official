@@ -5,7 +5,7 @@
 /vendor
 /app/storage/
 /bootstrap/compiled.php
-
+composer.lock
 
 
 
