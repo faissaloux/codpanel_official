@@ -36,7 +36,7 @@ class ListingController extends Controller {
 
     public function employees()
     {
-        $lists = Lists::employees()->paginate(10);
+        $lists = Lists::employees()->where('handler','employee')->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
         $providers = User::orderby('id','desc')->get();
@@ -48,7 +48,7 @@ class ListingController extends Controller {
 
     public function providers()
     {
-        $lists = Lists::providers()->paginate(10);
+        $lists = Lists::providers()->where('handler','provider')->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
         $providers = User::orderby('id','desc')->get();
@@ -207,13 +207,24 @@ class ListingController extends Controller {
         return view('admin.users.create');
     }
 
-    public function listing($id)
+    public function listing(Request $request)
     {
-        if($id == "all"){
-            $lists = Lists::with("items")->get();
-        }else{
-            $lists = Lists::with("items")->where('status',$id)->get();
+
+        if($request->handler == "employee"){
+            if($request->type == "all"){
+                $lists = Lists::with("items")->where('handler','employee')->get();
+            }else{
+                $lists = Lists::with("items")->where('handler','employee')->where('status',$request->type)->get();
+            }
         }
+        if($request->handler == "provider"){
+            if($request->type == "all"){
+                $lists = Lists::with("items")->where('handler','provider')->get();
+            }else{
+                $lists = Lists::with("items")->where('handler','provider')->where('status',$request->type)->get();
+            }
+        }
+        
         
         return response()->view('dashboard.elements.listing-table' , compact('lists'))->setStatusCode(200);
     }

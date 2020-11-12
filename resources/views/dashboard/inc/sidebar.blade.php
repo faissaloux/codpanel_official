@@ -85,13 +85,13 @@
                 href="{{ route('dashboard.profile', ["id" => Auth::user()->id ]) }}"
                 data-toggle="tooltip"
                 data-placement="top"
-                data-original-title="Profile">
+                data-original-title="حسابي">
             <i data-feather="user" class="wd-16"></i></a>
             <a  class="pull-left"
                 href="aut-signin.html"
                 data-toggle="tooltip"
                 data-placement="top"
-                data-original-title="Sing Out">
+                data-original-title="تسجيل الخروج">
             <i data-feather="log-out" class="wd-16"></i></a>
         </div>
     </div>

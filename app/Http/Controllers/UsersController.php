@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
-<<<<<<< HEAD
 use App\Client;
-=======
->>>>>>> 205890ec0a403870b3b5682551f305f0ba60491d
 use App\Employee;
 use Auth;
 use Hash;
