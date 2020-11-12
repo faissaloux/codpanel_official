@@ -1,4 +1,9 @@
 @extends('dashboard/layout')
+
+@section('title')
+    Cities | Codpanel
+@endsection
+
 @section('content')
 
 <div class="d-flex justify-content-between align-items-center p-2 bg-white p-4">

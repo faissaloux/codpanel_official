@@ -1,4 +1,9 @@
 @extends('client/layout')
+
+@section('title')
+   Stores | Codpanel
+@endsection
+
 @section('content')
     <div class="container container-store container-top">
         <div class="row">

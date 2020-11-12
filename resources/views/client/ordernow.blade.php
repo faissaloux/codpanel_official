@@ -1,4 +1,9 @@
 @extends('client/layout')
+
+@section('title')
+    Order now | Codpanel
+@endsection
+
 @section('content')
     <div class="container container-white container-ordernow">
         <div class="container-form order-container">

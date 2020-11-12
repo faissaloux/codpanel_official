@@ -1,4 +1,9 @@
 @extends('dashboard/layout')
+
+@section('title')
+    Edit city | Codpanel
+@endsection
+
 @section('content')
 <div class="d-flex justify-content-between p-2 bg-white p-4">
     <h3 class="header-title">تعديل  المدينة </h3>

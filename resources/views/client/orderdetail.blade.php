@@ -1,7 +1,7 @@
 @extends('client/layout')
 
 @section('title')
-
+    Order detail | Codpanel
 @endsection
 
 @section('content')

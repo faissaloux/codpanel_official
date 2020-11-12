@@ -1,4 +1,9 @@
 @extends('client/layout')
+
+@section('title')
+    Settings | Codpanel
+@endsection
+
 @section('content')
     <div class="container container-white container-settings">
         <div class="container-form account-settings">

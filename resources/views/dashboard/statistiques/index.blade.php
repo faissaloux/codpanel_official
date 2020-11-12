@@ -1,5 +1,9 @@
 @extends('dashboard/layout')
 
+@section('title')
+   Statistiques | Codpanel
+@endsection
+
 @section('content')
 <div class="d-flex flex-column bg-white pt-4">
     <div class="row align-items-center pr-4 pl-4 mb-3 reset-mb-sm">

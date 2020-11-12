@@ -1,5 +1,9 @@
 @extends('dashboard/layout')
 
+@section('title')
+    Reception | Codpanel
+@endsection
+
 @section('content')
 <div class="d-flex flex-column bg-white pt-4">
     <div class="d-flex justify-content-between align-items-center pr-4 pl-4">

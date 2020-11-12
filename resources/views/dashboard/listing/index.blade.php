@@ -1,5 +1,8 @@
 @extends('dashboard/layout')
 
+@section('title')
+    Listing | Codpanel
+@endsection
 
 @section('body_class')
 

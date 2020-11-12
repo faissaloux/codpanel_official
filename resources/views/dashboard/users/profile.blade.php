@@ -1,4 +1,9 @@
 @extends('dashboard/layout')
+
+@section('title')
+   Profile | Codpanel
+@endsection
+
 @section('content')
 
 <div class="page-inner mt-4">
