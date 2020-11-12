@@ -2,17 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
+use App\Client;
+use App\Employee;
 use Auth;
 use Hash;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Provider;
 
 class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::orderby('id','desc')->paginate(10);
+        //$users = User::orderby('id','desc')->get();
+        
+        $admins = Admin::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $emlpoyees = Employee::orderby('id','desc')->get();
+        $clients = Client::orderby('id','desc')->get();
+
+
+        $users = $admins->mergeRecursive($providers)->mergeRecursive($emlpoyees)->mergeRecursive($clients);
+
+        $users->all();
+
+
         return view('dashboard.users.index',compact('users'));
     }
 
