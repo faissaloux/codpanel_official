@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Cities;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Provider;
 
 class CitiesController extends Controller
 {
@@ -17,7 +17,7 @@ class CitiesController extends Controller
 
     public function create()
     {
-        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        $providers = Provider::orderby('id','desc')->get();
         return response()->view('dashboard.elements.add_city' ,compact('providers'))->setStatusCode(200);
     }
 
@@ -50,7 +50,7 @@ class CitiesController extends Controller
     public function edit($id)
     {
         $content = Cities::find($id);
-        $providers = User::orderby('id','desc')->where('role','provider')->get();
+        $providers = Provider::orderby('id','desc')->get();
         return response()->view('dashboard.elements.edit_city' ,compact('content','providers'))->setStatusCode(200);
     }
 
@@ -69,6 +69,6 @@ class CitiesController extends Controller
     {
         $city = Cities::find($id);
         $city->delete();
-        return redirect()->route('dashboard.cities.index')->with('Success',trans('city.deleted'));
+        return redirect()->route('dashboard.cities.index')->with('success',trans('city.deleted'));
     }
 }

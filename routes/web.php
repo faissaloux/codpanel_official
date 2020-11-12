@@ -115,7 +115,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
             Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
             Route::post('/load/{id}', 'ListingController@load')->name('load');
             Route::post('/history', 'ListingController@history')->name('history');
-            Route::post('/listing/{id}', 'ListingController@listing')->name('listing');
+            Route::post('/listing', 'ListingController@listing')->name('listing');
         });
 
         // statistiques
@@ -167,10 +167,11 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 });
 
 Route::group(['prefix' => '/client', 'as' => 'client.' ], function () {
-	Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
     Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
     Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
-	Route::get('/orders', 'ClientsController@orders')->name('orders');
+    Route::get('/orders', 'ClientsController@orders')->name('orders');
+	Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
+    Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
     Route::get('/settings', 'ClientsController@settings')->name('settings');
     Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
 	Route::get('/staff', 'ClientsController@staff')->name('staff');

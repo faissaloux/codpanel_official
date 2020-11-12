@@ -1,7 +1,7 @@
 @extends('client/layout')
 
 @section('title')
-
+    Order detail | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')
@@ -9,10 +9,6 @@
         <div class="row align-items-center flex-column">
             <div class="col-12 col-lg-8">
                 <a href="{{ route('client.orders') }}" class="mb-3 arrow-left-button svg-button d-flex">
-                    <svg height="24" width="24" class="svg-active">
-                        <use xlink:href="/themes/img/sprite.svg#arrow-left">
-                        </use>
-                    </svg>
                     Back
                 </a>
                 <div class="card">

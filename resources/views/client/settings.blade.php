@@ -1,7 +1,12 @@
 @extends('client/layout')
+
+@section('title')
+    Settings | {{ env('APP_NAME') }}
+@endsection
+
 @section('content')
     <div class="container container-white container-settings">
-        <div class="container-form account-settings">
+        <div class="container-form account-settings form-fix-padding">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-title d-flex justify-content-between align-items-center">
                     <div class="title-name">

@@ -1,105 +1,21 @@
 @extends('dashboard/layout')
 
+@section('title')
+    Listing | {{ env('APP_NAME') }}
+@endsection
 
 @section('body_class')
 
-data-handler=""
+data-handler="admin"
 data-type=""
+class="new-listing-page"
     
 @endsection
 
 @section('content')
 <div class="page-inner mt-4">
 
-    <ul class="nav nav-tabs type-list" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a  class="nav-link active status-click"
-                id="all-tab"
-                data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'all' ]) }}"
-                href="javascript:;">
-                <i class="mdi mdi-home"></i>
-                <span class="col">الكل</span>
-                <span class="quantity col">42</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a  class="nav-link status-click"
-                id="new-tab"
-                data-toggle="tab"
-                data-type="new"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'new' ]) }}" 
-                href="javascript:;">
-                <i class="mdi mdi-hanger"></i>
-                <span class="col">جديد</span>
-                <span class="quantity col">22</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a  class="nav-link status-click"
-                id="canceled-tab"
-                data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'canceled' ]) }}"
-                href="javascript:;">
-                <i class="mdi mdi-close"></i>
-                <span class="col">ألغيت</span>
-                <span class="quantity col">3</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a  class="nav-link status-click"
-                id="unanswred-tab"
-                data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'unanswred' ]) }}"
-                href="javascript:;">
-                <i class="mdi mdi-phone-hangup"></i>
-                <span class="col">دون إجابة</span>
-                <span class="quantity col">6</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a  class="nav-link status-click"
-                id="confirmation-tab"
-                data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'confirmation' ]) }}"
-                href="javascript:;">
-                <i class="mdi mdi-check"></i>
-                <span class="col">التأكيد</span>
-                <span class="quantity col">10</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a  class="nav-link status-click"
-                id="recall-tab"
-                data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'recall' ]) }}"
-                href="javascript:;">
-                <i class="mdi mdi-phone-in-talk"></i>
-                <span class="col">اعد الاتصال</span>
-                <span class="quantity col">8</span>
-            </a>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active pd-15" id="all" role="tabpanel" aria-labelledby="all-tab">
-            <!-- all goes here -->
-        </div>
-        <div class="tab-pane fade pd-15" id="new" role="tabpanel" aria-labelledby="new-tab">
-            <!-- new goes here -->
-        </div>
-        <div class="tab-pane fade pd-15" id="canceled" role="tabpanel" aria-labelledby="canceled-tab">
-            <!-- Canceled goes here -->
-        </div>
-        <div class="tab-pane fade pd-15" id="unanswered" role="tabpanel" aria-labelledby="unanswered-tab">
-            <!-- Unanswered goes here -->
-        </div>
-        <div class="tab-pane fade pd-15" id="confirmation" role="tabpanel" aria-labelledby="confirmation-tab">
-            <!-- Confirmation goes here -->
-        </div>
-        <div class="tab-pane fade pd-15" id="recall" role="tabpanel" aria-labelledby="recall-tab">
-            <!-- Recall goes here -->
-        </div>
-    </div>
+    
     <div>
         <div class="d-flex justify-content-between">
             <div class="col-6 pl-0">
@@ -500,7 +416,7 @@ data-type=""
                                             <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 @foreach ($providers as $provider)
-                                                    <option value="{{$provider->id}}">{{$provider->id}}</option>
+                                                    <option value="{{$provider->id}}">{{$provider->name}}</option>
                                                 @endforeach
                                                 
                                             </select>
@@ -514,7 +430,7 @@ data-type=""
                                             <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 @foreach ($products as $product)
-                                                    <option value="{{$product->id}}">{{$product->id}}</option>
+                                                    <option value="{{$product->id}}">{{$product->name}}</option>
                                                 @endforeach
                                                 
                                             </select>

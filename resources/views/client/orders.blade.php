@@ -1,4 +1,9 @@
 @extends('client/layout')
+
+@section('title')
+    Orders | {{ env('APP_NAME') }}
+@endsection
+
 @section('content')
     <div class="container container-store container-top">
         <div class="row">
@@ -80,7 +85,7 @@
                                 </td>
                                 <td class="table-separator"></td>
                                 <td data-label="Actions" class="d-flex justify-content-between w-100">
-                                    <a href="{{ route('client.orderdetail') }}">
+                                    <a href="{{ route('client.orderUnpaid') }}">
                                         <i class="fa fa-file" aria-hidden="true"></i>
                                         View details
                                     </a>

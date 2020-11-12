@@ -6,12 +6,11 @@ use App\User;
 use App\Items;
 use App\Lists;
 use App\Cities;
-use Carbon\Carbon;
+use App\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Products;
-use Dotenv\Result\Success;
-use Illuminate\Support\Facades\Auth;
+use App\Provider;
 
 class ListingController extends Controller {
 
@@ -25,10 +24,9 @@ class ListingController extends Controller {
     public function index()
     {
         $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
-        // dd($lists);
         $cities = Cities::orderby('id','desc')->get();
-        $providers = User::orderby('id','desc')->get();
-        $employees = User::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
 
         return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
@@ -36,26 +34,26 @@ class ListingController extends Controller {
 
     public function employees()
     {
-        $lists = Lists::employees()->paginate(10);
+        $lists = Lists::employees()->where('handler','employee')->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
-        $providers = User::orderby('id','desc')->get();
-        $employees = User::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();        
 
-        return view('employees.index',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function providers()
     {
-        $lists = Lists::providers()->paginate(10);
+        $lists = Lists::providers()->where('handler','provider')->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
-        $providers = User::orderby('id','desc')->get();
-        $employees = User::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
 
-        return view('providers.index',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function new()
@@ -135,7 +133,7 @@ class ListingController extends Controller {
         $cities = Cities::orderby('id','desc')->get();
         $users = User::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
-        $content = Lists::find($id);        
+        $content = Lists::with("items")->find($id);
         return response()->view('dashboard.elements.edit_list' ,compact('cities','users','products','content'))->setStatusCode(200);
     }
 
@@ -199,6 +197,7 @@ class ListingController extends Controller {
     public function load($id)
     {
         $list = Lists::with("items")->find($id);
+        //dd($list);
         return response()->view('dashboard.elements.list_details' , compact('list'))->setStatusCode(200);
     }
 
@@ -207,13 +206,24 @@ class ListingController extends Controller {
         return view('admin.users.create');
     }
 
-    public function listing($id)
+    public function listing(Request $request)
     {
-        if($id == "all"){
-            $lists = Lists::with("items")->get();
-        }else{
-            $lists = Lists::with("items")->where('status',$id)->get();
+
+        if($request->handler == "employee"){
+            if($request->type == "all"){
+                $lists = Lists::with("items")->where('handler','employee')->get();
+            }else{
+                $lists = Lists::with("items")->where('handler','employee')->where('status',$request->type)->get();
+            }
         }
+        if($request->handler == "provider"){
+            if($request->type == "all"){
+                $lists = Lists::with("items")->where('handler','provider')->get();
+            }else{
+                $lists = Lists::with("items")->where('handler','provider')->where('status',$request->type)->get();
+            }
+        }
+        
         
         return response()->view('dashboard.elements.listing-table' , compact('lists'))->setStatusCode(200);
     }
