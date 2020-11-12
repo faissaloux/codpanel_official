@@ -1,4 +1,9 @@
 @extends('client/layout')
+
+@section('title')
+
+@endsection
+
 @section('content')
     <div class="container container-invoice mt-5">
         <div class="row align-items-center flex-column">
