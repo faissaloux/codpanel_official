@@ -6,14 +6,9 @@
 
 @section('body_class')
 
-<<<<<<< HEAD:resources/views/staff/providers/index.blade.php
     data-handler=""
     data-type=""
-=======
-data-handler="provider"
-data-type=""
-class="providers-listing-page"
->>>>>>> 56e88ece41550162903e63e8036f6e484cc2b78c:resources/views/providers/index.blade.php
+    class="providers-listing-page"
     
 @endsection
 
