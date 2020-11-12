@@ -8,3 +8,7 @@
 - php artisan make:data
 
 
+you can login to dashboard  /dashboard
+user : admin@admin.com
+pass : 1234
+
