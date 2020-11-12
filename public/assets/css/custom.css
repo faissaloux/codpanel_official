@@ -781,4 +781,5 @@ div.show-columns-container.show button .show-columns-icon {
     width: calc(100% - 60px);
     height: calc(100% - 189px);
     background: #80808085;
+    display: none !important;
 }

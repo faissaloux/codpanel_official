@@ -7,8 +7,9 @@
 
 @section('body_class')
 
-data-handler=""
+data-handler="employee"
 data-type=""
+class="employees-listing-page"
     
 @endsection
 
@@ -17,84 +18,66 @@ data-type=""
 
     <ul class="nav nav-tabs type-list" id="myTab" role="tablist">
         <li class="nav-item">
-            <a  class="nav-link active"
+            <a  class="nav-link active status-click"
                 id="all-tab"
                 data-toggle="tab"
-                data-type="all"
-                href="#all"
-                role="tab"
-                aria-controls="all"
-                aria-selected="true">
+                data-type="all"                
+                href="javascript:;">
                 <i class="mdi mdi-home"></i>
                 <span class="col">الكل</span>
                 <span class="quantity col">42</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="new-tab"
                 data-toggle="tab"
-                data-type="new" 
-                href="#new"
-                role="tab"  
-                aria-controls="new"
-                aria-selected="false">
+                data-type="new"
+                href="javascript:;">
                 <i class="mdi mdi-hanger"></i>
                 <span class="col">جديد</span>
                 <span class="quantity col">22</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="canceled-tab"
                 data-toggle="tab"
                 data-type="canceled"
-                href="#canceled"
-                role="tab"
-                aria-controls="canceled"
-                aria-selected="false">
+                href="javascript:;">
                 <i class="mdi mdi-close"></i>
                 <span class="col">ألغيت</span>
                 <span class="quantity col">3</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="unanswred-tab"
                 data-toggle="tab"
                 data-type="unanswred"
-                href="#unanswered"
-                role="tab"
-                aria-controls="unanswered"
-                aria-selected="false">
+                href="javascript:;">
                 <i class="mdi mdi-phone-hangup"></i>
                 <span class="col">دون إجابة</span>
                 <span class="quantity col">6</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="confirmation-tab"
                 data-toggle="tab"
                 data-type="confirmation"
-                href="#confirmation"
-                role="tab"
-                aria-controls="confirmation"
-                aria-selected="false">
+                href="javascript:;">
                 <i class="mdi mdi-check"></i>
                 <span class="col">التأكيد</span>
                 <span class="quantity col">10</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="recall-tab"
                 data-toggle="tab"
                 data-type="recall"
-                href="#recall"
-                role="tab"
-                aria-controls="recall"
-                aria-selected="false">
+                href="javascript:;">
                 <i class="mdi mdi-phone-in-talk"></i>
                 <span class="col">اعد الاتصال</span>
                 <span class="quantity col">8</span>
@@ -550,13 +533,21 @@ data-type=""
         </form>
     </div>
 
-    <center class="mt-2">
-        <div class="spinner-border mb-2 text-primary" role="status">
-            <span class="sr-only">Loading...</span>
+    <!-- spinner -->
+    <center class="mt-2 ">
+        <div class="spinner-loader-container d-table">
+            <div class="spinner-loader d-table-cell align-middle">
+                <div class="spinner-border mb-2 text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </div>
     </center>
+    <!-- End spinner -->
         
     <div class="card-body pd-0 tx-center">
+        
+
         <table class="table table-primary table-hover">
             <thead>
                 <tr>
@@ -586,7 +577,7 @@ data-type=""
                     <th scope="col">تعديل</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-body-listing">
                 @foreach($lists as $list)
                     <tr class="{{ 'list_'.$list->id }}" >
                         <th scope="row"><input type="checkbox" class="hoverRow"/></th>

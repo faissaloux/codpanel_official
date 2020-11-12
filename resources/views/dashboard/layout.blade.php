@@ -478,6 +478,13 @@ $('#updatecities').submit(function(event){
 });
 });
 
+
+$( document ).ready(function() {
+    if($('body').hasClass("employees-listing-page")){
+      alert("frf");
+    }
+});
+
         </script>
         
     </body>
