@@ -503,7 +503,7 @@ data-type=""
                                             <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 @foreach ($providers as $provider)
-                                                    <option value="{{$provider->id}}">{{$provider->id}}</option>
+                                                    <option value="{{$provider->id}}">{{$provider->name}}</option>
                                                 @endforeach
                                                 
                                             </select>
@@ -517,7 +517,7 @@ data-type=""
                                             <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 @foreach ($products as $product)
-                                                    <option value="{{$product->id}}">{{$product->id}}</option>
+                                                    <option value="{{$product->id}}">{{$product->name}}</option>
                                                 @endforeach
                                                 
                                             </select>

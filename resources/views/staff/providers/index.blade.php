@@ -1,4 +1,4 @@
-@extends('dashboard/layout')
+@extends('staff/layout')
 
 @section('title')
     Listing | {{ env('APP_NAME') }}
@@ -6,8 +6,8 @@
 
 @section('body_class')
 
-data-handler=""
-data-type=""
+    data-handler=""
+    data-type=""
     
 @endsection
 

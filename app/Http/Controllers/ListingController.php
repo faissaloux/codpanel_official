@@ -6,12 +6,11 @@ use App\User;
 use App\Items;
 use App\Lists;
 use App\Cities;
-use Carbon\Carbon;
+use App\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Products;
-use Dotenv\Result\Success;
-use Illuminate\Support\Facades\Auth;
+use App\Provider;
 
 class ListingController extends Controller {
 
@@ -25,10 +24,9 @@ class ListingController extends Controller {
     public function index()
     {
         $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
-        // dd($lists);
         $cities = Cities::orderby('id','desc')->get();
-        $providers = User::orderby('id','desc')->get();
-        $employees = User::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
 
         return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
@@ -39,11 +37,11 @@ class ListingController extends Controller {
         $lists = Lists::employees()->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
-        $providers = User::orderby('id','desc')->get();
-        $employees = User::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();        
 
-        return view('employees.index',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function providers()
@@ -51,11 +49,11 @@ class ListingController extends Controller {
         $lists = Lists::providers()->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
-        $providers = User::orderby('id','desc')->get();
-        $employees = User::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
 
-        return view('providers.index',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
     }
 
     public function new()
