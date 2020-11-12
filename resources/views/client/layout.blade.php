@@ -30,8 +30,8 @@
     <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="https://perfectcdn.com/2125cb68-0d04-48de-9dc5-b6dd319ce4a9/logo.svg" alt="Sommerce"/>
+                <a class="navbar-brand" href="{{ route('client.support') }}">
+                    <h5>Codpanel</h5>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                         data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -70,7 +70,6 @@
                                 <i class="fa fa-file" aria-hidden="true"></i>
                                 Orders
                             </a>
-                            <span class="oval">1</span>
                         </div>
 
                         <div class="menu-link-container">
