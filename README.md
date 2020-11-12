@@ -27,7 +27,7 @@ DB_PASSWORD=secret
 ```
 
 
-### 3. setup the database & add admin 
+### 3. setup the database & add admin & some dummy data
 
 Run this commands from the Terminal:
 
