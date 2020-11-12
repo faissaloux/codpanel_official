@@ -34,7 +34,7 @@ class ListingController extends Controller {
 
     public function employees()
     {
-        $lists = Lists::employees()->where('handler','employee')->paginate(10);
+        $lists = Lists::employees()->orderby('id','desc')->where('handler','employee')->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
@@ -46,7 +46,7 @@ class ListingController extends Controller {
 
     public function providers()
     {
-        $lists = Lists::providers()->where('handler','provider')->paginate(10);
+        $lists = Lists::providers()->orderby('id','desc')->where('handler','provider')->paginate(10);
         
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
@@ -211,16 +211,16 @@ class ListingController extends Controller {
 
         if($request->handler == "employee"){
             if($request->type == "all"){
-                $lists = Lists::with("items")->where('handler','employee')->get();
+                $lists = Lists::employees()->orderby('id','desc')->where('handler','employee')->paginate(10);
             }else{
-                $lists = Lists::with("items")->where('handler','employee')->where('status',$request->type)->get();
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','employee')->where('status',$request->type)->get();
             }
         }
         if($request->handler == "provider"){
             if($request->type == "all"){
-                $lists = Lists::with("items")->where('handler','provider')->get();
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->get();
             }else{
-                $lists = Lists::with("items")->where('handler','provider')->where('status',$request->type)->get();
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->where('status',$request->type)->get();
             }
         }
         
