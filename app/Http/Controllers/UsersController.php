@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+<<<<<<< HEAD
 use App\Client;
+=======
+>>>>>>> 205890ec0a403870b3b5682551f305f0ba60491d
 use App\Employee;
 use Auth;
 use Hash;
@@ -56,16 +59,24 @@ class UsersController extends Controller
               'phone.required'    => trans("phone.required"),
           ];
   
-          $request->validate($rules,$messages);
-  
-          $user           = new User();
-          $user->name     = $request->name;
-          $user->email    = $request->email;
-          $user->phone    = $request->phone;
-          $user->role    = $request->role;
-          $user->password = Hash::make($request->password);
+            $request->validate($rules,$messages);
+    
+            switch($request->role){
+                case "admin"    :   $user = new Admin();
+                                    break;
+                case "employee" :   $user = new Employee();
+                                    break;
+                case "provider" :   $user = new Provider();
+                                    break;
+            };
+            
+            $user->name     = $request->name;
+            $user->email    = $request->email;
+            $user->phone    = $request->phone;
+            
+            $user->password = Hash::make($request->password);
           
-          $user->image = '';
+            $user->image = '';
 
             if($request->hasFile('image')){
                 $user->image = $request->image->store('users',['disk' => 'public']);
@@ -74,7 +85,7 @@ class UsersController extends Controller
 
           $user->save();
           
-          return redirect()->route('dashboard.users.index')->with('success', trans('user.created'));
+          return redirect()->route('dashboard.users.index')->with('success', trans('user.created.'.$request->role));
     }
 
     public function edit($id)
