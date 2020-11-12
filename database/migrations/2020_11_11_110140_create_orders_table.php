@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->engine = 'InnoDB';
 		
 		    $table->bigIncrements('id');
-		    $table->string('status', 255)->default(null);
+            $table->enum('status', ['new', 'confirmed', 'recall', 'unanswered', 'canceled'])->default('new');
 		    $table->integer('user_id');
 		    $table->string('currency', 255)->default(null);
 		    $table->string('payment_id', 255)->nullable();
