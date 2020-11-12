@@ -3,9 +3,8 @@
    
     <head>
         @include('dashboard.inc.head')
-        <link rel="stylesheet" href="https://colorlibcode.xyz/avesta/html/assets/plugins/toastr/toastr.min.css">
     </head>
-    <body dir="rtl" data-auth-id="" data-auth-type="">
+  <body dir="rtl" data-auth-id="{{ Auth::user()->id }}" data-auth-type="{{ Auth::user()->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" @yield('body_class')>
         @include('dashboard.inc.actions')
         <!--================================-->
         <!-- Page Container Start -->
@@ -51,7 +50,6 @@
         <!--================================-->
         <script src="../../assets/js/all.js"></script>
         <script src="../../assets/js/custom.js"></script>
-        <script src="https://colorlibcode.xyz/avesta/html/assets/plugins/toastr/toastr.min.js"></script>
         @if(\Session::has('success'))
             <?=
                 "<script>
@@ -91,6 +89,13 @@
         @endif
 
         <script>
+
+
+$('.modal').on('shown.bs.modal', function(e) {
+  $(function () {
+        $('.selectpicker').selectpicker();
+    });
+});
             //////default success
 
 function statue_toast(type,msg){
@@ -266,9 +271,9 @@ $('#addnewlist').click(function(e){
 
 ///add new list_id
 $('.modal').on('shown.bs.modal', function(e) {
-$('#addnewlisting').submit(function(e){  
+$('#addnewlisting').submit(function(event){  
   
-  CreateOrder();
+  //CreateOrder(event);
   
   var link = $(this).attr('data-link');
 
@@ -285,13 +290,188 @@ $('#addnewlisting').submit(function(e){
         },
         success: function(response) {
           $('body #addOrderModalCenter').modal('hide');
-          $('body #addOrderModalCenter').reset();
+          
             $.each(response, function(key, value) { 
               statue_toast("success",value)
           });
+
+          $('body #addnewlisting')[0].reset();
         },
         error : function(response){
           default_error();
+        }
+  });
+  
+});
+});
+
+///////show moda addneworder
+
+$('#addnewcity').click(function(e){
+  
+  var token   = $('meta[name="csrf-token"]').attr('content');
+  var link = $(this).attr('data-link');
+
+
+  var formData = new FormData();
+  formData.append('_token', token);
+
+
+  $.ajax({
+      url: link,
+      type: 'POST',
+      processData: false, // important
+      contentType: false, // important
+      data: formData,
+      cache:false,
+      dataType: "HTML",
+       beforeSend:function(){
+      },
+      success: function(response) {
+        $('body #addCityModalCenter').modal('show');
+        $('body #addCityModalCenter .modal-body').html(response);
+      },
+      error : function(response){
+         default_error();
+      }
+});
+
+});
+
+///////show moda editorder
+
+$('.editlist').click(function(e){
+  
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var link = $(this).attr('data-link');
+  
+
+    var formData = new FormData();
+    formData.append('_token', token);
+
+
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache:false,
+        dataType: "HTML",
+         beforeSend:function(){
+        },
+        success: function(response) {
+          $('body #addOrderModalCenter').modal('show');
+          $('body #addOrderModalCenter .modal-body').html(response);
+        },
+        error : function(response){
+           default_error();
+        }
+  });
+  
+});
+
+///add new cities
+$('.modal').on('shown.bs.modal', function(e) {
+$('#addnewcities').submit(function(event){  
+  
+  //CreateOrder(event);
+  
+  var link = $(this).attr('data-link');
+
+  var datastring = $(this).serialize();
+
+
+    $.ajax({
+        url: link,
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: 'POST',
+        data: datastring,
+        dataType: "JSON",
+         beforeSend:function(){
+        },
+        success: function(response) {
+          $('body #addCityModalCenter').modal('hide');
+          
+            $.each(response, function(key, value) { 
+              statue_toast("success",value)
+          });
+
+          $('body #addnewcities')[0].reset();
+        },
+        error : function(response){
+          default_error();
+          return false;
+        }
+  });
+  
+});
+});
+
+///////show moda editcity
+
+$('.editcitymodal').click(function(e){
+  
+  var token   = $('meta[name="csrf-token"]').attr('content');
+  var link = $(this).attr('data-link');
+
+
+  var formData = new FormData();
+  formData.append('_token', token);
+
+
+  $.ajax({
+      url: link,
+      type: 'POST',
+      processData: false, // important
+      contentType: false, // important
+      data: formData,
+      cache:false,
+      dataType: "HTML",
+       beforeSend:function(){
+      },
+      success: function(response) {
+        $('body #addCityModalCenter').modal('show');
+        $('body #addCityModalCenter .modal-body').html(response);
+      },
+      error : function(response){
+         default_error();
+      }
+});
+
+});
+
+///add new cities
+$('.modal').on('shown.bs.modal', function(e) {
+$('#updatecities').submit(function(event){  
+  
+  ////CreateOrder(event);
+  
+  var link = $(this).attr('data-link');
+
+  var datastring = $(this).serialize();
+
+
+    $.ajax({
+        url: link,
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        type: 'POST',
+        data: datastring,
+        dataType: "JSON",
+         beforeSend:function(){
+        },
+        success: function(response) {
+          $('body #addCityModalCenter').modal('hide');
+          
+            $.each(response, function(key, value) { 
+              statue_toast("success",value)
+          });
+
+          $('body #updatecities')[0].reset();
+        },
+        error : function(response){
+          default_error();
+          return false;
         }
   });
   

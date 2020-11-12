@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Lists extends Model
 {
+
+    protected $guarded = ['id'];
+
+    
     public function provider(){
         return  $this->belongsTo('App\User', 'provider_id')->withDefault(['name' => 'N-A']);
     }
@@ -18,6 +22,12 @@ class Lists extends Model
     public function items(){
         return  $this->hasMany('App\Items', 'list_id');
     }
+
+    public function city(){
+        return  $this->belongsTo('App\Cities', 'city_id')->withDefault(['name' => 'N-A']);
+    }
+
+    
 
     public function scopeCurrentProvider($query){
         return $query->where('provider_id', Auth::user()->id);

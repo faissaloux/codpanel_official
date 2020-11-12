@@ -15,6 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
+       // 'guard' => 'client',
         'passwords' => 'users',
     ],
 
@@ -36,6 +37,27 @@ return [
     */
 
     'guards' => [
+
+        'admins' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'providers' => [
+            'driver' => 'session',
+            'provider' => 'providers',
+        ],
+
+        'employees' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
+
+        'clients' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -71,6 +93,26 @@ return [
             'model' => App\User::class,
         ],
 
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
+        'providers' => [
+            'driver' => 'eloquent',
+            'model' => App\Provider::class,
+        ],
+
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Employee::class,
+        ],
+
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Client::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -96,6 +138,34 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'admins_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'providers' => [
+            'provider' => 'providers',
+            'table' => 'providers_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'employees' => [
+            'provider' => 'employees',
+            'table' => 'employees_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'clients' => [
+            'provider' => 'clients',
+            'table' => 'clients_password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],

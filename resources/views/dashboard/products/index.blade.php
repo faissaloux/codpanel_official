@@ -1,9 +1,9 @@
 @extends('dashboard/layout')
 @section('content')
 
-<div class="d-flex justify-content-between p-2 bg-white p-4">
+<div class="d-flex justify-content-between align-items-center p-2 bg-white p-4">
     <h3 class="header-title">المنتجات</h3>
-    <div class="btn-group btn-top d-flex justify-content-end" role="group">
+    <div class="btn-group btn-top d-flex justify-content-end btn-action-sm-box" role="group">
         <a href="{{route('dashboard.products.create')}}" class="btn btn-primary d-flex col-4 border-none">
             <span class="d-flex justify-content-center add-new-icon">
                 <i class="mdi mdi-plus d-flex align-items-center text-white"></i>
@@ -182,7 +182,7 @@
         </div>
         <div class="col-12">
             <div class="card-body pd-0 tx-center">
-                <table class="table table-primary">
+                <table class="table table-primary table-hover">
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -196,7 +196,7 @@
                     <tbody>
                         @foreach($products as $product)
                             <tr>
-                                <th scope="row"><input type="checkbox"/></th>
+                                <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                                 <td data-type="image">
                                     @if(!empty ( $product->image ))  
                                         <div class="avatar mr-2 img-cont">

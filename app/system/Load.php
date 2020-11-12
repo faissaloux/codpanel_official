@@ -1,11 +1,11 @@
 <?php 
 
+
 namespace App\System;
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-use \App\Models\Product;
-use \App\Models\Cities;    
-use \App\Models\User;
+use App\Product;
+use App\Cities;    
+use App\User;
 
 class Load {
 
@@ -24,7 +24,7 @@ class Load {
 
     public static function cities(){
 		if(!isset($_SESSION['cities'])){
-            $columns = ['id','name','user_id','reference'];
+            $columns = ['id','name','provider_id','reference'];
             $cities  = Cities::all($columns)->toArray();
             $_SESSION['cities'] = $cities;
         }else {

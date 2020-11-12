@@ -1,16 +1,16 @@
 @extends('dashboard/layout')
 @section('content')
 
-<div class="d-flex justify-content-between p-2 bg-white p-4">
+<div class="d-flex justify-content-between align-items-center p-2 bg-white p-4">
     <h3 class="header-title">المدن والموزعين المكلفين بهم</h3>
-    <div class="btn-group btn-top d-flex justify-content-end" role="group">
+    <div class="btn-group btn-top d-flex justify-content-end btn-action-sm-box" role="group">
         <a href="#" class="btn btn-primary d-flex col-4 border-none">
             <span class="d-flex justify-content-center add-new-icon">
                 <i class="mdi mdi-plus d-flex align-items-center text-white"></i>
             </span>
             <span   class="add-new-text"
-                    data-toggle="modal"
-                    data-target="#addCityModalCenter">
+                    id="addnewcity"
+                    data-link="{{ route('dashboard.cities.create') }}">
                 إضافة مدينة جديدة
             </span>
         </a>
@@ -20,7 +20,7 @@
     <div class="d-flex">
         <div class="col-12">
             <div class="card-body pd-0 tx-center">
-                <table class="table table-primary">
+                <table class="table table-primary table-hover">
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -33,20 +33,20 @@
                     <tbody>
                         @foreach($cities as $city)
                             <tr>
-                                <th scope="row"><input type="checkbox"/></th>
+                                <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                                 <td data-type="city">
-                                    <p>{{ $city->name }}</p>
+                                    <span>{{ $city->name }}</span>
                                 </td>
                                 <td data-type="reference">
-                                    <p>{{ $city->reference }}</p>
+                                    <span>{{ $city->reference }}</span>
                                 </td>
                                 <td data-type="provider">
-                                    <p>{{ $city->user->name }}</p>
+                                    <span>{{ $city->user->name }}</span>
                                 </td>
                                 <td>
                                     <a  type="button"
-                                        href="{{ route('dashboard.cities.edit' , ['id' => $city->id ]) }}"
-                                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
+                                        data-link="{{ route('dashboard.cities.edit' , ['id' => $city->id ]) }}"
+                                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editcitymodal">
                                         تعديل
                                     </a>
                                     <a  type="button"

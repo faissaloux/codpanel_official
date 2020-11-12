@@ -34,7 +34,7 @@
                                                 <input  type="text"
                                                         class="form-control frequired"
                                                         name="adress"
-                                                        value="{{ $content->adress }}"
+                                                        value="dcdcd"
                                                         placeholder="العنوان"
                                                         required>
                                             </div>
@@ -47,7 +47,7 @@
                                                     <input  type="number"
                                                             class="form-control frequired"
                                                             name="tel"
-                                                            value="{{ $content->tel }}"
+                                                            value="{{ $content->name }}"
                                                             id="tel"
                                                             maxlength="10"
                                                             placeholder="رقم الهاتف"

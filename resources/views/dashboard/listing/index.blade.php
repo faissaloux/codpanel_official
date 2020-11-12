@@ -1,88 +1,79 @@
 @extends('dashboard/layout')
 
+
+@section('body_class')
+
+data-handler=""
+data-type=""
+    
+@endsection
+
 @section('content')
 <div class="page-inner mt-4">
 
     <ul class="nav nav-tabs type-list" id="myTab" role="tablist">
         <li class="nav-item">
-            <a  class="nav-link active"
+            <a  class="nav-link active status-click"
                 id="all-tab"
                 data-toggle="tab"
-                data-type="all"
-                href="#all"
-                role="tab"
-                aria-controls="all"
-                aria-selected="true">
+                data-link="{{ route('dashboard.listing.listing' , ['id' => 'all' ]) }}"
+                href="javascript:;">
                 <i class="mdi mdi-home"></i>
                 <span class="col">الكل</span>
                 <span class="quantity col">42</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="new-tab"
                 data-toggle="tab"
-                data-type="new" 
-                href="#new"
-                role="tab"  
-                aria-controls="new"
-                aria-selected="false">
+                data-type="new"
+                data-link="{{ route('dashboard.listing.listing' , ['id' => 'new' ]) }}" 
+                href="javascript:;">
                 <i class="mdi mdi-hanger"></i>
                 <span class="col">جديد</span>
                 <span class="quantity col">22</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="canceled-tab"
                 data-toggle="tab"
-                data-type="canceled"
-                href="#canceled"
-                role="tab"
-                aria-controls="canceled"
-                aria-selected="false">
+                data-link="{{ route('dashboard.listing.listing' , ['id' => 'canceled' ]) }}"
+                href="javascript:;">
                 <i class="mdi mdi-close"></i>
                 <span class="col">ألغيت</span>
                 <span class="quantity col">3</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="unanswred-tab"
                 data-toggle="tab"
-                data-type="unanswred"
-                href="#unanswered"
-                role="tab"
-                aria-controls="unanswered"
-                aria-selected="false">
+                data-link="{{ route('dashboard.listing.listing' , ['id' => 'unanswred' ]) }}"
+                href="javascript:;">
                 <i class="mdi mdi-phone-hangup"></i>
                 <span class="col">دون إجابة</span>
                 <span class="quantity col">6</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="confirmation-tab"
                 data-toggle="tab"
-                data-type="confirmation"
-                href="#confirmation"
-                role="tab"
-                aria-controls="confirmation"
-                aria-selected="false">
+                data-link="{{ route('dashboard.listing.listing' , ['id' => 'confirmation' ]) }}"
+                href="javascript:;">
                 <i class="mdi mdi-check"></i>
                 <span class="col">التأكيد</span>
                 <span class="quantity col">10</span>
             </a>
         </li>
         <li class="nav-item">
-            <a  class="nav-link"
+            <a  class="nav-link status-click"
                 id="recall-tab"
                 data-toggle="tab"
-                data-type="recall"
-                href="#recall"
-                role="tab"
-                aria-controls="recall"
-                aria-selected="false">
+                data-link="{{ route('dashboard.listing.listing' , ['id' => 'recall' ]) }}"
+                href="javascript:;">
                 <i class="mdi mdi-phone-in-talk"></i>
                 <span class="col">اعد الاتصال</span>
                 <span class="quantity col">8</span>
@@ -479,11 +470,11 @@
                                             <label for="city_selector" class="float-right">
                                                 <b>المدينة</b>
                                             </label>
-                                            <select class="form-control" name="city_selector">
+                                            <select class="selectpicker form-control" name="city_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                <option value="agadir">أكادير</option>
-                                                <option value="Marrakech">مراكش</option>
-                                                <option value="rabat">الرباط</option>
+                                                @foreach ($cities as $city)
+                                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -492,18 +483,12 @@
                                             <label for="employee_selector" class="float-right" >
                                                 <b>عميل الإتصال</b>
                                             </label>
-                                            <select class="form-control" name="employee_selector">
+                                            <select class="selectpicker form-control" name="employee_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                <option value="139">bassiri soulaiman</option>
-                                                <option value="141">abdelilah</option>
-                                                <option value="143">soulaimane</option>
-                                                <option value="144">bassiri</option>
-                                                <option value="145">yassin</option>
-                                                <option value="146">mustapha</option>
-                                                <option value="147">youssef</option>
-                                                <option value="148">az-eddine</option>
-                                                <option value="149">hicham</option>
-                                                <option value="150">membre</option>
+                                                @foreach ($employees as $employee)
+                                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                                @endforeach
+                                                
                                             </select>
                                         </div>
                                     </div>
@@ -512,20 +497,12 @@
                                             <label for="provider" class="float-right">
                                                 <b>مندوب التوصيل</b>
                                             </label>
-                                            <select class="form-control" name="provider">
+                                            <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                <option value="Axa assurance maroc">Axa assurance maroc</option>
-                                                <option value="Allianz">Allianz</option>
-                                                <option value="Saham assurance">Saham assurance</option>
-                                                <option value="Sanad">Sanad</option>
-                                                <option value="Mamda">Mamda</option>
-                                                <option value="Mcma">Mcma</option>
-                                                <option value="Matu">Matu</option>
-                                                <option value="Cat">Cat</option>
-                                                <option value="Atlanta">Atlanta</option>
-                                                <option value="wafa assurence">wafa assurence</option>
-                                                <option value="JUDICIARE">JUDICIARE</option>
-                                                <option value="CAE">CAE</option>
+                                                @foreach ($providers as $provider)
+                                                    <option value="{{$provider->id}}">{{$provider->id}}</option>
+                                                @endforeach
+                                                
                                             </select>
                                         </div>
                                     </div>
@@ -534,20 +511,12 @@
                                             <label for="product" class="float-right">
                                                 <b>المنتوج</b>
                                             </label>
-                                            <select class="form-control" name="product">
+                                            <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                <option value="Axa assurance maroc">Axa assurance maroc</option>
-                                                <option value="Allianz">Allianz</option>
-                                                <option value="Saham assurance">Saham assurance</option>
-                                                <option value="Sanad">Sanad</option>
-                                                <option value="Mamda">Mamda</option>
-                                                <option value="Mcma">Mcma</option>
-                                                <option value="Matu">Matu</option>
-                                                <option value="Cat">Cat</option>
-                                                <option value="Atlanta">Atlanta</option>
-                                                <option value="wafa assurence">wafa assurence</option>
-                                                <option value="JUDICIARE">JUDICIARE</option>
-                                                <option value="CAE">CAE</option>
+                                                @foreach ($products as $product)
+                                                    <option value="{{$product->id}}">{{$product->id}}</option>
+                                                @endforeach
+                                                
                                             </select>
                                         </div>
                                     </div>
@@ -560,13 +529,21 @@
         </form>
     </div>
 
-    <center class="mt-2">
-        <div class="spinner-border mb-2 text-primary" role="status">
-            <span class="sr-only">Loading...</span>
+    <!-- spinner -->
+    <center class="mt-2 ">
+        <div class="spinner-loader-container d-table">
+            <div class="spinner-loader d-table-cell align-middle">
+                <div class="spinner-border mb-2 text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </div>
     </center>
+    <!-- End spinner -->
         
     <div class="card-body pd-0 tx-center">
+        
+
         <table class="table table-primary table-hover">
             <thead>
                 <tr>
@@ -596,7 +573,7 @@
                     <th scope="col">تعديل</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-body-listing">
                 @foreach($lists as $list)
                     <tr class="{{ 'list_'.$list->id }}" >
                         <th scope="row"><input type="checkbox" class="hoverRow"/></th>
@@ -643,8 +620,9 @@
                                 التفاصيل
                             </a>
                             <a  type="button"
-                                href="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}"
-                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
+                                href="javascript:;"
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editlist"
+                                data-link="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}">
                                 تعديل
                             </a>
                         </td>
