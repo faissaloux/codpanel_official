@@ -44,13 +44,5 @@ class User extends Authenticatable
         return (new \App\System\Helper())->random_color();
     }
 
-    public function scopeEmployees($query){
-        return  $query->where('role', 'employee');
-    }
-
-    public function scopeProviders($query){
-        return  $query->where('role', 'provider');
-    }
-
 
 }

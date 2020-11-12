@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Cities;
+use App\Employee;
+use App\Provider;
 use App\Http\Controllers\Controller;
 use App\Lists;
 use App\Products;
-use App\User;
-use Illuminate\Http\Request;
 
 class StatistiquesController extends Controller
 {
@@ -18,8 +18,8 @@ class StatistiquesController extends Controller
         $unanswered = Lists::unanswered()->count() ?? 0;
         $recall = Lists::recall()->count() ?? 0;
         $delivred = Lists::delivred()->count() ?? 0;
-        $employees = User::employees()->count() ?? 0;
-        $providers = User::providers()->count() ?? 0;
+        $employees = Employee::count() ?? 0;
+        $providers = Provider::count() ?? 0;
         $cities = Cities::count() ?? 0;
         $products = Products::count() ?? 0;
 
