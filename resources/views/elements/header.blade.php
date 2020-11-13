@@ -51,7 +51,7 @@
                     </a>
                 </div>                 
                 <div class="buy-button">
-                    <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary">Buy Now</a>
+                    <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary">إشترك الأن</a>
                 </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">
@@ -71,24 +71,24 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
-                        <li><a href="{{route('index')}}">Home</a></li>
+                        <li><a href="{{route('index')}}">الصفحة الرئيسية</a></li>
                         <li>
-                            <a href="{{route('about')}}">About Us</a><span class="menu-arrow"></span>
+                            <a href="{{route('about')}}">معلومات عنا</a><span class="menu-arrow"></span>
                            
                         </li>
         
                         <li >
-                            <a href="{{route('faq')}}">Faq</a><span class="menu-arrow"></span>
+                            <a href="{{route('faq')}}">الأسئلة المتكررة</a><span class="menu-arrow"></span>
                              
                             
                         </li>
                         <li >
-                            <a href="{{route('contact')}}">Contact Us</a><span class="menu-arrow"></span>
+                            <a href="{{route('contact')}}">تواصل معنا</a><span class="menu-arrow"></span>
                             
                         </li>
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                        <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary">Buy Now</a>
+                        <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary">إشترك الأن</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
