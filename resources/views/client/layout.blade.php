@@ -35,7 +35,7 @@
     <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('client.support') }}">
+                <a class="navbar-brand" href="{{ route('client.index') }}">
                     <h5>Codpanel</h5>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -64,9 +64,9 @@
                     <div class="navbar-nav w-100 d-flex justify-content-center">
 
                         <div class="menu-link-container">
-                            <a class="nav-item nav-link " href="{{ route('client.stores') }}">
+                            <a class="nav-item nav-link " href="{{ route('client.panels') }}">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                Stores
+                                Panels
                             </a>
                         </div>
                         

@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-12 col-md-8">
                     <form   id="login-form"
-                            action="{{ route('client.editSettings') }}"
+                            action="{{ route('client.update') }}"
                             method="post">
                         @csrf
                         <fieldset>
