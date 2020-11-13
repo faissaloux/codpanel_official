@@ -91,5 +91,13 @@
     </div>
     @yield('content')
     <script src="{{ asset('assets/js/all.js') }}"></script>
+    <script>
+        function enableInput(inputClass){
+            $(`.disable-input input.${inputClass}`).css({
+                                                            "pointer-events": "initial",
+                                                            "backgroundColor": "#FFF"
+                                                        });
+        }
+    </script>
     
 </body>
