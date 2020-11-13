@@ -6,7 +6,7 @@ use PHPtricks\Orm\Database;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use \App\Models\{ HistoryEntree , StockSortieList , Lists , Retour };
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 
 
 

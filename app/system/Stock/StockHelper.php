@@ -8,7 +8,7 @@ use \App\Models\{ Product ,  HistoryEntree , StockSortieList  };
 
 
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 
 
 
