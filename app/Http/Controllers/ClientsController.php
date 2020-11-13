@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
+
 
 class ClientsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest:clients')->except('logout');
+    }
+
     public function orderdetail()
     {
         return view('client.orderPaid');
@@ -65,4 +75,8 @@ class ClientsController extends Controller
         return view('client.ticketdetail');
     }
 
+    public function dashboard()
+    {
+        return view('client.ordernow');
+    }
 }

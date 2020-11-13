@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,7 +22,8 @@ Auth::routes();
 Route::post('/apilisting', 'ApiController@listing')->name('apilisting');
 
 
-Route::post('/attempt', 'Auth\LoginController@attempt')->name('attempt');
+Route::post('/attempt', 'Auth\LoginController@loginAdmin')->name('attempt');
+Route::post('/login', 'Auth\LoginController@showAdminLoginForm')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'IndexController@index')->name('index');
@@ -166,17 +168,28 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 	Route::get('/listing', 'ProvidersController@listing')->name('listing');
 });
 
-Route::group(['prefix' => '/client', 'as' => 'client.' ], function () {
-    Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
-    Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
-    Route::get('/orders', 'ClientsController@orders')->name('orders');
-	Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
-    Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
-    Route::get('/settings', 'ClientsController@settings')->name('settings');
-    Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
-	Route::get('/staff', 'ClientsController@staff')->name('staff');
-    Route::get('/stores', 'ClientsController@stores')->name('stores');
-    Route::get('/support', 'ClientsController@support')->name('support');
-    Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
-    Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+
+
+Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
+    Route::middleware('IsClient')->group(function () {
+        Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
+        Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
+        Route::get('/orders', 'ClientsController@orders')->name('orders');
+        Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
+        Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
+        Route::get('/settings', 'ClientsController@settings')->name('settings');
+        Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
+        Route::get('/staff', 'ClientsController@staff')->name('staff');
+        Route::get('/stores', 'ClientsController@stores')->name('stores');
+        Route::get('/support', 'ClientsController@support')->name('support');
+        Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
+        Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+        Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
+    });
+    // Authentication routes
+    Route::get('/register', 'Auth\RegisterController@showClientRegisterView')->name('register');
+    Route::post('/store', 'Auth\RegisterController@createClient')->name('store');
+    Route::get('/login', 'Auth\LoginController@showClientLoginForm')->name('login');
+    Route::post('/attempt', 'Auth\LoginController@loginClient')->name('attempt');
+    Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
 });

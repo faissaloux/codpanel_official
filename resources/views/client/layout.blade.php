@@ -45,17 +45,17 @@
 
                 <div class="dropdown">
                     <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><span class="nav-button">BB</span>
+                    aria-expanded="false"><span class="nav-button">{{ ucfirst(Auth::guard('clients')->user()->name) }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('client.settings') }}">                            
+                        <a class="dropdown-item" href="{{ route('client.settings') }}">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                             Settings
                         </a>
-                        <a class="dropdown-item" href="/logout">                            
+                        <a class="dropdown-item" href="{{ route('client.logout') }}">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                             Logout
-                        </a>                
+                        </a>
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@
                                 Stores
                             </a>
                         </div>
-                        
+
                         <div class="menu-link-container">
                             <a class="nav-item nav-link" href="{{ route('client.orders') }}">
                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -91,5 +91,5 @@
     </div>
     @yield('content')
     <script src="{{ asset('assets/js/all.js') }}"></script>
-    
+
 </body>
