@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,7 +22,8 @@ Auth::routes();
 Route::post('/apilisting', 'ApiController@listing')->name('apilisting');
 
 
-Route::post('/attempt', 'Auth\LoginController@attempt')->name('attempt');
+Route::post('/attempt', 'Auth\LoginController@loginAdmin')->name('attempt');
+Route::post('/login', 'Auth\LoginController@showAdminLoginForm')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'IndexController@index')->name('index');
@@ -160,40 +162,29 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 	Route::get('/listing', 'ProvidersController@listing')->name('listing');
 });
 
-// client
-Route::group(['prefix' => '/client', 'as' => 'client.' ], function () {
-    Route::get('/', 'ClientsController@panels')->name('index');
-    Route::get('/orderNow', 'ClientsController@ordernow')->name('ordernow');
-    Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
-    Route::get('/orders', 'ClientsController@orders')->name('orders');
-	Route::get('/orderDetail', 'ClientsController@orderdetail')->name('orderdetail');
-    Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
-    Route::get('/settings', 'SettingsController@clients')->name('settings');
-    Route::post('/update', 'SettingsController@updateClient')->name('update');
-	Route::get('/staff', 'ClientsController@staff')->name('staff');
-    Route::get('/panels', 'ClientsController@panels')->name('panels');
-    Route::get('/support', 'ClientsController@support')->name('support');
-});
 
-// supper
-Route::group(['prefix' => '/supper', 'as' => 'supper.' ], function () {
-    Route::get('/', 'SupperAdminController@index')->name('index');
-    Route::get('/settings', 'SettingsController@supper')->name('settings');
-    Route::post('/update', 'SettingsController@updateSupper')->name('update');
-    Route::get('/create', 'SupperAdminController@create')->name('create');
-    Route::post('/store', 'SupperAdminController@store')->name('store');
-    Route::get('/edit/{id}', 'SupperAdminController@edit')->name('edit');
-    Route::get('/delete/{id}', 'SupperAdminController@delete')->name('delete');
-});
-
-// tickets
-Route::group(['prefix' => '/tickets', 'as' => 'tickets.' ], function () {
-    Route::get('/', 'TicketsController@index')->name('index');
-    Route::post('/create', 'TicketsController@create')->name('create');
-    Route::get('/details', 'TicketsController@details')->name('details');
-    Route::get('/create', 'TicketsController@create')->name('create');
-    Route::post('/store', 'TicketsController@store')->name('store');
-    Route::get('/edit/{id}', 'TicketsController@edit')->name('edit');
-    Route::post('/update/{id}', 'TicketsController@update')->name('update');
-    Route::get('/delete/{id}', 'TicketsController@delete')->name('delete');
+Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
+    Route::middleware('IsClient')->group(function () {
+        Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
+        Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
+        Route::get('/orders', 'ClientsController@orders')->name('orders');
+        Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
+        Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
+        Route::get('/settings', 'ClientsController@settings')->name('settings');
+        Route::get('/update', 'ClientsController@update')->name('update');
+        Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
+        Route::get('/staff', 'ClientsController@staff')->name('staff');
+        Route::get('/stores', 'ClientsController@stores')->name('stores');
+        Route::get('/support', 'ClientsController@support')->name('support');
+        Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
+        Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+        Route::get('/panels', 'ClientsController@panels')->name('panels');
+        Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
+    });
+    // Authentication routes
+    Route::get('/register', 'Auth\RegisterController@showClientRegisterView')->name('register');
+    Route::post('/store', 'Auth\RegisterController@createClient')->name('store');
+    Route::get('/login', 'Auth\LoginController@showClientLoginForm')->name('login');
+    Route::post('/attempt', 'Auth\LoginController@loginClient')->name('attempt');
+    Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
 });
