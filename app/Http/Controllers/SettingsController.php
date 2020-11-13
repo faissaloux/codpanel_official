@@ -30,12 +30,12 @@ class SettingsController extends Controller
 
     public function dashboard()
     {
-        dd("Dashboard settings");
+        return view('dashboard.settings.index');
     }
 
-    public function updateDashboard()
+    public function updateDashboard(Request $request)
     {
-        dd("dashboard settings update");
+        dd($request);
     }
 
     public function employee()
