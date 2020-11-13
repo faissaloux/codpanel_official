@@ -6,8 +6,8 @@
 /app/storage/
 /bootstrap/compiled.php
 composer.lock
-/.idea
-/.vs
+.idea
+.vs
 
 
 
