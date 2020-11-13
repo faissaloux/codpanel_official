@@ -31,24 +31,14 @@ class ClientsController extends Controller
         return view('client.orderUnpaid');
     }
 
-    public function settings()
-    {
-        return view('client.settings');
-    }
-
-    public function editSettings(Request $request)
-    {
-        dd($request);
-    }
-
     public function staff()
     {
         return view('client.staff');
     }
 
-    public function stores()
+    public function panels()
     {
-        return view('client.stores');
+        return view('client.panels');
     }
 
     public function support()

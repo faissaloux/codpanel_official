@@ -66,18 +66,6 @@
                                         </div>
                                     </label>
                                 </div>
-                                <div class="form-check">
-                                    <input  class="form-check-input payment-code"
-                                            type="radio"
-                                            name="code"
-                                            id="radio-webmoney"
-                                            value="webmoney">
-                                    <label class="form-check-label d-flex justify-content-between" for="radio-webmoney">
-                                        <div>
-                                            <span>WebMoney</span>
-                                        </div>
-                                    </label>
-                                </div>
                             </div>
                             <div class="alert alert-pay alert-warning warning-text hidden" id="paymentContent"></div>
                             <button type="submit" id="pay-now" class="btn purple-button btn-block w-100 btn-order">
