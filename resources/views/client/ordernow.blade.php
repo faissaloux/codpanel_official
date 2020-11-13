@@ -79,7 +79,7 @@
                         </div>
                         <div class="order-buttons mb-3">
                             <div class="text-center">
-                            <a  href="{{ route('client.stores') }}"
+                            <a  href="{{ route('client.panels') }}"
                                 class="arrow-left-button svg-button d-flex justify-content-center mr-3"
                             >
                                 Back
