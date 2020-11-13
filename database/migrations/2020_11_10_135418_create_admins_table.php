@@ -21,7 +21,6 @@ class CreateAdminsTable extends Migration
             $table->string('email', 255);
             $table->string('password', 255);
             $table->string('phone', 255)->nullable();
-            $table->string('deliver_price', 255)->nullable();
             $table->time('deleted_at')->nullable();
             $table->timestamps();
 
