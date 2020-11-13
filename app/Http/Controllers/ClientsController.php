@@ -17,6 +17,11 @@ class ClientsController extends Controller
         $this->middleware('guest:clients')->except('logout');
     }
 
+    public function settings()
+    {
+        return view('client.settings');
+    }
+
     public function orderdetail()
     {
         return view('client.orderPaid');

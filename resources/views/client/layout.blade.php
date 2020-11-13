@@ -35,7 +35,8 @@
     <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('client.index') }}">
+                <!-- Client index route -->
+                <a class="navbar-brand" href="">
                     <h5>Codpanel</h5>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -45,7 +46,10 @@
 
                 <div class="dropdown">
                     <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><span class="nav-button">{{ ucfirst(Auth::guard('clients')->user()->name) }}</span>
+                    aria-expanded="false">
+                        <span class="nav-button">
+                            {{ substr(\Illuminate\Support\Facades\Auth::guard('clients')->user()->name, 0, true) }}
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('client.settings') }}">

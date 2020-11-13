@@ -14,9 +14,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <form   id="login-form"
-                            action="{{ route('client.update') }}"
-                            method="post">
+                    <form
+                        id="login-form"
+                        action="{{ route('client.update') }}"
+                        method="post">
                         @csrf
                         <fieldset>
                             <div class="alert alert-danger error-text error-summary alert alert-danger hidden"></div>
@@ -27,7 +28,7 @@
                                             id="settingsform-first_name"
                                             class="input"
                                             name="firstName"
-                                            value="brahim"
+                                            value="{{ \Illuminate\Support\Facades\Auth::guard('clients')->user()->name }}"
                                             placeholder="John"
                                             aria-required="true">
                                     <p class="help-block help-block-error"></p>
@@ -44,7 +45,7 @@
                                         aria-required="true">
                                 <p class="help-block help-block-error"></p>
                             </div>
-                            <div class="form-group disable-input">        
+                            <div class="form-group disable-input">
                                 <label class="control-label" for="settingsform-email">Email</label>
                                 <input  type="email"
                                         id="settingsform-email"

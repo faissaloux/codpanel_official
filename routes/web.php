@@ -171,12 +171,14 @@ Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
         Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
         Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
         Route::get('/settings', 'ClientsController@settings')->name('settings');
+        Route::get('/update', 'ClientsController@update')->name('update');
         Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
         Route::get('/staff', 'ClientsController@staff')->name('staff');
         Route::get('/stores', 'ClientsController@stores')->name('stores');
         Route::get('/support', 'ClientsController@support')->name('support');
         Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
         Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+        Route::get('/panels', 'ClientsController@panels')->name('panels');
         Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
     });
     // Authentication routes
