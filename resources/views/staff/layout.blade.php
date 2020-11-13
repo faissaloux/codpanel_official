@@ -18,7 +18,7 @@
             <!--================================-->
             <!-- Page Header Start -->
             <!--================================-->
-            @include('dashboard.inc.nav')
+            @include('staff.inc.nav')
             <!--/ Page Header End -->
             <!--================================-->
             <!-- Page Inner Start -->

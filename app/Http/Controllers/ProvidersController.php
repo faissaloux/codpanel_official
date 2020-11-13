@@ -19,7 +19,7 @@ class ProvidersController extends Controller
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
-        return view('staff.providers.index', compact('lists','cities','providers','employees','products'));
+        return view('staff.provider.index', compact('lists','cities','providers','employees','products'));
     }
 
 }
