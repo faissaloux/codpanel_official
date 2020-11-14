@@ -7,13 +7,16 @@ use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request as HttpRequest;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class ListsExport implements FromCollection, WithHeadings
+class ListsExport implements FromCollection, WithHeadings, WithStyles
 {
 
     public function headings(): array
     {
         return [
+            'id',
             'name',
             'adress',
             'note',
@@ -40,6 +43,16 @@ class ListsExport implements FromCollection, WithHeadings
             'duplicated_at',
             'checked_at',
             'recall_at',
+            'created_at',
+            'updated_at'
+        ];
+    }
+
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            // Style the first row as bold text.
+            1    => ['font' => ['bold' => true]]
         ];
     }
     
