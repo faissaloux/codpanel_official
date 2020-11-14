@@ -34,7 +34,7 @@ class LoginController extends Controller
 
     public function adminlogin()
     {
-        return view('auth.login');
+        return view('auth.admin_login');
     }
 
     public function adminattempt(Request $request){
@@ -56,6 +56,66 @@ class LoginController extends Controller
         $request->session()->regenerate(); //same
         return redirect('/admin/login');
     }
+
+    //End Admin
+
+    // Provider
+
+    public function providerlogin()
+    {
+        return view('auth.providre_login');
+    }
+
+    public function providerattempt(Request $request){
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:1'
+        ]);
+
+        if (Auth::guard('provider')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('/provider');
+        }
+
+        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+    }
+
+    public function providerlogout(Request $request){
+        $this->guard('provider')->logout();
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
+        return redirect('/provider/login');
+    }
+
+    //End Provider
+
+    // Employees
+
+    public function employeelogin()
+    {
+        return view('auth.employee_login');
+    }
+
+    public function employeeattempt(Request $request){
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:1'
+        ]);
+
+        if (Auth::guard('employee')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('/employee');
+        }
+
+        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+    }
+
+    public function employeelogout(Request $request){
+        $this->guard('employees')->logout();
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
+        return redirect('/employees/login');
+    }
+
+    //End Employees
 
 
 

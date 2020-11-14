@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class IsProvider
 {
@@ -15,6 +16,9 @@ class IsProvider
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if ( Auth::guard('provider')->user() ) {
+            return $next($request);
+        }
+        return redirect('/provider/login');
     }
 }
