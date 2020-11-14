@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,6 +33,12 @@ Route::post('/employee/login', 'Auth\LoginController@attempt')->name('login.empl
 Route::post('/employee/login', 'Auth\LoginController@attemptEmployee')->name('attempt.employee');
 Route::get('/employee/logout', 'Auth\LoginController@logout')->name('logout.employee');
 
+<<<<<<< HEAD
+=======
+Route::post('/attempt', 'Auth\LoginController@loginAdmin')->name('attempt');
+Route::post('/login', 'Auth\LoginController@showAdminLoginForm')->name('login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+>>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
 
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/index', 'IndexController@index')->name('index');
@@ -53,110 +60,106 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     });
 
 
-        Route::get('/profile', 'ProfileController@show')->name('profile');
+    Route::get('/profile', 'ProfileController@show')->name('profile');
+    Route::get('/settings', 'SettingsController@dashboard')->name('settings');
+    Route::post('/update', 'SettingsController@updateDashboard')->name('update');
 
 
 
-        // users
-        Route::group(['prefix' => '/users', 'as' => 'users.' ], function () {
-            Route::get('/', 'UsersController@index')->name('index');
-            Route::get('/create', 'UsersController@create')->name('create');
-            Route::post('/store', 'UsersController@store')->name('store');
-            Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
-            Route::post('/update/{id}', 'UsersController@update')->name('update');
-            Route::get('/delete/{id}', 'UsersController@delete')->name('delete');
-            Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
-        });
+    // users
+    Route::group(['prefix' => '/users', 'as' => 'users.' ], function () {
+        Route::get('/', 'UsersController@index')->name('index');
+        Route::get('/create', 'UsersController@create')->name('create');
+        Route::post('/store', 'UsersController@store')->name('store');
+        Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
+        Route::post('/update/{id}', 'UsersController@update')->name('update');
+        Route::get('/delete/{id}', 'UsersController@delete')->name('delete');
+        Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
+    });
 
 
-        // products
-        Route::group(['prefix' => '/products', 'as' => 'products.' ], function () {
-            Route::get('/', 'ProductsController@index')->name('index');
-            Route::get('/create', 'ProductsController@create')->name('create');
-            Route::post('/store', 'ProductsController@store')->name('store');
-            Route::get('/edit/{id}', 'ProductsController@edit')->name('edit');
-            Route::post('/update/{id}', 'ProductsController@update')->name('update');
-            Route::get('/delete/{id}', 'ProductsController@delete')->name('delete');
-        });
+    // products
+    Route::group(['prefix' => '/products', 'as' => 'products.' ], function () {
+        Route::get('/', 'ProductsController@index')->name('index');
+        Route::get('/create', 'ProductsController@create')->name('create');
+        Route::post('/store', 'ProductsController@store')->name('store');
+        Route::get('/edit/{id}', 'ProductsController@edit')->name('edit');
+        Route::post('/update/{id}', 'ProductsController@update')->name('update');
+        Route::get('/delete/{id}', 'ProductsController@delete')->name('delete');
+    });
 
 
-        // cities
-        Route::group(['prefix' => '/cities', 'as' => 'cities.' ], function () {
-            Route::get('/', 'CitiesController@index')->name('index');
-            Route::post('/create', 'CitiesController@create')->name('create');
-            Route::post('/store', 'CitiesController@store')->name('store');
-            Route::post('/edit/{id}', 'CitiesController@edit')->name('edit');
-            Route::post('/update/{id}', 'CitiesController@update')->name('update');
-            Route::get('/delete/{id}', 'CitiesController@delete')->name('delete');
-        });
+    // cities
+    Route::group(['prefix' => '/cities', 'as' => 'cities.' ], function () {
+        Route::get('/', 'CitiesController@index')->name('index');
+        Route::post('/create', 'CitiesController@create')->name('create');
+        Route::post('/store', 'CitiesController@store')->name('store');
+        Route::post('/edit/{id}', 'CitiesController@edit')->name('edit');
+        Route::post('/update/{id}', 'CitiesController@update')->name('update');
+        Route::get('/delete/{id}', 'CitiesController@delete')->name('delete');
+    });
 
 
-        // stock
-        Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
-            Route::get('/', 'StockController@index')->name('index');
-            Route::get('/reception', 'StockController@reception')->name('reception');
-            Route::get('/create', 'StockController@create')->name('create');
-            Route::post('/store', 'StockController@store')->name('store');
-            Route::get('/edit', 'StockController@edit')->name('edit');
-            Route::post('/update', 'StockController@update')->name('update');
-            Route::get('/delete', 'StockController@delete')->name('store');
-        });
+    // stock
+    Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
+        Route::get('/', 'StockController@index')->name('index');
+        Route::get('/reception', 'StockController@reception')->name('reception');
+        Route::get('/create', 'StockController@create')->name('create');
+        Route::post('/store', 'StockController@store')->name('store');
+        Route::get('/edit', 'StockController@edit')->name('edit');
+        Route::post('/update', 'StockController@update')->name('update');
+        Route::get('/delete', 'StockController@delete')->name('store');
+    });
 
 
-        // lists
-        Route::group(['prefix' => '/listing', 'as' => 'listing.' ], function () {
+    // lists
+    Route::group(['prefix' => '/listing', 'as' => 'listing.' ], function () {
 
-            Route::get('/', 'ListingController@index')->name('index');
-            Route::get('/new', 'ListingController@new')->name('new');
-            Route::get('/employees', 'ListingController@employees')->name('employees');
-            Route::get('/providers', 'ListingController@providers')->name('providers');
+        Route::get('/', 'ListingController@index')->name('index');
+        Route::get('/new', 'ListingController@new')->name('new');
+        Route::get('/employees', 'ListingController@employees')->name('employees');
+        Route::get('/providers', 'ListingController@providers')->name('providers');
 
-            Route::post('/create', 'ListingController@create')->name('create');
-            Route::post('/store', 'ListingController@store')->name('store');
-            Route::post('/edit/{id}', 'ListingController@edit')->name('edit');
-            Route::post('/update/{id}', 'ListingController@update')->name('update');
-            Route::post('/delete', 'ListingController@delete')->name('delete');
-            Route::post('/destroy', 'ListingController@destroy')->name('destroy');
-            Route::post('/assign', 'ListingController@assign')->name('assign');
-            Route::post('/restore', 'ListingController@restore')->name('restore');
-            Route::post('/export', 'ListingController@export')->name('export');
-            Route::post('/import', 'ListingController@import')->name('import');
-            Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
-            Route::post('/load/{id}', 'ListingController@load')->name('load');
-            Route::post('/history', 'ListingController@history')->name('history');
-            Route::post('/listing', 'ListingController@listing')->name('listing');
-        });
+        Route::post('/create', 'ListingController@create')->name('create');
+        Route::post('/store', 'ListingController@store')->name('store');
+        Route::post('/edit/{id}', 'ListingController@edit')->name('edit');
+        Route::post('/update/{id}', 'ListingController@update')->name('update');
+        Route::post('/delete', 'ListingController@delete')->name('delete');
+        Route::post('/destroy', 'ListingController@destroy')->name('destroy');
+        Route::post('/assign', 'ListingController@assign')->name('assign');
+        Route::post('/restore', 'ListingController@restore')->name('restore');
+        Route::post('/export', 'ListingController@export')->name('export');
+        Route::post('/import', 'ListingController@import')->name('import');
+        Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
+        Route::post('/load/{id}', 'ListingController@load')->name('load');
+        Route::post('/history', 'ListingController@history')->name('history');
+        Route::post('/listing', 'ListingController@listing')->name('listing');
+    });
 
-        // statistiques
-        Route::group(['prefix' => '/statistiques', 'as' => 'statistiques.' ], function () {
-            Route::get('/', 'StatistiquesController@index')->name('index');
-            Route::get('/revenue', 'StatistiquesController@revenue')->name('revenue');
-            Route::get('/cash', 'StatistiquesController@cash')->name('cash');
-            Route::get('/products', 'StatistiquesController@products')->name('products');
-            Route::get('/cities', 'StatistiquesController@cities')->name('cities');
-            Route::get('/employees', 'StatistiquesController@employees')->name('employees');
-            Route::get('/providers', 'StatistiquesController@providers')->name('providers');
-        });
-
-        // statistiques
-        Route::group(['prefix' => '/settings', 'as' => 'settings.' ], function () {
-            Route::get('/revenue', 'SettingsController@revenue')->name('revenue');
-            Route::get('/cash', 'SettingsController@cash')->name('cash');
-            Route::get('/products', 'SettingsController@products')->name('products');
-            Route::get('/cities', 'SettingsController@cities')->name('cities');
-            Route::get('/employees', 'SettingsController@employees')->name('employees');
-            Route::get('/providers', 'SettingsController@providers')->name('providers');
-        });
-
-
+    // statistiques
+    Route::group(['prefix' => '/statistiques', 'as' => 'statistiques.' ], function () {
+        Route::get('/', 'StatistiquesController@index')->name('index');
+        Route::get('/revenue', 'StatistiquesController@revenue')->name('revenue');
+        Route::get('/cash', 'StatistiquesController@cash')->name('cash');
+        Route::get('/products', 'StatistiquesController@products')->name('products');
+        Route::get('/cities', 'StatistiquesController@cities')->name('cities');
+        Route::get('/employees', 'StatistiquesController@employees')->name('employees');
+        Route::get('/providers', 'StatistiquesController@providers')->name('providers');
+    });
 
 });
 
+<<<<<<< HEAD
 Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'auth:employee' ], function () {
+=======
+// employee
+Route::group(['prefix' => '/employee', 'as' => 'employee.' ], function () {
+>>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
 	Route::get('/', 'EmployeesController@index')->name('index');
 	Route::get('/create', 'EmployeesController@create')->name('create');
 	Route::post('/store', 'EmployeesController@store')->name('store');
-	Route::get('/edit', 'EmployeesController@edit')->name('edit');
+    Route::get('/edit', 'EmployeesController@edit')->name('edit');
+    Route::get('/settings', 'SettingsController@employee')->name('settings');
 	Route::post('/update', 'EmployeesController@update')->name('update');
 	Route::post('/export', 'EmployeesController@export')->name('export');
 	Route::post('/import', 'EmployeesController@import')->name('import');
@@ -166,8 +169,15 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'au
 	Route::get('/listing', 'EmployeesController@listing')->name('listing');
 });
 
+<<<<<<< HEAD
 Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'auth:provider'], function () {
 	Route::get('/', 'ProvidersController@index')->name('index');
+=======
+// provider
+Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
+    Route::get('/', 'ProvidersController@index')->name('index');
+    Route::get('/settings', 'SettingsController@provider')->name('settings');
+>>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
 	Route::post('/export', 'ProvidersController@export')->name('export');
 	Route::post('/statue', 'ProvidersController@statue')->name('statue');
 	Route::post('/load', 'ProvidersController@load')->name('load');
@@ -175,17 +185,29 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'au
 	Route::get('/listing', 'ProvidersController@listing')->name('listing');
 });
 
-Route::group(['prefix' => '/client', 'as' => 'client.' ], function () {
-    Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
-    Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
-    Route::get('/orders', 'ClientsController@orders')->name('orders');
-	Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
-    Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
-    Route::get('/settings', 'ClientsController@settings')->name('settings');
-    Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
-	Route::get('/staff', 'ClientsController@staff')->name('staff');
-    Route::get('/stores', 'ClientsController@stores')->name('stores');
-    Route::get('/support', 'ClientsController@support')->name('support');
-    Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
-    Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+
+Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
+    Route::middleware('IsClient')->group(function () {
+        Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
+        Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
+        Route::get('/orders', 'ClientsController@orders')->name('orders');
+        Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
+        Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
+        Route::get('/settings', 'ClientsController@settings')->name('settings');
+        Route::get('/update', 'ClientsController@update')->name('update');
+        Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
+        Route::get('/staff', 'ClientsController@staff')->name('staff');
+        Route::get('/stores', 'ClientsController@stores')->name('stores');
+        Route::get('/support', 'ClientsController@support')->name('support');
+        Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
+        Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+        Route::get('/panels', 'ClientsController@panels')->name('panels');
+        Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
+    });
+    // Authentication routes
+    Route::get('/register', 'Auth\RegisterController@showClientRegisterView')->name('register');
+    Route::post('/store', 'Auth\RegisterController@createClient')->name('store');
+    Route::get('/login', 'Auth\LoginController@showClientLoginForm')->name('login');
+    Route::post('/attempt', 'Auth\LoginController@loginClient')->name('attempt');
+    Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
 });

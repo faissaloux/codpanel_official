@@ -14,9 +14,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <form   id="login-form"
-                            action="{{ route('client.editSettings') }}"
-                            method="post">
+                    <form
+                        id="login-form"
+                        action="{{ route('client.update') }}"
+                        method="post">
                         @csrf
                         <fieldset>
                             <div class="alert alert-danger error-text error-summary alert alert-danger hidden"></div>
@@ -27,7 +28,7 @@
                                             id="settingsform-first_name"
                                             class="input"
                                             name="firstName"
-                                            value="brahim"
+                                            value="{{ \Illuminate\Support\Facades\Auth::guard('clients')->user()->name }}"
                                             placeholder="John"
                                             aria-required="true">
                                     <p class="help-block help-block-error"></p>
@@ -44,28 +45,28 @@
                                         aria-required="true">
                                 <p class="help-block help-block-error"></p>
                             </div>
-                            <div class="form-group disable-input">        
+                            <div class="form-group disable-input">
                                 <label class="control-label" for="settingsform-email">Email</label>
-                                <input  type="text"
+                                <input  type="email"
                                         id="settingsform-email"
-                                        class="input"
+                                        class="input email"
                                         name="email"
                                         value="gallab2k@gmail.com"
                                         placeholder="Email">
 
                                 <p class="help-block help-block-error"></p>
-                                <a href="#" id="changeEmailBtn">Change email</a>
+                                <a href="javascript: enableInput('email')" id="changeEmailBtn">Change email</a>
                             </div>
                             <div class="form-group disable-input">
                                 <label class="control-label" for="settingsform-password">Password</label>
-                                <input  type="text"
+                                <input  type="password"
                                         id="settingsform-password"
-                                        class="input"
+                                        class="input password"
                                         name="password"
                                         placeholder="●●●●●●●●●●●●●●●">
 
                                 <p class="help-block help-block-error"></p>
-                                <a href="#" id="changePasswordBtn">Change password</a>
+                                <a href="javascript: enableInput('password')" id="changePasswordBtn">Change password</a>
                             </div>
                             <div class="form-group">
                                 <div>

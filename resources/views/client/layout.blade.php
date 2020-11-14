@@ -35,7 +35,8 @@
     <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('client.support') }}">
+                <!-- Client index route -->
+                <a class="navbar-brand" href="">
                     <h5>Codpanel</h5>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -45,17 +46,20 @@
 
                 <div class="dropdown">
                     <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><span class="nav-button">BB</span>
+                    aria-expanded="false">
+                        <span class="nav-button">
+                            {{ substr(\Illuminate\Support\Facades\Auth::guard('clients')->user()->name, 0, true) }}
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('client.settings') }}">                            
+                        <a class="dropdown-item" href="{{ route('client.settings') }}">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                             Settings
                         </a>
-                        <a class="dropdown-item" href="/logout">                            
+                        <a class="dropdown-item" href="{{ route('client.logout') }}">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                             Logout
-                        </a>                
+                        </a>
                     </div>
                 </div>
 
@@ -64,12 +68,12 @@
                     <div class="navbar-nav w-100 d-flex justify-content-center">
 
                         <div class="menu-link-container">
-                            <a class="nav-item nav-link " href="{{ route('client.stores') }}">
+                            <a class="nav-item nav-link " href="{{ route('client.panels') }}">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                Stores
+                                Panels
                             </a>
                         </div>
-                        
+
                         <div class="menu-link-container">
                             <a class="nav-item nav-link" href="{{ route('client.orders') }}">
                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -91,5 +95,11 @@
     </div>
     @yield('content')
     <script src="{{ asset('assets/js/all.js') }}"></script>
-    
-</body>
+    <script>
+        function enableInput(inputClass){
+            $(`.disable-input input.${inputClass}`).css({
+                "pointer-events": "initial",
+                "backgroundColor": "#FFF"
+            });
+        }
+    </script>

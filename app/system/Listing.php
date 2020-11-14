@@ -4,7 +4,7 @@ namespace App\System;
 use \App\Models\Lists;
 use App\System\Helpers\Paginator;
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 
 class Listing extends Lists {
     

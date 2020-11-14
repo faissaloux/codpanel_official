@@ -23,41 +23,68 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    public function attempt(Request $request){
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admins')->except('logout');
+        $this->middleware('guest:clients')->except('logout');
+    }
+
+    public function showAdminLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    public function showClientLoginForm()
+    {
+        return view('client.auth.login');
+    }
+
+    public function loginAdmin(Request $request){
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:1'
         ]);
 
+<<<<<<< HEAD
         //dd(Auth::guard('admins'));
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+=======
+        if (Auth::guard('admins')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+>>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
             return redirect('/dashboard');
         }
+
         return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+    }
+
+    public function loginClient(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required | email',
+            'password' => 'required | min:1',
+        ]);
+
+        if (Auth::guard('clients')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            return redirect()->route('client.dashboard');
+        }
+
+        return redirect()->route('client.login')->withInput($request->only('email', 'remember'))->with('error', trans('user.wrong.auth'));
     }
 
     public function logout(Request $request)
     {
         $this->guard()->logout();
         $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
-        $request->session()->regenerate(); //same 
+        $request->session()->regenerate(); //same
         return redirect('/login');
     }
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function logoutClient(Request $request)
     {
-        $this->middleware('guest')->except('logout');
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect()->route('client.login');
     }
 }

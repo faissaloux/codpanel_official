@@ -1,7 +1,7 @@
 @extends('client/layout')
 
 @section('title')
-   Stores | {{ env('APP_NAME') }}
+   Panels | {{ env('APP_NAME') }}
 @endsection
 
 @section('content')
@@ -9,10 +9,10 @@
         <div class="row">
             <div class="col col-title">
                 <div class="title-name title-table d-flex flex-sm-row flex-column justify-content-sm-between align-items-sm-center">
-                    <h2 class="title-bottom">Stores</h2>
+                    <h2 class="title-bottom">Panels</h2>
                     <a href="{{ route('client.ordernow') }}"
                         class="btn purple-button d-flex justify-content-center align-items-center" >
-                        Order store
+                        Order panel
                     </a>
                 </div>
             </div>
