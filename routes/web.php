@@ -17,14 +17,28 @@ Auth::routes();
 
 
 
-Auth::routes();
+//Auth::routes();
 
 Route::post('/apilisting', 'ApiController@listing')->name('apilisting');
 
+Route::post('/admin/login', 'Auth\LoginController@attempt')->name('login.admin');
+Route::post('/admin/checkadmin', 'Auth\LoginController@attempt')->name('attempt');
+Route::get('/admin/logout', 'Auth\LoginController@logout')->name('logout.admin');
 
+Route::post('/provider/login', 'Auth\LoginController@attempt')->name('login.provider');
+Route::post('/provider/login', 'Auth\LoginController@attemptProvider')->name('attempt.provider');
+Route::get('/provider/logout', 'Auth\LoginController@logout')->name('logout.provider');
+
+Route::post('/employee/login', 'Auth\LoginController@attempt')->name('login.employee');
+Route::post('/employee/login', 'Auth\LoginController@attemptEmployee')->name('attempt.employee');
+Route::get('/employee/logout', 'Auth\LoginController@logout')->name('logout.employee');
+
+<<<<<<< HEAD
+=======
 Route::post('/attempt', 'Auth\LoginController@loginAdmin')->name('attempt');
 Route::post('/login', 'Auth\LoginController@showAdminLoginForm')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+>>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
 
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/index', 'IndexController@index')->name('index');
@@ -39,7 +53,7 @@ Route::get('/singup', 'SingupController@index')->name('singup');
 
 
 
-Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => 'IsAdmin' ], function () {
+Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => 'auth:admin' ], function () {
 
     Route::get('/', function () {
         return view('dashboard/index');
@@ -135,8 +149,12 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 
 });
 
+<<<<<<< HEAD
+Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'auth:employee' ], function () {
+=======
 // employee
 Route::group(['prefix' => '/employee', 'as' => 'employee.' ], function () {
+>>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
 	Route::get('/', 'EmployeesController@index')->name('index');
 	Route::get('/create', 'EmployeesController@create')->name('create');
 	Route::post('/store', 'EmployeesController@store')->name('store');
@@ -151,10 +169,15 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' ], function () {
 	Route::get('/listing', 'EmployeesController@listing')->name('listing');
 });
 
+<<<<<<< HEAD
+Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'auth:provider'], function () {
+	Route::get('/', 'ProvidersController@index')->name('index');
+=======
 // provider
 Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
     Route::get('/', 'ProvidersController@index')->name('index');
     Route::get('/settings', 'SettingsController@provider')->name('settings');
+>>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
 	Route::post('/export', 'ProvidersController@export')->name('export');
 	Route::post('/statue', 'ProvidersController@statue')->name('statue');
 	Route::post('/load', 'ProvidersController@load')->name('load');
