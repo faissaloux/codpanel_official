@@ -62,7 +62,7 @@ class LoginController extends Controller
     // Provider
 
     public function providerlogin()
-    {
+    {        
         return view('auth.providre_login');
     }
 

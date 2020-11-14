@@ -230,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'System' => App\System\System::class,
 
     ],
 

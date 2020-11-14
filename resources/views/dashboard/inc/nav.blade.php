@@ -24,12 +24,12 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">                    
-                        @if(!empty ( Auth::user()->image ))  
-                        <img src="/uploads/{{Auth::user()->image}}"
+                        @if(!empty ( System::admin()->image ))  
+                        <img src="/uploads/{{System::admin()->image}}"
                         class="img-fluid wd-30 ht-30 rounded-circle"
                         alt="">
                         @else
-                        <div class="avatar mr-2"><span style="background-color: {{ Auth::user()->color() }}" class="avatar-initial rounded-circle">{{ Str::limit(Auth::user()->name, 1 , "") }}</span></div>
+                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit(System::admin()->name, 1 , "") }}</span></div>
                         @endif
 
                     </a>
