@@ -188,3 +188,8 @@ Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
     Route::post('/attempt', 'Auth\LoginController@loginClient')->name('attempt');
     Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
 });
+
+
+Route::get('file-import-export', [ExcelController::class, 'fileImportExport']);
+Route::post('file-import', [ExcelController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [ExcelController::class, 'fileExport'])->name('file-export');
