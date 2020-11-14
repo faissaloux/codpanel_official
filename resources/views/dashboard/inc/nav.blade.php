@@ -39,7 +39,7 @@
                                 <i data-feather="settings" class="wd-16 mr-2"></i>
                                 إعدادات حسابي
                             </a>
-                            <a href="{{route('logout')}}" class="dropdown-item m-auto">
+                            <a href="{{route('logout.admin')}}" class="dropdown-item m-auto" onclick="event.preventDefault();document.getElementById('logout-form-admin').submit();">
                                 <i data-feather="power" class="wd-16 mr-2"></i>
                                 تسجيل الخروج
                             </a>

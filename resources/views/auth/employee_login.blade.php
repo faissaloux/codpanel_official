@@ -25,7 +25,7 @@
                 
                 <div class="w-50">
 
-                    <form method="POST" id="loginform" action="{{ route('attempt') }}">
+                    <form method="POST" id="loginform" action="{{ route('attempt.employee') }}">
                         @csrf 
                      <h3 class="tx-dark mg-b-5 tx-right">تسجيل الدخول</h3>
                      <!-- <p class="tx-gray-500 tx-15 mg-b-40">Welcome back! Please signin to continue.</p> -->

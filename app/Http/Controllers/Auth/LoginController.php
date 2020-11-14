@@ -26,37 +26,108 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admins')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:clients')->except('logout');
     }
 
-    public function showAdminLoginForm()
+    // Admin
+
+    public function adminlogin()
     {
-        return view('auth.login');
+        return view('auth.admin_login');
     }
+
+    public function adminattempt(Request $request){
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:1'
+        ]);
+
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('/dashboard');
+        }
+
+        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+    }
+
+    public function adminlogout(Request $request){
+        $this->guard('admin')->logout();
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
+        return redirect('/admin/login');
+    }
+
+    //End Admin
+
+    // Provider
+
+    public function providerlogin()
+    {
+        return view('auth.providre_login');
+    }
+
+    public function providerattempt(Request $request){
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:1'
+        ]);
+
+        if (Auth::guard('provider')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('/provider');
+        }
+
+        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+    }
+
+    public function providerlogout(Request $request){
+        $this->guard('provider')->logout();
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
+        return redirect('/provider/login');
+    }
+
+    //End Provider
+
+    // Employees
+
+    public function employeeslogin()
+    {
+        return view('auth.employee_login');
+    }
+
+    public function employeesattempt(Request $request){
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:1'
+        ]);
+
+        if (Auth::guard('employee')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('/employee');
+        }
+
+        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+    }
+
+    public function employeeslogout(Request $request){
+        $this->guard('employees')->logout();
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
+        return redirect('/employees/login');
+    }
+
+    //End Employees
+
+
+
+
+
 
     public function showClientLoginForm()
     {
         return view('client.auth.login');
     }
 
-    public function loginAdmin(Request $request){
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:1'
-        ]);
-
-<<<<<<< HEAD
-        //dd(Auth::guard('admins'));
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-=======
-        if (Auth::guard('admins')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
->>>>>>> a18bef63a6832991396adb5286cef4ab207ba8a6
-            return redirect('/dashboard');
-        }
-
-        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
-    }
+    
 
     public function loginClient(Request $request)
     {
