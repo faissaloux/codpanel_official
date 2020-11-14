@@ -143,11 +143,12 @@
             <div class="modal-body d-flex flex-column">
                 <div class="modal-cont modal-top mb-3 float-right">
                     <div class="d-flex flex-column">
-                        <form action="{{ route('file-import') }}">
+                        <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="d-flex mb-2">
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <input type="file" name="file" class="custom-file-input" id="inputGroupFile01">
                                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                     </div>
                                 </div>
@@ -184,7 +185,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="{{ route('file-export') }}">
+            <form action="{{ route('file-export') }}" method="GET">
                 <div class="modal-body d-flex flex-column">
                     <div class="float-right">
                         <div class="d-flex flex-column p-2">
