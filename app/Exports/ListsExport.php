@@ -3,6 +3,8 @@
 namespace App\Exports;
 
 use App\Lists;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class ListsExport implements FromCollection

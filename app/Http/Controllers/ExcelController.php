@@ -22,7 +22,7 @@ class ExcelController extends Controller
     */
     public function fileImport(Request $request) 
     {
-        Excel::import(new ListsImport, $request->file('file')->store('temp'));
+        Excel::import(new ListsImport, $request->file->store('import'));
         return back();
     }
 
@@ -31,6 +31,6 @@ class ExcelController extends Controller
     */
     public function fileExport() 
     {
-        return Excel::download(new ListsExport, 'users-collection.xlsx');
+        return Excel::download(new ListsExport, 'lists-collection.xlsx');
     }  
 }
