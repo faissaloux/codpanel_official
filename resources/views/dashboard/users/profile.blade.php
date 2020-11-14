@@ -17,20 +17,20 @@
                    <h6 class="my-3">المعلومات الشخصية</h6>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">الاسم الكامل:</div>
-                      <div class="col-md-9">{{ Auth::user()->full_name }}</div>
+                      <div class="col-md-9">{{ System::admin()->full_name }}</div>
                    </div>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">الوظيفة:</div>
-                        <div class="col-md-9">{{ Auth::user()->role }}</div>
+                        <div class="col-md-9">admin</div>
                    </div>
                    <h6 class="my-3">جهات الاتصال</h6>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">البريد الإلكتروني:</div>
-                        <div class="col-md-9"><a href="mailto: {{ Auth::user()->email }}">{{ Auth::user()->email }}</a></div>
+                        <div class="col-md-9"><a href="mailto: {{ System::admin()->email }}">{{ System::admin()->email }}</a></div>
                    </div>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">الهاتف:</div>
-                        <div class="col-md-9"><a href="tel:{{ Auth::user()->phone }}">{{ Auth::user()->phone }}</a></div>
+                        <div class="col-md-9"><a href="tel:{{ System::admin()->phone }}">{{ System::admin()->phone }}</a></div>
                    </div>
                 </div>
                 <div class="card-footer text-center p-0">
