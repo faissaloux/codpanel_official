@@ -29,8 +29,8 @@ class LoginController extends Controller
             'password' => 'required|min:1'
         ]);
 
-        //dd('ldkdlkdlkd');
-        if (Auth::guard()->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        //dd(Auth::guard('admins'));
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect('/dashboard');
         }
         return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
