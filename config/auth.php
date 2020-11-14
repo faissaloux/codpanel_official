@@ -43,12 +43,12 @@ return [
             'provider' => 'admins',
         ],
 
-        'providers' => [
+        'provider' => [
             'driver' => 'session',
             'provider' => 'providers',
         ],
 
-        'employees' => [
+        'employee' => [
             'driver' => 'session',
             'provider' => 'employees',
         ],
