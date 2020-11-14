@@ -2,7 +2,7 @@
 <html lang="zxx">
    
    <head>
-      <?php require_once 'inc/head.php'; ?>
+      @include('dashboard.inc.head')
    </head>
    <body dir="rtl" data-auth-id="" data-auth-type="">
       <!--================================-->
@@ -21,20 +21,42 @@
             </div>
             <div class="col-lg-6 bg-light">
                <div class="ht-100v d-flex align-items-center justify-content-center">
-                  <div class="w-50">
+                 
+                
+                <div class="w-50">
+
+                    <form method="POST" id="loginform" action="{{ route('attempt') }}">
+                        @csrf 
                      <h3 class="tx-dark mg-b-5 tx-right">تسجيل الدخول</h3>
                      <!-- <p class="tx-gray-500 tx-15 mg-b-40">Welcome back! Please signin to continue.</p> -->
                      <p class="tx-gray-500 tx-right mg-b-40">مرحبا مجددا! من فضلك سجل دخولك للمتابعة</p>
                      <div class="form-group tx-right">
                         <label class="tx-gray-500 mg-b-5">البريد الإلكتروني</label>
-                        <input type="email" class="form-control tx-right" placeholder="البريد الإلكتروني">
+                        <input id="email" type="email" class="form-control tx-right" placeholder="البريد الإلكتروني"  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                        @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                      </div>
                      <div class="form-group tx-right">
                         <label class="tx-gray-500 mg-b-0">كلمة المرور</label>
-                        <input type="password" class="form-control tx-right" placeholder="كلمة المرور">
+                        <input id="password" type="password" class="form-control tx-right" placeholder="كلمة المرور"  @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                        @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                      </div>
-                     <a href="#" class="btn btn-brand btn-block">تسجيل الدخول</a>
+                     <button type="submit" class="btn btn-brand btn-block">تسجيل الدخول</button>
+
+
+
+                            </form>
                   </div>
+                
                </div>
             </div>
          </div>
