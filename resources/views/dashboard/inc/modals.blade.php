@@ -143,19 +143,21 @@
             <div class="modal-body d-flex flex-column">
                 <div class="modal-cont modal-top mb-3 float-right">
                     <div class="d-flex flex-column">
-                        <div class="d-flex mb-2">
-                            <div class="input-group mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        <form action="{{ route('file-import') }}">
+                            <div class="d-flex mb-2">
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-success btn-block">استيراد</button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-success btn-block">استيراد</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -182,106 +184,108 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body d-flex flex-column">
-                <div class="float-right">
-                    <div class="d-flex flex-column p-2">
-                        <p class="tx-right">
-                        يمكن لملف CSV هذا تحديث جميع معلومات المنتج باستثناء كميات المخزون. لتحديث كميات المخزون في مواقع متعددة ، استخدم ملف CSV للمخزون أو محرر المجموعة.                        </p>
-                        <div class="d-flex flex-column mb-3">
-                            <p class="row mb-2">
-                                <span class="col tx-right">تصدير</span>
-                            </p>
-                            <ul class="polaris-list pl-0 mb-0">
-                                <li>
-                                    <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton67">
-                                        <span class="Polaris-Choice__Control_1u8vs">
-                                            <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                <input  id="PolarisRadioButton67"
-                                                        name="PolarisChoiceList8"
-                                                        type="radio"
-                                                        class="Polaris-RadioButton__Input_30ock"
-                                                        value="title asc">
-                                                <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+            <form action="{{ route('file-export') }}">
+                <div class="modal-body d-flex flex-column">
+                    <div class="float-right">
+                        <div class="d-flex flex-column p-2">
+                            <p class="tx-right">
+                            يمكن لملف CSV هذا تحديث جميع معلومات المنتج باستثناء كميات المخزون. لتحديث كميات المخزون في مواقع متعددة ، استخدم ملف CSV للمخزون أو محرر المجموعة.                        </p>
+                            <div class="d-flex flex-column mb-3">
+                                <p class="row mb-2">
+                                    <span class="col tx-right">تصدير</span>
+                                </p>
+                                <ul class="polaris-list pl-0 mb-0">
+                                    <li>
+                                        <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton67">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input  id="PolarisRadioButton67"
+                                                            name="PolarisChoiceList8"
+                                                            type="radio"
+                                                            class="Polaris-RadioButton__Input_30ock"
+                                                            value="title asc">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="Polaris-Choice__Label_2vd36">الصفحة الحالية</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton68">
-                                        <span class="Polaris-Choice__Control_1u8vs">
-                                            <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                <input id="PolarisRadioButton68" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="title desc">
-                                                <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                            <span class="Polaris-Choice__Label_2vd36">الصفحة الحالية</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton68">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input id="PolarisRadioButton68" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="title desc">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="Polaris-Choice__Label_2vd36">جميع المنتجات</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton69">
-                                        <span class="Polaris-Choice__Control_1u8vs">
-                                            <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                <input id="PolarisRadioButton69" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="created_at asc">
-                                                <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                            <span class="Polaris-Choice__Label_2vd36">جميع المنتجات</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton69">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input id="PolarisRadioButton69" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="created_at asc">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="Polaris-Choice__Label_2vd36">المحدد: 0 منتجات</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton70">
-                                        <span class="Polaris-Choice__Control_1u8vs">
-                                            <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                <input id="PolarisRadioButton70" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="created_at desc">
-                                                <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                            <span class="Polaris-Choice__Label_2vd36">المحدد: 0 منتجات</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton70">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input id="PolarisRadioButton70" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="created_at desc">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="Polaris-Choice__Label_2vd36">18 منتج مطابق لبحثك</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <p class="row mb-2">
-                                <span class="col tx-right">تصدير ك</span>
-                            </p>
-                            <ul class="polaris-list pl-0 mb-0">
-                                <li>
-                                    <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton67">
-                                        <span class="Polaris-Choice__Control_1u8vs">
-                                            <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                <input id="PolarisRadioButton67" name="PolarisChoiceList7" type="radio" class="Polaris-RadioButton__Input_30ock" value="title asc" checked="">
-                                                <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                            <span class="Polaris-Choice__Label_2vd36">18 منتج مطابق لبحثك</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <p class="row mb-2">
+                                    <span class="col tx-right">تصدير ك</span>
+                                </p>
+                                <ul class="polaris-list pl-0 mb-0">
+                                    <li>
+                                        <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton67">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input id="PolarisRadioButton67" name="PolarisChoiceList7" type="radio" class="Polaris-RadioButton__Input_30ock" value="title asc" checked="">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="Polaris-Choice__Label_2vd36">CSV لـ Excel أو Numbers أو برامج جداول البيانات الأخرى</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton68">
-                                        <span class="Polaris-Choice__Control_1u8vs">
-                                            <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                <input id="PolarisRadioButton68" name="PolarisChoiceList7" type="radio" class="Polaris-RadioButton__Input_30ock" value="title desc">
-                                                <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                            <span class="Polaris-Choice__Label_2vd36">CSV لـ Excel أو Numbers أو برامج جداول البيانات الأخرى</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="Polaris-Choice_j5gzq d-flex" for="PolarisRadioButton68">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input id="PolarisRadioButton68" name="PolarisChoiceList7" type="radio" class="Polaris-RadioButton__Input_30ock" value="title desc">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
                                             </span>
-                                        </span>
-                                        <span class="Polaris-Choice__Label_2vd36">ملف CSV عادي</span>
-                                    </label>
-                                </li>
-                            </ul>
+                                            <span class="Polaris-Choice__Label_2vd36">ملف CSV عادي</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer justify-content-start">
-                <span>تعرف على المزيد حول <a href="">تصدير المنتجات</a>.</span>
-                
-            </div>
-            <div class="modal-footer justify-content-start">
-                <button type="submit" class="btn btn-success">تصدير المنتجات</button>
-                <button type="submit" class="btn btn-default mr-2">إلغاء</button>
-            </div>
+                <div class="modal-footer justify-content-start">
+                    <span>تعرف على المزيد حول <a href="">تصدير المنتجات</a>.</span>
+                    
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="submit" class="btn btn-success">تصدير المنتجات</button>
+                    <button type="submit" class="btn btn-default mr-2">إلغاء</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
