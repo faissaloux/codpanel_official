@@ -90,12 +90,12 @@ class LoginController extends Controller
 
     // Employees
 
-    public function employeeslogin()
+    public function employeelogin()
     {
         return view('auth.employee_login');
     }
 
-    public function employeesattempt(Request $request){
+    public function employeeattempt(Request $request){
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:1'
@@ -108,7 +108,7 @@ class LoginController extends Controller
         return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
     }
 
-    public function employeeslogout(Request $request){
+    public function employeelogout(Request $request){
         $this->guard('employees')->logout();
         $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
         $request->session()->regenerate(); //same

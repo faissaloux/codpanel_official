@@ -166,7 +166,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
   });
   
   // provider
-  Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'auth:provider' ], function () {
+  Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'IsProvider' ], function () {
       Route::get('/', 'ProvidersController@index')->name('index');
       Route::get('/settings', 'SettingsController@provider')->name('settings');
     Route::post('/export', 'ProvidersController@export')->name('export');
