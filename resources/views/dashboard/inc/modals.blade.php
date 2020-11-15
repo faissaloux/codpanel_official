@@ -284,7 +284,7 @@
                 </div>
                 <div class="modal-footer justify-content-start">
                     <button type="submit" class="btn btn-success">تصدير المنتجات</button>
-                    <button type="submit" class="btn btn-default mr-2">إلغاء</button>
+                    <button class="btn btn-default mr-2" data-dismiss="modal" aria-label="Close">إلغاء</button>
                 </div>
             </form>
         </div>

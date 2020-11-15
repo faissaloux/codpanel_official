@@ -208,6 +208,5 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
       Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
   });
 
-Route::get('file-import-export', 'ExcelController@fileImportExport');
 Route::post('file-import', 'ExcelController@fileImport')->name('file-import');
 Route::get('file-export', 'ExcelController@fileExport')->name('file-export');

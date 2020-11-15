@@ -37,7 +37,7 @@ class ListsExport implements FromCollection, WithHeadings, WithStyles
             'unanswered_at',
             'accepted_at',
             'verified_at',
-            'delivered_at',
+            'delivred_at',
             'deleted_at',
             'canceled_at',
             'duplicated_at',
