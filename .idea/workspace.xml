@@ -5,21 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e71d770-2908-49cf-aba7-84f0277e1667" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/IsClient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codpanel_official.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codpanel_official.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/singup.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/auth/sign-up.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/panels.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/panels.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/settings.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/settings.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +29,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/TakiDDine/codpanel_official" />
+      </set>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -172,7 +176,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -201,6 +205,10 @@
       <workItem from="1604754881520" duration="22511000" />
       <workItem from="1605200188989" duration="11511000" />
       <workItem from="1605265673950" duration="12234000" />
+      <workItem from="1605288515513" duration="270000" />
+      <workItem from="1605288789764" duration="4666000" />
+      <workItem from="1605356629131" duration="5959000" />
+      <workItem from="1605368954360" duration="16000" />
     </task>
     <servers />
   </component>
@@ -217,6 +225,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604768996101">
@@ -227,13 +236,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="340" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.0.1536.824@0.0.1536.824" timestamp="1605268209259" />
-    <state x="585" y="31" key="RollbackChangesDialog" timestamp="1605270498615">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605368969572">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="585" y="31" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605270498615" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605282452113">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605368969572" />
+    <state x="523" y="119" key="NewPhpClassDialog" timestamp="1605288729157">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605282452113" />
+    <state x="523" y="119" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1605288729157" />
+    <state x="585" y="31" key="RollbackChangesDialog" timestamp="1605358041570">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="585" y="31" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1605358041570" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605368333837">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605368333837" />
   </component>
 </project>

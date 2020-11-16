@@ -164,14 +164,14 @@ Route::group(['prefix' => '/provider', 'as' => 'provider.' ], function () {
 
 
 Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
-    Route::middleware('IsClient')->group(function () {
+    Route::middleware(['IsClient'])->group(function () {
         Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
-        Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
+        Route::post('/orderStore', 'ClientsController@orderStore')->name('orderStore');
         Route::get('/orders', 'ClientsController@orders')->name('orders');
         Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
         Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
         Route::get('/settings', 'ClientsController@settings')->name('settings');
-        Route::get('/update', 'ClientsController@update')->name('update');
+        Route::post('/update', 'ClientsController@update')->name('update');
         Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
         Route::get('/staff', 'ClientsController@staff')->name('staff');
         Route::get('/stores', 'ClientsController@stores')->name('stores');
@@ -188,3 +188,5 @@ Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
     Route::post('/attempt', 'Auth\LoginController@loginClient')->name('attempt');
     Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
 });
+
+Auth::routes(['verify' => true]);

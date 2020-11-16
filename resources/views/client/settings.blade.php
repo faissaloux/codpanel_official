@@ -14,6 +14,16 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
+                    @if(session()->has('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
                     <form
                         id="login-form"
                         action="{{ route('client.update') }}"
@@ -23,27 +33,21 @@
                             <div class="alert alert-danger error-text error-summary alert alert-danger hidden"></div>
                             <div class="form-group">
                                 <div class="field-signupform-first_name required">
-                                    <label class="control-label" for="settingsform-first_name">First name</label>
+                                    <label class="control-label" for="full_name">Full name</label>
                                     <input  type="text"
-                                            id="settingsform-first_name"
+                                            id="full_name"
                                             class="input"
-                                            name="firstName"
+                                            name="fullName"
                                             value="{{ \Illuminate\Support\Facades\Auth::guard('clients')->user()->name }}"
                                             placeholder="John"
                                             aria-required="true">
+                                    @error('fullName')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                     <p class="help-block help-block-error"></p>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="settingsform-last_name">Last name</label>
-                                <input  type="text"
-                                        id="settingsform-last_name"
-                                        class="input"
-                                        name="lastName"
-                                        value="gallab"
-                                        placeholder="Doe"
-                                        aria-required="true">
-                                <p class="help-block help-block-error"></p>
                             </div>
                             <div class="form-group disable-input">
                                 <label class="control-label" for="settingsform-email">Email</label>
@@ -51,11 +55,16 @@
                                         id="settingsform-email"
                                         class="input email"
                                         name="email"
-                                        value="gallab2k@gmail.com"
+                                        value="{{ Auth::guard('clients')->user()->email }}"
                                         placeholder="Email">
 
                                 <p class="help-block help-block-error"></p>
                                 <a href="javascript: enableInput('email')" id="changeEmailBtn">Change email</a>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    {{ $message }}
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group disable-input">
                                 <label class="control-label" for="settingsform-password">Password</label>

@@ -22,7 +22,6 @@
                 <table class="table table-stores sommerce-modals__order-result-table">
                     <thead>
                     <tr class="table-borderless">
-                        <th scope="col">Domain</th>
                         <th scope="col">Created</th>
                         <th scope="col">Expiry</th>
                         <th scope="col" style="padding-right: 80px;">Status</th>
@@ -31,7 +30,6 @@
                     </thead>
                     <tbody class="store-action">
                             <tr class="disable-text">
-                                <td data-label="Domain">views.com</td>
                                 <td data-label="Created">2020-07-09 06:42:53</td>
                                 <td data-label="Expiry"></td>
                                 <td data-label="Status">
@@ -61,7 +59,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-label="Domain">mytraffic.ma</td>
                                 <td data-label="Created">2019-08-28 14:53:01</td>
                                 <td data-label="Expiry">2020-08-13 10:47:18</td>
                                 <td data-label="Status">
@@ -91,7 +88,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-label="Domain">store.auto-sm.com</td>
                                 <td data-label="Created">2020-07-11 16:49:01</td>
                                 <td data-label="Expiry">2020-08-11 16:49:01</td>
                                 <td data-label="Status">

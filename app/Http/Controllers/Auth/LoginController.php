@@ -61,7 +61,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('clients')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->route('client.dashboard');
+            return redirect()->route('client.panels');
         }
 
         return redirect()->route('client.login')->withInput($request->only('email', 'remember'))->with('error', trans('user.wrong.auth'));
