@@ -82,17 +82,21 @@
     <div class="sidebar-footer">									
         <div class="d-flex justify-content-around">
             <a  class="pull-left"
-                href="{{ route('dashboard.profile', ["id" => Auth::user()->id ]) }}"
+                href="{{ route('dashboard.profile', ["id" => System::admin()->id ]) }}"
                 data-toggle="tooltip"
                 data-placement="top"
                 data-original-title="حسابي">
             <i data-feather="user" class="wd-16"></i></a>
             <a  class="pull-left"
-                href="aut-signin.html"
+                href="{{route('logout.admin')}}"
                 data-toggle="tooltip"
                 data-placement="top"
-                data-original-title="تسجيل الخروج">
+                data-original-title="تسجيل الخروج"
+                onclick="event.preventDefault();document.getElementById('logout-form-admin').submit();">
             <i data-feather="log-out" class="wd-16"></i></a>
+            <form id="logout-form-admin" action="{{route('logout.admin')}}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
         </div>
     </div>
 <!--/ Sidebar Footer End -->

@@ -5,7 +5,7 @@
 <!-- Mirrored from shreethemes.in/landrick/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Nov 2020 12:16:16 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Codpanel') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
         <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
@@ -51,7 +51,7 @@
                     </a>
                 </div>                 
                 <div class="buy-button">
-                    <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary">إشترك الأن</a>
+                    <a href="{{route('singup')}}" target="" class="btn btn-primary">إشترك الأن</a>
                 </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">
@@ -88,7 +88,7 @@
                         </li>
                     </ul><!--end navigation menu-->
                     <div class="buy-menu-btn d-none">
-                        <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-primary">إشترك الأن</a>
+                        <a href=" {{route('singup')}}" target="_blank" class="btn btn-primary">إشترك الأن</a>
                     </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->

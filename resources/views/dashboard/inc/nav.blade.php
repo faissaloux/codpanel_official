@@ -24,12 +24,12 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">                    
-                        @if(!empty ( Auth::user()->image ))  
-                        <img src="/uploads/{{Auth::user()->image}}"
+                        @if(!empty ( System::admin()->image ))  
+                        <img src="/uploads/{{System::admin()->image}}"
                         class="img-fluid wd-30 ht-30 rounded-circle"
                         alt="">
                         @else
-                        <div class="avatar mr-2"><span style="background-color: {{ Auth::user()->color() }}" class="avatar-initial rounded-circle">{{ Str::limit(Auth::user()->name, 1 , "") }}</span></div>
+                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit(System::admin()->name, 1 , "") }}</span></div>
                         @endif
 
                     </a>
@@ -39,7 +39,7 @@
                                 <i data-feather="settings" class="wd-16 mr-2"></i>
                                 إعدادات حسابي
                             </a>
-                            <a href="{{route('logout')}}" class="dropdown-item m-auto">
+                            <a href="{{route('logout.admin')}}" class="dropdown-item m-auto" onclick="event.preventDefault();document.getElementById('logout-form-admin').submit();">
                                 <i data-feather="power" class="wd-16 mr-2"></i>
                                 تسجيل الخروج
                             </a>
