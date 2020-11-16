@@ -28,6 +28,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:clients')->except('logout');
+        $this->middleware('guest:providers')->except('providers');
+        $this->middleware('guest:employees')->except('employees');
     }
 
     // Admin
@@ -52,8 +54,8 @@ class LoginController extends Controller
 
     public function adminlogout(Request $request){
         $this->guard('admin')->logout();
-        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
-        $request->session()->regenerate(); //same
+        //$request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        //$request->session()->regenerate(); //same
         return redirect('/admin/login');
     }
 
@@ -72,7 +74,7 @@ class LoginController extends Controller
             'password' => 'required|min:1'
         ]);
 
-        if (Auth::guard('provider')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('providers')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect('/provider');
         }
 
@@ -80,9 +82,9 @@ class LoginController extends Controller
     }
 
     public function providerlogout(Request $request){
-        $this->guard('provider')->logout();
-        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
-        $request->session()->regenerate(); //same
+        $this->guard('providers')->logout();
+        //$request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        //$request->session()->regenerate(); //same
         return redirect('/provider/login');
     }
 
@@ -101,7 +103,7 @@ class LoginController extends Controller
             'password' => 'required|min:1'
         ]);
 
-        if (Auth::guard('employee')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('employees')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect('/employee');
         }
 
@@ -110,8 +112,8 @@ class LoginController extends Controller
 
     public function employeelogout(Request $request){
         $this->guard('employees')->logout();
-        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
-        $request->session()->regenerate(); //same
+        //$request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        //$request->session()->regenerate(); //same
         return redirect('/employees/login');
     }
 

@@ -12,11 +12,11 @@ class System {
     }
 
     public static function provider(){
-        return \Auth::guard('provider')->user();
+        return \Auth::guard('providers')->user();
     }
 
     public static function employee(){
-        return \Auth::guard('employee')->user();
+        return \Auth::guard('employees')->user();
     }
 
     public static function color(){

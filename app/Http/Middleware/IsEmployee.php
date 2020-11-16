@@ -16,7 +16,7 @@ class IsEmployee
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::guard('employee')->user() ) {
+        if ( Auth::guard('employees')->user() ) {
             return $next($request);
         }
         return redirect('/employee/login');

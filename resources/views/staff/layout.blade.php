@@ -1,94 +1,90 @@
 <!DOCTYPE html>
 <html lang="zxx">
    
-    <head>
-        @include('dashboard.inc.head')
-    </head>
-  <body dir="rtl" data-auth-id="{{ System::admin()->id }}" data-auth-type="admin" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" @yield('body_class')>
-        @include('dashboard.inc.actions')
-        <!--================================-->
-        <!-- Page Container Start -->
-        <!--================================-->
-        <div class="page-container">
-            <!--================================-->
-            <!-- Page Sidebar Start -->
-            <!--================================-->
-            @include('dashboard.inc.sidebar')
-            <!--/ Sidebar Footer End -->
-            <!--================================-->
-            <!-- Page Content Start -->
-            <!--================================-->
-            <div class="page-content get-down">
-                <!--================================-->
-                <!-- Page Header Start -->
-                <!--================================-->
-                @include('dashboard.inc.nav')
-                <!--/ Page Header End -->
-                <!--================================-->
-                <!-- Page Inner Start -->
-                    @yield('content')
-                <!--/ Page Inner End --> 
-            <!--================================-->	
-            </div>
-            <!--/ Page Content End -->
-        </div> 
-        <!--/ Page Container End -->
-        <!--================================-->
+<head>
+    @include('dashboard.inc.head')
+</head>
+<body dir="rtl" data-auth-id="{{ $auth->id }}" data-auth-type="{{ $auth->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" @yield('body_class')>
+    @include('dashboard.inc.actions')
+    <!--================================-->
+    <!-- Page Container Start -->
+    <!--================================-->
+    <div class="page-container">
 
         <!--================================-->
-        <!-- Scroll To Top Start-->
+        <!-- Page Content Start -->
+        <!--================================-->
+        <div class="page-content get-down" style="margin-right: 0; width: 100%;">
+            <!--================================-->
+            <!-- Page Header Start -->
+            <!--================================-->
+            @include('staff.inc.nav')
+            <!--/ Page Header End -->
+            <!--================================-->
+            <!-- Page Inner Start -->
+                @yield('content')
+            <!--/ Page Inner End --> 
         <!--================================-->	
-        <a href="#" data-click="scroll-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
-        <!--/ Scroll To Top End -->
-        <!--================================-->
+        </div>
+        <!--/ Page Content End -->
+    </div> 
+    <!--/ Page Container End -->
+    <!--================================-->
 
-        
-        @include('dashboard.inc.modals')
+    <!--================================-->
+    <!-- Scroll To Top Start-->
+    <!--================================-->	
+    <a href="#" data-click="scroll-top" class="btn-scroll-top fade"><i class="fa fa-arrow-up"></i></a>
+    <!--/ Scroll To Top End -->
+    <!--================================-->
 
-        <!--================================-->
-        <!-- Footer Script -->
-        <!--================================-->
-        <script src="../../assets/js/all.js"></script>
-        <script src="../../assets/js/custom.js"></script>
-        @if(\Session::has('success'))
-            <?=
-                "<script>
-                    var msg   = '".\Session::get('success')."';
-                    var title = 'success';
-                    var type  = 'success';
+    
+    @include('dashboard.inc.modals')
 
-                    toastr[type](msg, title, {
-                        positionClass:     'toast-bottom-left',
-                        closeButton:       true,
-                        progressBar:       true,
-                        preventDuplicates: true,
-                        newestOnTop:       true,
-                        rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-                    });
-                </script>";
-            ?>
-        @endif
+    <!--================================-->
+    <!-- Footer Script -->
+    <!--================================-->
+    <script src="../../assets/js/all.js"></script>
+    <script src="../../assets/js/custom.js"></script>
+    @if(\Session::has('success'))
+        <?=
+            "<script>
+                var msg   = '".\Session::get('success')."';
+                var title = 'success';
+                var type  = 'success';
 
-        @if(\Session::has('failed'))
-            <?=
-                "<script>
-                    var msg   = '".\Session::get('failed')."';
-                    var title = 'failed';
-                    var type  = 'error';
+                toastr[type](msg, title, {
+                    positionClass:     'toast-bottom-left',
+                    closeButton:       true,
+                    progressBar:       true,
+                    preventDuplicates: true,
+                    newestOnTop:       true,
+                    rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
+                });
+            </script>";
+        ?>
+    @endif
 
-                    toastr[type](msg, title, {
-                        positionClass:     'toast-bottom-left',
-                        closeButton:       true,
-                        progressBar:       true,
-                        preventDuplicates: true,
-                        newestOnTop:       true,
-                        rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-                    });
-                </script>";
-            ?>
-        @endif
+    @if(\Session::has('failed'))
+        <?=
+            "<script>
+                var msg   = '".\Session::get('failed')."';
+                var title = 'failed';
+                var type  = 'error';
 
-        <script>
+                toastr[type](msg, title, {
+                    positionClass:     'toast-bottom-left',
+                    closeButton:       true,
+                    progressBar:       true,
+                    preventDuplicates: true,
+                    newestOnTop:       true,
+                    rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
+                });
+            </script>";
+        ?>
+    @endif
+
+    <script>
 
 
 $('.modal').on('shown.bs.modal', function(e) {
