@@ -415,6 +415,10 @@ span.fileName{
     position: absolute;
 }
 
+.custom-file-label {
+    pointer-events: none;
+}
+
 
 /* Reception CSS */
 
