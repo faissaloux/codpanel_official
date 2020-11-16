@@ -24,6 +24,7 @@ class ListingController extends Controller {
     public function index()
     {
         $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
+        
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
@@ -219,14 +220,6 @@ class ListingController extends Controller {
         }
         if($request->handler == "provider"){
             if($request->type == "all"){
-                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->paginate(10);
-            }else{
-                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->where('status',$request->type)->paginate(10);
-            }
-        }
-        if($request->handler == "admin"){
-            if($request->type == "all"){
-                dd("frfr");
                 $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->paginate(10);
             }else{
                 $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->where('status',$request->type)->paginate(10);

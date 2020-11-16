@@ -20,7 +20,7 @@ class="new-listing-page"
             <a  class="nav-link active status-click"
                 id="all-tab"
                 data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'all' ]) }}"
+                data-type="all"                
                 href="javascript:;">
                 <i class="mdi mdi-home"></i>
                 <span class="col">الكل</span>
@@ -32,7 +32,6 @@ class="new-listing-page"
                 id="new-tab"
                 data-toggle="tab"
                 data-type="new"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'new' ]) }}" 
                 href="javascript:;">
                 <i class="mdi mdi-hanger"></i>
                 <span class="col">جديد</span>
@@ -43,7 +42,7 @@ class="new-listing-page"
             <a  class="nav-link status-click"
                 id="canceled-tab"
                 data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'canceled' ]) }}"
+                data-type="canceled"
                 href="javascript:;">
                 <i class="mdi mdi-close"></i>
                 <span class="col">ألغيت</span>
@@ -54,7 +53,7 @@ class="new-listing-page"
             <a  class="nav-link status-click"
                 id="unanswred-tab"
                 data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'unanswred' ]) }}"
+                data-type="unanswered"
                 href="javascript:;">
                 <i class="mdi mdi-phone-hangup"></i>
                 <span class="col">دون إجابة</span>
@@ -65,7 +64,7 @@ class="new-listing-page"
             <a  class="nav-link status-click"
                 id="confirmation-tab"
                 data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'confirmation' ]) }}"
+                data-type="confirmed"
                 href="javascript:;">
                 <i class="mdi mdi-check"></i>
                 <span class="col">التأكيد</span>
@@ -76,7 +75,7 @@ class="new-listing-page"
             <a  class="nav-link status-click"
                 id="recall-tab"
                 data-toggle="tab"
-                data-link="{{ route('dashboard.listing.listing' , ['id' => 'recall' ]) }}"
+                data-type="recall"
                 href="javascript:;">
                 <i class="mdi mdi-phone-in-talk"></i>
                 <span class="col">اعد الاتصال</span>

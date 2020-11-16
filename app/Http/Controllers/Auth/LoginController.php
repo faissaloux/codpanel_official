@@ -54,8 +54,8 @@ class LoginController extends Controller
 
     public function adminlogout(Request $request){
         $this->guard('admin')->logout();
-        //$request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
-        //$request->session()->regenerate(); //same
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
         return redirect('/admin/login');
     }
 
@@ -83,8 +83,8 @@ class LoginController extends Controller
 
     public function providerlogout(Request $request){
         $this->guard('providers')->logout();
-        //$request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
-        //$request->session()->regenerate(); //same
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
         return redirect('/provider/login');
     }
 
@@ -112,9 +112,9 @@ class LoginController extends Controller
 
     public function employeelogout(Request $request){
         $this->guard('employees')->logout();
-        //$request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
-        //$request->session()->regenerate(); //same
-        return redirect('/employees/login');
+        $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
+        $request->session()->regenerate(); //same
+        return redirect('/employee/login');
     }
 
     //End Employees
