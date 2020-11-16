@@ -9,7 +9,7 @@
     <head>
         @include('dashboard.inc.head')
     </head>
-    <body dir="rtl" class="employees-listing-page" data-auth-id="{{ Auth::user()->id }}" data-auth-type="{{ Auth::user()->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="employee" data-type="">
+    <body dir="rtl" class="employees-listing-page" data-auth-id="{{ $auth->id }}" data-auth-type="{{ $auth->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="employee" data-type="">
         @include('dashboard.inc.actions')
         <!--================================-->
         <!-- Page Container Start -->
@@ -33,12 +33,12 @@
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false">                    
-                                        @if(!empty ( Auth::user()->image ))  
-                                        <img src="/uploads/{{Auth::user()->image}}"
+                                        @if(!empty ( $auth->image ))  
+                                        <img src="/uploads/{{ $auth->image}}"
                                         class="img-fluid wd-30 ht-30 rounded-circle"
                                         alt="">
                                         @else
-                                        <div class="avatar mr-2"><span style="background-color: {{ Auth::user()->color() }}" class="avatar-initial rounded-circle">{{ Str::limit(Auth::user()->name, 1 , "") }}</span></div>
+                                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit($auth->name, 1 , "") }}</span></div>
                                         @endif
                 
                                     </a>

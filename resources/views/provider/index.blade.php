@@ -8,7 +8,7 @@
 <head>
     @include('dashboard.inc.head')
 </head>
-<body dir="rtl" class="providers-listing-page" data-auth-id="{{ Auth::user()->id }}" data-auth-type="{{ Auth::user()->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="provider" data-type="">
+<body dir="rtl" class="providers-listing-page" data-auth-id="{{ $auth->id }}" data-auth-type="{{ $auth->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="provider" data-type="">
     @include('dashboard.inc.actions')
     <!--================================-->
     <!-- Page Container Start -->
@@ -32,12 +32,12 @@
                                     data-toggle="dropdown"
                                     aria-haspopup="true"
                                     aria-expanded="false">                    
-                                    @if(!empty ( Auth::user()->image ))  
-                                    <img src="/uploads/{{Auth::user()->image}}"
+                                    @if(!empty ( $auth->image ))  
+                                    <img src="/uploads/{{$auth->image}}"
                                     class="img-fluid wd-30 ht-30 rounded-circle"
                                     alt="">
                                     @else
-                                    <div class="avatar mr-2"><span style="background-color: {{ Auth::user()->color() }}" class="avatar-initial rounded-circle">{{ Str::limit(Auth::user()->name, 1 , "") }}</span></div>
+                                    <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit($auth->name, 1 , "") }}</span></div>
                                     @endif
             
                                 </a>
@@ -474,17 +474,9 @@
                                 <div class="btn-container ml-2">
                                     <a  class="btn-import table-top-btn btn btn-default-custom d-flex align-items-center"
                                         data-toggle="modal"
-                                        data-target="#importModalCenter">
+                                        data-target="#exportModalCenter">
                                         <i class="mdi mdi-download"></i>
-                                        <span class="mr-2">استيراد</span>
-                                    </a>
-                                </div>
-                                <div class="btn-container">
-                                    <a  class="btn-add-order table-top-btn btn btn-default-custom d-flex align-items-center"
-                                        id="addnewlist"
-                                        data-link="{{ route('dashboard.listing.create') }}">
-                                        <i class="mdi mdi-plus"></i>
-                                        <span class="mr-2">أضف طلب</span>
+                                        <span class="mr-2">تصدير</span>
                                     </a>
                                 </div>
                             </div>
@@ -598,7 +590,7 @@
                     <table class="table table-primary table-hover">
                         <thead>
                             <tr>
-                                <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
+                                <th scope="col"><input type="checkbox"/></th>
                                 <th scope="col" data-type="requestId">
                                     رقم
                                 </th>
@@ -621,7 +613,7 @@
                                 <th scope="col" data-type="distributor">
                                     مندوب<br> التوصيل
                                 </th>
-                                <th scope="col">تعديل</th>
+                                <th scope="col">التفاصيل</th>
                             </tr>
                         </thead>
                         <tbody class="table-body-listing">
@@ -669,12 +661,6 @@
                                             data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
             
                                             التفاصيل
-                                        </a>
-                                        <a  type="button"
-                                            href="javascript:;"
-                                            class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editlist"
-                                            data-link="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}">
-                                            تعديل
                                         </a>
                                     </td>
                                 </tr>
