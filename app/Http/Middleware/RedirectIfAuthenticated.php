@@ -33,7 +33,7 @@ class RedirectIfAuthenticated extends Controller
         }
 
         if (route('client.login') === url($request->route()->uri) && $guard === 'clients' && Auth::guard($guard)->check()) {
-            return redirect()->route('client.dashboard');
+            return redirect()->route('client.orders');
         }
 
         return $next($request);

@@ -12,14 +12,6 @@ class ExcelController extends Controller
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function fileImportExport()
-    {
-       return view('file-import');
-    }
-   
-    /**
-    * @return \Illuminate\Support\Collection
-    */
     public function fileImport(Request $request) 
     {
         Excel::import(new ListsImport, $request->file->store('import'));

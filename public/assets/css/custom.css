@@ -409,6 +409,16 @@ tr.active {
     background-color: #b6c7df !important;
 }
 
+span.fileName{
+    right: 20px;
+    z-index: 20;
+    position: absolute;
+}
+
+.custom-file-label {
+    pointer-events: none;
+}
+
 
 /* Reception CSS */
 

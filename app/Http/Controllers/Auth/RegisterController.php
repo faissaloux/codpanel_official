@@ -6,7 +6,6 @@ use App\Admin;
 use App\Client;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -51,7 +50,7 @@ class RegisterController extends Controller
 
     public function showClientRegisterView()
     {
-        if ( Auth::guard('clients')->user() ) return redirect()->route('client.dashboard');
+        if ( Auth::guard('clients')->user() ) return redirect()->route('client.panels');
         return view('client.auth.sign-up');
     }
 
@@ -85,7 +84,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
         Auth::guard('clients')->login($client);
-        return redirect()->route('client.dashboard');
+        return redirect()->route('client.ordernow');
     }
 
     protected function createAdmin(array $data)

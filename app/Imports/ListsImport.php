@@ -5,43 +5,44 @@ namespace App\Imports;
 use App\Lists;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 
 class ListsImport implements ToModel, WithHeadingRow
 {
     /**
-    * @param array $row
+    * @param array $column
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function model(array $row)
+    public function model(array $column)
     {
         return new Lists([
-            'name' => $row['name'],
-            'adress' => $row['adress'],
-            'note' => $row['note'],
-            'phone' => $row['phone'],
-            'source' => $row['source'],
-            'provider_id' => $row['provider_id'],
-            'employee_id' => $row['employee_id'],
-            'handler' => $row['handler'],
-            'city_id' => $row['city_id'],
-            'laivraison' => $row['laivraison'],
-            'cancel_reason' => $row['cancel_reason'],
-            'history' => $row['history'],
-            'product' => $row['product'],
-            'city' => $row['city'],
-            'quantity' => $row['quantity'],
-            'price' => $row['price'],
-            'status' => $row['status'],
-            'unanswered_at' => $row['unanswered_at'],
-            'accepted_at' => $row['accepted_at'],
-            'verified_at' => $row['verified_at'],
-            'delivered_at' => $row['delivered_at'],
-            'deleted_at' => $row['deleted_at'],
-            'canceled_at' => $row['canceled_at'],
-            'duplicated_at' => $row['duplicated_at'],
-            'checked_at' => $row['checked_at'],
-            'recall_at' => $row['recall_at']
+            'name' => $column['name'],
+            'adress' => $column['adress'],
+            'note' => $column['note'],
+            'phone' => $column['phone'],
+            'source' => $column['source'],
+            'provider_id' => $column['provider_id'],
+            'employee_id' => $column['employee_id'],
+            'handler' => $column['handler'],
+            'city_id' => $column['city_id'],
+            'laivraison' => $column['laivraison'],
+            'cancel_reason' => $column['cancel_reason'],
+            'history' => $column['history'],
+            'product' => $column['product'],
+            'city' => $column['city'],
+            'quantity' => $column['quantity'],
+            'price' => $column['price'],
+            'status' => $column['status'],
+            'unanswered_at' => Date::excelToDateTimeObject($column['unanswered_at']),
+            'accepted_at' => Date::excelToDateTimeObject($column['accepted_at']),
+            'verified_at' => Date::excelToDateTimeObject($column['verified_at']),
+            'delivred_at' => Date::excelToDateTimeObject($column['delivred_at']),
+            'deleted_at' => Date::excelToDateTimeObject($column['deleted_at']),
+            'canceled_at' => Date::excelToDateTimeObject($column['canceled_at']),
+            'duplicated_at' => Date::excelToDateTimeObject($column['duplicated_at']),
+            'checked_at' => Date::excelToDateTimeObject($column['checked_at']),
+            'recall_at' => Date::excelToDateTimeObject($column['recall_at'])
         ]);
     }
 }
