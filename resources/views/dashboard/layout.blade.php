@@ -228,7 +228,9 @@ $('.modal').on('shown.bs.modal', function(e) {
          beforeSend:function(){
         },
         success: function(response) {
-          statue_success();
+          $.each(JSON.parse(response), function(key, value) { 
+              statue_toast("success",value)
+          });
           $('body .list_'+list_id).remove();
           $('body #detailsModalCenter').modal('hide');          
         },

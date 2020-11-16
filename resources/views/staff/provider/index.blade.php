@@ -6,7 +6,7 @@
 
 @section('body_class')
 
-    data-handler=""
+    data-handler="provider"
     data-type=""
     class="providers-listing-page"
     
@@ -64,7 +64,7 @@
             <a  class="nav-link status-click"
                 id="confirmation-tab"
                 data-toggle="tab"
-                data-type="confirmation"
+                data-type="confirmed"
                 href="javascript:;">
                 <i class="mdi mdi-check"></i>
                 <span class="col">التأكيد</span>

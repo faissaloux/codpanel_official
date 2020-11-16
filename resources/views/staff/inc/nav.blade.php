@@ -8,12 +8,12 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">                    
-                        @if(!empty ( Auth::user()->image ))  
-                        <img src="/uploads/{{Auth::user()->image}}"
+                        @if(!empty ( $auth->image ))  
+                        <img src="/uploads/{{$auth->image}}"
                         class="img-fluid wd-30 ht-30 rounded-circle"
                         alt="">
                         @else
-                        <div class="avatar mr-2"><span style="background-color: {{ Auth::user()->color() }}" class="avatar-initial rounded-circle">{{ Str::limit(Auth::user()->name, 1 , "") }}</span></div>
+                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit($auth->name, 1 , "") }}</span></div>
                         @endif
 
                     </a>
@@ -23,10 +23,24 @@
                                 <i data-feather="settings" class="wd-16 mr-2"></i>
                                 إعدادات حسابي
                             </a>
-                            <a href="{{route('logout')}}" class="dropdown-item m-auto">
-                                <i data-feather="power" class="wd-16 mr-2"></i>
-                                تسجيل الخروج
-                            </a>
+                            @if(Auth::guard('providers')->check())
+                                <a href="{{route('logout.provider')}}" class="dropdown-item m-auto" onclick="event.preventDefault();document.getElementById('logout-form-provider').submit();">
+                                    <i data-feather="power" class="wd-16 mr-2"></i>
+                                    تسجيل الخروج
+                                </a>
+                                <form id="logout-form-provider" action="{{route('logout.provider')}}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            @elseif(Auth::guard('employees')->check())
+                                <a href="{{route('logout.employee')}}" class="dropdown-item m-auto" onclick="event.preventDefault();document.getElementById('logout-form-employee').submit();">
+                                    <i data-feather="power" class="wd-16 mr-2"></i>
+                                    تسجيل الخروج
+                                </a>
+                                <form id="logout-form-employee" action="{{route('logout.employee')}}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            @endif
+                            
                         </div>
                     </div>
                 </li>

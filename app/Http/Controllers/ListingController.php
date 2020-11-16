@@ -41,7 +41,7 @@ class ListingController extends Controller {
         $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();        
 
-        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.employees',compact('lists','cities','providers','employees','products'));
     }
 
     public function providers()
@@ -53,7 +53,7 @@ class ListingController extends Controller {
         $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
 
-        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.providers',compact('lists','cities','providers','employees','products'));
     }
 
     public function new()
@@ -188,9 +188,10 @@ class ListingController extends Controller {
     public function statue(Request $request , $id)
     {
         $List = Lists::find($id);
-        $List->statue = $request->statue;
+        $List->status = $request->statue;
 
         $List->save();
+        return response()->json(["Success" => "changed successfuly"]);
         return redirect()->route('dashboard.listing.index')->with('success', trans('listing.updated'));
     }
 
@@ -213,14 +214,22 @@ class ListingController extends Controller {
             if($request->type == "all"){
                 $lists = Lists::employees()->orderby('id','desc')->where('handler','employee')->paginate(10);
             }else{
-                $lists = Lists::with("items")->orderby('id','desc')->where('handler','employee')->where('status',$request->type)->get();
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','employee')->where('status',$request->type)->paginate(10);
             }
         }
         if($request->handler == "provider"){
             if($request->type == "all"){
-                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->get();
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->paginate(10);
             }else{
-                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->where('status',$request->type)->get();
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->where('status',$request->type)->paginate(10);
+            }
+        }
+        if($request->handler == "admin"){
+            if($request->type == "all"){
+                dd("frfr");
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->paginate(10);
+            }else{
+                $lists = Lists::with("items")->orderby('id','desc')->where('handler','provider')->where('status',$request->type)->paginate(10);
             }
         }
         

@@ -16,7 +16,7 @@ class IsProvider
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::guard('provider')->user() ) {
+        if ( Auth::guard('providers')->user() ) {
             return $next($request);
         }
         return redirect('/provider/login');
