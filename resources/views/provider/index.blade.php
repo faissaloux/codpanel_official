@@ -47,10 +47,13 @@
                                             <i data-feather="settings" class="wd-16 mr-2"></i>
                                             إعدادات حسابي
                                         </a>
-                                        <a href="{{route('logout')}}" class="dropdown-item m-auto">
+                                        <a href="{{route('logout.provider')}}" class="dropdown-item m-auto" onclick="event.preventDefault();document.getElementById('logout-form-provider').submit();">
                                             <i data-feather="power" class="wd-16 mr-2"></i>
                                             تسجيل الخروج
                                         </a>
+                                        <form id="logout-form-provider" action="{{route('logout.provider')}}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </div>
                                 </div>
                             </li>
