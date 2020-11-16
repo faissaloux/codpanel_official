@@ -148,8 +148,9 @@
                             <div class="d-flex mb-2">
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" name="file" class="custom-file-input" id="inputGroupFile01">
+                                        <input type="file" name="file" class="custom-file-input" id="fileInput">
                                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <span class="fileName"></span>
                                     </div>
                                 </div>
                             </div>
