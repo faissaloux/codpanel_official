@@ -28,8 +28,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:clients')->except('logout');
-        $this->middleware('guest:providers')->except('providers');
-        $this->middleware('guest:employees')->except('employees');
+        $this->middleware('guest:providers')->except('logout');
+        $this->middleware('guest:employees')->except('logout');
     }
 
     // Admin
@@ -142,7 +142,7 @@ class LoginController extends Controller
             return redirect()->route('client.panels');
         }
 
-        return redirect()->route('client.login')->withInput($request->only('email', 'remember'))->with('error', trans('user.wrong.auth'));
+        //return redirect()->route('client.login')->withInput($request->only('email', 'remember'))->with('error', trans('user.wrong.auth'));
     }
 
     public function logout(Request $request)
@@ -158,6 +158,6 @@ class LoginController extends Controller
         $this->guard()->logout();
         $request->session()->flush();
         $request->session()->regenerate();
-        return redirect()->route('client.login');
+        //return redirect()->route('client.login');
     }
 }
