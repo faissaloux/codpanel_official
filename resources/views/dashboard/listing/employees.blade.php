@@ -24,7 +24,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-home"></i>
                 <span class="col">الكل</span>
-                <span class="quantity col">42</span>
+                <span class="quantity col">{{$result->al}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -35,7 +35,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-hanger"></i>
                 <span class="col">جديد</span>
-                <span class="quantity col">22</span>
+                <span class="quantity col">{{$result->new}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -46,7 +46,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-close"></i>
                 <span class="col">ألغيت</span>
-                <span class="quantity col">3</span>
+                <span class="quantity col">{{$result->canceled}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -57,7 +57,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-phone-hangup"></i>
                 <span class="col">دون إجابة</span>
-                <span class="quantity col">6</span>
+                <span class="quantity col">{{$result->unanswered}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -68,7 +68,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-check"></i>
                 <span class="col">التأكيد</span>
-                <span class="quantity col">10</span>
+                <span class="quantity col">{{$result->confirmed}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -79,7 +79,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-phone-in-talk"></i>
                 <span class="col">اعد الاتصال</span>
-                <span class="quantity col">8</span>
+                <span class="quantity col">{{$result->recall}}</span>
             </a>
         </li>
     </ul>

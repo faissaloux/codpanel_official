@@ -7,10 +7,12 @@ use App\Items;
 use App\Lists;
 use App\Cities;
 use App\Employee;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Products;
 use App\Provider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\System\System;
 
 class ListingController extends Controller {
 
@@ -25,6 +27,7 @@ class ListingController extends Controller {
     {
         $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
         
+        
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
@@ -36,25 +39,29 @@ class ListingController extends Controller {
     public function employees()
     {
         $lists = Lists::employees()->orderby('id','desc')->where('handler','employee')->paginate(10);
+
+        $result =  System::stats('admin','employee');
         
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();        
 
-        return view('dashboard.listing.employees',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.employees',compact('lists','cities','providers','employees','products','result'));
     }
 
     public function providers()
     {
         $lists = Lists::providers()->orderby('id','desc')->where('handler','provider')->paginate(10);
+
+        $result =  System::stats('admin','provider');
         
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
 
-        return view('dashboard.listing.providers',compact('lists','cities','providers','employees','products'));
+        return view('dashboard.listing.providers',compact('lists','cities','providers','employees','products','result'));
     }
 
     public function new()
