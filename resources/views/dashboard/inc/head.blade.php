@@ -8,9 +8,9 @@
 <!-- Page Title -->
 <title> @yield('title') </title>
 <!-- Main CSS -->
-<link type="text/css" rel="stylesheet" href="../../../assets/css/all.css"/>
-<link type="text/css" rel="stylesheet" href="../../../assets/css/custom.css"/>
-<link type="text/css" rel="stylesheet" href="../../../assets/css/actions.css"/>
+<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/all.css') }}"/>
+<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/custom.css') }}"/>
+<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/actions.css') }}"/>
 <!-- Favicon -->	
 <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
         

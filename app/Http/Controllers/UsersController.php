@@ -16,8 +16,6 @@ class UsersController extends Controller
 {
     public function index()
     {
-        //$users = User::orderby('id','desc')->get();
-        
         $admins = Admin::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
@@ -59,15 +57,9 @@ class UsersController extends Controller
           ];
   
             $request->validate($rules,$messages);
-    
-            switch($request->role){
-                case "admin"    :   $user = new Admin();
-                                    break;
-                case "employee" :   $user = new Employee();
-                                    break;
-                case "provider" :   $user = new Provider();
-                                    break;
-            };
+            
+            if(!in_array($request->role, \System::$roles)) abort(403);
+            $user = \Role::new($request->role);
             
             $user->name     = $request->name;
             $user->email    = $request->email;
@@ -86,20 +78,40 @@ class UsersController extends Controller
           return redirect()->route('dashboard.users.index')->with('success', trans('user.created.'.$request->role));
     }
 
-    public function edit($id)
+    public function edit($role, $id)
     {
-        $content = User::find($id);
-        return view ('dashboard.users.edit',compact('content'));
+        $content = \Role::find($id, $role);
+        $content->role = substr($content->getTable(), 0, -1);
+
+        return view('dashboard.users.edit',compact('content'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $role, $id)
     {
-        $user = User::find($id);
+        if(!in_array($request->role, \System::$roles)) abort(403);
+        $user = \Role::find($id, $role);
+
+        if($request->role != $role){
+            /**
+             * Get user full_name and password to pass'em
+             * to the new role table.
+             */
+            $password = $user->password;
+            $full_name = $user->full_name;
+            /**
+             * if role changed delete from old role table,
+             * and register it in new role table.
+             */
+            $user->delete();
+            unset($user);
+            $user = \Role::new($request->role);
+            $user->password = $password;
+            $user->full_name = $full_name;
+        }
+
         $user->name     = $request->name;
         $user->email    = $request->email;
         $user->phone    = $request->phone;
-        if(!empty ( $request->role ))
-            $user->role = $request->role;
 
         if(!empty ( $request->password ))
             $user->password = Hash::make($request->password);
@@ -114,10 +126,10 @@ class UsersController extends Controller
         return redirect()->route('dashboard.users.index')->with('success',trans('user.updated'));
     }
 
-    public function delete($id)
+    public function delete($role, $id)
     {
-        User::find($id)->delete();
-        return redirect()->route('dashboard.users.index')->with('failed',trans('user.deleted'));
+        \Role::delete($id, $role);
+        return redirect()->route('dashboard.users.index')->with('success',trans('user.deleted'));
     }
 
     public function profile($id)

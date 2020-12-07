@@ -59,18 +59,19 @@
                             <td data-type="job">
                                 <span @if($user->role == "admin"){ class="bg-success text-white p-1" }
                                     @elseif($user->role == "employee"){ class="bg-primary text-white p-1" }
-                                    @elseif($user->role == "provider"){ class="bg-warning text-white p-1" } @endif >{{$user->role}}</span>
+                                    @elseif($user->role == "provider"){ class="bg-warning text-white p-1" } 
+                                    @elseif($user->role == "client"){ class="bg-danger text-white p-1" } @endif >{{$user->role}}</span>
                             </td>
                             <td data-type="phone">
                                 <a href="tel:{{$user->phone}}">{{$user->phone}}</a>
                             </td>
                             <td>
-                                <a  type="button" href="{{route('dashboard.users.edit' , ['id' => $user->id ])}}"
+                                <a  type="button" href="{{route('dashboard.users.edit' , ['id' => $user->id, 'role' => $user->role])}}"
                                     class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
                                     تعديل
                                 </a>
                                 <a  type="button"
-                                    href="{{ route('dashboard.users.delete' , ['id' => $user->id ]) }}"
+                                    href="{{ route('dashboard.users.delete' , ['id' => $user->id, 'role' => $user->role]) }}"
                                     class="btn btn-danger btn-lg border-none loadactions rounded-custom text-white delete">
                                     حذف
                                 </a> 

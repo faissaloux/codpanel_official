@@ -13,7 +13,7 @@
         <!-- موظفة -->
         <div class="col-12 mb-2">
             <div class="form mb-4">
-                <form action="{{ route('dashboard.users.update' , ['id' => $content->id ]) }}" method="POST">
+                <form action="{{ route('dashboard.users.update' , ['id' => $content->id, 'role' => $content->role ]) }}" method="POST">
                     @csrf
                     <div class="panel">
                         <div class="panel-body">

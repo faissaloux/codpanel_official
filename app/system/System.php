@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 
 class System {
-    
+    public static $roles = ['admin', 'provider', 'employee', 'client'];
 
     public static function admin(){
         return \Auth::guard('admin')->user();

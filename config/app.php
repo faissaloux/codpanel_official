@@ -231,6 +231,7 @@ return [
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'System' => App\System\System::class,
+        'Role' => App\System\Role::class,
 
     ],
 

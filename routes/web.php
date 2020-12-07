@@ -75,9 +75,9 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::get('/', 'UsersController@index')->name('index');
         Route::get('/create', 'UsersController@create')->name('create');
         Route::post('/store', 'UsersController@store')->name('store');
-        Route::get('/edit/{id}', 'UsersController@edit')->name('edit');
-        Route::post('/update/{id}', 'UsersController@update')->name('update');
-        Route::get('/delete/{id}', 'UsersController@delete')->name('delete');
+        Route::get('/edit/{role}/{id}', 'UsersController@edit')->name('edit');
+        Route::post('/update/{role}/{id}', 'UsersController@update')->name('update');
+        Route::get('/delete/{role}/{id}', 'UsersController@delete')->name('delete');
         Route::get('/updatePassword', 'UsersController@updatePassword')->name('updatePassword');
     });
 
