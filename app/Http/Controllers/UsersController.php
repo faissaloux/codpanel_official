@@ -20,12 +20,14 @@ class UsersController extends Controller
         
         $admins = Admin::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
-        $emlpoyees = Employee::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
         $clients = Client::orderby('id','desc')->get();
 
 
-        $users = $admins->mergeRecursive($providers)->mergeRecursive($emlpoyees)->mergeRecursive($clients);
-
+        $users = $admins->mergeRecursive($providers)->mergeRecursive($employees)->mergeRecursive($clients);
+        $users->map(function($user){
+            $user->role = substr($user->getTable(), 0, -1);
+        });
         $users->all();
 
 
