@@ -13,8 +13,8 @@ composer install
    
    Run this commands from the Terminal:
 
-	 cmd cp .env.example .env
-	 php artisan key:generate
+	cp .env.example .env
+	php artisan key:generate
 
 
 ### 2. Next make sure to create a new database and add your database credentials to your .env file:
@@ -31,9 +31,9 @@ DB_PASSWORD=secret
 
 Run this commands from the Terminal:
 
-	 php artisan migrate
-	 php artisan make:admin
-	 php artisan make:data
+	php artisan migrate
+	php artisan make:admin
+	php artisan make:data
 
  
 ### 4. you can login to dashboard  
