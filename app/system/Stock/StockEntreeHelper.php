@@ -6,12 +6,6 @@ use PHPtricks\Orm\Database;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use \App\Models\{ Product ,  HistoryEntree , StockSortieList  };
 
-
-
-
-
-
-
 class StockEntreeHelper {
     
     
@@ -46,9 +40,9 @@ class StockEntreeHelper {
       
       public function getStockEntreeProdut($id){
         $HistoryEntree = HistoryEntree::where('productID',$id)     
-        ->selectRaw('*, sum(quantity) as sum_quantity ,  sum(valid) as sum_valid ')
-        ->get()->toArray();
-        dd('ldldkllkdd');
+                                      ->selectRaw('*, sum(quantity) as sum_quantity ,  sum(valid) as sum_valid ')
+                                      ->get()
+                                      ->toArray();
         return $HistoryEntree[0]['sum_valid'];
       }
 
@@ -56,8 +50,9 @@ class StockEntreeHelper {
 
       public function getStockSortieProdut($id){
         $validSortie = StockSortieList::where('productID',$id)
-            ->selectRaw('*, sum(quantity) as sum_quantity ,  sum(valid) as sum_valid ')
-            ->get()->toArray();
+                                      ->selectRaw('*, sum(quantity) as sum_quantity ,  sum(valid) as sum_valid ')
+                                      ->get()
+                                      ->toArray();
         return $validSortie[0]['sum_valid'];
       }
       

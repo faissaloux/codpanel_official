@@ -40,16 +40,16 @@ Route::post('/employee/logout', 'Auth\LoginController@employeelogout')->name('lo
 
 
 
-Route::get('/', 'IndexController@index')->name('index');
-Route::get('/index', 'IndexController@index')->name('index');
-Route::get('/privacy', 'IndexController@privacy')->name('privacy');
-Route::get('/terms', 'IndexController@terms')->name('terms');
-Route::get('/about', 'AboutUsController@index')->name('about');
-Route::get('/contact', 'ContactController@index')->name('contact');
-Route::get('/faq', 'FaqController@index')->name('faq');
-Route::get('/singin', 'LoginController@index')->name('singin');
-Route::get('/re-password', 'LoginController@repassword')->name('re-password');
-Route::get('/singup', 'SingupController@index')->name('singup');
+Route::view('/', 'index')->name('index');
+Route::view('/index', 'index')->name('index');
+Route::view('/privacy', 'privacy')->name('privacy');
+Route::view('/terms', 'terms')->name('terms');
+Route::view('/about', 'about-us')->name('about');
+Route::view('/contact', 'contact')->name('contact');
+Route::view('/faq', 'faq')->name('faq');
+Route::view('/singin', 'login')->name('singin');
+Route::view('/re-password', 're-password')->name('re-password');
+Route::view('/singup', 'singup')->name('singup');
 
 
 
@@ -64,8 +64,8 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     });
 
 
-    Route::get('/profile', 'ProfileController@show')->name('profile');
-    Route::get('/settings', 'SettingsController@dashboard')->name('settings');
+    Route::view('/profile', 'dashboard.users.profile')->name('profile');
+    Route::view('/settings', 'dashboard.settings.index')->name('settings');
     Route::post('/update', 'SettingsController@updateDashboard')->name('update');
 
 
@@ -107,7 +107,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     // stock
     Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
         Route::get('/', 'StockController@index')->name('index');
-        Route::get('/reception', 'StockController@reception')->name('reception');
+        Route::view('/reception', 'dashboard.stock.reception')->name('reception');
         Route::get('/create', 'StockController@create')->name('create');
         Route::post('/store', 'StockController@store')->name('store');
         Route::get('/edit', 'StockController@edit')->name('edit');
@@ -130,20 +130,20 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::post('/update/{id}', 'ListingController@update')->name('update');
         Route::post('/delete', 'ListingController@delete')->name('delete');
         Route::post('/destroy', 'ListingController@destroy')->name('destroy');
-        Route::post('/assign', 'ListingController@assign')->name('assign');
+        Route::view('/assign', 'admin.users.create')->name('assign');
         Route::post('/restore', 'ListingController@restore')->name('restore');
-        Route::post('/export', 'ListingController@export')->name('export');
-        Route::post('/import', 'ListingController@import')->name('import');
+        Route::view('/export', 'admin.users.create')->name('export');
+        Route::view('/import', 'admin.users.create')->name('import');
         Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
         Route::post('/load/{id}', 'ListingController@load')->name('load');
-        Route::post('/history', 'ListingController@history')->name('history');
+        Route::view('/history', 'admin.users.create')->name('history');
         Route::post('/listing', 'ListingController@listing')->name('listing');
     });
 
     // statistiques
     Route::group(['prefix' => '/statistiques', 'as' => 'statistiques.' ], function () {
         Route::get('/', 'StatistiquesController@index')->name('index');
-        Route::get('/revenue', 'StatistiquesController@revenue')->name('revenue');
+        Route::view('/revenue', 'dashboard.statistiques.revenue')->name('revenue');
         Route::get('/cash', 'StatistiquesController@cash')->name('cash');
         Route::get('/products', 'StatistiquesController@products')->name('products');
         Route::get('/cities', 'StatistiquesController@cities')->name('cities');
@@ -160,7 +160,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::get('/create', 'EmployeesController@create')->name('create');
     Route::post('/store', 'EmployeesController@store')->name('store');
     Route::get('/edit', 'EmployeesController@edit')->name('edit');
-    Route::get('/settings', 'SettingsController@employee')->name('settings');
+    Route::view('/settings', 'staff.employee.settings')->name('settings');
     Route::post('/update', 'EmployeesController@update')->name('update');
     Route::post('/export', 'EmployeesController@export')->name('export');
     Route::post('/import', 'EmployeesController@import')->name('import');
@@ -173,7 +173,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
   // provider
   Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'IsProvider' ], function () {
     Route::get('/', 'ProvidersController@index')->name('index');
-    Route::get('/settings', 'SettingsController@provider')->name('settings');
+    Route::view('/settings', 'staff.provider.settings')->name('settings');
 	Route::post('/export', 'ProvidersController@export')->name('export');
 	Route::post('/statue', 'ProvidersController@statue')->name('statue');
 	Route::post('/load', 'ProvidersController@load')->name('load');
@@ -184,20 +184,20 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
 
 Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
     Route::middleware('IsClient')->group(function () {
-        Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
+        Route::view('/ordernow', 'client.ordernow')->name('ordernow');
         Route::post('/orderStore', 'ClientsController@orderStore')->name('orderStore');
-        Route::get('/orders', 'ClientsController@orders')->name('orders');
-        Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
-        Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
-        Route::get('/settings', 'ClientsController@settings')->name('settings');
+        Route::view('/orders', 'client.orders')->name('orders');
+        Route::view('/orderdetail', 'client.orderPaid')->name('orderdetail');
+        Route::view('/orderUnpaid', 'client.orderUnpaid')->name('orderUnpaid');
+        Route::view('/settings', 'client.settings')->name('settings');
         Route::post('/update', 'ClientsController@update')->name('update');
         Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
-        Route::get('/staff', 'ClientsController@staff')->name('staff');
+        Route::view('/staff', 'client.staff')->name('staff');
         Route::get('/stores', 'ClientsController@stores')->name('stores');
-        Route::get('/support', 'ClientsController@support')->name('support');
+        Route::view('/support', 'client.support')->name('support');
         Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
-        Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
-        Route::get('/panels', 'ClientsController@panels')->name('panels');
+        Route::view('/ticketdetail', 'client.ticketdetail')->name('ticketdetail');
+        Route::view('/panels', 'client.panels')->name('panels');
         Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
         Route::post('/export', 'ProvidersController@export')->name('export');
     Route::post('/statue', 'ProvidersController@statue')->name('statue');

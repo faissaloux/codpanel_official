@@ -724,43 +724,6 @@
         <!--================================-->
         <script src="../../assets/js/all.js"></script>
         <script src="../../assets/js/custom.js"></script>
-        @if(\Session::has('success'))
-            <?=
-                "<script>
-                    var msg   = '".\Session::get('success')."';
-                    var title = 'success';
-                    var type  = 'success';
-
-                    toastr[type](msg, title, {
-                        positionClass:     'toast-bottom-left',
-                        closeButton:       true,
-                        progressBar:       true,
-                        preventDuplicates: true,
-                        newestOnTop:       true,
-                        rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-                    });
-                </script>";
-            ?>
-        @endif
-
-        @if(\Session::has('failed'))
-            <?=
-                "<script>
-                    var msg   = '".\Session::get('failed')."';
-                    var title = 'failed';
-                    var type  = 'error';
-
-                    toastr[type](msg, title, {
-                        positionClass:     'toast-bottom-left',
-                        closeButton:       true,
-                        progressBar:       true,
-                        preventDuplicates: true,
-                        newestOnTop:       true,
-                        rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-                    });
-                </script>";
-            ?>
-        @endif
 
         <script>
 

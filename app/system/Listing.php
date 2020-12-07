@@ -104,9 +104,8 @@ class Listing extends Lists {
         return self::skip($skip)->take($limit)->get();
 
         $url        = $_GET;
-        if(empty($url) and !is_array($url)){
+        if(empty($url) and !is_array($url))
             $url = [];
-        }
         unset($url['page']);
         $URLparams  = http_build_query($url);
         $urlPattern = !empty($URLparams) ? '?'.$URLparams. "&page=(:num)" : "?page=(:num)";

@@ -709,43 +709,6 @@
     <!--================================-->
     <script src="../../assets/js/all.js"></script>
     <script src="../../assets/js/custom.js"></script>
-    @if(\Session::has('success'))
-        <?=
-            "<script>
-                var msg   = '".\Session::get('success')."';
-                var title = 'success';
-                var type  = 'success';
-
-                toastr[type](msg, title, {
-                    positionClass:     'toast-bottom-left',
-                    closeButton:       true,
-                    progressBar:       true,
-                    preventDuplicates: true,
-                    newestOnTop:       true,
-                    rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-                });
-            </script>";
-        ?>
-    @endif
-
-    @if(\Session::has('failed'))
-        <?=
-            "<script>
-                var msg   = '".\Session::get('failed')."';
-                var title = 'failed';
-                var type  = 'error';
-
-                toastr[type](msg, title, {
-                    positionClass:     'toast-bottom-left',
-                    closeButton:       true,
-                    progressBar:       true,
-                    preventDuplicates: true,
-                    newestOnTop:       true,
-                    rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-                });
-            </script>";
-        ?>
-    @endif
 
     <script>
 
@@ -937,38 +900,38 @@ $('#addnewlist').click(function(e){
 
 ///add new list_id
 $('.modal').on('shown.bs.modal', function(e) {
-$('#addnewlisting').submit(function(event){  
-  
-  //CreateOrder(event);
-  
-  var link = $(this).attr('data-link');
+    $('#addnewlisting').submit(function(event){  
+    
+    //CreateOrder(event);
+    
+    var link = $(this).attr('data-link');
 
-  var datastring = $(this).serialize();
+    var datastring = $(this).serialize();
 
 
-    $.ajax({
-        url: link,
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        type: 'POST',
-        data: datastring,
-        dataType: "JSON",
-         beforeSend:function(){
-        },
-        success: function(response) {
-          $('body #addOrderModalCenter').modal('hide');
-          
-            $.each(response, function(key, value) { 
-              statue_toast("success",value)
-          });
+        $.ajax({
+            url: link,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'POST',
+            data: datastring,
+            dataType: "JSON",
+            beforeSend:function(){
+            },
+            success: function(response) {
+            $('body #addOrderModalCenter').modal('hide');
+            
+                $.each(response, function(key, value) { 
+                statue_toast("success",value)
+            });
 
-          $('body #addnewlisting')[0].reset();
-        },
-        error : function(response){
-          default_error();
-        }
-  });
-  
-});
+            $('body #addnewlisting')[0].reset();
+            },
+            error : function(response){
+            default_error();
+            }
+    });
+    
+    });
 });
 
 ///////show moda addneworder
@@ -1109,39 +1072,39 @@ $('.editcitymodal').click(function(e){
 
 ///add new cities
 $('.modal').on('shown.bs.modal', function(e) {
-$('#updatecities').submit(function(event){  
-  
-  ////CreateOrder(event);
-  
-  var link = $(this).attr('data-link');
+    $('#updatecities').submit(function(event){  
+    
+    ////CreateOrder(event);
+    
+    var link = $(this).attr('data-link');
 
-  var datastring = $(this).serialize();
+    var datastring = $(this).serialize();
 
 
-    $.ajax({
-        url: link,
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        type: 'POST',
-        data: datastring,
-        dataType: "JSON",
-         beforeSend:function(){
-        },
-        success: function(response) {
-          $('body #addCityModalCenter').modal('hide');
-          
-            $.each(response, function(key, value) { 
-              statue_toast("success",value)
-          });
+        $.ajax({
+            url: link,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'POST',
+            data: datastring,
+            dataType: "JSON",
+            beforeSend:function(){
+            },
+            success: function(response) {
+            $('body #addCityModalCenter').modal('hide');
+            
+                $.each(response, function(key, value) { 
+                statue_toast("success",value)
+            });
 
-          $('body #updatecities')[0].reset();
-        },
-        error : function(response){
-          default_error();
-          return false;
-        }
-  });
-  
-});
+            $('body #updatecities')[0].reset();
+            },
+            error : function(response){
+            default_error();
+            return false;
+            }
+    });
+    
+    });
 });
 
 

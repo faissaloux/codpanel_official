@@ -18,9 +18,7 @@ class EmployeesController extends Controller
     public function index()
     {
         $auth = Auth::guard('employees')->user();
-
         $result =  System::stats('employees','employees');
-
         $lists = Lists::orderby('id','desc')->with('provider','items')->where('handler','employee')->paginate(10);
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();

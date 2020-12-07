@@ -12,63 +12,62 @@ class CitiesController extends Controller
     public function index()
     {
         $cities = Cities::orderby('id','desc')->with('user')->paginate(10);
-        return view('dashboard.cities.index',compact('cities'));
+        return view('dashboard.cities.index', compact('cities'));
     }
 
     public function create()
     {
         $providers = Provider::orderby('id','desc')->get();
-        return response()->view('dashboard.elements.add_city' ,compact('providers'))->setStatusCode(200);
+        return response()->view('dashboard.elements.add_city', compact('providers'))
+                         ->setStatusCode(200);
     }
 
     public function store(Request $request)
     {
         $rules = [
-            'name'     => 'required|min:3',
+            'name'        => 'required|min:3',
             'reference'   => 'required|min:2',
             'provider_id' => 'required|min:1',
         ];
   
         $messages = [
-            'name.required'     => trans("name.required"),
-            'reference.required'     => trans("reference.required"),
-            'provider_id.required'    => trans("provider_id.required"),
+            'name.required'         => trans("name.required"),
+            'reference.required'    => trans("reference.required"),
+            'provider_id.required'  => trans("provider_id.required"),
         ];
         
         $request->validate($rules,$messages);
 
-        $city           = new Cities();
-        $city->name     = $request->name;
+        $city               = new Cities();
+        $city->name         = $request->name;
         $city->reference    = $request->reference;
-        $city->provider_id    = $request->provider_id;
+        $city->provider_id  = $request->provider_id;
         $city->save();
 
         return response()->json(["Success" => "saved successfuly"]);
-        return redirect()->route('dashboard.cities.index')->with('success', trans('city.created'));
     }
 
     public function edit($id)
     {
         $content = Cities::find($id);
         $providers = Provider::orderby('id','desc')->get();
-        return response()->view('dashboard.elements.edit_city' ,compact('content','providers'))->setStatusCode(200);
+        return response()->view('dashboard.elements.edit_city', compact('content','providers'))
+                         ->setStatusCode(200);
     }
 
     public function update(Request $request, $id)
     {
-        $city = Cities::find($id);
-        $city->name     = $request->name;
+        $city               = Cities::find($id);
+        $city->name         = $request->name;
         $city->reference    = $request->reference;
-        $city->provider_id    = $request->provider_id;
+        $city->provider_id  = $request->provider_id;
         $city->save();
         return response()->json(["Success" => "saved successfuly"]);
-        return redirect()->route('dashboard.cities.index')->with('success',trans('city.updated'));
     }
 
     public function delete($id)
     {
-        $city = Cities::find($id);
-        $city->delete();
+        Cities::find($id)->delete();
         return redirect()->route('dashboard.cities.index')->with('success',trans('city.deleted'));
     }
 }

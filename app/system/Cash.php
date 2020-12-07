@@ -5,9 +5,6 @@ use App\Models\Items;
 use PHPtricks\Orm\Database;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-
-
-
 class Cash { 
     
   protected $query;
@@ -15,8 +12,6 @@ class Cash {
   protected $from;
   protected $to;
 
-
-  
   public function __construct($params = false){
 
       // set the dates from to
@@ -31,32 +26,24 @@ class Cash {
      return array_count_values(array_column($list, 'paied'))[1] ?? 0; 
   }
 
-  
-  public function setDeliver($params){
+    public function setDeliver($params){
+        $deliver =  @$params['deliver'];
+        if(isset($deliver) and !empty($deliver) and !is_null($deliver) and is_numeric($deliver))
+            $this->deliver = $deliver;
+      
+        if(Deliver()) $this->deliver = Deliver();
       
       
-      $deliver =  @$params['deliver'];
-      if(isset($deliver) and !empty($deliver) and !is_null($deliver) and is_numeric($deliver)) {
-        $this->deliver = $deliver;
-      }
-      
-      
-      if(Deliver()){
-          $this->deliver = Deliver();
-      }
-      
-      
-      return $this;
-  }
+        return $this;
+    }
 
-  public function setDates($post) {
-          if(empty($post['from']) and empty($post['to']) ){
-              return $this;
-          }
-          $this->from  = \Carbon\Carbon::parse($post['from']);
-          $this->to    = \Carbon\Carbon::parse($post['to']);
-          return $this;
-  }
+    public function setDates($post) {
+        if(empty($post['from']) and empty($post['to']))
+            return $this;
+        $this->from  = \Carbon\Carbon::parse($post['from']);
+        $this->to    = \Carbon\Carbon::parse($post['to']);
+        return $this;
+    }
 
 
   public function listing(){
@@ -120,24 +107,24 @@ class Cash {
   }
 
 
-  public function delivredByDeliver($id){
-      $lists =  \App\Models\Lists::whereNotNull('delivred_at');
+    public function delivredByDeliver($id){
+        $lists =  \App\Models\Lists::whereNotNull('delivred_at');
 
-      if(!empty($this->from) and !empty($this->to)){
-          $lists =  $lists->whereBetween('delivred_at', [$this->from, $this->to]);
-      }
-      $lists =  $lists->where('provider_id',$id)->select('cityID','delivred_at')->get();
+        if(!empty($this->from) and !empty($this->to))
+            $lists =  $lists->whereBetween('delivred_at', [$this->from, $this->to]);
 
-      return $lists->toArray();
-  }
+        $lists = $lists->where('provider_id',$id)
+                       ->select('cityID','delivred_at')
+                       ->get();
+
+        return $lists->toArray();
+    }
   
   public function getDayTotalByDeliver($id,$day){
-
-  //  dd('lkdkldkld');
       return \App\Models\Lists::whereDate('delivred_at', $day)
-              ->where('provider_id',$id)
-              ->get()
-              ->sum('total');
+                                ->where('provider_id',$id)
+                                ->get()
+                                ->sum('total');
   }
   
   
@@ -189,12 +176,4 @@ class Cash {
     } 
     return $cash;
   }
-
-
-
-  
 }
-
-
-
-

@@ -7,9 +7,6 @@ use PHPtricks\Orm\Database;
 use Noodlehaus\Config;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-
-
-
 class Double { 
     
   protected $number;
@@ -42,15 +39,12 @@ class Double {
     return $this;
   }
 
-
-
-
   public function lists(){
-      
-      
-    $lists = Lists::with('deliver','employee','products','products.product','city')->orderBy('duplicated_at','desc')->whereIn('tel', function ( $query ) {
-        $query->select('tel')->from('lists')->groupBy('tel')->havingRaw('count(*) > 1');
-    });
+    $lists = Lists::with('deliver','employee','products','products.product','city')
+                  ->orderBy('duplicated_at','desc')
+                  ->whereIn('tel', function ( $query ) {
+                      $query->select('tel')->from('lists')->groupBy('tel')->havingRaw('count(*) > 1');
+                  });
     $this->lists = $lists->get()->toArray();
     return $this;
   }

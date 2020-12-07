@@ -30,11 +30,13 @@ class Reception {
     
       public function __construct( $city = false , $product = false){
 
-          if($city && is_numeric($city)){
-              $this->cities = \App\Models\Cities::all('id','city_name  as name','user_id','reference')->whereIn('id',[$city])->toArray();
-          }else {
-              $this->cities = \App\Models\Cities::all('id','city_name  as name','user_id','reference')->whereIn('id',[36])->toArray();
-          }
+        $this->cities = $city && is_numeric($city)
+              ? \App\Models\Cities::all('id','city_name  as name','user_id','reference')
+                                                ->whereIn('id',[$city])
+                                                ->toArray()
+              : \App\Models\Cities::all('id','city_name  as name','user_id','reference')
+                                                ->whereIn('id',[36])
+                                                ->toArray();
 
           if($product && is_numeric($product)){
               $this->products = \App\Models\Product::all('id','name','reference','prix_jmla','price')->whereIn('id',[$product])->toArray();
@@ -95,39 +97,41 @@ class Reception {
       
       public function getStockRetour(){
             $validSortie =  Retour::where('productID',$this->product)->where('cityID',$this->city_id)
-                ->selectRaw('*, sum(quantity) as sum_quantity')
-                ->get()->toArray();
+                                  ->selectRaw('*, sum(quantity) as sum_quantity')
+                                  ->get()
+                                  ->toArray();
             $this->retour = $validSortie[0]['sum_quantity'] ?? 0;
             return  $this->retour ;
       }
 
       public function getStockRecue(){
             $validSortie =  StockSortieList::where('productID',$this->product)->where('cityID',$this->city_id)
-                ->selectRaw('*, sum(quantity) as sum_quantity ,  sum(valid) as sum_valid ')
-                ->get()->toArray();
+                                           ->selectRaw('*, sum(quantity) as sum_quantity ,  sum(valid) as sum_valid ')
+                                           ->get()
+                                           ->toArray();
             $this->recue = $validSortie[0]['sum_valid'] ?? 0;
-            
             $this->real = $this->recue - $this->retour;
-            
             return  $this->recue;
       }
  
       public function getStockDelivred() {
-            $list = \App\Models\Lists::with('products','products.product','realcity')->where('cityID',$this->city_id)
-            ->whereNotNull('delivred_at')->whereHas('products.product', function ($query) {
-                    return $query->where('id', '=', $this->product);
-                })->get()->toArray();
+            $list = \App\Models\Lists::with('products','products.product','realcity')
+                                     ->where('cityID',$this->city_id)
+                                     ->whereNotNull('delivred_at')
+                                     ->whereHas('products.product', function ($query) {
+                                        return $query->where('id', '=', $this->product);
+                                     })->get()->toArray();
             $this->livre =  $this->getQuantityFromList($list);
             return $this->livre;
       }
     
       public function getStockPhysique(){
-            $this->physique =   $this->real - $this->livre ;
+            $this->physique = $this->real - $this->livre ;
             return $this->physique ;
       }
       
       public function getStockTheorique() {
-           return $this->physique  - $this->encours ;
+           return $this->physique - $this->encours ;
       }
     
       public function getStockEncours(){
@@ -212,9 +216,8 @@ class Reception {
           $ok = [];
           foreach($list as $item){
                 foreach($item['products'] as $product){    
-                    if($product['productID'] == $this->product){
+                    if($product['productID'] == $this->product)
                         $ok[] = $product['quanity'];
-                    }
                 }
           }
           return array_sum($ok);

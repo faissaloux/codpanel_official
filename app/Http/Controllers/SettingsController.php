@@ -28,23 +28,8 @@ class SettingsController extends Controller
         dd($request);
     }
 
-    public function dashboard()
-    {
-        return view('dashboard.settings.index');
-    }
-
     public function updateDashboard(Request $request)
     {
         dd($request);
-    }
-
-    public function employee()
-    {
-        return view('staff.employee.settings');
-    }
-
-    public function provider()
-    {
-        return view('staff.provider.settings');
     }
 }

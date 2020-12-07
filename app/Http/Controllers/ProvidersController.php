@@ -18,9 +18,7 @@ class ProvidersController extends Controller
     public function index()
     {
         $auth = Auth::guard('providers')->user();
-
         $result =  System::stats('provider','provider');
-        
         $lists = Lists::orderby('id','desc')->with('provider','items')->where('handler','provider')->paginate(10);
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();

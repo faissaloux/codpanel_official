@@ -75,9 +75,8 @@ class UsersController extends Controller
           
             $user->image = '';
 
-            if($request->hasFile('image')){
+            if($request->hasFile('image'))
                 $user->image = $request->image->store('users',['disk' => 'public']);
-            }
             
 
           $user->save();
@@ -97,20 +96,16 @@ class UsersController extends Controller
         $user->name     = $request->name;
         $user->email    = $request->email;
         $user->phone    = $request->phone;
-        if( !empty ( $request->role ) ){
-            $user->role     = $request->role;
-        }        
+        if(!empty ( $request->role ))
+            $user->role = $request->role;
 
-        if(!empty ( $request->password )){
+        if(!empty ( $request->password ))
             $user->password = Hash::make($request->password);
-        }
 
         // delete the old image
         if($request->hasFile('image') and !empty($request->image) ){
             $file = public_path().'/uploads/'.$user->image;
-            if(file_exists($file)) {
-                unlink($file);
-            }
+            if(file_exists($file)) unlink($file);
         }
         
         $user->save();
@@ -119,8 +114,7 @@ class UsersController extends Controller
 
     public function delete($id)
     {
-        $content= User::find($id);
-        $content->delete();
+        User::find($id)->delete();
         return redirect()->route('dashboard.users.index')->with('failed',trans('user.deleted'));
     }
 

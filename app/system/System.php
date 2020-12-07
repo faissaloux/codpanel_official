@@ -27,13 +27,11 @@ class System {
 
     public static function stats($auth = 'admin',$type = 'employee'){
 
-        if($type == 'employee' && $auth == 'admin'){
+        if($type == 'employee' && $auth == 'admin')
             $count = 'SELECT count(*) FROM lists where handler="employee"';
-        }
 
-        if($type == 'provider' && $auth == 'admin'){
+        if($type == 'provider' && $auth == 'admin')
             $count = 'SELECT count(*) FROM lists where handler="provider"';
-        }
 
         if($auth == 'employees' && $type == 'employees'){
             $id = self::employee()->id;

@@ -37,15 +37,13 @@ class ProductsController extends Controller
 
         $request->validate($rules,$messages);
 
-        
         $Product           = new Products();
         $Product->name     = $request->name;
         $Product->reference    = $request->reference;
         $Product->prix_jmla    = $request->prix_jmla;
 
-        if($request->hasFile('image')){
+        if($request->hasFile('image'))
             $Product->image = $request->image->store('products',['disk' => 'public']);
-        }
 
         $Product->save();
         return redirect()->route('dashboard.products.index')->with('success', trans('product.created'));
@@ -65,16 +63,13 @@ class ProductsController extends Controller
         $Product->price = $request->price;
         $Product->prix_jmla    = $request->prix_jmla;        
         
-        if($request->hasFile('ProductThumbnail')){
-            $Product->thumbnail = $request->ProductThumbnail->store('product',['disk' => 'public']);     
-        }
+        if($request->hasFile('ProductThumbnail'))
+            $Product->thumbnail = $request->ProductThumbnail->store('product',['disk' => 'public']);
 
         // delete the old image
         if($request->hasFile('image') and !empty($request->image) ){
             $file = public_path().'/uploads/'.$Product->image;
-            if(file_exists($file)) {
-                unlink($file);
-            }
+            if(file_exists($file)) unlink($file);
         }
 
         $Product->save();
@@ -84,8 +79,7 @@ class ProductsController extends Controller
 
     public function delete($id)
     {
-        $Product = Products::find($id);
-        $Product->delete();
+        Products::find($id)->delete();
         return redirect()->route('dashboard.products.index')->with('failed', trans('product.deleted'));
     }
 }

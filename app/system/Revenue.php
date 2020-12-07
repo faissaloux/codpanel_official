@@ -6,13 +6,7 @@ use App\Models\{Items,Lists,Product};
 use PHPtricks\Orm\Database;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-
-
-
 class Revenue { 
-
-
-
 
       public function HistoryDetails($day,$deliver){
 
@@ -49,11 +43,8 @@ class Revenue {
       public function SpentsAds($data){
           $query = Capsule::table('historymoney')->where('date', '=', $data['date']);
           $find = $query->count();
-          if($find == 1 ){
-              $query->update(['ads' => $data['ads']]);
-          }else {
-              return Capsule::table('historymoney')->insert($data);
-          }
+          if($find == 1) $query->update(['ads' => $data['ads']]);
+          else return Capsule::table('historymoney')->insert($data);
       }
           
       public function __construct($post = false){
@@ -79,38 +70,31 @@ class Revenue {
 
 
         public function setDates($post) {
-          if(empty($post['from']) and empty($post['to']) ){
-              return $this;
-          }
+          if(empty($post['from']) and empty($post['to']))
+            return $this;
           $this->from  = \Carbon\Carbon::parse($post['from']);
           $this->to    = \Carbon\Carbon::parse($post['to']);
           return $this;
         }
 
-
         public static function dateSort($a, $b) {
-            return strtotime($a) - strtotime($b);
+          return strtotime($a) - strtotime($b);
         }
 
         public function orderDates($days){
-            usort($days, array("\App\Helpers\Revenue", "dateSort")); 
-            return $days;
+          usort($days, array("\App\Helpers\Revenue", "dateSort")); 
+          return $days;
         }
 
         public function get(){
-            return $this->data;
+          return $this->data;
         }
 
         public function gain($revenue,$ads){
-          if(isset($revenue) and is_numeric($revenue) and is_numeric($ads) and isset($ads)){
-
+          if(isset($revenue) and is_numeric($revenue) and is_numeric($ads) and isset($ads))
             return $revenue - $ads;
-          }
           return "";
         }
-
-
-
 
         public function manipulate(){
             foreach ($this->days as $day) {
@@ -118,8 +102,6 @@ class Revenue {
               $products = $this->getDayResult($day);
               $revenue  = array_sum(array_column($products,'revenue'));
               $ads      = $this->ads($day);
-              
-              
               
               
               $query = Lists::whereNotNull('delivred_at')->whereDate('delivred_at', $this->date );
@@ -156,12 +138,7 @@ class Revenue {
               
             $this->days = $this->groupByDay($lists);
             */
-            if(!isset($_GET['day'])){
-              $day = date("Y-m-d");
-
-            }else {
-              $day = $_GET['day'];
-            }
+            $day = !isset($_GET['day']) ? date("Y-m-d") : $_GET['day'];
 
             $this->days = [$day];
         }
@@ -183,9 +160,7 @@ class Revenue {
             $this->productID = $product['id'];
             $this->initQuery();
             $clients    =  $this->clients();
-            if(!$clients > 0 ) {
-                return false;
-            }
+            if(!$clients > 0) return false;
             $quantity   =  $this->quantity();
             $prixJmla   =  $quantity  * $product['prix_jmla'];
             $laivraison =  $this->laivraison();
@@ -211,9 +186,7 @@ class Revenue {
 
               foreach ($this->products as $product) {
                   $fetched = $this->getProductResult($product);
-                  if($fetched) {
-                      array_push($data,$fetched);
-                  }
+                  if($fetched) array_push($data,$fetched);
               }
 
               return $data;
@@ -231,17 +204,11 @@ class Revenue {
         }  
 
         public function total2(){
-            return $this->query->get()->sum('total');
+          return $this->query->get()->sum('total');
         }
         
         public function total(){
-
-
-
-
-              $list =  $this->query->get()->toArray();  
-        
-          
+          $list =  $this->query->get()->toArray();
           return $this->calculateTotal($list);
         }
         
@@ -252,15 +219,11 @@ class Revenue {
 
 
         public function ads($day){
-              $ads =  Capsule::table('historymoney')
-                            ->where('date', $day)
-                            ->first();
+          $ads =  Capsule::table('historymoney')
+                        ->where('date', $day)
+                        ->first();
 
-                if($ads ){
-                 return $ads->ads;
-                }else {
-                 return '';                          
-               }
+          return $ads ? $ads->ads : '';
         }
 
         public function quantity(){
@@ -287,8 +250,8 @@ class Revenue {
             $total = [];
             foreach($array_in as $item) {
                foreach ($item['products'] as $product) {
-                if($product['productID'] == $this->productID )
-                 $total[] = $product['price'];
+                if($product['productID'] == $this->productID)
+                  $total[] = $product['price'];
                }
             }
             return array_sum($total);

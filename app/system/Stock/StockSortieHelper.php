@@ -5,13 +5,6 @@ use App\Models\Items;
 use PHPtricks\Orm\Database;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-
-
-
-
-
-
-
 class StockSortieHelper { 
     
       protected $query;
@@ -26,8 +19,6 @@ class StockSortieHelper {
       */
       
       function groupByDay($array_in){
-
-
             $hash = array();
             $array_out = array();
             foreach($array_in as $item) {
@@ -42,8 +33,6 @@ class StockSortieHelper {
                   $array_out[$hash[$hash_key]]['count'] += 1;
             }
             return $array_out;
-            
-            
       }
     
      
