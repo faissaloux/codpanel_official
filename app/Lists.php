@@ -12,11 +12,11 @@ class Lists extends Model
 
     
     public function provider(){
-        return  $this->belongsTo('App\User', 'provider_id')->withDefault(['name' => 'N-A']);
+        return  $this->belongsTo('App\Provider', 'provider_id')->withDefault(['name' => 'N-A']);
     }
 
     public function employee(){
-        return  $this->belongsTo('App\User', 'employee_id')->withDefault(['name' => 'N-A']);
+        return  $this->belongsTo('App\Employee', 'employee_id')->withDefault(['name' => 'N-A']);
     }
 
     public function items(){
