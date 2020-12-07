@@ -82,7 +82,7 @@
     <div class="sidebar-footer">									
         <div class="d-flex justify-content-around">
             <a  class="pull-left"
-                href="{{ route('dashboard.profile', ["id" => Auth::user()->id ]) }}"
+                href="{{ route('dashboard.profile', ["id" => System::admin()->id ]) }}"
                 data-toggle="tooltip"
                 data-placement="top"
                 data-original-title="حسابي">

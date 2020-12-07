@@ -36,7 +36,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <!-- Client index route -->
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{ route('client.panels') }}">
                     <h5>Codpanel</h5>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"

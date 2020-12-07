@@ -28,6 +28,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
         $this->middleware('guest:clients')->except('logout');
+        $this->middleware('guest:providers')->except('logout');
+        $this->middleware('guest:employees')->except('logout');
     }
 
     // Admin
@@ -62,7 +64,7 @@ class LoginController extends Controller
     // Provider
 
     public function providerlogin()
-    {
+    {        
         return view('auth.providre_login');
     }
 
@@ -72,7 +74,7 @@ class LoginController extends Controller
             'password' => 'required|min:1'
         ]);
 
-        if (Auth::guard('provider')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('providers')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect('/provider');
         }
 
@@ -80,7 +82,7 @@ class LoginController extends Controller
     }
 
     public function providerlogout(Request $request){
-        $this->guard('provider')->logout();
+        $this->guard('providers')->logout();
         $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
         $request->session()->regenerate(); //same
         return redirect('/provider/login');
@@ -90,29 +92,29 @@ class LoginController extends Controller
 
     // Employees
 
-    public function employeeslogin()
+    public function employeelogin()
     {
         return view('auth.employee_login');
     }
 
-    public function employeesattempt(Request $request){
+    public function employeeattempt(Request $request){
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:1'
         ]);
 
-        if (Auth::guard('employee')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('employees')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect('/employee');
         }
 
         return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
     }
 
-    public function employeeslogout(Request $request){
+    public function employeelogout(Request $request){
         $this->guard('employees')->logout();
         $request->session()->flush(); // this method should be called after we ensure that there is no logged in guards left
         $request->session()->regenerate(); //same
-        return redirect('/employees/login');
+        return redirect('/employee/login');
     }
 
     //End Employees
@@ -137,7 +139,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('clients')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->route('client.dashboard');
+            return redirect()->route('client.panels');
         }
 
         return redirect()->route('client.login')->withInput($request->only('email', 'remember'))->with('error', trans('user.wrong.auth'));

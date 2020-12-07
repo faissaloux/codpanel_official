@@ -1,15 +1,14 @@
-@extends('staff/layout')
+@extends('dashboard/layout')
 
 @section('title')
     Listing | {{ env('APP_NAME') }}
 @endsection
 
-
 @section('body_class')
 
 data-handler="employee"
 data-type=""
-class="employees-listing-page"
+class="new-listing-page"
     
 @endsection
 
@@ -25,7 +24,7 @@ class="employees-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-home"></i>
                 <span class="col">الكل</span>
-                <span class="quantity col">42</span>
+                <span class="quantity col">{{$result->al}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -36,7 +35,7 @@ class="employees-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-hanger"></i>
                 <span class="col">جديد</span>
-                <span class="quantity col">22</span>
+                <span class="quantity col">{{$result->new}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -47,7 +46,7 @@ class="employees-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-close"></i>
                 <span class="col">ألغيت</span>
-                <span class="quantity col">3</span>
+                <span class="quantity col">{{$result->canceled}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -58,18 +57,18 @@ class="employees-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-phone-hangup"></i>
                 <span class="col">دون إجابة</span>
-                <span class="quantity col">6</span>
+                <span class="quantity col">{{$result->unanswered}}</span>
             </a>
         </li>
         <li class="nav-item">
             <a  class="nav-link status-click"
                 id="confirmation-tab"
                 data-toggle="tab"
-                data-type="confirmation"
+                data-type="confirmed"
                 href="javascript:;">
                 <i class="mdi mdi-check"></i>
                 <span class="col">التأكيد</span>
-                <span class="quantity col">10</span>
+                <span class="quantity col">{{$result->confirmed}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -80,7 +79,7 @@ class="employees-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-phone-in-talk"></i>
                 <span class="col">اعد الاتصال</span>
-                <span class="quantity col">8</span>
+                <span class="quantity col">{{$result->recall}}</span>
             </a>
         </li>
     </ul>
@@ -104,6 +103,8 @@ class="employees-listing-page"
             <!-- Recall goes here -->
         </div>
     </div>
+
+    
     <div>
         <div class="d-flex justify-content-between">
             <div class="col-6 pl-0">
@@ -504,7 +505,7 @@ class="employees-listing-page"
                                             <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 @foreach ($providers as $provider)
-                                                    <option value="{{$provider->id}}">{{$provider->id}}</option>
+                                                    <option value="{{$provider->id}}">{{$provider->name}}</option>
                                                 @endforeach
                                                 
                                             </select>
@@ -518,7 +519,7 @@ class="employees-listing-page"
                                             <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                 <option></option>
                                                 @foreach ($products as $product)
-                                                    <option value="{{$product->id}}">{{$product->id}}</option>
+                                                    <option value="{{$product->id}}">{{$product->name}}</option>
                                                 @endforeach
                                                 
                                             </select>

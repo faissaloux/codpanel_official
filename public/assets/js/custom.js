@@ -46,6 +46,11 @@ $(() => {
 
     $("tr.active").css("backgroundColor", "red");
 
+    // Show imported file name
+    $("input#fileInput").change(function(event){
+        var fileName = event.target.files[0].name;
+        $("span.fileName").text(fileName);
+    });
 
 
 

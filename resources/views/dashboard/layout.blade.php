@@ -4,7 +4,7 @@
     <head>
         @include('dashboard.inc.head')
     </head>
-  <body dir="rtl" data-auth-id="{{ Auth::user()->id }}" data-auth-type="{{ Auth::user()->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" @yield('body_class')>
+  <body dir="rtl" data-auth-id="{{ System::admin()->id }}" data-auth-type="admin" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" @yield('body_class')>
         @include('dashboard.inc.actions')
         <!--================================-->
         <!-- Page Container Start -->
@@ -228,7 +228,9 @@ $('.modal').on('shown.bs.modal', function(e) {
          beforeSend:function(){
         },
         success: function(response) {
-          statue_success();
+          $.each(JSON.parse(response), function(key, value) { 
+              statue_toast("success",value)
+          });
           $('body .list_'+list_id).remove();
           $('body #detailsModalCenter').modal('hide');          
         },

@@ -17,6 +17,8 @@ Auth::routes();
 
 
 
+
+
 //Auth::routes();
 
 Route::post('/apilisting', 'ApiController@listing')->name('apilisting');
@@ -55,6 +57,10 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 
     Route::get('/', function () {
         return view('dashboard/index');
+    });
+
+    Route::get('/test', function () {
+        return view('test');
     });
 
 
@@ -148,14 +154,13 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 });
 
 
-
 // employee
 Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'IsEmployee' ], function () {
     Route::get('/', 'EmployeesController@index')->name('index');
     Route::get('/create', 'EmployeesController@create')->name('create');
     Route::post('/store', 'EmployeesController@store')->name('store');
-      Route::get('/edit', 'EmployeesController@edit')->name('edit');
-      Route::get('/settings', 'SettingsController@employee')->name('settings');
+    Route::get('/edit', 'EmployeesController@edit')->name('edit');
+    Route::get('/settings', 'SettingsController@employee')->name('settings');
     Route::post('/update', 'EmployeesController@update')->name('update');
     Route::post('/export', 'EmployeesController@export')->name('export');
     Route::post('/import', 'EmployeesController@import')->name('import');
@@ -163,46 +168,53 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/load', 'EmployeesController@load')->name('load');
     Route::post('/history', 'EmployeesController@history')->name('history');
     Route::get('/listing', 'EmployeesController@listing')->name('listing');
-  });
-  
+});
+
   // provider
-  Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'auth:provider' ], function () {
-      Route::get('/', 'ProvidersController@index')->name('index');
-      Route::get('/settings', 'SettingsController@provider')->name('settings');
-    Route::post('/export', 'ProvidersController@export')->name('export');
+  Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'IsProvider' ], function () {
+    Route::get('/', 'ProvidersController@index')->name('index');
+    Route::get('/settings', 'SettingsController@provider')->name('settings');
+	Route::post('/export', 'ProvidersController@export')->name('export');
+	Route::post('/statue', 'ProvidersController@statue')->name('statue');
+	Route::post('/load', 'ProvidersController@load')->name('load');
+	Route::post('/history', 'ProvidersController@history')->name('history');
+	Route::get('/listing', 'ProvidersController@listing')->name('listing');
+});
+
+
+Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
+    Route::middleware('IsClient')->group(function () {
+        Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
+        Route::post('/orderStore', 'ClientsController@orderStore')->name('orderStore');
+        Route::get('/orders', 'ClientsController@orders')->name('orders');
+        Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
+        Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
+        Route::get('/settings', 'ClientsController@settings')->name('settings');
+        Route::post('/update', 'ClientsController@update')->name('update');
+        Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
+        Route::get('/staff', 'ClientsController@staff')->name('staff');
+        Route::get('/stores', 'ClientsController@stores')->name('stores');
+        Route::get('/support', 'ClientsController@support')->name('support');
+        Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
+        Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
+        Route::get('/panels', 'ClientsController@panels')->name('panels');
+        Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
+        Route::post('/export', 'ProvidersController@export')->name('export');
     Route::post('/statue', 'ProvidersController@statue')->name('statue');
     Route::post('/load', 'ProvidersController@load')->name('load');
     Route::post('/history', 'ProvidersController@history')->name('history');
     Route::get('/listing', 'ProvidersController@listing')->name('listing');
-  });
-  
-  
-  Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
-      Route::middleware('IsClient')->group(function () {
-          Route::get('/ordernow', 'ClientsController@ordernow')->name('ordernow');
-          Route::post('orderStore', 'ClientsController@orderStore')->name('orderStore');
-          Route::get('/orders', 'ClientsController@orders')->name('orders');
-          Route::get('/orderdetail', 'ClientsController@orderdetail')->name('orderdetail');
-          Route::get('/orderUnpaid', 'ClientsController@order')->name('orderUnpaid');
-          Route::get('/settings', 'ClientsController@settings')->name('settings');
-          Route::get('/update', 'ClientsController@update')->name('update');
-          Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
-          Route::get('/staff', 'ClientsController@staff')->name('staff');
-          Route::get('/stores', 'ClientsController@stores')->name('stores');
-          Route::get('/support', 'ClientsController@support')->name('support');
-          Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
-          Route::get('/ticketdetail', 'ClientsController@ticketdetail')->name('ticketdetail');
-          Route::get('/panels', 'ClientsController@panels')->name('panels');
-          Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
-      });
-      // Authentication routes
-      Route::get('/register', 'Auth\RegisterController@showClientRegisterView')->name('register');
-      Route::post('/store', 'Auth\RegisterController@createClient')->name('store');
-      Route::get('/login', 'Auth\LoginController@showClientLoginForm')->name('login');
-      Route::post('/attempt', 'Auth\LoginController@loginClient')->name('attempt');
-      Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
-  });
+    });
+    // Authentication routes
+    Route::get('/register', 'Auth\RegisterController@showClientRegisterView')->name('register');
+    Route::post('/store', 'Auth\RegisterController@createClient')->name('store');
+    Route::get('/login', 'Auth\LoginController@showClientLoginForm')->name('login');
+    Route::post('/attempt', 'Auth\LoginController@loginClient')->name('attempt');
+    Route::get('/logout', 'Auth\LoginController@logoutClient')->name('logout');
 
-Route::get('file-import-export', 'ExcelController@fileImportExport');
+
+});
+Auth::routes(['verify' => true]);
+
 Route::post('file-import', 'ExcelController@fileImport')->name('file-import');
 Route::get('file-export', 'ExcelController@fileExport')->name('file-export');

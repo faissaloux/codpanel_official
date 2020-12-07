@@ -28,13 +28,13 @@ class RedirectIfAuthenticated extends Controller
      */
     public function handle(Request $request, Closure $next, $guard = null)
     {
-        if ($guard === 'admins' AND Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
-        }
+        // if ($guard === 'admins' AND Auth::guard($guard)->check()) {
+        //     return redirect(RouteServiceProvider::HOME);
+        // }
 
-        if (route('client.login') === url($request->route()->uri) && $guard === 'clients' && Auth::guard($guard)->check()) {
-            return redirect()->route('client.dashboard');
-        }
+        // if (route('client.login') === url($request->route()->uri) && $guard === 'clients' && Auth::guard($guard)->check()) {
+        //     return redirect()->route('client.orders');
+        // }
 
         return $next($request);
     }
