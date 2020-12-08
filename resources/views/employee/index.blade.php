@@ -486,7 +486,7 @@
                                     <div class="btn-container">
                                         <a  class="btn-add-order table-top-btn btn btn-default-custom d-flex align-items-center"
                                             id="addnewlist"
-                                            data-link="{{ route('dashboard.listing.create') }}">
+                                            data-link="{{ route('employee.create') }}">
                                             <i class="mdi mdi-plus"></i>
                                             <span class="mr-2">أضف طلب</span>
                                         </a>
@@ -670,14 +670,14 @@
                                             <a type="button" 
                 
                                                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"
-                                                data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
+                                                data-link="{{ route('employee.load' , ['id' => $list->id ]) }}">
                 
                                                 التفاصيل
                                             </a>
                                             <a  type="button"
                                                 href="javascript:;"
                                                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editlist"
-                                                data-link="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}">
+                                                data-link="{{ route('employee.edit' , ['id' => $list->id ]) }}">
                                                 تعديل
                                             </a>
                                         </td>

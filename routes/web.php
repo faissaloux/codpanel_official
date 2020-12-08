@@ -157,28 +157,27 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
 // employee
 Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'IsEmployee' ], function () {
     Route::get('/', 'EmployeesController@index')->name('index');
-    Route::get('/create', 'EmployeesController@create')->name('create');
-    Route::post('/store', 'EmployeesController@store')->name('store');
-    Route::get('/edit', 'EmployeesController@edit')->name('edit');
-    Route::view('/settings', 'staff.employee.settings')->name('settings');
-    Route::post('/update', 'EmployeesController@update')->name('update');
-    Route::post('/export', 'EmployeesController@export')->name('export');
-    Route::post('/import', 'EmployeesController@import')->name('import');
-    Route::post('/statue', 'EmployeesController@statue')->name('statue');
-    Route::post('/load', 'EmployeesController@load')->name('load');
-    Route::post('/history', 'EmployeesController@history')->name('history');
-    Route::get('/listing', 'EmployeesController@listing')->name('listing');
+    Route::post('/create', 'ListingController@create')->name('create');
+    Route::post('/store', 'ListingController@store')->name('store');
+    Route::post('/edit/{id}', 'ListingController@edit')->name('edit');
+    Route::post('/update/{id}', 'ListingController@update')->name('update');
+    Route::view('/export', 'admin.users.create')->name('export');
+    Route::view('/import', 'admin.users.create')->name('import');
+    Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
+    Route::post('/load/{id}', 'ListingController@load')->name('load');
+    Route::view('/history', 'admin.users.create')->name('history');
+    Route::post('/listing', 'ListingController@listing')->name('listing');
 });
 
   // provider
   Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'IsProvider' ], function () {
     Route::get('/', 'ProvidersController@index')->name('index');
     Route::view('/settings', 'staff.provider.settings')->name('settings');
-	Route::post('/export', 'ProvidersController@export')->name('export');
-	Route::post('/statue', 'ProvidersController@statue')->name('statue');
-	Route::post('/load', 'ProvidersController@load')->name('load');
-	Route::post('/history', 'ProvidersController@history')->name('history');
-	Route::get('/listing', 'ProvidersController@listing')->name('listing');
+    Route::view('/export', 'admin.users.create')->name('export');
+    Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
+    Route::post('/load/{id}', 'ListingController@load')->name('load');
+    Route::view('/history', 'admin.users.create')->name('history');
+    Route::post('/listing', 'ListingController@listing')->name('listing');
 });
 
 

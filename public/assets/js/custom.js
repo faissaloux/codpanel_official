@@ -176,9 +176,6 @@ $('#loginform').submit(function(e) {
 
 ///////////load list details
 
-
-
-
 $('body').on('click', '.showdetails', function(e) {
 
     var token = $('meta[name="csrf-token"]').attr('content');
