@@ -55,7 +55,7 @@ class CreateAppTables extends Migration
 		    $table->string('city', 255)->nullable();
 		    $table->string('quantity', 255)->nullable();
 		    $table->string('price', 255)->nullable();
-			$table->enum('status', ['new', 'confirmed', 'recall', 'unanswered', 'canceled'])->default('new');
+			$table->enum('status', ['new', 'confirmed', 'recall', 'unanswered', 'delivred', 'canceled'])->default('new');
 		    $table->time('unanswered_at')->nullable();
 		    $table->time('accepted_at')->nullable();
 		    $table->time('verified_at')->nullable();

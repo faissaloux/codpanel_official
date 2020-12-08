@@ -500,7 +500,7 @@ class="new-listing-page"
                             {{ $list->created_at }}
                         </td>
                         <td data-type="requestStatus" class="tx-right">
-                            قيد المعالجة<br/>
+                            {{ $list->status }}<br/>
                         </td>
                         <td data-type="name">
                             {{ $list->name }}
@@ -512,11 +512,11 @@ class="new-listing-page"
                             <table class="list_products">
                                 <tbody>
                                     <tr>
-                                        <td> 1 </td>
-                                        <td> x كيطمات رائعة </td>
+                                        <td> x {{ $list->quantity }} </td>
+                                        <td> {{ $list->product }}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">المجموع : 249 درهم</td>
+                                        <td colspan="2">المجموع : {{ $list->price }}</td>
                                     </tr>
                                 </tbody>
                             </table>

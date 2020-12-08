@@ -11,7 +11,7 @@ class CitiesController extends Controller
 {
     public function index()
     {
-        $cities = Cities::orderby('id','desc')->with('user')->paginate(10);
+        $cities = Cities::orderby('id','desc')->with('provider')->paginate(10);
         return view('dashboard.cities.index', compact('cities'));
     }
 

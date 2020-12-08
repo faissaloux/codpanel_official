@@ -46,7 +46,7 @@
                                     <span>{{ $city->reference }}</span>
                                 </td>
                                 <td data-type="provider">
-                                    <span>{{ $city->user->name }}</span>
+                                    <span>{{ $city->provider->name }}</span>
                                 </td>
                                 <td>
                                     <a  type="button"
