@@ -56,6 +56,21 @@
                                                         class="form-control col-10"
                                                         placeholder="الثمن"
                                                         aria-label="Recipient's password"
+                                                        name="price"
+                                                        required>
+                                                <div class="input-group-append">
+                                                    <span   class="input-group-text d-flex justify-content-center"
+                                                            id="basic-addon4">
+                                                        <i class="fa fa-dollar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <span class="col-2 tx-right">سعر الجملة</span>
+                                                <input  type="number"
+                                                        class="form-control col-10"
+                                                        placeholder="سعر الجملة"
+                                                        aria-label="Recipient's password"
                                                         name="prix_jmla"
                                                         required>
                                                 <div class="input-group-append">

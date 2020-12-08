@@ -40,6 +40,7 @@ class ProductsController extends Controller
         $Product           = new Products();
         $Product->name     = $request->name;
         $Product->reference    = $request->reference;
+        $Product->price = $request->price;
         $Product->prix_jmla    = $request->prix_jmla;
 
         if($request->hasFile('image'))

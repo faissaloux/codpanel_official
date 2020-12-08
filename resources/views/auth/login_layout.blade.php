@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
+   
    <head>
       @include('dashboard.inc.head')
    </head>
@@ -21,12 +21,12 @@
             </div>
             <div class="col-lg-6 bg-light">
                <div class="ht-100v d-flex align-items-center justify-content-center">
-
-
+                 
+                
                 <div class="w-50">
 
-                    <form method="POST" id="loginform" action="{{ route('attempt') }}">
-                        @csrf
+                    <form method="POST" id="loginform" action="javascript:;" data-link=" @yield('data-link') ">
+                        @csrf 
                      <h3 class="tx-dark mg-b-5 tx-right">تسجيل الدخول</h3>
                      <!-- <p class="tx-gray-500 tx-15 mg-b-40">Welcome back! Please signin to continue.</p> -->
                      <p class="tx-gray-500 tx-right mg-b-40">مرحبا مجددا! من فضلك سجل دخولك للمتابعة</p>
@@ -35,10 +35,10 @@
                         <input id="email" type="email" class="form-control tx-right" placeholder="البريد الإلكتروني"  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                      </div>
                      <div class="form-group tx-right">
                         <label class="tx-gray-500 mg-b-0">كلمة المرور</label>
@@ -56,17 +56,18 @@
 
                             </form>
                   </div>
-
+                
                </div>
             </div>
          </div>
       </div>
       <!--/ Page Content End -->
-
+      
       <!--================================-->
         <!-- Footer Script -->
         <!--================================-->
-        <script src="assets/js/all.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ asset('assets/js/all.js') }}"></script>
    </body>
 
 </html>

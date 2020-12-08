@@ -46,10 +46,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/dashboard');
+            return response()->json(["Success" => "successfuly" , "path" => "/dashboard" ]);
         }
 
-        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+        return response()->json(["error" => "Login failed"],401);
     }
 
     public function adminlogout(Request $request){
@@ -75,10 +75,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('providers')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/provider');
+            return response()->json(["Success" => "successfuly" , "path" => "/provider" ]);
         }
 
-        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+        return response()->json(["error" => "Login failed"],401);
     }
 
     public function providerlogout(Request $request){
@@ -104,10 +104,10 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('employees')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/employee');
+            return response()->json(["Success" => "successfuly" , "path" => "/employee" ]);
         }
 
-        return back()->withInput($request->only('email', 'remember'))->with('error',trans('user.wrong.auth'));
+        return response()->json(["error" => "Login failed"],401);
     }
 
     public function employeelogout(Request $request){

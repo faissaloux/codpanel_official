@@ -98,72 +98,9 @@ $('.modal').on('shown.bs.modal', function(e) {
 });
             //////default success
 
-function statue_toast(type,msg){
-  
-  var title = type;
-  
-  toastr[type](msg, title, {
-    positionClass:     'toast-bottom-left',
-    closeButton:       true,
-    progressBar:       true,
-    preventDuplicates: true,
-    newestOnTop:       true,
-    rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-  });
-}
-
-//////default error
-
-function default_error(){
-  var msg   = 'something went wrong please try again!';
-  var title = 'oops !';
-  var type  = 'warning';
-
-  toastr[type](msg, title, {
-    positionClass:     'toast-bottom-left',
-    closeButton:       true,
-    progressBar:       true,
-    preventDuplicates: true,
-    newestOnTop:       true,
-    rtl:               $('body').attr('dir') === 'rtl' || $('html').attr('dir') === 'rtl'
-  });
-}
-
-//////login
-
-$('#loginform').submit(function(e){
-  
-    var token   = $('meta[name="csrf-token"]').attr('content');
-    var link = $(this).attr('data-link');
-    var email = $(this).find("[name = 'email']");
-    var password = $(this).find("[name = 'password']");
-
-    var formData = new FormData();
-    formData.append('_token', token);
-    formData.append('email', email);
-    formData.append('password', password);
 
 
-    $.ajax({
-        url: link,
-        type: 'POST',
-        processData: false, // important
-        contentType: false, // important
-        data: formData,
-        cache:false,
-        dataType: "JSON",
-         beforeSend:function(){
-          $("#overlay").fadeIn(300); 
-        },
-        success: function(response) {
-          alert(response);
-        },
-        error : function(response){
-          default_error();
-        }
-  });
-  
-});
+
 
 ///////////load list details
 
@@ -484,6 +421,9 @@ $('#updatecities').submit(function(event){
   
 });
 });
+
+
+
 
 
 // $( document ).ready(function() {
