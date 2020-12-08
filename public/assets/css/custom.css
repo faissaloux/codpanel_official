@@ -793,3 +793,13 @@ div.show-columns-container.show button .show-columns-icon {
     background: #80808085;
     display: none !important;
 }
+
+.list-empty i.mdi.mdi-view-day {
+    height: 250px;
+    font-size: 200px;
+}
+
+.list-empty p {
+    font-size: 30px;
+}
+

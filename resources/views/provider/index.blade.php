@@ -671,20 +671,26 @@
                         </tbody>
                     </table>
                 </div>
-            
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">السابق</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">التالي</a>
-                        </li>
-                    </ul>
-                </nav>
+                @if($lists->count() != 0)
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">السابق</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                            <a class="page-link" href="#">التالي</a>
+                            </li>
+                        </ul>
+                    </nav>
+                @else
+                    <div class="list-empty d-flex flex-column align-items-center justify-content-center">
+                        <i class="mdi mdi-view-day"></i>
+                        <p>لا توجد طلبات حاليا</p>
+                    </div>
+                @endif
             </div>
             <!--/ Page Inner End --> 
         <!--================================-->	
