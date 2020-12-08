@@ -19,7 +19,11 @@ class EmployeesController extends Controller
     {
         $auth = Auth::guard('employees')->user();
         $result =  System::stats('employees','employees');
-        $lists = Lists::orderby('id','desc')->with('provider','items')->where('handler','employee')->paginate(10);
+        $lists = Lists::orderby('id','desc')
+                      ->with('provider','items')
+                      ->where('handler','employee')
+                      ->where('employee_id', $auth->id)
+                      ->paginate(10);
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
