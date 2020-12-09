@@ -23,8 +23,8 @@ class ProfileController extends Controller
     }
 
     public function provider($id){
-        $user = Provider::find($id);
-        $user->role = "عميل التوصيل";
-        return view('dashboard.users.profile', compact('user'));
+        $provider = Provider::find($id);
+        $provider->role = "عميل التوصيل";
+        return view('provider.profile', compact('provider'));
     }
 }

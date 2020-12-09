@@ -18,18 +18,18 @@ class ProvidersController extends Controller
 
     public function index()
     {
-        $auth = Auth::guard('providers')->user();
+        $provider = Auth::guard('providers')->user();
         $result =  System::stats('provider','provider');
         $lists = Lists::orderby('id','desc')
                       ->with('provider','items')
                       ->where('handler','provider')
-                      ->where('provider_id', $auth->id)
+                      ->where('provider_id', $provider->id)
                       ->paginate(100);
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
-        return view('provider.index', compact('lists','cities','providers','employees','products','auth','logout','result'));
+        return view('provider.listing', compact('lists','cities','providers','employees','products','provider','logout','result'));
     }
 
     public function statue(Request $request , $id)

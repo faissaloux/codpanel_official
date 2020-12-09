@@ -160,7 +160,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/create', 'EmployeesController@create')->name('create');
     Route::post('/store', 'EmployeesController@store')->name('store');
     Route::post('/edit/{id}', 'EmployeesController@edit')->name('edit');
-    Route::get('/settings/{id}', 'ProfileController@employee')->name('profile');
+    Route::get('/profile/{id}', 'ProfileController@employee')->name('profile');
     Route::post('/update', 'EmployeesController@update')->name('update');
     Route::post('/export', 'EmployeesController@export')->name('export');
     Route::post('/import', 'EmployeesController@import')->name('import');
@@ -174,6 +174,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
   Route::group(['prefix' => '/provider', 'as' => 'provider.' , 'middleware' => 'IsProvider' ], function () {
     Route::get('/', 'ProvidersController@index')->name('index');
     Route::view('/settings', 'staff.provider.settings')->name('settings');
+    Route::get('/profile/{id}', 'ProfileController@provider')->name('profile');
 	Route::post('/export', 'ProvidersController@export')->name('export');
 	Route::post('/statue/{id}', 'ProvidersController@statue')->name('statue');
 	Route::post('/load/{id}', 'ProvidersController@load')->name('load');
