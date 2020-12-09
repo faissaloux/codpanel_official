@@ -619,6 +619,13 @@ class="new-listing-page"
                         <td>
                             <a type="button" 
 
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showhistory"
+                                data-link="{{ route('dashboard.listing.history' , ['id' => $list->id ]) }}">
+
+                                الأحداث
+                            </a>
+                            <a type="button" 
+
                                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"
                                 data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
 

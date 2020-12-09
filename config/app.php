@@ -232,6 +232,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'System' => App\System\System::class,
         'Role' => App\System\Role::class,
+        'Status' => App\System\Status::class,
 
     ],
 

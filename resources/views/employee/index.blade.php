@@ -9,7 +9,7 @@
     <head>
         @include('dashboard.inc.head')
     </head>
-    <body dir="rtl" class="employees-listing-page" data-auth-id="{{ $auth->id }}" data-auth-type="{{ $auth->role }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="employee" data-type="">
+    <body dir="rtl" class="employees-listing-page" data-auth-id="{{ $employees->id }}" data-auth-type="{{ System::auth_type() }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="employee" data-type="">
         @include('dashboard.inc.actions')
         <!--================================-->
         <!-- Page Container Start -->
@@ -33,12 +33,12 @@
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false">                    
-                                        @if(!empty ( $auth->image ))  
-                                        <img src="/uploads/{{ $auth->image}}"
+                                        @if(!empty ( $employees->image ))  
+                                        <img src="/uploads/{{ $employees->image}}"
                                         class="img-fluid wd-30 ht-30 rounded-circle"
                                         alt="">
                                         @else
-                                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit($auth->name, 1 , "") }}</span></div>
+                                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit($employees->name, 1 , "") }}</span></div>
                                         @endif
                 
                                     </a>
@@ -534,20 +534,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="form-group ">
-                                                            <label for="employee_selector" class="float-right" >
-                                                                <b>عميل الإتصال</b>
-                                                            </label>
-                                                            <select class="selectpicker form-control" name="employee_selector" data-style="btn-default" data-live-search="true">
-                                                                <option></option>
-                                                                @foreach ($employees as $employee)
-                                                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
-                                                                @endforeach
-                                                                
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label for="provider" class="float-right">
                                                                 <b>مندوب التوصيل</b>
@@ -729,7 +715,7 @@
         <!-- Footer Script -->
         <!--================================-->
         <script src="{{ asset('assets/js/all.js') }}"></script>
-        <script src="{{ asset('assets/js/custom.js') }}"></script>
+        <script src="{{ asset('assets/js/employee.js') }}"></script>
         
     </body>
 

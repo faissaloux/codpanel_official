@@ -46,50 +46,7 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column">
-                <div class="d-flex align-items-center float-right">
-                    <div class="col-md-12 col-lg-12 text-right">
-                        <div class="card mg-b-30">
-                            <div class="card-body pd-0">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>تاريخ</th>
-                                            <th>العملية</th>
-                                            <th>من طرف</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>2020-10-28 18:53:30</td>
-                                            <td>تم تعيين ك ملغى</td>
-                                            <td>Soumia</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2020-10-28 18:53:30</td>
-                                            <td>تم تعيين ك ملغى</td>
-                                            <td>Soumia</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2020-10-28 18:53:30</td>
-                                            <td>تم تعيين ك ملغى</td>
-                                            <td>Soumia</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2020-10-28 18:53:30</td>
-                                            <td>تم تعيين ك ملغى</td>
-                                            <td>Soumia</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2020-10-28 18:53:30</td>
-                                            <td>تم تعيين ك ملغى</td>
-                                            <td>Soumia</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

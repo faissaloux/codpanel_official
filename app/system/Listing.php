@@ -1,7 +1,7 @@
 <?php 
 
 namespace App\System;
-use \App\Models\Lists;
+use \App\Lists;
 use App\System\Helpers\Paginator;
 
 
@@ -117,5 +117,3 @@ class Listing extends Lists {
 
 
 }
-
-

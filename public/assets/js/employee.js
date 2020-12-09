@@ -135,37 +135,6 @@ $('.modal').on('shown.bs.modal', function(e) {
     });
 });
 
-///////show moda addneworder
-$('#addnewcity').click(function(e) {
-
-    var token = $('meta[name="csrf-token"]').attr('content');
-    var link = $(this).attr('data-link');
-
-
-    var formData = new FormData();
-    formData.append('_token', token);
-
-
-    $.ajax({
-        url: link,
-        type: 'POST',
-        processData: false, // important
-        contentType: false, // important
-        data: formData,
-        cache: false,
-        dataType: "HTML",
-        beforeSend: function() {},
-        success: function(response) {
-            $('body #addCityModalCenter').modal('show');
-            $('body #addCityModalCenter .modal-body').html(response);
-        },
-        error: function(response) {
-            default_error();
-        }
-    });
-
-});
-
 ///////show moda editorder
 $('body').on('click', '.editlist', function(e) {
 
@@ -199,9 +168,7 @@ $('body').on('click', '.editlist', function(e) {
 
 
 //all urls
-var listingURL = "/employee/listing/listing";
-
-
+var listingURL = "/employee/listing";
 ///show th status listing
 $('.status-click').click(function(e) {
 

@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\JsonDecoder;
 
 class Lists extends Model
 {
 
     protected $guarded = ['id'];
+    protected $table = 'lists';
 
     
     public function provider(){
@@ -68,4 +70,17 @@ class Lists extends Model
     public function scopeDelivred($query){
         return  $query->where('status', 'delivred');
     }
+
+
+    public function displayHistory(){
+        return json_decode($this->history); 
+    }
+
+
+
+
+
+
+
+
 }

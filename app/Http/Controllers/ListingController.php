@@ -9,9 +9,9 @@ use App\Cities;
 use App\Employee;
 use App\Products;
 use App\Provider;
+use App\System\System;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\System\System;
 
 class ListingController extends Controller {
 
@@ -171,11 +171,17 @@ class ListingController extends Controller {
 
     public function statue(Request $request , $id)
     {
-        $List = Lists::find($id);
-        $List->status = $request->statue;
+        // $List = Lists::find($id);
+        // $List->status = $request->statue;
+        // $List->save();
 
-        $List->save();
-        return response()->json(["Success" => "changed successfuly"]);
+        $status = \Status::list($id)->status($request->statue)->save_status();
+
+        if($status){
+            return response()->json(["Success" => "changed successfuly"]);
+        }
+
+        return response()->json(["error" => "changed unsuccessfuled"]);
     }
 
     public function load($id)
@@ -215,6 +221,15 @@ class ListingController extends Controller {
         
         
         return response()->view('dashboard.elements.listing-table' , compact('lists'))->setStatusCode(200);
+    }
+
+    public function history($id){
+        $lists = Lists::where('id', $id)->orderby('id','desc')->get('history');
+        //$history = $lists->displayHistory();
+        return response()->view('dashboard.elements.list_history', compact('lists'))
+                         ->setStatusCode(200);
+
+        //return response(view('dashboard.elements.list_history', json_decode($lists)),200);
     }
 
 

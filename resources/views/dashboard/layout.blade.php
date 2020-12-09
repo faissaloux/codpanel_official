@@ -103,10 +103,6 @@ $('.modal').on('shown.bs.modal', function(e) {
 
 
 ///////////load list details
-
-
-
-
 $('body').on('click','.showdetails',function(e){
 
   var token   = $('meta[name="csrf-token"]').attr('content');
@@ -140,44 +136,43 @@ $('body').on('click','.showdetails',function(e){
 
 
 //////// change status
-
-$('.modal').on('shown.bs.modal', function(e) {
-  $('.chnage_statue a').click(function(e){
+// $('.modal').on('shown.bs.modal', function(e) {
+//   $('.chnage_statue a').click(function(e){
   
-    var token   = $('meta[name="csrf-token"]').attr('content');
-    var link = $('.chnage_statue').attr('data-link');
-    var statue = $(this).attr('data-type');
-    var list_id = $('.chnage_statue').attr('data-id');
+//     var token   = $('meta[name="csrf-token"]').attr('content');
+//     var link = $('.chnage_statue').attr('data-link');
+//     var statue = $(this).attr('data-type');
+//     var list_id = $('.chnage_statue').attr('data-id');
 
-    var formData = new FormData();
-    formData.append('_token', token);
-    formData.append('statue', statue);
+//     var formData = new FormData();
+//     formData.append('_token', token);
+//     formData.append('statue', statue);
 
 
-    $.ajax({
-        url: link,
-        type: 'POST',
-        processData: false, // important
-        contentType: false, // important
-        data: formData,
-        cache:false,
-        dataType: "HTML",
-         beforeSend:function(){
-        },
-        success: function(response) {
-          $.each(JSON.parse(response), function(key, value) { 
-              statue_toast("success",value)
-          });
-          $('body .list_'+list_id).remove();
-          $('body #detailsModalCenter').modal('hide');          
-        },
-        error : function(response){
-           default_error();
-        }
-  });
+//     $.ajax({
+//         url: link,
+//         type: 'POST',
+//         processData: false, // important
+//         contentType: false, // important
+//         data: formData,
+//         cache:false,
+//         dataType: "HTML",
+//          beforeSend:function(){
+//         },
+//         success: function(response) {
+//           $.each(JSON.parse(response), function(key, value) { 
+//               statue_toast("success",value)
+//           });
+//           $('body .list_'+list_id).remove();
+//           $('body #detailsModalCenter').modal('hide');          
+//         },
+//         error : function(response){
+//            default_error();
+//         }
+//   });
   
-});
-});
+// });
+// });
 
 ///////show moda addneworder
 
@@ -420,6 +415,38 @@ $('#updatecities').submit(function(event){
   });
   
 });
+});
+
+
+///////////load history
+$('body').on('click','.showhistory',function(e){
+
+var token   = $('meta[name="csrf-token"]').attr('content');
+  var link = $(this).attr('data-link');
+
+  var formData = new FormData();
+  formData.append('_token', token);
+
+
+  $.ajax({
+      url: link,
+      type: 'POST',
+      processData: false, // important
+      contentType: false, // important
+      data: formData,
+      cache:false,
+      dataType: "HTML",
+       beforeSend:function(){
+      },
+      success: function(response) {
+        $('body #historyModalCenter').modal('show');
+        $('body #historyModalCenter .modal-body').html(response);
+      },
+      error : function(response){
+         default_error();
+      }
+});
+
 });
 
 
