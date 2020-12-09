@@ -20,17 +20,17 @@ class EmployeesController extends Controller
  
     public function index()
     {
-        $employees = Auth::guard('employees')->user();
+        $employee = Auth::guard('employees')->user();
         $result =  System::stats('employees','employees');
         $lists = Lists::orderby('id','desc')
                       ->with('provider','items')
                       ->where('handler','employee')
-                      ->where('employee_id', $employees->id)
+                      ->where('employee_id', $employee->id)
                       ->paginate(10);
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
-        return view('employee.index', compact('lists','cities','providers','employees','products','result'));
+        return view('employee.listing', compact('lists','cities','providers','employee','products','result'));
     }
 
     public function create()

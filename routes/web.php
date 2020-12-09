@@ -160,7 +160,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/create', 'EmployeesController@create')->name('create');
     Route::post('/store', 'EmployeesController@store')->name('store');
     Route::post('/edit/{id}', 'EmployeesController@edit')->name('edit');
-    Route::view('/settings/{id}', 'ProfileController@employee')->name('profile');
+    Route::get('/settings/{id}', 'ProfileController@employee')->name('profile');
     Route::post('/update', 'EmployeesController@update')->name('update');
     Route::post('/export', 'EmployeesController@export')->name('export');
     Route::post('/import', 'EmployeesController@import')->name('import');

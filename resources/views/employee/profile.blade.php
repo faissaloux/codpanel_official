@@ -1,4 +1,4 @@
-@extends('dashboard/layout')
+@extends('employee/layout')
 
 @section('title')
    Profile | {{ env('APP_NAME') }}
@@ -17,20 +17,20 @@
                    <h6 class="my-3">المعلومات الشخصية</h6>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">الاسم الكامل:</div>
-                      <div class="col-md-9">{{ $user->full_name }}</div>
+                      <div class="col-md-9">{{ $employee->full_name }}</div>
                    </div>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">الوظيفة:</div>
-                   <div class="col-md-9">{{ $user->role }}</div>
+                   <div class="col-md-9">{{ $employee->role }}</div>
                    </div>
                    <h6 class="my-3">جهات الاتصال</h6>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">البريد الإلكتروني:</div>
-                        <div class="col-md-9"><a href="mailto: {{ $user->email }}">{{ $user->email }}</a></div>
+                        <div class="col-md-9"><a href="mailto: {{ $employee->email }}">{{ $employee->email }}</a></div>
                    </div>
                    <div class="row mb-2 p-2">
                       <div class="col-md-2 tx-gray-500 tx-semibold">الهاتف:</div>
-                        <div class="col-md-9"><a href="tel:{{ $user->phone }}">{{ $user->phone }}</a></div>
+                        <div class="col-md-9"><a href="tel:{{ $employee->phone }}">{{ $employee->phone }}</a></div>
                    </div>
                 </div>
                 <div class="card-footer text-center p-0">

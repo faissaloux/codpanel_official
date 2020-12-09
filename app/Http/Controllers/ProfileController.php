@@ -12,19 +12,19 @@ class ProfileController extends Controller
 {
     public function admin($id){
         $user = Admin::find($id);
-        $role = "المدير";
-        return view('dashboard.users.profile', compact($user));
+        $user->role = "المدير";
+        return view('dashboard.users.profile', compact('user'));
     }
 
     public function employee($id){
-        $user = Employee::find($id);
-        $role = "عميل الاتصال";
-        return view('dashboard.users.profile', compact($user));
+        $employee = Employee::find($id);
+        $employee->role = "عميل الاتصال";
+        return view('employee.profile', compact('employee'));
     }
 
     public function provider($id){
         $user = Provider::find($id);
-        $role = "عميل التوصيل";
-        return view('dashboard.users.profile', compact($user));
+        $user->role = "عميل التوصيل";
+        return view('dashboard.users.profile', compact('user'));
     }
 }
