@@ -64,7 +64,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     });
 
 
-    Route::view('/profile', 'dashboard.users.profile')->name('profile');
+    Route::get('/profile/{id}', 'ProfileController@admin')->name('profile');
     Route::view('/settings', 'dashboard.settings.index')->name('settings');
     Route::post('/update', 'SettingsController@updateDashboard')->name('update');
 
