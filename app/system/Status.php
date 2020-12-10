@@ -39,8 +39,16 @@ class Status extends Listing {
     }
 
     public static function status($status){
-        if($status == "confirmed"){
-            self::$list->handler = "provider";
+        switch($status){
+            case 'confirmed':   self::$list->handler = "provider";
+                                self::$list->confirmed_at = \Carbon\Carbon::now();
+                                break;
+            case 'unanswered':  self::$list->unanswered_at = \Carbon\Carbon::now();
+                                break;
+            case 'delivred' :   self::$list->delivred_at = \Carbon\Carbon::now();
+                                break;
+            case 'canceled' :   self::$list->canceled_at = \Carbon\Carbon::now();
+                                break;
         }
         self::$status = $status;
         return new self;
