@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Helpers;
-use App\{Cities,Provider,Employee,Products,Lists};
+use App\{Cities,Provider,Employee,Products,Lists,Items};
 
 class ListsHelper {
 
@@ -51,7 +51,45 @@ class ListsHelper {
         return $list_array;
     } 
 
+    // creating the list OR update
+    public static function saveList($model,$post, $checkNumber = false){
+        $model->name            = $post['name'];
+        $model->adress          = $post['adress'];
+        $model->phone           = $post['tel'];
+        $model->city_id         = $post['cityID'];
+        $model->provider_id     = Cities::find($post['cityID'])->provider_id ?? NULL;
+        $model->laivraison      = $post['prix_de_laivraison'] ;
+        $model->employee_id     = $post['employee'] ?? $model->employee_id  ;
 
-
-
+        $model->save();
+        return $model->id;
+    }
+    
+    // the action of saving the products of the listing
+    public static function multiSaleProductsSave($post,$list_id){
+        for($x=0, $count=count($post['ProductID']); $x < $count; $x++){
+             $pro             = new Items();
+             $pro->list_id    = $list_id;
+             $pro->product_id = $post['ProductID'][$x];
+             $pro->price      = $post['prix'][$x];
+             $pro->quantity   = $post['quantity'][$x];
+             $pro->save();
+         }
+     }
+ 
+     // save OR update the products of the order
+     public static function saveMultiSale($post,$list_id,$update = false){
+         if($update){
+                 Items::where('list_id', $list_id)->delete();
+                 self::multiSaleProductsSave($post,$list_id);
+         }
+         else self::multiSaleProductsSave($post,$list_id);
+     }
+     
+    public static function update($request, $id){
+        $post =  $request->All();
+        $Lists = Lists::find($id);
+        $list_id = self::saveList($Lists,$post);
+        self::saveMultiSale($post,$list_id,true);
+    }
 }

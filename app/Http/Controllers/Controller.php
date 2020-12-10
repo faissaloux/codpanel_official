@@ -15,7 +15,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    
+    public function index()
+    {
+        $lists = ListsHelper::list_relatives(\System::auth_type())[0];
+        return view($this->listing, compact('lists'));
+    }
+
     public function listing(Request $request)
     {
         $lists = ListsHelper::load($request);

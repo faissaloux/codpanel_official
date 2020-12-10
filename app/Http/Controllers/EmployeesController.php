@@ -13,20 +13,9 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeesController extends Controller
 {
- 
-
-    
-
     public $listingView = 'employee.elements.listing-table';
     public $listDetails = 'employee.elements.list_details';
-
-
-    
-    public function index()
-    {
-        $lists = ListsHelper::list_relatives('employee')[0];
-        return view('employee.listing', compact('lists'));
-    }
+    public $listing = 'employee.listing';
 
     public function create()
     {
@@ -46,43 +35,7 @@ class EmployeesController extends Controller
         return response()->json(["Success" => "saved successfuly"]);
     }
 
-    // creating the list OR update
-    public function saveList($model,$post, $checkNumber = false){
-
-        $model->name            = $post['name'];
-        $model->adress          = $post['adress'];
-        $model->phone           = $post['tel'];
-        $model->city_id         = $post['cityID'];
-        $model->provider_id     = Cities::find($post['cityID'])->provider_id ?? NULL;
-        $model->laivraison      = $post['prix_de_laivraison'] ;
-        $model->employee_id     = $post['employee'] ?? $model->employee_id  ;
-
-        $model->save();
-        return $model->id;
-    }
-
-    // the action of saving the products of the listing
-    public function multiSaleProductsSave($post,$list_id){
-       for($x=0, $count=count($post['ProductID']); $x < $count; $x++){
-            $pro             = new Items();
-            $pro->list_id    = $list_id;
-            $pro->product_id = $post['ProductID'][$x];
-            $pro->price      = $post['prix'][$x];
-            $pro->quantity   = $post['quantity'][$x];
-            $pro->save();
-        }
-    }
-
-    // save OR update the products of the order
-    public function saveMultiSale($post,$list_id,$update = false){
-        if($update){
-                Items::where('list_id', $list_id)->delete();
-                $this->multiSaleProductsSave($post,$list_id);
-        }
-        else $this->multiSaleProductsSave($post,$list_id);
-    }
-
-	    public function edit($id)
+    public function edit($id)
     {
         $cities = Cities::orderby('id','desc')->get();
         $auth = Auth::guard('employees')->user();
@@ -94,21 +47,8 @@ class EmployeesController extends Controller
 
     public function update(Request $request,$id)
     {
-        /* 
-        to do 
         ListsHelper::update($request,$id);
         return response()->json(["Success" => "updated successfuly"]);
-
-        */
-        
-        $post =  $request->All();
-        $Lists = Lists::find($id);
-        $list_id = $this->saveList($Lists,$post);
-        $this->saveMultiSale($post,$list_id,true);
-        return response()->json(["Success" => "updated successfuly"]);
     }
-
- 
-
 
 }
