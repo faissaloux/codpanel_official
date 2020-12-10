@@ -51,7 +51,7 @@ class RegisterController extends Controller
     public function showClientRegisterView()
     {
         if ( Auth::guard('clients')->user() ) return redirect()->route('client.panels');
-        return view('client.auth.sign-up');
+        return view('client.auth.singup');
     }
 
     /**
@@ -65,6 +65,7 @@ class RegisterController extends Controller
             'lastName' => ['required', 'string', 'min:4', 'max:255'],
             'email' => ['required', 'email', ' string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'max:255', 'min:6'],
+            'acceptTerms' => ['required', 'string', 'max:255']
         ]);
     }
 
@@ -84,7 +85,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
         Auth::guard('clients')->login($client);
-        return redirect()->route('client.ordernow');
+        return redirect()->route('client.orderNow');
     }
 
     protected function createAdmin(array $data)

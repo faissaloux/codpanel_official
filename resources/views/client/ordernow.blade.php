@@ -14,6 +14,11 @@
                     </div>
                 </div>
                 <div class="have-domain col-12 col-md-8 order-store">
+                    @if($errors)
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger text-center">{{ $error }}</div>
+                        @endforeach
+                    @endif
                     <form   id="orderForm"
                             class="form-domain form-visible"
                             action="{{ route('client.orderStore') }}"
@@ -21,17 +26,18 @@
                         @csrf
                         <div class="form-group">
                             <div class="form-group">
-                                <label class="control-label" 
-                                        for="orderstoreform-admin_email"
-                                >
+                                <label class="control-label"
+                                        for="orderstoreform-admin_email">
                                     Admin email
                                 </label>
-                                <input  type="email" 
-                                        id="orderstoreform-admin_email" 
-                                        class="input" 
+                                <input  type="email"
+                                        id="orderstoreform-admin_email"
+                                        class="input"
                                         name="email"
-                                        placeholder="email@example.com">
-                                <p class="help-block help-block-error" 
+                                        placeholder="email@example.com"
+                                        value="{{ old('email') }}"
+                                >
+                                <p class="help-block help-block-error"
                                         style="display: none;"></p>
                             </div>
                             <div class="form-group">
@@ -44,7 +50,9 @@
                                         class="input"
                                         name="username"
                                         placeholder="johndoe"
-                                        aria-required="true">
+                                        aria-required="true"
+                                        value="{{ old('username') }}"
+                                >
                                 <p  class="help-block help-block-error"
                                     style="display: none;"></p>
                             </div>
@@ -71,7 +79,7 @@
                             <input  type="password"
                                     id="orderstoreform-confirm_password"
                                     class="input"
-                                    name="passwordConfirmation"
+                                    name="password_confirmation"
                                     placeholder="Confirm password"
                                     aria-required="true">
                             <p  class="help-block help-block-error"

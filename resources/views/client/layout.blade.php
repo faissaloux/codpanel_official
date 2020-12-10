@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> @yield('title') </title>
-
-    <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon">
+    <link type="image/x-icon" href="{{ asset('images/favicon.ico') }}" rel="shortcut icon">
     <link href="{{ asset('assets/client/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome/all.css') }}">
 
     <style>
         i {
@@ -95,6 +96,7 @@
     </div>
     @yield('content')
     <script src="{{ asset('assets/js/all.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script>
         function enableInput(inputClass){
             $(`.disable-input input.${inputClass}`).css({
@@ -103,3 +105,4 @@
             });
         }
     </script>
+    @yield('javascript')
