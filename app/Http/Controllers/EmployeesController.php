@@ -94,7 +94,6 @@ class EmployeesController extends Controller
 
     public function update(Request $request,$id)
     {
-
         /* 
         to do 
         ListsHelper::update($request,$id);

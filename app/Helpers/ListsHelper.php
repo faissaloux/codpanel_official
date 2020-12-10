@@ -18,7 +18,7 @@ class ListsHelper {
     
     public static function setStatus($request,$id){
         $recall_at = (!empty($request->recall_date) and !empty($request->recall_time))?  $request->recall_date . ' ' . $request->recall_time : NULL;
-        $message =  \Status::list($id)->status($request->statue)->reason($request->cancel_reason)->recall_at($recall_at )->save_status() ? ["Success" => "changed successfuly"] : ["error" => "unexpected error occured "];
+        $message =  \Status::list($id)->status($request->statue)->reason($request->cancel_reason)->recall_at($recall_at)->save_status() ? ["Success" => "changed successfuly"] : ["error" => "unexpected error occured "];
         unset($recall_at );
         return $message;
     }

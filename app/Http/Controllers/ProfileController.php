@@ -11,9 +11,9 @@ use App\Provider;
 class ProfileController extends Controller
 {
     public function admin(){
-        $user = Admin::find(\System::admin()->id);
-        $user->role = "المدير";
-        return view('dashboard.users.profile', compact('user'));
+        $admin = Admin::find(\System::admin()->id);
+        $admin->role = "المدير";
+        return view('dashboard.users.profile', compact('admin'));
     }
 
     public function employee(){

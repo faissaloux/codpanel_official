@@ -6,7 +6,7 @@ use \App\System\Listing;
 
 /*
     usage example
-    statue::List($id)->statue($request->statue)->reason($request->reason)->save_status();
+    statue::List($id)->status($request->statue)->reason($request->reason)->recall_at($recall_at)-->save_status();
 */
 
 
@@ -31,15 +31,14 @@ class Status extends Listing {
         "delivred" => "تم توصيل الطلب",
     ];
 
-
-    public static function statuesList(){
-        return  array_keys(self::$message);
-    }
-
     public function __construct() {
         $this->by();
         self::$current_time = \Carbon\Carbon::now()->toDateTimeString() ;
         self::$status_types = array_keys(self::$message);
+    }
+
+    public static function statuesList(){
+        return  array_keys(self::$message);
     }
 
     public function by(){
