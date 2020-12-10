@@ -8,12 +8,12 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">                    
-                        @if(!empty ( $provider->image ))  
-                        <img src="/uploads/{{$provider->image}}"
+                        @if(!empty ( System::provider()->image ))  
+                        <img src="/uploads/{{System::provider()->image}}"
                         class="img-fluid wd-30 ht-30 rounded-circle"
                         alt="">
                         @else
-                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit($provider->name, 1 , "") }}</span></div>
+                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit(System::provider()->name, 1 , "") }}</span></div>
                         @endif
 
                     </a>

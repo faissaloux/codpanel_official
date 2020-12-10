@@ -12,49 +12,48 @@ use App\Provider;
 use App\System\System;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Helpers\ListsHelper;
 
 class ListingController extends Controller {
 
 
-	public function __construct() {
-        // if(Auth::user()->role != 'admin'){
-        // 	return response()->json([	'error'=> 'you are not allowed to do this' ]);
-        // }
+    
+
+    public function __construct()
+    {
+       // dd(        Lists::trashed()->paginate(10)  );
+
     }
 
-    public function index()
+    public function trashed()
     {
-        $lists = Lists::orderby('id','desc')->with('provider','items')->paginate(10);
+        $lists = ListsHelper::trashed(10);
         $cities = Cities::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
-
         return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
+    }
+
+    
+    public function index()
+    {
+        $lists = ListsHelper::list_relatives('admin')[0];
+        return view('dashboard.listing.index',compact('lists'));
     }
 
     public function employees()
     {
-        $lists = Lists::employees()->orderby('id','desc')->where('handler','employee')->paginate(10);
-        $result = System::stats('admin','employee');
-        $cities = Cities::orderby('id','desc')->get();
-        $providers = Provider::orderby('id','desc')->get();
-        $employees = Employee::orderby('id','desc')->get();
-        $products = Products::orderby('id','desc')->get();        
+        $lists = ListsHelper::list_relatives('employee')[0];     
 
-        return view('dashboard.listing.employees', compact('lists','cities','providers','employees','products','result'));
+        return view('dashboard.listing.employees', compact('lists'));
     }
 
     public function providers()
     {
-        $lists = Lists::providers()->orderby('id','desc')->where('handler','provider')->paginate(10);
-        $result =  System::stats('admin','provider');
-        $cities = Cities::orderby('id','desc')->get();
-        $providers = Provider::orderby('id','desc')->get();
-        $employees = Employee::orderby('id','desc')->get();
-        $products = Products::orderby('id','desc')->get();
+        $lists = ListsHelper::list_relatives('provider')[0];     
 
-        return view('dashboard.listing.providers', compact('lists','cities','providers','employees','products','result'));
+        return view('dashboard.listing.providers', compact('lists'));
     }
 
     public function new()
@@ -92,15 +91,6 @@ class ListingController extends Controller {
         $model->laivraison      = $post['prix_de_laivraison'] ;
         $model->employee_id     = $post['employee'] ?? $model->employee_id  ;
 
-
-        // if( Auth::user()->role != 'employee' ){
-        //     if($checkNumber  == true ){
-        //        if( $this->checkDuplicatedNumber($post['tel'])){
-        //            $model->duplicated_at = Carbon::NOW();
-        //        }
-        //     }
-        // }
-
         $model->save();
         return $model->id;
     }
@@ -128,12 +118,11 @@ class ListingController extends Controller {
 
     public function edit($id)
     {
-        $cities = Cities::orderby('id','desc')->get();
-        $users = User::orderby('id','desc')->get();
+        $cities = Cities::ordered()->get();
+        $users = Provider::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
         $content = Lists::with("items")->find($id);
-        return response()->view('dashboard.elements.edit_list', compact('cities','users','products','content'))
-                         ->setStatusCode(200);
+        return response()->view('dashboard.elements.edit_list', compact('cities','users','products','content'))->setStatusCode(200);
     }
 
     public function update(Request $request,$id)
@@ -148,88 +137,43 @@ class ListingController extends Controller {
     public function delete($id)
     {
         Lists::find($id)->delete();
-        return redirect()->route('admin.users.home')
-                         ->with('success', trans('user.deleted'));
+        return redirect()->route('admin.users.home')->with('success', trans('user.deleted'));
     }
 
     public function destroy($id)
     {
-        Lists::find($id)->delete();
-        return redirect()->route('admin.users.home')
-                         ->with('success', trans('user.deleted'));
+        Lists::find($id)->forceDelete();
+        return redirect()->route('admin.users.home') ->with('success', trans('user.deleted'));
     }
 
     public function restore($id)
     {
-        $List = Lists::find($id);
-        $List->statue = "";
-
-        $List->save();
-        return redirect()->route('admin.users.home')
-                         ->with('success', trans('user.deleted'));
+        Lists::find($id)->restore();
+        return redirect()->route('admin.users.home')->with('success', trans('user.deleted'));
     }
 
     public function statue(Request $request , $id)
-    {
-        // $List = Lists::find($id);
-        // $List->status = $request->statue;
-        // $List->save();
-
-        $status = \Status::list($id)->status($request->statue)->save_status();
-
-        if($status){
-            return response()->json(["Success" => "changed successfuly"]);
-        }
-
-        return response()->json(["error" => "changed unsuccessfuled"]);
+    {   
+        $message = ListsHelper::setStatus($request,$id);
+        return response()->json($message);
     }
 
     public function load($id)
     {
         $list = Lists::with("items")->find($id);
-        return response()->view('dashboard.elements.list_details', compact('list'))
-                         ->setStatusCode(200);
+        return response()->view('dashboard.elements.list_details', compact('list'))->setStatusCode(200);
     }
 
     public function listing(Request $request)
     {
-
-        if($request->handler == "employee"){
-            $lists = $request->type == "all"
-                ?   Lists::employees()
-                                ->orderby('id','desc')
-                                ->where('handler','employee')
-                                ->paginate(10)
-                :   Lists::with("items")
-                                ->orderby('id','desc')
-                                ->where('handler','employee')
-                                ->where('status',$request->type)
-                                ->paginate(10);
-        }
-        if($request->handler == "provider"){
-            $lists = $request->type == "all" 
-                ?   Lists::with("items")
-                                ->orderby('id','desc')
-                                ->where('handler','provider')
-                                ->paginate(10)
-                :   Lists::with("items")
-                                ->orderby('id','desc')
-                                ->where('handler','provider')
-                                ->where('status',$request->type)
-                                ->paginate(10);
-        }
-        
-        
+        $lists = ListsHelper::load($request);
         return response()->view('dashboard.elements.listing-table' , compact('lists'))->setStatusCode(200);
     }
 
+    
     public function history($id){
-        $lists = Lists::where('id', $id)->orderby('id','desc')->get('history');
-        //$history = $lists->displayHistory();
-        return response()->view('dashboard.elements.list_history', compact('lists'))
-                         ->setStatusCode(200);
-
-        //return response(view('dashboard.elements.list_history', json_decode($lists)),200);
+        $history = Lists::select('history')->find($id)->displayHistory();
+        return response()->view('dashboard.elements.list_history', compact('history'))->setStatusCode(200);
     }
 
 

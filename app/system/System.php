@@ -54,13 +54,13 @@ class System {
 
     public static function stats($auth = 'admin',$type = 'employee'){
 
-        if($type == 'employee' && $auth == 'admin')
+        if($auth == 'employee' && $type == 'admin')
             $count = 'SELECT count(*) FROM lists where handler="employee"';
 
-        if($type == 'provider' && $auth == 'admin')
+        if($auth == 'provider' && $type == 'admin')
             $count = 'SELECT count(*) FROM lists where handler="provider"';
 
-        if($auth == 'employees' && $type == 'employees'){
+        if($auth == 'employee' && $type == 'employee'){
             $id = self::employee()->id;
             $count = 'SELECT count(*) FROM lists where handler="employee" and employee_id="'.$id.'"';
         }
@@ -85,7 +85,5 @@ class System {
         return $result;
 
     }
-
-
       
 }

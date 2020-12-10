@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use \App\Base;
 
-class Cities extends Model
+class Cities extends Base
 {
 
     protected $guarded = ['id'];
@@ -16,4 +16,5 @@ class Cities extends Model
     public function provider(){
         return $this->belongsTo('\App\Provider', 'provider_id')->withDefault(['name' => 'N-A']);
     }
+
 }

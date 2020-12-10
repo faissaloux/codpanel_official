@@ -12,18 +12,18 @@
                     href="javascript:;">
                     <i class="mdi mdi-home"></i>
                     <span class="col">الكل</span>
-                    <span class="quantity col">{{$result->al}}</span>
+                    <span class="quantity col">{{$lists['result']->al}}</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a  class="nav-link status-click"
-                    id="new-tab"
+                    id="confirmation-tab"
                     data-toggle="tab"
-                    data-type="new"
+                    data-type="confirmed"
                     href="javascript:;">
-                    <i class="mdi mdi-hanger"></i>
-                    <span class="col">جديد</span>
-                    <span class="quantity col">{{$result->new}}</span>
+                    <i class="mdi mdi-check"></i>
+                    <span class="col">التأكيد</span>
+                    <span class="quantity col">{{$lists['result']->confirmed}}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -34,7 +34,7 @@
                     href="javascript:;">
                     <i class="mdi mdi-close"></i>
                     <span class="col">ألغيت</span>
-                    <span class="quantity col">{{$result->canceled}}</span>
+                    <span class="quantity col">{{$lists['result']->canceled}}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -45,7 +45,7 @@
                     href="javascript:;">
                     <i class="mdi mdi-phone-hangup"></i>
                     <span class="col">دون إجابة</span>
-                    <span class="quantity col">{{$result->unanswered}}</span>
+                    <span class="quantity col">{{$lists['result']->unanswered}}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -56,7 +56,7 @@
                     href="javascript:;">
                     <i class="mdi mdi-check"></i>
                     <span class="col">تم الشحن</span>
-                    <span class="quantity col">{{$result->delivred}}</span>
+                    <span class="quantity col">{{$lists['result']->delivred}}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -67,7 +67,7 @@
                     href="javascript:;">
                     <i class="mdi mdi-phone-in-talk"></i>
                     <span class="col">اعد الاتصال</span>
-                    <span class="quantity col">{{$result->recall}}</span>
+                    <span class="quantity col">{{$lists['result']->recall}}</span>
                 </a>
             </li>
         </ul>
@@ -455,37 +455,9 @@
                                                 </label>
                                                 <select class="selectpicker form-control" name="city_selector" data-style="btn-default" data-live-search="true">
                                                     <option></option>
-                                                    @foreach ($cities as $city)
+                                                    @foreach ($lists['cities'] as $city)
                                                         <option value="{{$city->id}}">{{$city->name}}</option>
                                                     @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ">
-                                                <label for="employee_selector" class="float-right" >
-                                                    <b>عميل الإتصال</b>
-                                                </label>
-                                                <select class="selectpicker form-control" name="employee_selector" data-style="btn-default" data-live-search="true">
-                                                    <option></option>
-                                                    @foreach ($employees as $employee)
-                                                        <option value="{{$employee->id}}">{{$employee->name}}</option>
-                                                    @endforeach
-                                                    
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="provider" class="float-right">
-                                                    <b>مندوب التوصيل</b>
-                                                </label>
-                                                <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
-                                                    <option></option>
-                                                    @foreach ($providers as $provider)
-                                                        <option value="{{$provider->id}}">{{$provider->id}}</option>
-                                                    @endforeach
-                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -496,7 +468,7 @@
                                                 </label>
                                                 <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                     <option></option>
-                                                    @foreach ($products as $product)
+                                                    @foreach ($lists['products'] as $product)
                                                         <option value="{{$product->id}}">{{$product->id}}</option>
                                                     @endforeach
                                                     
@@ -557,7 +529,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-body-listing">
-                    @foreach($lists as $list)
+                    @foreach($lists['lists'] as $list)
                         <tr class="{{ 'list_'.$list->id }}" >
                             <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                             <td data-type="requestId" class="tx-right">
@@ -608,7 +580,7 @@
                 </tbody>
             </table>
         </div>
-        @if($lists->count() != 0)
+        @if($lists['lists']->count() != 0)
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">

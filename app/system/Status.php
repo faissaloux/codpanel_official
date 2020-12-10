@@ -5,18 +5,21 @@ use \App\System\Listing;
 
 
 /*
-statue::List($id)->statue($request->statue)->save()
+    usage example
+    statue::List($id)->statue($request->statue)->reason($request->reason)->save_status();
 */
 
 
 class Status extends Listing {
 
     public static $by ;
+    public static $role ;
     public static $status;
     public static $list ;
     public static $history;
     public static $status_types ;
-    
+    public static $current_time ;
+    public static $cancel_reason ;
 
     public static $message = [
         "new" => "طلب جديد",
@@ -28,61 +31,78 @@ class Status extends Listing {
         "delivred" => "تم توصيل الطلب",
     ];
 
+
+    public static function statuesList(){
+        return  array_keys(self::$message);
+    }
+
     public function __construct() {
         $this->by();
+        self::$current_time = \Carbon\Carbon::now()->toDateTimeString() ;
         self::$status_types = array_keys(self::$message);
     }
 
     public function by(){
         self::$by = \System::current_auth()->name;
+        self::$role = \System::auth_type();
         return $this;
     }
 
+    public static function recall_at($recall_at){
+        self::$list->recall_at = $recall_at;
+        return new self;
+    }
+
+
     public static function status($status){
-        switch($status){
-            case 'confirmed':   self::$list->handler = "provider";
-                                self::$list->confirmed_at = \Carbon\Carbon::now();
-                                break;
-            case 'unanswered':  self::$list->unanswered_at = \Carbon\Carbon::now();
-                                break;
-            case 'delivred' :   self::$list->delivred_at = \Carbon\Carbon::now();
-                                break;
-            case 'canceled' :   self::$list->canceled_at = \Carbon\Carbon::now();
-                                break;
+        
+        if(in_array($status,array_keys(self::$message))){
+            $statue = $status.'_at';
+            self::$list->$statue = self::$current_time ; 
         }
+        
         self::$status = $status;
+        unset($status,$statue);
         return new self;
     }
 
     public static function list($id){
         self::$list = self::find($id);
+        unset($id);
+        return new self;
+    }
+
+    public static function reason($reason){
+        self::$list->cancel_reason = $reason;
+        unset($reason);
         return new self;
     }
 
     public static function history(){
-
-        $history = (object)[ array('message'=> self::$message[self::$status] , 'by'=> self::$by , 'date'=> \Carbon\Carbon::now() )];
-
+        $history = [['message'=> self::$message[self::$status] ,  'by'=> self::$by , 'role'=> self::$role , 'date'=> self::$current_time ]];
         self::$history =  $history;
         unset($history);
         return self::$history;
     }
-    
+
     public static function appendToHistory(){
-        $old_history = json_decode(self::$list->history, true);
-        array_push($old_history,self::history());
-        $history = json_encode($old_history, JSON_UNESCAPED_UNICODE);
-        return $history;
+        self::saveList(array_merge(json_decode(self::$list->history,true),self::history()));
     }
 
     public static function save_status(){
         self::$list->status = self::$status;
-        $history = empty(self::$list->history) ? json_encode(self::history(), JSON_UNESCAPED_UNICODE) : self::appendToHistory();
-        self::$list->history = $history;
-        self::$list->save();
-        unset($history);
+        if(!empty(self::$list->history)){
+            self::appendToHistory();
+        }else {
+            self::saveList(json_encode(self::history(), JSON_UNESCAPED_UNICODE));
+        }
         return true;
     }
-
+    
+    public static function saveList($history){
+        self::$list->history = $history;
+        unset($history);
+        return self::$list->save();    
+    }
 
 }

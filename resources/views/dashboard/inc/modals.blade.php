@@ -11,7 +11,7 @@
             role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="detailsModalCenterTitle">معلومات العميل</h5>
+            <h5 class="modal-title" id="detailsModalCenterTitle">تفاصيل الطلب</h5>
             <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
@@ -19,6 +19,34 @@
         <div class="modal-body d-flex flex-column">
             
 
+        </div>
+        
+        
+        </div>
+    </div>
+</div>
+<!--/ Details modal End -->
+
+<!--================================-->
+<!-- Details modal Start -->
+<!--================================-->
+<div    class="modal fade"
+        id="listDetail"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="listDetailTitle"
+        aria-hidden="true">
+    <div    class="modal-dialog modal-dialog-centered"
+            role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="listDetailTitle">معلومات العميل</h5>
+            <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body d-flex flex-column">
+            
         </div>
         
         
@@ -277,6 +305,90 @@
     </div>
 </div>
 <!--/ Add new city modal End -->
+
+<!--================================-->
+<!-- cancel reason modal Start -->
+<!--================================-->
+<div    class="modal fade"
+        id="cancelReasonModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="cancelReasonCenterTitle"
+        aria-hidden="true">
+    <div    class="modal-dialog modal-dialog-centered"
+            role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelReasonCenterTitle">سبب الإلغاء</h5>
+                <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-content add-new-city-modal">
+                <div class="modal-body d-flex flex-column">
+                    <form id="cancelReason" action="javascript:;" method="POST">
+                        @csrf
+                        <div class="d-flex flex-column">
+                            <div class="form-group">
+                                <textarea rows="3" id="cancelreasontext" class="form-control" placeholder="سبب الإلغاء" style="margin-top: 0px; margin-bottom: 0px; height: 100px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <p class="row col p-0">
+                                <a type="submit" class="btn btn-success btn-block">حفظ سبب الإلغاء</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ cancel reason modal End -->
+
+
+<!--================================-->
+<!-- recall time modal Start -->
+<!--================================-->
+<div    class="modal fade"
+        id="recalltimemodal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="recalltimeCenterTitle"
+        aria-hidden="true">
+    <div    class="modal-dialog modal-dialog-centered"
+            role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recalltimeCenterTitle">تاريخ إعادة الإتصال</h5>
+                <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-content add-new-city-modal">
+                <div class="modal-body d-flex flex-column">
+                    <form id="recalltime" action="javascript:;" method="POST">
+                        @csrf
+                        <div class="d-flex flex-column">
+                            <div class="form-group">
+                                <input id="recall_date" type="date" class="form-control hasDatepicker">
+                            </div>
+                            <div class="form-group">
+                                <input id="recall_time" type="time" class="form-control hasDatepicker">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <p class="row col p-0">
+                                <a type="submit" class="btn btn-success btn-block">حفظ تاريخ إعادة الإتصال</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ recall time modal End -->
 
 <!--================================-->
 <!-- Add to stock modal Start -->

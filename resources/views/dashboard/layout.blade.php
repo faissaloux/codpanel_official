@@ -48,8 +48,8 @@
         <!--================================-->
         <!-- Footer Script -->
         <!--================================-->
-        <script src="../../assets/js/all.js"></script>
-        <script src="../../assets/js/custom.js"></script>
+        <script src="{{ asset('assets/js/all.js') }}"></script>
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
         @if(\Session::has('success'))
             <?=
                 "<script>

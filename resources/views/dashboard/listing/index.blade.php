@@ -388,7 +388,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="city_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($cities as $city)
+                                                @foreach ($lists['cities'] as $city)
                                                     <option value="{{$city->id}}">{{$city->name}}</option>
                                                 @endforeach
                                             </select>
@@ -401,7 +401,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="employee_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($employees as $employee)
+                                                @foreach ($lists['employees'] as $employee)
                                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                                 @endforeach
                                                 
@@ -415,7 +415,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($providers as $provider)
+                                                @foreach ($lists['providers'] as $provider)
                                                     <option value="{{$provider->id}}">{{$provider->name}}</option>
                                                 @endforeach
                                                 
@@ -429,7 +429,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($products as $product)
+                                                @foreach ($lists['products'] as $product)
                                                     <option value="{{$product->id}}">{{$product->name}}</option>
                                                 @endforeach
                                                 
@@ -490,7 +490,7 @@ class="new-listing-page"
                 </tr>
             </thead>
             <tbody class="table-body-listing">
-                @foreach($lists as $list)
+                @foreach($lists['lists'] as $list)
                     <tr class="{{ 'list_'.$list->id }}" >
                         <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                         <td data-type="requestId" class="tx-right">

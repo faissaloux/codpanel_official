@@ -8,12 +8,12 @@
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">                    
-                        @if(!empty ( $employee->image ))  
-                        <img src="/uploads/{{ $employee->image}}"
+                        @if(!empty ( System::employee()->image ))  
+                        <img src="/uploads/{{ System::employee()->image}}"
                         class="img-fluid wd-30 ht-30 rounded-circle"
                         alt="">
                         @else
-                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit($employee->name, 1 , "") }}</span></div>
+                        <div class="avatar mr-2"><span style="background-color: {{ System::color() }}" class="avatar-initial rounded-circle">{{ Str::limit(System::employee()->name, 1 , "") }}</span></div>
                         @endif
 
                     </a>

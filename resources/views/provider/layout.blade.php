@@ -8,7 +8,7 @@
 <head>
     @include('dashboard.inc.head')
 </head>
-<body dir="rtl" class="providers-listing-page" data-auth-id="{{ $provider->id }}" data-auth-type="{{ System::auth_type() }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="provider" data-type="">
+<body dir="rtl" class="providers-listing-page" data-auth-id="{{ System::provider()->id }}" data-auth-type="{{ System::auth_type() }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="provider" data-type="">
     @include('dashboard.inc.actions')
     <!--================================-->
     <!-- Page Container Start -->
