@@ -2,33 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Items;
 use App\Lists;
 use App\Cities;
-use App\Employee;
 use App\Products;
-use App\Provider;
-use Illuminate\Support\Facades\DB;
+use App\Helpers\ListsHelper;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\System\System;
 
 class EmployeesController extends Controller
 {
- 
-    public function index()
+    public $listingView = 'employee.elements.listing-table';
+    public $listDetails = 'employee.elements.list_details';
+    public $listing = 'employee.listing';
+
+    public function create()
     {
-        $auth = Auth::guard('employees')->user();
-        $result =  System::stats('employees','employees');
-        $lists = Lists::orderby('id','desc')
-                      ->with('provider','items')
-                      ->where('handler','employee')
-                      ->where('employee_id', $auth->id)
-                      ->paginate(10);
         $cities = Cities::orderby('id','desc')->get();
-        $providers = Provider::orderby('id','desc')->get();
-        $employees = Employee::orderby('id','desc')->get();
+        $auth = Auth::guard('employees')->user();
         $products = Products::orderby('id','desc')->get();
-        return view('employee.index', compact('lists','cities','providers','employees','products','auth','logout','result'));
+        return response()->view('employee.elements.add_list', compact('cities','auth','products'))
+                         ->setStatusCode(200);
+    }
+
+    public function store(Request $request)
+    {
+        $post =  $request->All();
+        $Lists = new Lists();
+        $list_id = $this->saveList($Lists,$post,true);
+        $this->saveMultiSale($post,$list_id);
+        return response()->json(["Success" => "saved successfuly"]);
+    }
+
+    public function edit($id)
+    {
+        $cities = Cities::orderby('id','desc')->get();
+        $auth = Auth::guard('employees')->user();
+        $products = Products::orderby('id','desc')->get();
+        $content = Lists::with("items")->find($id);
+        return response()->view('employee.elements.edit_list', compact('cities','auth','products','content'))
+                         ->setStatusCode(200);
+    }
+
+    public function update(Request $request,$id)
+    {
+        ListsHelper::update($request,$id);
+        return response()->json(["Success" => "updated successfuly"]);
     }
 
 }

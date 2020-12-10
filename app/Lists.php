@@ -4,12 +4,35 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
+
+use PhpParser\JsonDecoder;
 
 class Lists extends Model
 {
 
-    protected $guarded = ['id'];
 
+    protected $guarded = ['id'];
+    protected $table = 'lists';
+
+    
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('trashed', function (Builder $builder) {
+            $handlers = ['provider','employee'];
+            $auth_type = \System::auth_type();
+            $scope = $auth_type.'s';
+            if(in_array($auth_type,$handlers)){
+               $builder->where($auth_type.'_id',\System::$auth_type()->id)->$scope();
+            }
+        });
+    }
     
     public function provider(){
         return  $this->belongsTo('App\Provider', 'provider_id')->withDefault(['name' => 'N-A']);
@@ -27,8 +50,11 @@ class Lists extends Model
         return  $this->belongsTo('App\Cities', 'city_id')->withDefault(['name' => 'N-A']);
     }
 
+    public function scopeTrashed($query){
+        return $query->whereNotNull('deleted_at');
+    }
     
-
+    
     public function scopeCurrentProvider($query){
         return $query->where('provider_id', Auth::user()->id);
     }
@@ -40,6 +66,24 @@ class Lists extends Model
     public function scopeEmployees($query){
         return $query->where('handler', 'employee');
     }
+
+    public function scopeOrderByID($query){
+        return $query->orderby('id','desc');
+    }
+
+
+    public function scopeByStatus($query,$status){
+        return in_array($status,\Status::statuesList()) ? $query->where('status',$status) : $query;
+    }
+
+
+    public function restore(){
+        $this->statue = 'new';
+        $this->save();
+        return true;
+    }
+
+
 
     public function scopeProviders($query){
         return $query->where('handler', 'provider');
@@ -68,4 +112,17 @@ class Lists extends Model
     public function scopeDelivred($query){
         return  $query->where('status', 'delivred');
     }
+
+
+    public function displayHistory(){
+        return json_decode($this->history); 
+    }
+
+
+
+
+
+
+
+
 }

@@ -50,21 +50,21 @@ class CreateAppTables extends Migration
 		    $table->string('city_id', 255)->nullable();
 		    $table->string('laivraison', 255)->nullable();
 		    $table->text('cancel_reason')->nullable();
-		    $table->text('history')->nullable();
+		    $table->json('history')->nullable();
 		    $table->string('product', 255)->nullable();
 		    $table->string('city', 255)->nullable();
 		    $table->string('quantity', 255)->nullable();
 		    $table->string('price', 255)->nullable();
 			$table->enum('status', ['new', 'confirmed', 'recall', 'unanswered', 'delivred', 'canceled'])->default('new');
-		    $table->time('unanswered_at')->nullable();
-		    $table->time('accepted_at')->nullable();
-		    $table->time('verified_at')->nullable();
-		    $table->time('delivred_at')->nullable();
-		    $table->time('deleted_at')->nullable();
-		    $table->time('canceled_at')->nullable();
-		    $table->time('duplicated_at')->nullable();
-		    $table->time('checked_at')->nullable();
-		    $table->time('recall_at')->nullable();
+		    $table->dateTime('unanswered_at')->nullable();
+		    $table->dateTime('confirmed_at')->nullable();
+		    $table->dateTime('verified_at')->nullable();
+		    $table->dateTime('delivred_at')->nullable();
+		    $table->dateTime('deleted_at')->nullable();
+		    $table->dateTime('canceled_at')->nullable();
+		    $table->dateTime('duplicated_at')->nullable();
+		    $table->dateTime('checked_at')->nullable();
+		    $table->dateTime('recall_at')->nullable();
 		
 		    $table->timestamps();
 		

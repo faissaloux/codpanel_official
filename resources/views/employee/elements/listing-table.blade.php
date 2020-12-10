@@ -14,7 +14,7 @@
             {{ $list->name }}
         </td>
         <td data-type="phone">
-            <a href="tel: 06########">{{ $list->tel }}</a>
+            <a href="tel: {{ $list->tel }}">{{ $list->tel }}</a>
         </td>
         <td data-type="products">
             <table class="list_products">
@@ -39,14 +39,14 @@
             <a type="button" 
 
                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"
-                data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
+                data-link="{{ route('employee.load' , ['id' => $list->id ]) }}">
 
                 التفاصيل
             </a>
             <a  type="button"
                 href="javascript:;"
                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editlist"
-                data-link="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}">
+                data-link="{{ route('employee.edit' , ['id' => $list->id ]) }}">
                 تعديل
             </a>
         </td>

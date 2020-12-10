@@ -24,7 +24,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-home"></i>
                 <span class="col">الكل</span>
-                <span class="quantity col">{{$result->al}}</span>
+                <span class="quantity col">{{$lists['result']->al}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -35,7 +35,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-hanger"></i>
                 <span class="col">جديد</span>
-                <span class="quantity col">{{$result->new}}</span>
+                <span class="quantity col">{{$lists['result']->new}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -46,7 +46,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-close"></i>
                 <span class="col">ألغيت</span>
-                <span class="quantity col">{{$result->canceled}}</span>
+                <span class="quantity col">{{$lists['result']->canceled}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -57,7 +57,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-phone-hangup"></i>
                 <span class="col">دون إجابة</span>
-                <span class="quantity col">{{$result->unanswered}}</span>
+                <span class="quantity col">{{$lists['result']->unanswered}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -68,7 +68,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-check"></i>
                 <span class="col">التأكيد</span>
-                <span class="quantity col">{{$result->confirmed}}</span>
+                <span class="quantity col">{{$lists['result']->confirmed}}</span>
             </a>
         </li>
         <li class="nav-item">
@@ -79,7 +79,7 @@ class="new-listing-page"
                 href="javascript:;">
                 <i class="mdi mdi-phone-in-talk"></i>
                 <span class="col">اعد الاتصال</span>
-                <span class="quantity col">{{$result->recall}}</span>
+                <span class="quantity col">{{$lists['result']->recall}}</span>
             </a>
         </li>
     </ul>
@@ -477,7 +477,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="city_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($cities as $city)
+                                                @foreach ($lists['cities'] as $city)
                                                     <option value="{{$city->id}}">{{$city->name}}</option>
                                                 @endforeach
                                             </select>
@@ -490,7 +490,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="employee_selector" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($employees as $employee)
+                                                @foreach ($lists['employees'] as $employee)
                                                     <option value="{{$employee->id}}">{{$employee->name}}</option>
                                                 @endforeach
                                                 
@@ -504,7 +504,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($providers as $provider)
+                                                @foreach ($lists['providers'] as $provider)
                                                     <option value="{{$provider->id}}">{{$provider->name}}</option>
                                                 @endforeach
                                                 
@@ -518,7 +518,7 @@ class="new-listing-page"
                                             </label>
                                             <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
                                                 <option></option>
-                                                @foreach ($products as $product)
+                                                @foreach ($lists['products'] as $product)
                                                     <option value="{{$product->id}}">{{$product->name}}</option>
                                                 @endforeach
                                                 
@@ -579,7 +579,7 @@ class="new-listing-page"
                 </tr>
             </thead>
             <tbody class="table-body-listing">
-                @foreach($lists as $list)
+                @foreach($lists['lists'] as $list)
                     <tr class="{{ 'list_'.$list->id }}" >
                         <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                         <td data-type="requestId" class="tx-right">
@@ -589,7 +589,7 @@ class="new-listing-page"
                             {{ $list->created_at }}
                         </td>
                         <td data-type="requestStatus" class="tx-right">
-                            قيد المعالجة<br/>
+                            {{ $list->status }}<br/>
                         </td>
                         <td data-type="name">
                             {{ $list->name }}
@@ -601,11 +601,11 @@ class="new-listing-page"
                             <table class="list_products">
                                 <tbody>
                                     <tr>
-                                        <td> 1 </td>
-                                        <td> x كيطمات رائعة </td>
+                                        <td> x {{ $list->quantity }} </td>
+                                        <td> {{ $list->product }} </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">المجموع : 249 درهم</td>
+                                        <td colspan="2">المجموع : {{ $list->price }} درهم</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -617,6 +617,13 @@ class="new-listing-page"
                             {{ $list->provider->name }}
                         </td>
                         <td>
+                            <a type="button" 
+
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showhistory"
+                                data-link="{{ route('dashboard.listing.history' , ['id' => $list->id ]) }}">
+
+                                الأحداث
+                            </a>
                             <a type="button" 
 
                                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"
