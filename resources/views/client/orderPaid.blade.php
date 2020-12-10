@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between invoice-solo">
-                            <h2>Order #815</h2>
+                            <h2>Order #{{ $order->id }}</h2>
                             <span class="button-status-active status-long d-flex align-items-center justify-content-center">
                                 <span class="button-status-oval"></span>
                                 <span class="button-status-text">Paid</span>
@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                                     <tr class="table-borderless">
-                                    <td>One month maintenance for mytraffic.ma</td>
+                                    <td>One month maintenance for {{ $order->domain_name->name }}</td>
                                     <td>$35.00</td>
                                 </tr>
                                 <tr class="total-cost">

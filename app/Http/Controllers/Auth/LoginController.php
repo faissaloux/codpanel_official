@@ -64,7 +64,7 @@ class LoginController extends Controller
     // Provider
 
     public function providerlogin()
-    {        
+    {
         return view('auth.providre_login');
     }
 
@@ -126,10 +126,13 @@ class LoginController extends Controller
 
     public function showClientLoginForm()
     {
+        if ( Auth::guard('clients')->user() !== null ) {
+            return redirect()->route('client.panels');
+        }
         return view('client.auth.login');
     }
 
-    
+
 
     public function loginClient(Request $request)
     {

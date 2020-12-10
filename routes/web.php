@@ -185,20 +185,27 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
 
 Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
     Route::middleware('IsClient')->group(function () {
-        Route::view('/ordernow', 'client.ordernow')->name('ordernow');
-        Route::post('/orderStore', 'ClientsController@orderStore')->name('orderStore');
-        Route::view('/orders', 'client.orders')->name('orders');
-        Route::view('/orderdetail', 'client.orderPaid')->name('orderdetail');
-        Route::view('/orderUnpaid', 'client.orderUnpaid')->name('orderUnpaid');
+        Route::get('/orderNow', 'YoussefController\ClientController@orderNow')->name('orderNow');
+        Route::post('/orderStore', 'YoussefController\ClientController@storeNewOrderPanel')->name('orderStore');
+        Route::get('/orderUnpaid/{id}', 'YoussefController\ClientController@orderUnpaid')->name('orderUnpaid');
+        Route::post('/checkout/{id}', 'YoussefController\ClientController@checkout')->name('checkout');
+        Route::get('/{id}/pay', 'YoussefController\ClientController@stripePayment')->name('payOrder');
+        Route::post('/{id}/payOrder', 'YoussefController\ClientController@payOrder')->name('stripe.proceed');
+        Route::get('/panels', 'YoussefController\ClientController@panels')->name('panels');
+        Route::get('/{id}/staff', 'YoussefController\ClientController@staff')->name('staff');
+        Route::get('/orders', 'YoussefController\ClientController@orders')->name('orders');
+        Route::get('/{id}/orderDetail', 'YoussefController\ClientController@orderDetail')->name('orderDetail');
+        // AJAX CLIENT
+        Route::post('/staff/add/{id}', 'YoussefController\AjaxController@addUserStaff')->name('staff.add');
+        Route::post('/staff/edit/{id}', 'YoussefController\AjaxController@editStaff')->name('staff.edit');
+
         Route::view('/settings', 'client.settings')->name('settings');
         Route::post('/update', 'ClientsController@update')->name('update');
         Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
-        Route::view('/staff', 'client.staff')->name('staff');
         Route::get('/stores', 'ClientsController@stores')->name('stores');
         Route::view('/support', 'client.support')->name('support');
         Route::post('/createTicket', 'ClientsController@createTicket')->name('createTicket');
         Route::view('/ticketdetail', 'client.ticketdetail')->name('ticketdetail');
-        Route::view('/panels', 'client.panels')->name('panels');
         Route::get('/dashboard', 'ClientsController@dashboard')->name('dashboard');
         Route::post('/export', 'ProvidersController@export')->name('export');
     Route::post('/statue', 'ProvidersController@statue')->name('statue');

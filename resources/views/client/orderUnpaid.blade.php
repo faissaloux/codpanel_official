@@ -9,18 +9,22 @@
         <div class="row align-items-center flex-column">
             <div class="col-12 col-lg-8">
             <a href="{{ route('client.orders') }}" class="mb-3 arrow-left-button svg-button d-flex">
-                Back                
+                Back
             </a>
             <div class="card">
                 <div class="card-body">
+                    @if( Session('error') )
+                        <div class="alert alert-danger text-center">{{ Session('error') }}</div>
+                    @endif
                     <div class="status-long-container d-flex justify-content-between">
-                        <h2>Order #1025</h2>
+                        <h2>Order #{{ $order->id }}</h2>
                         <span class="button-status-pending status-long d-flex align-items-center justify-content-center">
                             <span class="button-status-oval"></span>
                             <span class="button-status-text">Unpaid</span>
                         </span>
                     </div>
-                    <form id="login-form" class="invoice-card" action="/checkout/fb086b0e4473e914af2bb508d9bf6b9a" method="post">
+                    <form id="login-form" class="invoice-card" action="{{ route('client.checkout', $order->id) }}" method="post">
+                        @csrf
                         <fieldset>
                             <table class="table table-stores table-order-detail">
                                 <thead>
@@ -31,7 +35,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table-borderless">
-                                        <td>First month maintenance for sdfsffs.com</td>
+                                        <td>First month maintenance for {{ $order->staff->domain_name->name }}</td>
                                         <td>$35.00</td>
                                     </tr>
                                     <tr class="total-cost">
@@ -45,9 +49,11 @@
                                 <div class="form-check">
                                     <input  class="form-check-input payment-code"
                                             type="radio"
-                                            name="code"
+                                            name="payment_method"
                                             id="radio-fastspring"
-                                            value="fastspring">
+                                            value="stripe"
+                                            checked
+                                    >
                                     <label class="form-check-label d-flex justify-content-between" for="radio-fastspring">
                                         <div>
                                             <span>Credit Card</span>
@@ -57,7 +63,7 @@
                                 <div class="form-check">
                                     <input  class="form-check-input payment-code"
                                             type="radio"
-                                            name="code"
+                                            name="payment_method"
                                             id="radio-paypal"
                                             value="paypal">
                                     <label class="form-check-label d-flex justify-content-between" for="radio-paypal">
