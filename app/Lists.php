@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 use PhpParser\JsonDecoder;
 
 class Lists extends Model
 {
-
+    use SoftDeletes;
 
     protected $guarded = ['id'];
     protected $table = 'lists';
@@ -74,13 +74,6 @@ class Lists extends Model
 
     public function scopeByStatus($query,$status){
         return in_array($status,\Status::statuesList()) ? $query->where('status',$status) : $query;
-    }
-
-
-    public function restore(){
-        $this->statue = 'new';
-        $this->save();
-        return true;
     }
 
 

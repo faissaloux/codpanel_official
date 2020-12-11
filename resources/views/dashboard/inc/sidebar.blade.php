@@ -15,6 +15,12 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="{{ route('dashboard.listing.trashed') }}" class="tx-right">
+                        <i data-feather="trash"></i>
+                        <span>الطلبات المحذوفة</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a href="{{ route('dashboard.listing.employees') }}" class="tx-right">
                         <i data-feather="headphones"></i>
                         <span>عملاء الإتصال</span>

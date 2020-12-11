@@ -19,12 +19,8 @@ class ListingController extends Controller {
 
     public function trashed()
     {
-        $lists = ListsHelper::trashed(10);
-        $cities = Cities::orderby('id','desc')->get();
-        $providers = Provider::orderby('id','desc')->get();
-        $employees = Employee::orderby('id','desc')->get();
-        $products = Products::orderby('id','desc')->get();
-        return view('dashboard.listing.index',compact('lists','cities','providers','employees','products'));
+        $lists = ListsHelper::trashed()[0];
+        return view('dashboard.listing.trashed',compact('lists'));
     }
 
     public function employees()
@@ -56,10 +52,7 @@ class ListingController extends Controller {
 
     public function store(Request $request)
     {
-        $post =  $request->All();
-        $Lists = new Lists();
-        $list_id = $this->saveList($Lists,$post,true);
-        $this->saveMultiSale($post,$list_id);
+        ListsHelper::store($request);
         return response()->json(["Success" => "saved successfuly"]);
     }
 
@@ -81,19 +74,19 @@ class ListingController extends Controller {
     public function delete($id)
     {
         Lists::find($id)->delete();
-        return redirect()->route('admin.users.home')->with('success', trans('user.deleted'));
+        return response()->json(["Success" => "List deleted successfuly"]);
     }
 
     public function destroy($id)
     {
-        Lists::find($id)->forceDelete();
-        return redirect()->route('admin.users.home') ->with('success', trans('user.deleted'));
+        Lists::onlyTrashed()->find($id)->forceDelete();
+        return response()->json(["Success" => "List destroyed successfuly"]);
     }
 
     public function restore($id)
     {
-        Lists::find($id)->restore();
-        return redirect()->route('admin.users.home')->with('success', trans('user.deleted'));
+        Lists::onlyTrashed()->find($id)->restore();
+        return response()->json(['Success' => 'List restored successfully']);
     }
 
     public function statue(Request $request , $id)

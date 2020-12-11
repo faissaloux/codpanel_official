@@ -120,6 +120,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     Route::group(['prefix' => '/listing', 'as' => 'listing.' ], function () {
 
         Route::get('/', 'ListingController@index')->name('index');
+        Route::get('/trashed', 'ListingController@trashed')->name('trashed');
         Route::get('/new', 'ListingController@new')->name('new');
         Route::get('/employees', 'ListingController@employees')->name('employees');
         Route::get('/providers', 'ListingController@providers')->name('providers');
@@ -128,10 +129,10 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::post('/store', 'ListingController@store')->name('store');
         Route::post('/edit/{id}', 'ListingController@edit')->name('edit');
         Route::post('/update/{id}', 'ListingController@update')->name('update');
-        Route::post('/delete', 'ListingController@delete')->name('delete');
-        Route::post('/destroy', 'ListingController@destroy')->name('destroy');
+        Route::post('/delete/{id}', 'ListingController@delete')->name('delete');
+        Route::post('/destroy/{id}', 'ListingController@destroy')->name('destroy');
         Route::view('/assign', 'admin.users.create')->name('assign');
-        Route::post('/restore', 'ListingController@restore')->name('restore');
+        Route::post('/restore/{id}', 'ListingController@restore')->name('restore');
         Route::view('/export', 'admin.users.create')->name('export');
         Route::view('/import', 'admin.users.create')->name('import');
         Route::post('/statue/{id}', 'ListingController@statue')->name('statue');

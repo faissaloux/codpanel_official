@@ -617,3 +617,81 @@ function CreateOrder(event) {
     });
 
 }
+
+// Delete list
+$('body').on('click','.deleteList',function(e){
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var link = $(this).attr('data-link');
+    
+    var formData = new FormData();
+    formData.append('_token', token);
+    
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache:false,
+        dataType: "JSON",
+        success: function(response) {
+            statue_toast("success", response.Success);
+        },
+        error : function(response){
+            default_error();
+        }
+    });
+    
+});
+
+// Destroy list
+$('body').on('click','.destroy',function(e){
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var link = $(this).attr('data-link');
+    
+    var formData = new FormData();
+    formData.append('_token', token);
+    
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache:false,
+        dataType: "JSON",
+        success: function(response) {
+            statue_toast("success", response.Success)
+        },
+        error : function(response){
+            default_error();
+        }
+    });
+    
+});
+
+// Restore list
+$('body').on('click','.restore',function(e){
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var link = $(this).attr('data-link');
+    
+    var formData = new FormData();
+    formData.append('_token', token);
+    
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache:false,
+        dataType: "JSON",
+        success: function(response) {
+            statue_toast("success", response.Success)
+        },
+        error : function(response){
+            default_error();
+        }
+    });
+    
+});

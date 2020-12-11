@@ -23,13 +23,6 @@ class ListsHelper {
         return $message;
     }
 
-
-
-    public function trashed($q){
-        Lists::trashed()->paginate($q);
-    }
-
-
     public static function list_relatives($handler){
         $list_array = [];
         $scope = $handler.'s';
@@ -49,7 +42,22 @@ class ListsHelper {
         $products = Products::orderby('id','desc')->get();
         array_push($list_array,['result' => $result ?? null,'cities' => $cities,'providers' => $providers ?? null,'employees' => $employees ?? null,'products' => $products , 'lists' => $lists ]);
         return $list_array;
-    } 
+    }
+
+    public static function trashed(){
+        $list_array = [];
+        $lists = Lists::onlyTrashed()->get();;
+        $cities = Cities::orderby('id','desc')->get();
+        $providers = Provider::orderby('id','desc')->get();
+        $employees = Employee::orderby('id','desc')->get();
+        $products = Products::orderby('id','desc')->get();
+        array_push($list_array,['cities' => $cities,
+                                'providers' => $providers ?? null,
+                                'employees' => $employees ?? null,
+                                'products' => $products,
+                                'lists' => $lists ]);
+        return $list_array;
+    }
 
     // creating the list OR update
     public static function saveList($model,$post, $checkNumber = false){
@@ -84,6 +92,13 @@ class ListsHelper {
                  self::multiSaleProductsSave($post,$list_id);
          }
          else self::multiSaleProductsSave($post,$list_id);
+     }
+
+     public static function store($request){
+        $post =  $request->All();
+        $Lists = new Lists();
+        $list_id = self::saveList($Lists,$post,true);
+        self::saveMultiSale($post,$list_id);
      }
      
     public static function update($request, $id){

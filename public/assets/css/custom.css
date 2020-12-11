@@ -393,7 +393,7 @@ table.list_products tbody tr {
     background: linear-gradient(to right, #8f94fb, #4e54c8);
 }
 
-.history {
+.delete, .destroy {
     background: linear-gradient(to right, #ff5e62, #ff9966);
 }
 

@@ -73,14 +73,14 @@ class System {
 
 
         $result =   DB::select('SELECT 
-        ( ' . $count . ' ) as al ,
-        ( ' . $count . ' and STATUS="new" ) as  new ,
-        ( ' . $count . ' and STATUS="canceled" ) as  canceled ,
-        ( ' . $count . ' and STATUS="unanswered" ) as unanswered ,
-        ( ' . $count . ' and STATUS="confirmed" ) as confirmed ,
-        ( ' . $count . ' and STATUS="recall" ) as recall ,
-        ( ' . $count . ' and STATUS="delivred" ) as delivred ,
-        ( ' . $count . ' and STATUS="deleted" ) as deleted ')[0];
+        ( ' . $count . ' and deleted_at IS NULL ) as al ,
+        ( ' . $count . ' and STATUS="new" and deleted_at IS NULL ) as  new ,
+        ( ' . $count . ' and STATUS="canceled" and deleted_at IS NULL ) as  canceled ,
+        ( ' . $count . ' and STATUS="unanswered" and deleted_at IS NULL ) as unanswered ,
+        ( ' . $count . ' and STATUS="confirmed" and deleted_at IS NULL ) as confirmed ,
+        ( ' . $count . ' and STATUS="recall" and deleted_at IS NULL ) as recall ,
+        ( ' . $count . ' and STATUS="delivred" and deleted_at IS NULL ) as delivred ,
+        ( ' . $count . ' and STATUS="deleted" and deleted_at IS NULL ) as deleted ')[0];
 
         return $result;
 

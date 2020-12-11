@@ -28,10 +28,7 @@ class EmployeesController extends Controller
 
     public function store(Request $request)
     {
-        $post =  $request->All();
-        $Lists = new Lists();
-        $list_id = $this->saveList($Lists,$post,true);
-        $this->saveMultiSale($post,$list_id);
+        ListsHelper::store($request);
         return response()->json(["Success" => "saved successfuly"]);
     }
 
