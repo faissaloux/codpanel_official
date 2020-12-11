@@ -14,7 +14,7 @@
             {{ $list->name }}
         </td>
         <td data-type="phone">
-            <a href="tel: 06########">{{ $list->tel }}</a>
+            <a href="tel: {{ $list->phone }}">{{ $list->phone }}</a>
         </td>
         <td data-type="products">
             <table class="list_products">
