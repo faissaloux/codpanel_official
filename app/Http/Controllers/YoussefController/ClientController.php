@@ -78,6 +78,7 @@ class ClientController extends Controller
         if ( !$order ) return back();
 
         $domain_name = $order->domain_name()->first();
+
         return view('client.staff', [
             'domain_name' => $domain_name
         ]);
@@ -117,6 +118,7 @@ class ClientController extends Controller
         $newStaff->email = $request['email'];
         $newStaff->username = $request['username'];
         $newStaff->password = Hash::make($request['password']);
+        $newStaff->access = json_encode(Staff::ACCESS_RIGHTS);
         $newStaff->status = false;
         $newStaff->save();
 
