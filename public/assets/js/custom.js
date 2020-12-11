@@ -695,3 +695,14 @@ $('body').on('click','.restore',function(e){
     });
     
 });
+
+$(()=>{
+    $('.modal').on('shown.bs.modal', function(e) {
+        $(".add-product").on('click', function(){
+            console.log("Clicked");
+            $(".products-list-clone").clone().appendTo(".products-list-fieldset");
+            $(".products-list-clone").first().removeClass("products-list-clone");
+            $(".products-list-clone").find("input").val("");
+        });
+    });
+})
