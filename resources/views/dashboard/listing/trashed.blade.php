@@ -334,26 +334,6 @@ class="new-listing-page"
                     </div>
                 </div>
             </div>
-            <div class="col-6 pr-0">
-                <div class="d-flex justify-content-end">
-                    <div class="btn-container ml-2">
-                        <a  class="btn-import table-top-btn btn btn-default-custom d-flex align-items-center"
-                            data-toggle="modal"
-                            data-target="#importModalCenter">
-                            <i class="mdi mdi-download"></i>
-                            <span class="mr-2">استيراد</span>
-                        </a>
-                    </div>
-                    <div class="btn-container">
-                        <a  class="btn-add-order table-top-btn btn btn-default-custom d-flex align-items-center"
-                            id="addnewlist"
-                            data-link="{{ route('dashboard.listing.create') }}">
-                            <i class="mdi mdi-plus"></i>
-                            <span class="mr-2">أضف طلب</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
