@@ -93,6 +93,13 @@ class ListsHelper {
          }
          else self::multiSaleProductsSave($post,$list_id);
      }
+
+     public static function store($request){
+        $post =  $request->All();
+        $Lists = new Lists();
+        $list_id = self::saveList($Lists,$post,true);
+        self::saveMultiSale($post,$list_id);
+     }
      
     public static function update($request, $id){
         $post =  $request->All();
