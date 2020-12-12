@@ -118,4 +118,33 @@ class AjaxController extends Controller
         }
         return new JsonResponse(['message' => 'The account was updated !']);
     }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function updatePassword(Request $request, int $id): JsonResponse
+    {
+        $staff = Staff::where(['client_id' => Auth::guard('clients')->user()->id, 'id' => $id])->first();
+        if ( !$staff ) return new JsonResponse([
+            'error' => 'Account not found !'
+        ]);
+        try {
+            $request->validate([
+                'password' => 'required | string | max:255 | min:8',
+            ]);
+
+            $staff->password = Hash::make($request['password']);
+            $staff->save();
+        }
+        catch ( Exception $exception) {
+            return new JsonResponse([
+                'error' => $exception->getMessage(),
+            ]);
+        }
+        return new JsonResponse([
+            'message' => 'Your password was updated !',
+        ]);
+    }
 }

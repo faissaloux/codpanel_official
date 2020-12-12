@@ -34,7 +34,8 @@
                         <tr id="{{ $staff->id }}">
                             <td data-label="Staff-id" style="display: none">{{ $staff->id }}</td>
                             <td data-label="Username">{{ $staff->username }}</td>
-                            <td data-label="Access">@if(is_array(json_decode($staff->access)) && count(json_decode($staff->access)) === 9) Full access @else Custom @endif</td>
+                            <td data-label="Access">@if(is_array(json_decode($staff->access)) && count(json_decode($staff->access)) === 9)
+                                    Full access @else Custom @endif</td>
                             <td data-label="Status">@if ($staff->status) Active @else Suspended @endif</td>
                             @php ($accessRights = json_decode($staff->access))
                             @if(is_array($accessRights) AND count($accessRights))
@@ -57,7 +58,7 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <a class="set-staff-password" href="/stores/staff/password/132" data-toggle="modal"
+                                    <a class="update-staff-password-js" href="#" data-toggle="modal"
                                        data-target="#setStaffPasswordModal"
                                        data-details="{&quot;id&quot;:132,&quot;login&quot;:&quot;admin&quot;}">
                                         <svg height='24' width='24'>
@@ -230,8 +231,10 @@
                 <form id="editStaffForm" class="form" method="post">
                     <input type="hidden" id="staff-id-js">
                     <div class="modal-body">
-                        <div class="alert alert-danger text-center" id="show-error-edit-user" style="display: none"></div>
-                        <div class="alert alert-success text-center" id="show-success-edit-user" style="display: none"></div>
+                        <div class="alert alert-danger text-center" id="show-error-edit-user"
+                             style="display: none"></div>
+                        <div class="alert alert-success text-center" id="show-success-edit-user"
+                             style="display: none"></div>
                         @csrf
                         <fieldset>
                             <div class="form-group">
@@ -347,27 +350,27 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="setStaffPasswordForm" class="form" action="/stores/staff/100" method="post">
+                    <form id="update-staff-password-form-js" class="form" action="#" method="post">
                         @csrf
                         <fieldset>
+                            <input type="hidden" id="staff-password-update-js">
                             <div id="setStaffPasswordError"
                                  class="alert alert-danger error-text error-summary alert alert-danger hidden"></div>
+                             <div id="createStaffSuccess"
+                                 class="alert alert-success hidden"></div>
                             <div class="form-group disable-input">
-                                <label class="" for="setstaffpasswordform-username">Username</label>
+                                <label for="username">Username</label>
                                 <input type="text"
-                                       id="setstaffpasswordform-username"
+                                       id="username"
                                        class="input"
-                                       name="SetStaffPasswordForm[username]"
-                                       readonly="readonly"
-                                >
+                                       readonly="readonly">
                                 <p class="help-block help-block-error"></p>
                             </div>
                             <div class="form-group">
                                 <label for="staff_edit_passwd">Password</label>
-                                <input type="text"
+                                <input type="password"
                                        id="staff_edit_passwd"
                                        class="input"
-                                       name="SetStaffPasswordForm[password]"
                                        placeholder="Sxn9t0zZ"
                                        aria-required="true">
                                 <a class="generate-password-button" id="staff_edit_gen" href="#">
@@ -395,199 +398,8 @@
 
 @section('javascript')
 
-    <script>
-        $(".edit-staff").each(function (index, button) {
-            $(button).on('click', function () {
-                $('#editStaffForm').find(`input[type=checkbox]`).prop('checked', false);
-                let showErrorDiv = $('#show-error-edit-user');
-                showErrorDiv.text('');
-                showErrorDiv.css('display', 'none');
-                let parentButton = $(button).parents('tr');
-                let tdElements = parentButton.find('td');
-                tdElements.each(function (index, tdElement) {
-                    if ( $(tdElement).attr('data-label').trim() === 'Username' ) {
-                        $('#username-in-js').val($(tdElement).text());
-                    }
-                    if ( $(tdElement).attr('data-label').trim() === 'Staff-id' ) {
-                        $('#staff-id-js').val($(tdElement).text());
-                    }
-                    if ( $(tdElement).attr('data-label').trim() === 'Status' ) {
-                        let selectEditStatus = $('#status-select-js');
-                        let options = selectEditStatus.find('option');
-                        if ($(tdElement).text().trim() === 'Active') {
-                            $(options[0]).attr('selected', 'selected');
-                            $(options[1]).attr('selected', false);
-                        }
-                        else {
-                            $(options[1]).attr('selected', 'selected');
-                            $(options[0]).attr('selected', false);
-                        }
-                    }
-                });
+    <script src="{{ asset('js/Ajax/editPassword.js') }}"></script>
+    <script src="{{ asset('js/Ajax/editStaff.js') }}"></script>
+    <script src="{{ asset('js/Ajax/addStaff.js') }}"></script>
 
-                parentButton.find('ul.access-rights').find('li').map(function () {
-                    let value = $(this).text();
-                    $('#editStaffForm').find(`input[type=checkbox][value=${value}]`).prop('checked', true);
-                });
-            });
-        });
-
-        $('form#editStaffForm').on('submit', function (e) {
-            e.preventDefault();
-
-            let submitBtn = $(this).find('.edit-staff-button');
-            submitBtn.attr('disabled', 'disabled');
-            submitBtn.html(`<i class="fas fa-spinner fa-spin"></i>`);
-            let success = true;
-            let errorAlert = $('#show-error-edit-user');
-            $('#editStaffForm').find('input').each(function (index, i) {
-                if ($(i).attr('type') !== 'checkbox' && $(i).val().trim() === "") {
-                    errorAlert.text('');
-                    if ( errorAlert.css('display') !== 'none' ) {
-                        errorAlert.slideUp();
-                    }
-                    errorAlert.slideToggle(function () {
-                        errorAlert.text('One ore more fields are missing !');
-                    });
-                    return success = false;
-                }
-            });
-
-            if (!success) {
-                submitBtn.attr('disabled', false);
-                submitBtn.html(`Save account`);
-                return;
-            }
-
-            let accessUser = $('#editStaffForm').find('input[type="checkbox"]:checked').map( function () { return $(this). val(); }).get();
-
-            let formData = {
-                username: $('#username-in-js').val(),
-                status: $('#status-select-js').val(),
-                access: accessUser
-            };
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                }
-            });
-
-            let url = 'http://codpanel_official.test/client/staff/edit/' + $('#staff-id-js').val();
-
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    submitBtn.attr('disabled', false);
-                    submitBtn.html('Save account');
-                    if ( data.error ) {
-                        errorAlert.text('');
-                        if ( errorAlert.css('display') !== 'none' ) {
-                            errorAlert.slideUp();
-                        }
-                        errorAlert.slideToggle(function () {
-                            errorAlert.text(data.error);
-                        });
-                    }
-                    else {
-                        let successMessage = $('#show-success-edit-user');
-                        successMessage.text(data.message);
-                        successMessage.slideToggle();
-
-                        setTimeout(function () {
-                            location.reload(true);
-                            submitBtn.attr('disabled', false);
-                            submitBtn.html('Save account');
-                        }, 1500);
-                    }
-                },
-                error: function (data) {
-                    let responseJson = JSON.parse(data.responseText);
-                    if ( errorAlert.css('display') !== 'none' ) {
-                        errorAlert.slideUp();
-                    }
-                    errorAlert.slideToggle();
-                    errorAlert.text(responseJson);
-                    submitBtn.attr('disabled', false);
-                    submitBtn.html('Save account');
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $('#createStaffForm').on('submit', function (e) {
-            let submitBtn = $('#createStaffButton');
-            submitBtn.attr('disabled', 'disabled');
-            submitBtn.html(`<i class="fas fa-spinner fa-spin"></i>`);
-            e.preventDefault();
-            let success = true;
-
-            $('#createStaffForm').find('input').each(function (index, i) {
-                let errorAlert = $('#show-error-create-user');
-                if (errorAlert.css('display') !== 'none') {
-                    errorAlert.slideUp();
-                    errorAlert.text();
-                }
-                if ($(i).attr('type') !== 'checkbox' && $(i).val().trim() === "") {
-                    errorAlert.text('One ore more fields are missing !');
-                    if (errorAlert.css('display') !== 'none') {
-                        errorAlert.slideUp();
-                    }
-                    errorAlert.slideToggle();
-                    return success = false;
-                }
-            });
-
-            let accessUser = $('#createStaffForm').find('input[type="checkbox"]:checked').map( function () { return $(this). val(); }).get();
-
-            if (!success) {
-                submitBtn.attr('disabled', false);
-                submitBtn.html(`Add account`);
-                return;
-            }
-
-            let formData = {
-                email: $('#user_email').val(),
-                username: $('#user_name').val(),
-                password: $('#user_password').val(),
-                status: $('#user_status').val(),
-                access: accessUser
-            };
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                }
-            });
-
-            $.ajax({
-                type: 'POST',
-                url: '{{ url()->route('client.staff.add', $domain_name->id) }}',
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    if (data.message === 'success') {
-                        let alertSuccess = $('#show-success-create-user');
-                        if (alertSuccess.css('display') === 'none') {
-                            alertSuccess.text(data.content);
-                            alertSuccess.slideToggle();
-                        }
-                        setTimeout(function () {
-                            submitBtn.attr('disabled', false);
-                            submitBtn.html('Add account');
-                            location.reload(true);
-                        }, 2000)
-                    }
-                },
-                error: function (data) {
-                    submitBtn.attr('disabled', false);
-                    submitBtn.html('Add account');
-                }
-            });
-        });
-    </script>
 @endsection
