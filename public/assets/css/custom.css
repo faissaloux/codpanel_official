@@ -91,7 +91,7 @@ input[type="checkbox"] {
 }
 
 .table-primary thead tr th {
-    font-size: 18px;
+    font-size: 15px;
     text-transform: none;
 }
 
@@ -393,7 +393,8 @@ table.list_products tbody tr {
     background: linear-gradient(to right, #8f94fb, #4e54c8);
 }
 
-.delete, .destroy {
+.delete,
+.destroy {
     background: linear-gradient(to right, #ff5e62, #ff9966);
 }
 
@@ -409,7 +410,7 @@ tr.active {
     background-color: #b6c7df !important;
 }
 
-span.fileName{
+span.fileName {
     right: 20px;
     z-index: 20;
     position: absolute;
@@ -786,10 +787,10 @@ div.show-columns-container.show button .show-columns-icon {
     text-align: right;
 }
 
-.spinner-loader-container.d-table {
+.spinner-loader-container {
     position: absolute;
-    width: calc(100% - 60px);
-    height: calc(100% - 189px);
+    width: 96.4%;
+    height: 76%;
     background: #80808085;
     display: none !important;
 }
@@ -801,5 +802,16 @@ div.show-columns-container.show button .show-columns-icon {
 
 .list-empty p {
     font-size: 30px;
+<<<<<<< HEAD
+=======
 }
 
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+    display: block;
+>>>>>>> a6d3caa558e653b7589086640c5c4dda906ba5e0
+}

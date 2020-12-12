@@ -233,6 +233,7 @@ return [
         'System' => App\System\System::class,
         'Role' => App\System\Role::class,
         'Status' => App\System\Status::class,
+        'Statistiques' => App\Helpers\StatistiquesHelper::class,
 
     ],
 

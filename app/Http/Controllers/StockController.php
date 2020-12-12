@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Stock;
 use Illuminate\Http\Request;
+use Laravel\Ui\Presets\React;
 
 class StockController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // $stock = Stock::orderby('id','desc')->paginate(10);
         return view('dashboard.stock.index',compact('stock'));

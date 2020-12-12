@@ -168,7 +168,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/statue/{id}', 'EmployeesController@statue')->name('statue');
     Route::post('/load/{id}', 'EmployeesController@load')->name('load');
     Route::post('/history', 'EmployeesController@history')->name('history');
-    Route::post('/listing', 'EmployeesController@listing')->name('listing');
+    Route::any('/listing', 'EmployeesController@listing')->name('listing');
 });
 
   // provider

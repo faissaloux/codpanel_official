@@ -496,8 +496,7 @@
         </center>
         <!-- End spinner -->
             
-        <div class="card-body pd-0 tx-center">
-            
+        <div class="card-body pd-0 tx-center load-table">
 
             <table class="table table-primary table-hover">
                 <thead>
@@ -519,7 +518,7 @@
                             الهاتف
                         </th>
                         <th scope="col" data-type="products">
-                            المنتوجات
+                            مجموج المنتوجات
                         </th>
                         <th scope="col" data-type="employee">عميل <br>الإتصال</th>
                         <th scope="col" data-type="distributor">
@@ -548,18 +547,8 @@
                                 <a href="tel: {{ $list->phone }}">{{ $list->phone }}</a>
                             </td>
                             <td data-type="products">
-                                <table class="list_products">
-                                    <tbody>
-                                        <tr>
-                                            <td> x {{ $list->quantity }} </td>
-                                            <td> {{ $list->product }} </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">المجموع : {{ $list->price }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
+                                {{ $list->total() }} درهم
+                              </td>
                             <td data-type="employee">
                                 {{ $list->employee->name }}
                             </td>
@@ -579,26 +568,12 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        @if($lists['lists']->count() != 0)
             <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">السابق</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#">التالي</a>
-                    </li>
+                <ul class="justify-content-center paginate">
+                    {!! $lists['lists']->links() !!}
                 </ul>
             </nav>
-        @else
-            <div class="list-empty d-flex flex-column align-items-center justify-content-center">
-                <i class="mdi mdi-view-day"></i>
-                <p>لا توجد طلبات حاليا</p>
-            </div>
-        @endif
+        </div>
+        
     </div>
 @endsection

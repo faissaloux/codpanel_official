@@ -437,7 +437,7 @@ class="new-listing-page"
     </center>
     <!-- End spinner -->
         
-    <div class="card-body pd-0 tx-center">
+    <div class="card-body pd-0 tx-center load-table">
         
 
         <table class="table table-primary table-hover">
@@ -460,7 +460,7 @@ class="new-listing-page"
                         الهاتف
                     </th>
                     <th scope="col" data-type="products">
-                        المنتوجات
+                        مجموج المنتوجات
                     </th>
                     <th scope="col" data-type="employee">عميل <br>الإتصال</th>
                     <th scope="col" data-type="distributor">
@@ -489,18 +489,8 @@ class="new-listing-page"
                             <a href="tel: {{ $list->phone }}">{{ $list->phone }}</a>
                         </td>
                         <td data-type="products">
-                            <table class="list_products">
-                                <tbody>
-                                    <tr>
-                                        <td> x {{ $list->quantity }} </td>
-                                        <td> {{ $list->product }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">المجموع : {{ $list->price }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
+                            {{ $list->total() }} درهم
+                          </td>
                         <td data-type="employee">
                             {{ $list->employee->name }}
                         </td>
@@ -508,35 +498,35 @@ class="new-listing-page"
                             {{ $list->provider->name }}
                         </td>
                         <td>
-                            <a  type="button"
-                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white destroy"
+                            <a type="button" 
+                                href="javascript:;"
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showhistory"
+                                data-id="{{ $list->id }}"
                                 data-link="{{ route('dashboard.listing.destroy' , ['id' => $list->id ]) }}">
-                                حذف نهائي
+
+                                الأحداث
                             </a>
-                            <a  type="button"
-                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details restore"
-                                data-link="{{ route('dashboard.listing.restore' , ['id' => $list->id ]) }}">
-                                إرجاع
+                            <a type="button" 
+                                href="javascript:;"
+                                class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white delete deleteList"
+                                data-id="{{ $list->id }}"
+                                data-link="{{ route('dashboard.listing.restore' , ['id' => $list->id ]) }}"">
+
+                                حذف نهائي
                             </a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="justify-content-center paginate">
+                {!! $lists['lists']->links() !!}
+            </ul>
+        </nav>
     </div>
 
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">السابق</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-            <a class="page-link" href="#">التالي</a>
-            </li>
-        </ul>
-    </nav>
+    
 </div>
 @endsection

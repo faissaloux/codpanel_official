@@ -457,13 +457,18 @@ class="new-listing-page"
     </center>
     <!-- End spinner -->
         
-    <div class="card-body pd-0 tx-center">
+    <div class="card-body pd-0 tx-center load-table">
         
 
-        <table class="table table-primary table-hover">
+        <table class="table table-primary table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
+                    <th scope="col">
+                        <div class="mg-l-15 d-flex custom-control custom-checkbox">
+                            <input type="checkbox" class="show-actions-menu custom-control-input" id="customCheckAll">
+                            <label class="custom-control-label" for="customCheckAll"></label>
+                         </div>
+                    </th>
                     <th scope="col" data-type="requestId">
                         رقم
                     </th>
@@ -480,11 +485,11 @@ class="new-listing-page"
                         الهاتف
                     </th>
                     <th scope="col" data-type="products">
-                        المنتوجات
+                        مجموج المنتوجات
                     </th>
-                    <th scope="col" data-type="employee">عميل <br>الإتصال</th>
+                    <th scope="col" data-type="employee">عميل الإتصال</th>
                     <th scope="col" data-type="distributor">
-                        مندوب<br> التوصيل
+                        مندوب التوصيل
                     </th>
                     <th scope="col">تعديل</th>
                 </tr>
@@ -492,7 +497,12 @@ class="new-listing-page"
             <tbody class="table-body-listing">
                 @foreach($lists['lists'] as $list)
                     <tr class="{{ 'list_'.$list->id }}" >
-                        <th scope="row"><input type="checkbox" class="hoverRow"/></th>
+                        <th scope="row">
+                            <div class="mg-l-15 d-flex custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" data-id="{{$list->id}}" id="{{'customCheck1'.$list->id}}">
+                                <label class="custom-control-label" for="{{'customCheck1'.$list->id}}"></label>
+                             </div>
+                        </th>
                         <td data-type="requestId" class="tx-right">
                             {{ '#'.$list->id }}
                         </td>
@@ -509,17 +519,7 @@ class="new-listing-page"
                             <a href="tel: {{ $list->phone }}">{{ $list->phone }}</a>
                         </td>
                         <td data-type="products">
-                            <table class="list_products">
-                                <tbody>
-                                    <tr>
-                                        <td> x {{ $list->quantity }} </td>
-                                        <td> {{ $list->product }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">المجموع : {{ $list->price }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                          {{ $list->total() }} درهم
                         </td>
                         <td data-type="employee">
                             {{ $list->employee->name }}
@@ -551,28 +551,26 @@ class="new-listing-page"
                             <a  type="button"
                                 href="javascript:;"
                                 class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white delete deleteList"
+                                data-id="{{ $list->id }}"
                                 data-link="{{ route('dashboard.listing.delete' , ['id' => $list->id ]) }}">
                                 حذف
                             </a>
+                            
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="justify-content-center paginate">
+                {!! $lists['lists']->links() !!}
+            </ul>
+        </nav>
+
     </div>
 
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">السابق</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-            <a class="page-link" href="#">التالي</a>
-            </li>
-        </ul>
-    </nav>
+    
+
 </div>
 @endsection

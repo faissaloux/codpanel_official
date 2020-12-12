@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin;
-use App\Client;
-use App\Employee;
 use Auth;
 use Hash;
 use App\User;
+use App\Admin;
+use App\Client;
+use App\Employee;
+use App\Provider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Provider;
 
 class UsersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $admins = Admin::orderby('id','desc')->get();
         $providers = Provider::orderby('id','desc')->get();
         $employees = Employee::orderby('id','desc')->get();
         $clients = Client::orderby('id','desc')->get();
-
-
         $users = $admins->mergeRecursive($providers)->mergeRecursive($employees)->mergeRecursive($clients);
         $users->map(function($user){
             $user->role = substr($user->getTable(), 0, -1);
         });
-        $users->all();
-
+        $users = \System::mergedPaginate($users,'/dashboard/users');
+        if($request->ajax())
+            return response()->view('dashboard.elements.users_table' , compact('users'))->setStatusCode(200);
 
         return view('dashboard.users.index',compact('users'));
     }
+
 
     public function create()
     {

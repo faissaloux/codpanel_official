@@ -15,6 +15,7 @@ class Lists extends Model
     protected $guarded = ['id'];
     protected $table = 'lists';
 
+
     
     /**
      * The "booting" method of the model.
@@ -32,6 +33,10 @@ class Lists extends Model
                $builder->where($auth_type.'_id',\System::$auth_type()->id)->$scope();
             }
         });
+    }
+
+    public function total(){
+        return $this->items->sum('price');
     }
     
     public function provider(){

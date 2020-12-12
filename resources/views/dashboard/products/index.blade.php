@@ -186,8 +186,22 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="card-body pd-0 tx-center">
+                
+            <div class="card-body pd-0 tx-center load-table">
                 <table class="table table-primary table-hover">
+
+                <!-- spinner -->
+                <center class="mt-2 ">
+                    <div class="spinner-loader-container">
+                        <div class="spinner-loader align-middle">
+                            <div class="spinner-border mb-2 text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+                <!-- End spinner -->
+
                     <thead>
                         <tr>
                             <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
@@ -198,7 +212,7 @@
                             <th scope="col" class="arabic">تعديل</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-body-listing">
                         @foreach($products as $product)
                             <tr>
                                 <th scope="row"><input type="checkbox" class="hoverRow"/></th>
@@ -238,9 +252,17 @@
                         @endforeach
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="justify-content-center paginate">
+                        {!! $products->links() !!}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
+
+
+
 </div>
 
 @endsection

@@ -22,7 +22,8 @@
 <div class="page-inner mt-4">
     <div class="d-flex">
         <div class="col-12">
-            <div class="card-body pd-0 tx-center">
+            
+            <div class="card-body pd-0 tx-center load-table">
                 <table class="table table-primary table-hover">
                     <thead>
                         <tr>
@@ -36,53 +37,61 @@
                             <th scope="col" class="arabic">تعديل</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-body-listing">
                         @foreach($users as $user)
-                        <tr>
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>{{$user->name}}</span>
-                            </td>
-                            <td data-type="avatar">
-                                @if(!empty ( $user->image ))  
-                                <div class="avatar mr-2"><img src="/uploads/{{$user->image}}" class="rounded-circle" alt=""></div>
-                                @else
-                            <div class="avatar mr-2"><span style="background-color: {{ $user->color() }}" class="avatar-initial rounded-circle">{{ Str::limit($user->name, 1 , "") }}</span></div>
-                                @endif
-                            </td>
-                            <td data-type="email">
-                                <a href="mailto:{{$user->email}}">{{$user->email}}</a>
-                            </td>
-                            <td data-type="registration">
-                                <span>منذ<br class="sm-break"> أسبوعين</span>
-                            </td>
-                            <td data-type="job">
-                                <span @if($user->role == "admin"){ class="bg-success text-white p-1" }
-                                    @elseif($user->role == "employee"){ class="bg-primary text-white p-1" }
-                                    @elseif($user->role == "provider"){ class="bg-warning text-white p-1" } 
-                                    @elseif($user->role == "client"){ class="bg-danger text-white p-1" } @endif >{{$user->role}}</span>
-                            </td>
-                            <td data-type="phone">
-                                <a href="tel:{{$user->phone}}">{{$user->phone}}</a>
-                            </td>
-                            <td>
-                                <a  type="button" href="{{route('dashboard.users.edit' , ['id' => $user->id, 'role' => $user->role])}}"
-                                    class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
-                                    تعديل
-                                </a>
-                                <a  type="button"
-                                    href="{{ route('dashboard.users.delete' , ['id' => $user->id, 'role' => $user->role]) }}"
-                                    class="btn btn-danger btn-lg border-none loadactions rounded-custom text-white delete">
-                                    حذف
-                                </a> 
-                            </td>
-                        </tr>
+                            <tr>
+                                <th scope="row"><input type="checkbox" class="hoverRow"/></th>
+                                <td data-type="reference">
+                                    <span>{{$user->name}}</span>
+                                </td>
+                                <td data-type="avatar">
+                                    @if(!empty ( $user->image ))  
+                                    <div class="avatar mr-2"><img src="/uploads/{{$user->image}}" class="rounded-circle" alt=""></div>
+                                    @else
+                                <div class="avatar mr-2"><span style="background-color: {{ $user->color() }}" class="avatar-initial rounded-circle">{{ Str::limit($user->name, 1 , "") }}</span></div>
+                                    @endif
+                                </td>
+                                <td data-type="email">
+                                    <a href="mailto:{{$user->email}}">{{$user->email}}</a>
+                                </td>
+                                <td data-type="registration">
+                                    <span>منذ<br class="sm-break"> أسبوعين</span>
+                                </td>
+                                <td data-type="job">
+                                    <span @if($user->role == "admin"){ class="bg-success text-white p-1" }
+                                        @elseif($user->role == "employee"){ class="bg-primary text-white p-1" }
+                                        @elseif($user->role == "provider"){ class="bg-warning text-white p-1" } 
+                                        @elseif($user->role == "client"){ class="bg-danger text-white p-1" } @endif >{{$user->role}}</span>
+                                </td>
+                                <td data-type="phone">
+                                    <a href="tel:{{$user->phone}}">{{$user->phone}}</a>
+                                </td>
+                                <td>
+                                    <a  type="button" href="{{route('dashboard.users.edit' , ['id' => $user->id, 'role' => $user->role])}}"
+                                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit">
+                                        تعديل
+                                    </a>
+                                    <a  type="button"
+                                        href="{{ route('dashboard.users.delete' , ['id' => $user->id, 'role' => $user->role]) }}"
+                                        class="btn btn-danger btn-lg border-none loadactions rounded-custom text-white delete">
+                                        حذف
+                                    </a> 
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="justify-content-center paginate">
+                        {!! $users->links() !!}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
+
+    
+
 </div>
 
 @endsection
