@@ -18,11 +18,12 @@ class StatistiquesController extends Controller
         $unanswered = Lists::unanswered()->count() ?? 0;
         $recall = Lists::recall()->count() ?? 0;
         $delivred = Lists::delivred()->count() ?? 0;
-        $employees = Employee::count() ?? 0;
-        $providers = Provider::count() ?? 0;
-        $cities = Cities::count() ?? 0;
+        $employees = Employee::with('lists', 'delivredLists')->get(['id', 'name']);
+        $providers = Provider::with('lists', 'delivredLists')->get(['id', 'name']);
+        $cities = Cities::with(['provider' => function($q){
+                                                    $q->with('lists', 'delivredLists');
+                                                    }])->get();
         $products = Products::count() ?? 0;
-
         return view('dashboard.statistiques.index', compact('canceled', 'unanswered', 'recall', 'delivred', 'employees', 'providers', 'cities', 'products'));
     }
 }

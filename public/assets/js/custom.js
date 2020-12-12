@@ -699,10 +699,10 @@ $('body').on('click','.restore',function(e){
 $(()=>{
     $('.modal').on('shown.bs.modal', function(e) {
         $(".add-product").on('click', function(){
-            console.log("Clicked");
-            $(".products-list-clone").clone().appendTo(".products-list-fieldset");
-            $(".products-list-clone").first().removeClass("products-list-clone");
-            $(".products-list-clone").find("input").val("");
+            const toClone = $(".products-list-clone");
+            toClone.clone().appendTo(".products-list-fieldset");
+            toClone.first().removeClass("products-list-clone");
+            toClone.find("input").val("");
         });
     });
 })
