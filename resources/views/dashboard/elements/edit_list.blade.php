@@ -151,7 +151,7 @@
                                                     >
                                         </div>
                                     </div>
-                                    <div class="col-md-1 p-0">
+                                    <div class="col-md-1 p-0 add-product mb-3">
                                         <a id="addmoreproducts" href="javascript:;" class="btn btn-primary">+</a>
                                     </div>
                                 </div>
