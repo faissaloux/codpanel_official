@@ -25,12 +25,12 @@
                         </div>
                     @endif
                     <form
-                        id="login-form"
-                        action="{{ route('client.update') }}"
+                        id="user-update-form-js"
                         method="post">
                         @csrf
                         <fieldset>
-                            <div class="alert alert-danger error-text error-summary alert alert-danger hidden"></div>
+                            <div class="alert alert-danger text-center hidden"></div>
+                            <div class="alert alert-success text-center  hidden"></div>
                             <div class="form-group">
                                 <div class="field-signupform-first_name required">
                                     <label class="control-label" for="full_name">Full name</label>
@@ -53,7 +53,7 @@
                                 <label class="control-label" for="settingsform-email">Email</label>
                                 <input  type="email"
                                         id="settingsform-email"
-                                        class="input email"
+                                        class="input"
                                         name="email"
                                         value="{{ Auth::guard('clients')->user()->email }}"
                                         placeholder="Email">
@@ -70,7 +70,7 @@
                                 <label class="control-label" for="settingsform-password">Password</label>
                                 <input  type="password"
                                         id="settingsform-password"
-                                        class="input password"
+                                        class="input"
                                         name="password"
                                         placeholder="●●●●●●●●●●●●●●●">
 
@@ -143,4 +143,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script src="{{ asset('js/Ajax/userUpdate.js') }}"></script>
 @endsection
