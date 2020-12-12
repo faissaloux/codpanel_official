@@ -9,9 +9,11 @@ use App\Provider;
 
 class CitiesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $cities = Cities::orderby('id','desc')->with('provider')->paginate(10);
+        if($request->ajax())
+            return response()->view('dashboard.elements.cities_table' , compact('cities'))->setStatusCode(200);
         return view('dashboard.cities.index', compact('cities'));
     }
 

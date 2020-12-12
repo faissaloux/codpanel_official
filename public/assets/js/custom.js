@@ -74,7 +74,7 @@ $('#loginform').submit(function(e) {
 
 ///////////load list details
 
-$('body').on('click', '.showdetails', function(e) {
+$('.showdetails').on('click', function(e) {
 
     var token = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
@@ -334,7 +334,7 @@ $('#addnewcity').click(function(e) {
 
 ///////show moda editorder
 
-$('body').on('click', '.editlist', function(e) {
+$('.editlist').on('click', function(e) {
 
     var token = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
@@ -503,7 +503,7 @@ $('.status-click').click(function(e) {
         beforeSend: function() {},
         success: function(response) {
             $('.spinner-loader-container.d-table').attr('style', 'display:none !important');
-            $('body .table-body-listing').html(response);
+            $('body .load-table').html(response);
         },
         error: function(response) {
             default_error();
@@ -619,79 +619,115 @@ function CreateOrder(event) {
 }
 
 // Delete list
-$('body').on('click','.deleteList',function(e){
-    var token   = $('meta[name="csrf-token"]').attr('content');
+$('.deleteList').on('click', function(e) {
+    var token = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
-    
+    var list_id = $(this).attr('data-id');
+
     var formData = new FormData();
     formData.append('_token', token);
-    
+
     $.ajax({
         url: link,
         type: 'POST',
         processData: false, // important
         contentType: false, // important
         data: formData,
-        cache:false,
+        cache: false,
         dataType: "JSON",
         success: function(response) {
             statue_toast("success", response.Success);
+            $('body .list_' + list_id).remove();
         },
-        error : function(response){
+        error: function(response) {
             default_error();
         }
     });
-    
+
 });
 
 // Destroy list
-$('body').on('click','.destroy',function(e){
-    var token   = $('meta[name="csrf-token"]').attr('content');
+$('.destroy').on('click', function(e) {
+    var token = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
-    
+    var list_id = $(this).attr('data-id');
+
     var formData = new FormData();
     formData.append('_token', token);
-    
+
     $.ajax({
         url: link,
         type: 'POST',
         processData: false, // important
         contentType: false, // important
         data: formData,
-        cache:false,
+        cache: false,
         dataType: "JSON",
         success: function(response) {
-            statue_toast("success", response.Success)
+            statue_toast("success", response.Success);
+            $('body .list_' + list_id).remove();
         },
-        error : function(response){
+        error: function(response) {
             default_error();
         }
     });
-    
+
 });
 
 // Restore list
-$('body').on('click','.restore',function(e){
-    var token   = $('meta[name="csrf-token"]').attr('content');
+$('.restore').on('click', function(e) {
+    var token = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
-    
+    var list_id = $(this).attr('data-id');
+
     var formData = new FormData();
     formData.append('_token', token);
-    
+
     $.ajax({
         url: link,
         type: 'POST',
         processData: false, // important
         contentType: false, // important
         data: formData,
-        cache:false,
+        cache: false,
         dataType: "JSON",
         success: function(response) {
-            statue_toast("success", response.Success)
+            statue_toast("success", response.Success);
+            $('body .list_' + list_id).remove();
         },
-        error : function(response){
+        error: function(response) {
             default_error();
         }
     });
-    
+
+});
+
+///////////load history
+$('.showhistory').on('click', function(e) {
+
+    var token = $('meta[name="csrf-token"]').attr('content');
+    var link = $(this).attr('data-link');
+
+    var formData = new FormData();
+    formData.append('_token', token);
+
+
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache: false,
+        dataType: "HTML",
+        beforeSend: function() {},
+        success: function(response) {
+            $('body #historyModalCenter').modal('show');
+            $('body #historyModalCenter .modal-body').html(response);
+        },
+        error: function(response) {
+            default_error();
+        }
+    });
+
 });

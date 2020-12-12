@@ -24,7 +24,7 @@
 <div class="page-inner mt-4">
     <div class="d-flex">
         <div class="col-12">
-            <div class="card-body pd-0 tx-center">
+            <div class="card-body pd-0 tx-center load-table">
                 <table class="table table-primary table-hover">
                     <thead>
                         <tr>
@@ -35,7 +35,7 @@
                             <th scope="col" class="arabic">تعديل</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-body-listing">
                         @foreach($cities as $city)
                             <tr>
                                 <th scope="row"><input type="checkbox" class="hoverRow"/></th>
@@ -64,9 +64,17 @@
                         @endforeach
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="justify-content-center paginate">
+                        {!! $cities->links() !!}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
+
+    
+
 </div>
 
 @endsection

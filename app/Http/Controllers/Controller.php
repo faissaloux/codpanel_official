@@ -15,15 +15,26 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
+    public function index(Request $request)
     {
         $lists = ListsHelper::list_relatives(\System::auth_type())[0];
+        if($request->ajax()){
+            $lists = $lists['lists'];
+            $view = "ar";
+            return response()->view($this->listingView , compact('lists','view'))->setStatusCode(200);
+        }
         return view($this->listing, compact('lists'));
     }
 
     public function listing(Request $request)
     {
         $lists = ListsHelper::load($request);
+        if(\System::auth_type() == 'employee'){
+            $lists = \System::mergedPaginate($lists,'/employee/listing?handler='.$request->handler.'&type='.$request->type.'');
+        }elseif(\System::auth_type() == 'provider'){
+            $lists = \System::mergedPaginate($lists,'/provider/listing?handler='.$request->handler.'&type='.$request->type.'');
+        }
+        
         return response()->view( $this->listingView , compact('lists'))->setStatusCode(200);
     }
 

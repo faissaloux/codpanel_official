@@ -16,22 +16,37 @@ use App\Helpers\ListsHelper;
 class ListingController extends Controller {
 
     public $listing = 'dashboard.listing.index';
+    public $listingView = 'dashboard.elements.new_listing_table';
 
-    public function trashed()
+    public function trashed(Request $request)
     {
-        $lists = ListsHelper::trashed()[0];
+        $lists = ListsHelper::list_relatives('trashed')[0];
+        if($request->ajax()){
+            $lists = $lists['lists'];
+            return response()->view('dashboard.elements.trashed_listing_table' , compact('lists'))->setStatusCode(200);
+        }
         return view('dashboard.listing.trashed',compact('lists'));
     }
 
-    public function employees()
+    public function employees(Request $request)
     {
         $lists = ListsHelper::list_relatives('employee')[0];
+        if($request->ajax()){
+            $lists = $lists['lists'];
+            $view = "employee";
+            return response()->view('dashboard.elements.listing-table' , compact('lists','view'))->setStatusCode(200);
+        }
         return view('dashboard.listing.employees', compact('lists'));
     }
 
-    public function providers()
+    public function providers(Request $request)
     {
         $lists = ListsHelper::list_relatives('provider')[0];     
+        if($request->ajax()){
+            $lists = $lists['lists'];
+            $view = "provider";
+            return response()->view('dashboard.elements.listing-table' , compact('lists','view'))->setStatusCode(200);
+        }
         return view('dashboard.listing.providers', compact('lists'));
     }
 
@@ -107,6 +122,7 @@ class ListingController extends Controller {
     public function listing(Request $request)
     {
         $lists = ListsHelper::load($request);
+        $lists = \System::mergedPaginate($lists,'/dashboard/listing/listing?handler='.$request->handler.'&type='.$request->type.'');
         return response()->view('dashboard.elements.listing-table' , compact('lists'))->setStatusCode(200);
     }
 

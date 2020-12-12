@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Products::All();
+        $products = Products::paginate(10);
+        if($request->ajax())
+            return response()->view('dashboard.elements.products_table' , compact('products'))->setStatusCode(200);
         return view('dashboard.products.index',compact('products'));
     }
 
