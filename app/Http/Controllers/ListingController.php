@@ -67,10 +67,7 @@ class ListingController extends Controller {
 
     public function store(Request $request)
     {
-        $post =  $request->All();
-        $Lists = new Lists();
-        $list_id = ListsHelper::saveList($Lists,$post,true);
-        ListsHelper::saveMultiSale($post,$list_id);
+        ListsHelper::store($request);
         return response()->json(["Success" => "saved successfuly"]);
     }
 

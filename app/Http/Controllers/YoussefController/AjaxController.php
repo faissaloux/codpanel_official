@@ -19,7 +19,8 @@ class AjaxController extends Controller
                 'email' => 'required | string | max:255 | unique:staffs',
                 'username' => 'required | string | max:255 | unique:staffs',
                 'password' => 'required | string | max:255',
-                'status' => 'required | string | max:255'
+                'status' => 'required | string | max:255',
+                'access' => 'required',
             ]);
 
             if (!in_array($request['status'], ['active', 'suspended'])) {
@@ -28,12 +29,21 @@ class AjaxController extends Controller
                 ]);
             }
 
+            foreach ($request['access'] as $access) {
+                if ( !in_array($access, Staff::ACCESS_RIGHTS)) {
+                    return new JsonResponse([
+                        'error' => "Unknown $access access right !",
+                    ]);
+                }
+            }
+
             $staff = new Staff();
             $staff->email = $request['email'];
             $staff->client_id = Auth::guard('clients')->user()->id;
             $staff->domain_name_id = $id;
             $staff->username = $request['username'];
             $staff->password = Hash::make($request['username']);
+            $staff->access = json_encode($request['access']);
             if ( $request['status'] === 'active' ) {
                 $staff->status = 1;
             }
@@ -58,13 +68,21 @@ class AjaxController extends Controller
      */
     public function editStaff(Request $request, int $id): JsonResponse
     {
-        $staff = Staff::where(['client_id' => Auth::guard('clients')->user()->id])->first();
+        $staff = Staff::where(['client_id' => Auth::guard('clients')->user()->id, 'id' => $id])->first();
         if ( !$staff ) return new JsonResponse([
             'error' => 'Staff not found !',
         ]);
 
+        foreach ($request['access'] as $access) {
+            if ( !in_array($access, Staff::ACCESS_RIGHTS)) {
+                return new JsonResponse([
+                    'error' => "Unknown $access access right !",
+                ]);
+            }
+        }
+
         try {
-            if ( $staff->username !== $request['username']) {
+            if ( strtolower(trim($staff->username)) !== strtolower(trim($request['username'])) ) {
                 $request->validate([
                     'username' => 'required | string | max:255 | unique:staffs',
                     'status' => 'required | string | max:255'
@@ -90,6 +108,7 @@ class AjaxController extends Controller
             else {
                 $staff->status = 0;
             }
+            $staff->access = json_encode($request['access']);
             $staff->save();
         }
         catch ( Exception $exception ) {
@@ -98,5 +117,34 @@ class AjaxController extends Controller
             ]);
         }
         return new JsonResponse(['message' => 'The account was updated !']);
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function updatePassword(Request $request, int $id): JsonResponse
+    {
+        $staff = Staff::where(['client_id' => Auth::guard('clients')->user()->id, 'id' => $id])->first();
+        if ( !$staff ) return new JsonResponse([
+            'error' => 'Account not found !'
+        ]);
+        try {
+            $request->validate([
+                'password' => 'required | string | max:255 | min:8',
+            ]);
+
+            $staff->password = Hash::make($request['password']);
+            $staff->save();
+        }
+        catch ( Exception $exception) {
+            return new JsonResponse([
+                'error' => $exception->getMessage(),
+            ]);
+        }
+        return new JsonResponse([
+            'message' => 'Your password was updated !',
+        ]);
     }
 }
