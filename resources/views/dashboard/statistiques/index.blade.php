@@ -133,7 +133,7 @@
              <div class="card-body">
                 <p class="tx-uppercase tx-spacing-1 tx-semibold tx-10 mg-b-2 text-right stat-title">المنتوجات</p>
                 <div class="d-flex justify-content-end align-items-center">
-                  <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $products }}</h2>
+                  <h2 class="tx-20 tx-sm-18 tx-md-24 mg-b-0 tx-rubik tx-dark tx-medium">{{ $products->count() ?? 0 }}</h2>
                 </div>
                 <div class="d-flex align-items-center justify-content-end tx-gray-500 tx-11">
                    منذ اليوم الماضي
@@ -320,30 +320,14 @@
                                      </tr>
                                   </thead>
                                   <tbody class="stat-table-body">
-                                     <tr>
-                                        <td>product</td>
-                                        <td>452</td>
-                                        <td>45</td>
-                                        <td>60%</td>
-                                     </tr>
-                                     <tr>
-                                        <td>product</td>
-                                        <td>452</td>
-                                        <td>45</td>
-                                        <td>60%</td>
-                                     </tr>
-                                     <tr>
-                                        <td>product</td>
-                                        <td>452</td>
-                                        <td>45</td>
-                                        <td>60%</td>
-                                     </tr>
-                                     <tr>
-                                        <td>product</td>
-                                        <td>452</td>
-                                        <td>45</td>
-                                        <td>60%</td>
-                                     </tr>
+                                    @foreach ($products as $product)
+                                       <tr>
+                                          <td>{{ $product->name }}</td>
+                                          <td>{{ $product->items->count() }}</td>
+                                          <td>{{ $product->delivred }}</td>
+                                          <td>% {{ \Statistiques::percentage($product->delivred, $product->items->count()) }}</td>
+                                       </tr>
+                                    @endforeach
                                   </tbody>
                                </table>
                             </div>

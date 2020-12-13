@@ -14,10 +14,10 @@ class Items extends Model
     }
 
     public function list(){
-        return  $this->belongsTo('App\Lists', 'list_id')->withDefault(['name' => 'N-A']);
+        return  $this->belongsTo('App\Lists', 'list_id');
     }
 
     public function delivredList(){
-        return $this->hasMany('App\Lists', 'id')->where('delivred_at', '<>', NULL);
+        return $this->belongsTo('App\Lists', 'list_id')->where('delivred_at', '<>', NULL);
     }
 }
