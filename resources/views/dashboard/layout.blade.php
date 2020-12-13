@@ -50,6 +50,7 @@
         <!--================================-->
         <script src="{{ asset('assets/js/all.js') }}"></script>
         <script src="{{ asset('assets/js/custom.js') }}"></script>
+        <script src="{{ asset('assets/js/pagination.js') }}"></script>
         @if(\Session::has('success'))
             <?=
                 "<script>
@@ -418,36 +419,7 @@ $('#updatecities').submit(function(event){
 });
 
 
-///////////load history
-$('body').on('click','.showhistory',function(e){
 
-var token   = $('meta[name="csrf-token"]').attr('content');
-  var link = $(this).attr('data-link');
-
-  var formData = new FormData();
-  formData.append('_token', token);
-
-
-  $.ajax({
-      url: link,
-      type: 'POST',
-      processData: false, // important
-      contentType: false, // important
-      data: formData,
-      cache:false,
-      dataType: "HTML",
-       beforeSend:function(){
-      },
-      success: function(response) {
-        $('body #historyModalCenter').modal('show');
-        $('body #historyModalCenter .modal-body').html(response);
-      },
-      error : function(response){
-         default_error();
-      }
-});
-
-});
 
 
 

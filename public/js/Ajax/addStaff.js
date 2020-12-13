@@ -26,6 +26,9 @@ $('#createStaffForm').on('submit', function (e) {
         return $(this).val();
     }).get();
 
+    let domain_name_id = $(this).find('input#domain-name-id-js').val();
+    let url = 'http://codpanel_official.test/client/staff/add/' + domain_name_id;
+
     if (!success) {
         submitBtn.attr('disabled', false);
         submitBtn.html(`Add account`);
@@ -48,7 +51,7 @@ $('#createStaffForm').on('submit', function (e) {
 
     $.ajax({
         type: 'POST',
-        url: '{{ url()-> route('client.staff.add', $domain_name -> id)}}',
+        url: url,
         data: formData,
         dataType: 'json',
         success: function (data) {

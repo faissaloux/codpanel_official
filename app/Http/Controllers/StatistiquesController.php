@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Lists;
 use App\Cities;
 use App\Employee;
 use App\Provider;
-use App\Http\Controllers\Controller;
-use App\Items;
-use App\Lists;
 use App\Products;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class StatistiquesController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $canceled = Lists::canceled()->count() ?? 0;
         $unanswered = Lists::unanswered()->count() ?? 0;

@@ -10,11 +10,10 @@ class ListsHelper {
         $lists = [];
         if(in_array($request->handler,$handlers)){
             $scope = $request->handler.'s';
-            $lists = Lists::$scope()->with("items")->OrderByID()->where('employee_id', '!=' , $employee_id)->byStatus($request->type)->paginate(10);
+            $lists = Lists::$scope()->with("items","employee")->OrderByID()->where('employee_id', '!=' , $employee_id)->byStatus($request->type)->get();
         }
         return $lists;
     }
-
     
     public static function setStatus($request,$id){
         $recall_at = (!empty($request->recall_date) and !empty($request->recall_time))?  $request->recall_date . ' ' . $request->recall_time : NULL;
@@ -31,9 +30,11 @@ class ListsHelper {
             $employees = Employee::orderby('id','desc')->get();
             $providers = Provider::orderby('id','desc')->get();
         }
-        if($handler != 'admin'){
+        if($handler != 'admin' && $handler != 'trashed'){
             $result =  \System::stats($handler,\System::auth_type());
             $lists = Lists::$scope()->with('employee','items','provider')->OrderByID()->paginate(10);
+        }elseif($handler == 'trashed'){
+            $lists = Lists::onlyTrashed()->with('employee','items','provider')->OrderByID()->paginate(10);
         }else{
             $lists = Lists::with('employee','items','provider')->OrderByID()->paginate(10);
         }
@@ -41,21 +42,6 @@ class ListsHelper {
         $cities = Cities::orderby('id','desc')->get();
         $products = Products::orderby('id','desc')->get();
         array_push($list_array,['result' => $result ?? null,'cities' => $cities,'providers' => $providers ?? null,'employees' => $employees ?? null,'products' => $products , 'lists' => $lists ]);
-        return $list_array;
-    }
-
-    public static function trashed(){
-        $list_array = [];
-        $lists = Lists::onlyTrashed()->get();;
-        $cities = Cities::orderby('id','desc')->get();
-        $providers = Provider::orderby('id','desc')->get();
-        $employees = Employee::orderby('id','desc')->get();
-        $products = Products::orderby('id','desc')->get();
-        array_push($list_array,['cities' => $cities,
-                                'providers' => $providers ?? null,
-                                'employees' => $employees ?? null,
-                                'products' => $products,
-                                'lists' => $lists ]);
         return $list_array;
     }
 
@@ -83,9 +69,18 @@ class ListsHelper {
              $pro->quantity   = $post['quantity'][$x];
              $pro->save();
          }
-     }
+    }
  
      // save OR update the products of the order
+<<<<<<< HEAD
+    public static function saveMultiSale($post,$list_id,$update = false){
+        if($update){
+                Items::where('list_id', $list_id)->delete();
+                self::multiSaleProductsSave($post,$list_id);
+        }
+        else self::multiSaleProductsSave($post,$list_id);
+    }
+=======
      public static function saveMultiSale($post,$list_id,$update = false){
          if($update){
                  Items::where('list_id', $list_id)->delete();
@@ -100,6 +95,7 @@ class ListsHelper {
         $list_id = self::saveList($Lists,$post,true);
         self::saveMultiSale($post,$list_id);
      }
+>>>>>>> a6d3caa558e653b7589086640c5c4dda906ba5e0
      
     public static function update($request, $id){
         $post =  $request->All();

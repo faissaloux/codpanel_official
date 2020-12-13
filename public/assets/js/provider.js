@@ -187,7 +187,7 @@ $('.status-click').click(function(e) {
         beforeSend: function() {},
         success: function(response) {
             $('.spinner-loader-container.d-table').attr('style', 'display:none !important');
-            $('body .table-body-listing').html(response);
+            $('body .load-table').html(response);
         },
         error: function(response) {
             default_error();

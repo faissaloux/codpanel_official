@@ -50,6 +50,7 @@
     <!--================================-->
     <script src="{{ asset('/assets/js/all.js') }}"></script>
     <script src="{{ asset('/assets/js/provider.js') }}"></script>
+    <script src="{{ asset('/assets/js/pagination.js') }}"></script>
         
     </body>
 

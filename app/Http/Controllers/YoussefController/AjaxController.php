@@ -147,4 +147,48 @@ class AjaxController extends Controller
             'message' => 'Your password was updated !',
         ]);
     }
+
+    /**
+     * Update the current user information
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function updateUserSettings(Request $request): JsonResponse
+    {
+        try {
+            $currentUser = Auth::guard('clients')->user();
+            $request['email'] = strtolower(trim($request['email']));
+
+            $rules = [];
+
+            if ($request['email'] !== $currentUser->email) {
+                $rules[] = [
+                    'email' => 'required | string | email | max:255 | unique:clients',
+                ];
+            }
+
+            if (!Hash::check($request['password'], $currentUser->passwrod)) {
+                $rules[] = [
+                    'password' => 'required | string | max:255 | min:8',
+                ];
+            }
+
+            $request->validate($rules);
+
+            $currentUser->email = $request['email'];
+            $currentUser->password = Hash::make($request['password']);
+            $currentUser->name = $request['name'];
+
+            $currentUser->save();
+        }
+        catch (Exception $exception) {
+            return new JsonResponse([
+                'error' => $exception->getMessage(),
+            ]); 
+        }
+        return new JsonResponse([
+            'message' => 'Your info was successfully updated !',
+        ]);
+    }
 }

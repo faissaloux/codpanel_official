@@ -57,32 +57,29 @@
                 </td>
                 <td>
                     <a type="button" 
-
+                        href="javascript:;"
                         class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showhistory"
-                        data-link="{{ route('dashboard.listing.history' , ['id' => $list->id ]) }}">
+                        data-id="{{ $list->id }}"
+                        data-link="{{ route('dashboard.listing.destroy' , ['id' => $list->id ]) }}">
 
                         الأحداث
                     </a>
                     <a type="button" 
-
-                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"
-                        data-link="{{ route('dashboard.listing.load' , ['id' => $list->id ]) }}">
-
-                        التفاصيل
-                    </a>
-                    <a  type="button"
                         href="javascript:;"
-                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white edit editlist"
-                        data-link="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}">
-                        تعديل
+                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white delete deleteList"
+                        data-id="{{ $list->id }}"
+                        data-link="{{ route('dashboard.listing.restore' , ['id' => $list->id ]) }}"">
+
+                        حذف نهائي
                     </a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
 <nav aria-label="Page navigation example">
-    <ul class="justify-content-center paginate {{ $view ?? null ? '' : 'paginatepost'  }}">
-        {!! $lists->links() !!}
-    </ul>
+<ul class="justify-content-center paginate">
+    {!! $lists->links() !!}
+</ul>
 </nav>

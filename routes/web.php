@@ -168,7 +168,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/statue/{id}', 'EmployeesController@statue')->name('statue');
     Route::post('/load/{id}', 'EmployeesController@load')->name('load');
     Route::post('/history', 'EmployeesController@history')->name('history');
-    Route::post('/listing', 'EmployeesController@listing')->name('listing');
+    Route::any('/listing', 'EmployeesController@listing')->name('listing');
 });
 
   // provider
@@ -195,12 +195,14 @@ Route::group(['prefix' => '/client', 'as' => 'client.'], function () {
         Route::get('/{id}/staff', 'YoussefController\ClientController@staff')->name('staff');
         Route::get('/orders', 'YoussefController\ClientController@orders')->name('orders');
         Route::get('/{id}/orderDetail', 'YoussefController\ClientController@orderDetail')->name('orderDetail');
+        Route::view('/settings', 'client.settings')->name('settings');
         // AJAX CLIENT
         Route::post('/staff/add/{id}', 'YoussefController\AjaxController@addUserStaff')->name('staff.add');
         Route::post('/staff/edit/{id}', 'YoussefController\AjaxController@editStaff')->name('staff.edit');
         Route::post('/staff/update/{id}', 'YoussefController\AjaxController@updatePassword')->name('staff.password.update');
-        Route::view('/settings', 'client.settings')->name('settings');
         Route::post('/settings/update', 'YoussefController\AjaxController@updateUserSettings')->name('settings.update');
+        
+
         Route::post('/update', 'ClientsController@update')->name('update');
         Route::post('/editSettings', 'ClientsController@editSettings')->name('editSettings');
         Route::get('/stores', 'ClientsController@stores')->name('stores');

@@ -4,6 +4,9 @@
 namespace App\System;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class System {
@@ -57,15 +60,15 @@ class System {
         if($auth == 'employee' && $type == 'admin')
             $count = 'SELECT count(*) FROM lists where handler="employee"';
 
-        if($auth == 'provider' && $type == 'admin')
+        elseif($auth == 'provider' && $type == 'admin')
             $count = 'SELECT count(*) FROM lists where handler="provider"';
 
-        if($auth == 'employee' && $type == 'employee'){
+        elseif($auth == 'employee' && $type == 'employee'){
             $id = self::employee()->id;
             $count = 'SELECT count(*) FROM lists where handler="employee" and employee_id="'.$id.'"';
         }
 
-        if($auth == 'provider'  && $type == 'provider'){
+        elseif($auth == 'provider'  && $type == 'provider'){
             $id = self::provider()->id;
             $count = 'SELECT count(*) FROM lists where handler="provider" and provider_id="'.$id.'"';
         }
@@ -84,6 +87,21 @@ class System {
 
         return $result;
 
+    }
+
+    public static function mergedPaginate($items, $baseUrl = null, $perPage = 10, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+
+        $lap = new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+
+        if ($baseUrl) {
+            $lap->setPath($baseUrl);
+        }
+
+        return $lap;
     }
       
 }

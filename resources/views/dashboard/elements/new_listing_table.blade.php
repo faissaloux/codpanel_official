@@ -20,9 +20,9 @@
             <th scope="col" data-type="products">
                 مجموج المنتوجات
             </th>
-            <th scope="col" data-type="employee">عميل <br>الإتصال</th>
+            <th scope="col" data-type="employee">عميل الإتصال</th>
             <th scope="col" data-type="distributor">
-                مندوب<br> التوصيل
+                مندوب التوصيل
             </th>
             <th scope="col">تعديل</th>
         </tr>
@@ -76,13 +76,21 @@
                         data-link="{{ route('dashboard.listing.edit' , ['id' => $list->id ]) }}">
                         تعديل
                     </a>
+                    <a  type="button"
+                        href="javascript:;"
+                        class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white delete deleteList"
+                        data-id="{{ $list->id }}"
+                        data-link="{{ route('dashboard.listing.delete' , ['id' => $list->id ]) }}">
+                        حذف
+                    </a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
 <nav aria-label="Page navigation example">
-    <ul class="justify-content-center paginate {{ $view ?? null ? '' : 'paginatepost'  }}">
+    <ul class="justify-content-center paginate">
         {!! $lists->links() !!}
     </ul>
 </nav>
