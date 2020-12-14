@@ -234,7 +234,7 @@ return [
         'Role' => App\System\Role::class,
         'Status' => App\System\Status::class,
         'Statistiques' => App\Helpers\StatistiquesHelper::class,
-
+        'CitiesHelper' => App\Helpers\CitiesHelper::class,
     ],
 
 ];
