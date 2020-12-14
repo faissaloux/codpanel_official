@@ -731,3 +731,14 @@ $('.showhistory').on('click', function(e) {
     });
 
 });
+
+$(()=>{
+    $('.modal').on('shown.bs.modal', function(e) {
+        $(".add-product").on('click', function(){
+            const toClone = $(".products-list-clone");
+            toClone.clone().appendTo(".products-list-fieldset");
+            toClone.first().removeClass("products-list-clone");
+            toClone.find("input").val("");
+        });
+    });
+})
