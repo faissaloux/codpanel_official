@@ -9,7 +9,6 @@
     <link href="{{ asset('assets/client/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/all.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome/all.css') }}">
-
     <style>
         i {
             padding: 5px;
@@ -32,7 +31,6 @@
     </style>
 </head>
 <body>
-
     <div class="fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
@@ -44,7 +42,6 @@
                         data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                         aria-label="Toggle navigation">
                 </button>
-
                 <div class="dropdown">
                     <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
@@ -63,32 +60,26 @@
                         </a>
                     </div>
                 </div>
-
                 <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
-
                     <div class="navbar-nav w-100 d-flex justify-content-center">
-
                         <div class="menu-link-container">
                             <a class="nav-item nav-link " href="{{ route('client.panels') }}">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 Panels
                             </a>
                         </div>
-
                         <div class="menu-link-container">
                             <a class="nav-item nav-link" href="{{ route('client.orders') }}">
                                 <i class="fa fa-file" aria-hidden="true"></i>
                                 Orders
                             </a>
                         </div>
-
                         <div class="menu-link-container">
                             <a class="nav-item nav-link" href="{{ route('client.support') }}">
                                 <i class="fa fa-life-ring" aria-hidden="true"></i>
                                 Support
                             </a>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -106,3 +97,4 @@
         }
     </script>
     @yield('javascript')
+</body>

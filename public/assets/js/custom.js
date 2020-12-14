@@ -774,4 +774,8 @@ $('.modal').on('shown.bs.modal', function(e) {
     $('body').on('click', '.removemoreproducts', function() {
         $(this).closest('.productsTosale').remove();
     });
+<<<<<<< HEAD
 });
+=======
+})
+>>>>>>> 031597cbca1e1050bea287669f1fd7e5d4a61ece

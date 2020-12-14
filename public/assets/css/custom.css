@@ -802,16 +802,10 @@ div.show-columns-container.show button .show-columns-icon {
 
 .list-empty p {
     font-size: 30px;
-<<<<<<< HEAD
-=======
 }
 
-.my-custom-scrollbar {
-    position: relative;
-    height: 200px;
-    overflow: auto;
-}
-.table-wrapper-scroll-y {
+.stat-table-body{
     display: block;
->>>>>>> a6d3caa558e653b7589086640c5c4dda906ba5e0
+    max-height: 216px;
+    overflow-y: scroll;
 }

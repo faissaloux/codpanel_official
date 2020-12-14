@@ -74,6 +74,7 @@ class ListsHelper {
     }
  
      // save OR update the products of the order
+<<<<<<< HEAD
     public static function saveMultiSale($post,$list_id,$update = false){
         if($update){
                 Items::where('list_id', $list_id)->delete();
@@ -81,6 +82,22 @@ class ListsHelper {
         }
         else self::multiSaleProductsSave($post,$list_id);
     }
+=======
+     public static function saveMultiSale($post,$list_id,$update = false){
+         if($update){
+                 Items::where('list_id', $list_id)->delete();
+                 self::multiSaleProductsSave($post,$list_id);
+         }
+         else self::multiSaleProductsSave($post,$list_id);
+     }
+
+     public static function store($request){
+        $post =  $request->All();
+        $Lists = new Lists();
+        $list_id = self::saveList($Lists,$post,true);
+        self::saveMultiSale($post,$list_id);
+     }
+>>>>>>> 031597cbca1e1050bea287669f1fd7e5d4a61ece
      
     public static function update($request, $id){
         $post =  $request->All();

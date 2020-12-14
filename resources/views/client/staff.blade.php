@@ -94,6 +94,7 @@
                     </button>
                 </div>
                 <form id="createStaffForm" class="form" action="#" method="post">
+                <input type="hidden" id="domain-name-id-js" value="{{ $domain_name->id }}">
                     @csrf
                     <div class="modal-body">
                         <div class="alert alert-danger text-center" id="show-error-create-user"
