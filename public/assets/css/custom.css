@@ -738,7 +738,6 @@ div.show-columns-container.show button .show-columns-icon {
 }
 
 .toggle:checked {
-    border-color: #666;
     background-color: #007bff;
 }
 
@@ -808,4 +807,12 @@ div.show-columns-container.show button .show-columns-icon {
     display: block;
     max-height: 216px;
     overflow-y: scroll;
+}
+
+.toggle-col{
+    display: none;
+}
+
+.toggle-col.active{
+    display: table-cell;
 }

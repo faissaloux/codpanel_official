@@ -774,8 +774,38 @@ $('.modal').on('shown.bs.modal', function(e) {
     $('body').on('click', '.removemoreproducts', function() {
         $(this).closest('.productsTosale').remove();
     });
-<<<<<<< HEAD
 });
-=======
+
+const colsNumber = $(".toggle.show-col").length;
+let activeCols = [];
+$(".toggle.show-col").prop('checked', true);
+
+$(".toggle.show-col").click(function(e){
+  $(".toggle.show-col").checked = true;
+  this.checked  ? $(this).addClass("active")
+                : $(this).removeClass("active");
 })
->>>>>>> 031597cbca1e1050bea287669f1fd7e5d4a61ece
+
+$(".active-all-cols").click(()=>{
+  $(".toggle.show-col").prop('checked', true)
+                       .addClass("active")
+                       .change();
+})
+
+$(".inactive-all-cols").click(()=>{
+  $(".toggle.show-col").prop('checked', false)
+                       .removeClass("active")
+                       .change();
+})
+      
+$(".toggle.show-col").change(()=>{
+  $(`[data-type]`).removeClass("active");
+  activeCols = [];
+  $(".toggle.show-col.active").each(function(){
+    activeCols.push($(this).prop('name'));
+  });
+
+  $.each(activeCols, function(key, value){
+    $(`[data-type=${value}]`).addClass("active");
+  });
+})

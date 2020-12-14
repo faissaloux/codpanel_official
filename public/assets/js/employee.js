@@ -336,3 +336,37 @@ $('.modal').on('shown.bs.modal', function(e) {
         $(this).closest('.productsTosale').remove();
     });
 });
+
+const colsNumber = $(".toggle.show-col").length;
+let activeCols = [];
+$(".toggle.show-col").prop('checked', true);
+
+$(".toggle.show-col").click(function(e){
+  $(".toggle.show-col").checked = true;
+  this.checked  ? $(this).addClass("active")
+                : $(this).removeClass("active");
+})
+
+$(".active-all-cols").click(()=>{
+  $(".toggle.show-col").prop('checked', true)
+                       .addClass("active")
+                       .change();
+})
+
+$(".inactive-all-cols").click(()=>{
+  $(".toggle.show-col").prop('checked', false)
+                       .removeClass("active")
+                       .change();
+})
+      
+$(".toggle.show-col").change(()=>{
+  $(`[data-type]`).removeClass("active");
+  activeCols = [];
+  $(".toggle.show-col.active").each(function(){
+    activeCols.push($(this).prop('name'));
+  });
+
+  $.each(activeCols, function(key, value){
+    $(`[data-type=${value}]`).addClass("active");
+  });
+})
