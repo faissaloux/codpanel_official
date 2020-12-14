@@ -31,12 +31,6 @@ class UsersController extends Controller
         return view('dashboard.users.index',compact('users'));
     }
 
-
-    public function create()
-    {
-        return view('dashboard.users.create');
-    }
-
     public function store(Request $request)
     {
         $rules = [
