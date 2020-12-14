@@ -16,73 +16,24 @@ class ProductsController extends Controller
         return view('dashboard.products.index',compact('products'));
     }
 
-    public function create()
-    {
-        return view('dashboard.products.create',compact('products'));
-    }
-
     public function store(Request $request)
     {
-        $rules = [
-            'name'           => 'required',
-            'prix_jmla'      => 'required|numeric',
-            'reference'      => 'required',
-          ];
-  
-  
-        $messages = [
-            'title.required'            => trans("title.required"),
-            'description.required'      => trans("description.required"),
-            'price.required'            => trans("price.required"),
-            'ProductThumbnail.required' => trans("ProductThumbnail.required"),
-        ];
-
-        $request->validate($rules,$messages);
-
-        $Product           = new Products();
-        $Product->name     = $request->name;
-        $Product->reference    = $request->reference;
-        $Product->price = $request->price;
-        $Product->prix_jmla    = $request->prix_jmla;
-
-        if($request->hasFile('image'))
-            $Product->image = $request->image->store('products',['disk' => 'public']);
-
-        $Product->save();
-        return redirect()->route('dashboard.products.index')->with('success', trans('product.created'));
+        return \ProductHelper::store($request);
     }
 
     public function edit($id)
     {
-        $content    = Products::find($id);
+        $content = Products::find($id);
         return view('dashboard.products.edit',compact('content'));
     }
 
     public function update(Request $request, $id)
     {
-        $Product = Products::find($id);
-        $Product->name     = $request->name;
-        $Product->reference    = $request->reference;
-        $Product->price = $request->price;
-        $Product->prix_jmla    = $request->prix_jmla;        
-        
-        if($request->hasFile('ProductThumbnail'))
-            $Product->thumbnail = $request->ProductThumbnail->store('product',['disk' => 'public']);
-
-        // delete the old image
-        if($request->hasFile('image') and !empty($request->image) ){
-            $file = public_path().'/uploads/'.$Product->image;
-            if(file_exists($file)) unlink($file);
-        }
-
-        $Product->save();
-
-        return redirect()->route('dashboard.products.index')->with('success', trans('product.updated'));
+        return \ProductHelper::update($request, $id);
     }
 
     public function delete($id)
     {
-        Products::find($id)->delete();
-        return redirect()->route('dashboard.products.index')->with('failed', trans('product.deleted'));
+        return \ProductHelper::delete($id);
     }
 }

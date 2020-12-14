@@ -196,12 +196,11 @@ $('.status-click').click(function(e) {
 
 });
 
-const colsNumber = $(".toggle.show-col").length;
+// Cols filter
 let activeCols = [];
 $(".toggle.show-col").prop('checked', true);
 
 $(".toggle.show-col").click(function(e){
-  $(".toggle.show-col").checked = true;
   this.checked  ? $(this).addClass("active")
                 : $(this).removeClass("active");
 })
@@ -229,3 +228,4 @@ $(".toggle.show-col").change(()=>{
     $(`[data-type=${value}]`).addClass("active");
   });
 })
+// End cols filter

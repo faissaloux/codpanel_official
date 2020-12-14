@@ -235,6 +235,7 @@ return [
         'Status' => App\System\Status::class,
         'Statistiques' => App\Helpers\StatistiquesHelper::class,
         'CitiesHelper' => App\Helpers\CitiesHelper::class,
+        'ProductHelper' => App\Helpers\ProductHelper::class,
     ],
 
 ];
