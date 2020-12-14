@@ -28400,6 +28400,23 @@ $(function() {
 
 $(() => {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const searchForm = $(".search-form-panel");
     const deepSearch = $(".deep-search");
 
@@ -28416,19 +28433,27 @@ $(() => {
             deepSearch.slideUp(200)
     })
 
-    const checkBox = $(".show-actions-menu");
-    const getDown = $(".get-down");
-    const actionsMenu = $(".actions-menu");
 
-    checkBox.click(() => {
-        if (getDown.hasClass("margin-top-60")) {
-            getDown.removeClass("margin-top-60");
-            actionsMenu.slideUp(600);
-        } else {
-            getDown.addClass("margin-top-60");
-            actionsMenu.slideDown(200);
-        }
-    })
+
+
+
+    function actionMenu() {
+        const checkBox = $(".show-actions-menu");
+        const getDown = $(".get-down");
+        const actionsMenu = $(".actions-menu");
+        checkBox.click(() => {
+            if (getDown.hasClass("margin-top-60")) {
+                getDown.removeClass("margin-top-60");
+                actionsMenu.slideUp(600);
+            } else {
+                getDown.addClass("margin-top-60");
+                actionsMenu.slideDown(200);
+            }
+        })
+    }
+
+
+
 
     $(".close-actions-menu").click(() => {
         checkBox.prop("checked", false);
@@ -28571,3 +28596,73 @@ $('#loginform').submit(function(e) {
     });
 
 });
+
+
+
+
+
+
+
+
+/****** Check Box Table With Ids System *********/
+$(document).ready(function() {
+    var $selectAll = $('#checkAll'); // main checkbox inside table thead
+    var $table = $('.table'); // table selector 
+    var $tdCheckbox = $table.find('tbody .check'); // checboxes inside table body
+    var tdCheckboxChecked = 0; // checked checboxes
+
+
+    // Select or deselect all checkboxes depending on main checkbox change
+    $selectAll.on('click', function() {
+        $tdCheckbox.prop('checked', this.checked);
+        getselected();
+    });
+
+    // Toggle main checkbox state to checked when all checkboxes inside tbody tag is checked
+    $tdCheckbox.on('change', function(e) {
+        tdCheckboxChecked = $table.find('tbody input:checkbox:checked').length; // Get count of checkboxes that is checked
+        // if all checkboxes are checked, then set property of main checkbox to "true", else set to "false"
+        $selectAll.prop('checked', (tdCheckboxChecked === $tdCheckbox.length));
+        getselected();
+    })
+
+    function getselected() {
+
+
+
+        var $ids = new Array();
+        $(".table tbody .check[type=checkbox]:checked").each(function() {
+            $ids.push($(this).data('item'));
+        });
+
+        var count = $ids.length;
+
+        const checkBox = $(".show-actions-menu");
+        const getDown = $(".get-down");
+        const actionsMenu = $(".actions-menu");
+        if (count > 0) {
+
+            getDown.addClass("margin-top-60");
+            actionsMenu.slideDown(200);
+
+            $('body #selected').val($ids);
+            $('body #selected').attr('data-count', count);
+            $('body .actions-number').html(count);
+        } else {
+            getDown.removeClass("margin-top-60");
+            actionsMenu.slideUp(600);
+            $('body #selected').val('');
+            $('body #selected').attr('data-count', '');
+
+
+        }
+
+    }
+});
+
+
+
+
+
+
+/************* CheckBox Table JS **************/

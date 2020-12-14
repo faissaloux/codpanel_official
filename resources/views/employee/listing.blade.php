@@ -513,7 +513,7 @@
             <table class="table table-primary table-hover">
                 <thead>
                     <tr>
-                        <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
+                        <th scope="col"><input id="checkAll" type="checkbox" class="show-actions-menu"/></th>
                         <th scope="col" data-type="requestId">
                             رقم
                         </th>
@@ -542,7 +542,7 @@
                 <tbody class="table-body-listing">
                     @foreach($lists['lists'] as $list)
                         <tr class="{{ 'list_'.$list->id }}" >
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
+                            <th scope="row"><input type="checkbox"  data-item="{{ $list->id }}" class="hoverRow check"/></th>
                             <td data-type="requestId" class="tx-right">
                                 {{ '#'.$list->id }}
                             </td>

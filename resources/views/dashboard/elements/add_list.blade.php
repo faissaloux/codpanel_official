@@ -106,47 +106,43 @@
                             <h4 class="tx-right">المنتجات</h4>
                             <hr>
                         </div>
-                        <div class="panel-body products">
-                            <fieldset class="content-group d-flex align-items-end">
-                                <div class="products-list-fieldset col">
-                                    <div class="products-list-clone row">
-                                        <div class="row col productsTosale col">
-                                            <div class="col-md-4 p-0">
-                                                <div class="form-group col-md-12">
-                                                    <div class="product-q">
-                                                        <select class="selectpicker form-control" name="ProductID[]" data-style="btn-default" data-live-search="true">
-                                                            @foreach ($products as $product)
-                                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-        
-                                            </div>
-                                            <div class="col-md-4 p-0">
-                                                <div class="form-group col-md-12">
-                                                    <input  type="number"
-                                                            class="form-control frequired"
-                                                            name="prix[]"
-                                                            placeholder="سعر البيع"
-                                                            >
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 p-0">
-                                                <div class="form-group col-md-12">
-                                                    <input  type="number"
-                                                            name="quantity[]"
-                                                            class="form-control frequired"
-                                                            id="produit"
-                                                            placeholder="الكمية"
-                                                            >
-                                                </div>
+                        <div class="panel-body">
+                            <fieldset class="content-group productsList">
+                                <div class="row col productsTosale">
+                                    <div class="col-md-4 p-0">
+                                        <div class="form-group col-md-12">
+                                            <div class="product-q">
+                                                <select class="selectpicker form-control" name="ProductID[]" data-style="btn-default" data-live-search="true">
+                                                    @foreach ($products as $product)
+                                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
+
                                     </div>
-                                </div>
-                                <div class="col-md-1 p-0 add-product mb-3">
-                                    <a id="addmoreproducts" href="javascript:;" class="btn btn-primary">+</a>
+                                    <div class="col-md-4 p-0">
+                                        <div class="form-group col-md-12">
+                                            <input  type="number"
+                                                    class="form-control frequired"
+                                                    name="prix[]"
+                                                    placeholder="سعر البيع"
+                                                    >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 p-0">
+                                        <div class="form-group col-md-12">
+                                            <input  type="number"
+                                                    name="quantity[]"
+                                                    class="form-control frequired"
+                                                    id="produit"
+                                                    placeholder="الكمية"
+                                                    >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 p-0">
+                                        <a id="addmoreproducts" href="javascript:;" class="btn btn-primary">+</a>
+                                    </div>
                                 </div>
                             </fieldset>
                         </div>

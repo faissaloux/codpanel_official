@@ -17,6 +17,8 @@ class ListsHelper {
     
     public static function setStatus($request,$id){
         $recall_at = (!empty($request->recall_date) and !empty($request->recall_time))?  $request->recall_date . ' ' . $request->recall_time : NULL;
+
+     
         $message =  \Status::list($id)->status($request->statue)->reason($request->cancel_reason)->recall_at($recall_at)->save_status() ? ["Success" => "changed successfuly"] : ["error" => "unexpected error occured "];
         unset($recall_at );
         return $message;
@@ -72,7 +74,6 @@ class ListsHelper {
     }
  
      // save OR update the products of the order
-<<<<<<< HEAD
     public static function saveMultiSale($post,$list_id,$update = false){
         if($update){
                 Items::where('list_id', $list_id)->delete();
@@ -80,22 +81,6 @@ class ListsHelper {
         }
         else self::multiSaleProductsSave($post,$list_id);
     }
-=======
-     public static function saveMultiSale($post,$list_id,$update = false){
-         if($update){
-                 Items::where('list_id', $list_id)->delete();
-                 self::multiSaleProductsSave($post,$list_id);
-         }
-         else self::multiSaleProductsSave($post,$list_id);
-     }
-
-     public static function store($request){
-        $post =  $request->All();
-        $Lists = new Lists();
-        $list_id = self::saveList($Lists,$post,true);
-        self::saveMultiSale($post,$list_id);
-     }
->>>>>>> a6d3caa558e653b7589086640c5c4dda906ba5e0
      
     public static function update($request, $id){
         $post =  $request->All();

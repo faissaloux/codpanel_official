@@ -19,11 +19,21 @@
                                 <span class="sm-hide mr-2">تصدير</span>
                             </a>
                         </span>
-                        <span class="action d-flex align-items-center ml-2">
-                            <a>
-                                <i class="mdi mdi-clipboard-check"></i>
-                                <span class="sm-hide mr-2">تعيين</span>
+                        <span class="dropdown action d-flex align-items-center ml-2">
+                            <a   class="dropdown-toggle d-flex align-items-center"
+                                    id="dropdownMenuStatus"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-clipboard-check"></i>
+                                    <span class="sm-hide mr-2">تعيين</span>
                             </a>
+                            <div class="dropdown-menu tx-right" id="changeSelectedStatus" aria-labelledby="dropdownMenuStatus">
+                                <a class="dropdown-item" data-type="unanswered" href="javascript:;">لا يجيب</a>
+                                <a class="dropdown-item" data-type="recall" href="javascript:;">إعادة الإتصال</a>
+                                <a class="dropdown-item" data-type="canceled" href="javascript:;">ملغى</a>
+                                <a class="dropdown-item" data-type="confirmed" href="javascript:;">تأكيد</a>
+                            </div>
                         </span>
                         <span class="dropdown action d-flex align-items-center ml-2">
                             <a   class="dropdown-toggle d-flex align-items-center"

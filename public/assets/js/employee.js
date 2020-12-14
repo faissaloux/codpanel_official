@@ -294,3 +294,45 @@ $('.status-click').click(function(e) {
     });
 
 });
+
+$('.modal').on('shown.bs.modal', function(e) {
+    // Add product Row
+    $('#addmoreproducts').click(function() {
+
+        var row = $(this).closest('.productsTosale');
+        var mypr = $(this).closest('.row').find('.product-q select');
+        var pr = mypr.val();
+
+        if (isNaN(pr)) {
+            mypr.addClass('is-invalid');
+        } else {
+            mypr.removeClass('is-invalid');
+        }
+
+        var emptyFound = false;
+        $(row).find('input[type="number"]').each(function() {
+            if ($(this).val() == '') {
+                $(this).closest('.form-group').addClass('has-error');
+                emptyFound = true;
+            } else {
+                $(this).closest('.form-group').removeClass('has-error');
+            }
+        });
+
+        if (emptyFound) {
+            return false;
+        }
+
+        var hheo = $('body .productsTosale').first().clone();
+        $(hheo).find('.btn.btn-primary').addClass('btn-danger removemoreproducts').html('-');
+        $(hheo).find('input').each(function() {
+            $(this).val('');
+        })
+        $(hheo).appendTo("body .productsList");
+    });
+
+    // Remove product Row
+    $('body').on('click', '.removemoreproducts', function() {
+        $(this).closest('.productsTosale').remove();
+    });
+});

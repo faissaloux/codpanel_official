@@ -46,12 +46,18 @@
         
         @include('dashboard.inc.modals')
 
+
+        <input type="hidden" id="selected" data-count="" />
+
+
         <!--================================-->
         <!-- Footer Script -->
         <!--================================-->
         <script src="{{ asset('assets/js/all.js') }}"></script>
         <script src="{{ asset('assets/js/employee.js') }}"></script>
         <script src="{{ asset('assets/js/pagination.js') }}"></script>
+
+
         
     </body>
 
