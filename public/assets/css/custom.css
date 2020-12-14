@@ -809,14 +809,3 @@ div.show-columns-container.show button .show-columns-icon {
     max-height: 216px;
     overflow-y: scroll;
 }
-
-th, td {
-  padding: 5px;
-  word-break: break-all;
-}
-
-tr {
-  display: table;
-  width: 100%;
-  box-sizing: border-box;
-}
