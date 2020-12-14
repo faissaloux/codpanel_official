@@ -274,28 +274,27 @@
                             </div>
                          </div>
                         <div class="card-body pd-0">
-                           <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-                              <table class="table table-primary table-striped table-hover text-right">
+                              <table class="table table-primary table-striped table-hover text-right mb-0">
                                   <thead>
-                                     <tr class="stats-table-row">
-                                        <th scope="col">المدينة</th>
-                                        <th scope="col">عدد الطلبات</th>
-                                        <th scope="col">موزعة</th>
-                                        <th scope="col">نسبة %</th>
+                                     <tr class="stats-table-row d-flex">
+                                        <th class="col-5">المدينة</th>
+                                        <th class="col-3">عدد الطلبات</th>
+                                        <th class="col">موزعة</th>
+                                        <th class="col">نسبة %</th>
                                      </tr>
                                   </thead>
                                   <tbody class="stat-table-body">
                                      @foreach($cities as $city)
-                                       <tr>
-                                          <td>{{ $city->name }}</td>
-                                          <td>{{ $city->provider->lists->count() }}</td>
-                                          <td>{{ $city->provider->delivredLists->count() }}</td>
-                                          <td>% {{ \Statistiques::percentage($city->provider->delivredLists->count() , $city->provider->lists->count()) }}</td>
+                                       <tr class="d-flex">
+                                          <td class="col-5">{{ $city->name }}</td>
+                                          <td class="col-3">{{ $city->provider->lists->count() }}</td>
+                                          <td class="col">{{ $city->provider->delivredLists->count() }}</td>
+                                          <td class="col">% {{ \Statistiques::percentage($city->provider->delivredLists->count() , $city->provider->lists->count()) }}</td>
                                        </tr>
                                      @endforeach
                                   </tbody>
                                </table>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -309,28 +308,26 @@
                             </div>
                         </div>
                         <div class="card-body pd-0">
-                           <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-                              <table class="table table-primary table-striped table-hover text-right">
-                                  <thead>
-                                     <tr class="stats-table-row">
-                                        <th scope="col">المنتوج</th>
-                                        <th scope="col">عدد الطلبات</th>
-                                        <th scope="col">موزعة</th>
-                                        <th scope="col">نسبة %</th>
-                                     </tr>
-                                  </thead>
-                                  <tbody class="stat-table-body">
-                                    @foreach ($products as $product)
-                                       <tr>
-                                          <td>{{ $product->name }}</td>
-                                          <td>{{ $product->items->count() }}</td>
-                                          <td>{{ $product->delivred }}</td>
-                                          <td>% {{ \Statistiques::percentage($product->delivred, $product->items->count()) }}</td>
-                                       </tr>
-                                    @endforeach
-                                  </tbody>
-                               </table>
-                            </div>
+                           <table class="table table-primary table-striped table-hover text-right mb-0">
+                                 <thead>
+                                    <tr class="stats-table-row d-flex">
+                                       <th class="col-5">المنتوج</th>
+                                       <th class="col-3">عدد الطلبات</th>
+                                       <th class="col">موزعة</th>
+                                       <th class="col">نسبة %</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody class="stat-table-body">
+                                 @foreach ($products as $product)
+                                    <tr class="d-flex">
+                                       <td class="col-5">{{ $product->name }}</td>
+                                       <td class="col-3">{{ $product->items->count() }}</td>
+                                       <td class="col">{{ $product->delivred }}</td>
+                                       <td class="col">% {{ \Statistiques::percentage($product->delivred, $product->items->count()) }}</td>
+                                    </tr>
+                                 @endforeach
+                                 </tbody>
+                              </table>
                         </div>
                     </div>
                 </div>
@@ -346,28 +343,26 @@
                             </div>
                         </div>
                         <div class="card-body pd-0">
-                           <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-                              <table class="table table-primary table-striped table-hover text-right">
-                                 <thead>
-                                    <tr class="stats-table-row">
-                                       <th scope="col">عميل الإتصال</th>
-                                       <th scope="col">عدد الطلبات</th>
-                                       <th scope="col">موزعة</th>
-                                       <th scope="col">نسبة %</th>
+                           <table class="table table-primary table-striped table-hover text-right mb-0">
+                              <thead>
+                                 <tr class="stats-table-row d-flex">
+                                    <th class="col-5">عميل الإتصال</th>
+                                    <th class="col-3">عدد الطلبات</th>
+                                    <th class="col">موزعة</th>
+                                    <th class="col">نسبة %</th>
+                                 </tr>
+                              </thead>
+                              <tbody class="stat-table-body">
+                                 @foreach ($employees as $employee)
+                                    <tr class="d-flex">
+                                       <td class="col-5">{{ $employee->name }}</td>
+                                       <td class="col-3">{{ $employee->lists->count() }}</td>
+                                       <td class="col">{{ $employee->delivredLists->count() }}</td>
+                                       <td class="col">% {{ \Statistiques::percentage($employee->delivredLists->count(), $employee->lists->count()) }}</td>
                                     </tr>
-                                 </thead>
-                                 <tbody class="stat-table-body">
-                                    @foreach ($employees as $employee)
-                                       <tr>
-                                          <td>{{ $employee->name }}</td>
-                                          <td>{{ $employee->lists->count() }}</td>
-                                          <td>{{ $employee->delivredLists->count() }}</td>
-                                          <td>% {{ \Statistiques::percentage($employee->delivredLists->count(), $employee->lists->count()) }}</td>
-                                       </tr>
-                                    @endforeach
-                                 </tbody>
-                              </table>
-                           </div>
+                                 @endforeach
+                              </tbody>
+                           </table>
                         </div>
                     </div>
                 </div>
@@ -381,28 +376,26 @@
                             </div>
                         </div>
                         <div class="card-body pd-0">
-                            <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-                               <table class="table table-primary table-striped table-hover text-right">
-                                  <thead class="table-head">
-                                     <tr class="stats-table-row">
-                                        <th scope="col">مندوب التوصيل</th>
-                                        <th scope="col">عدد الطلبات</th>
-                                        <th scope="col">موزعة</th>
-                                        <th scope="col">نسبة %</th>
-                                     </tr>
-                                  </thead>
-                                  <tbody class="stat-table-body">
-                                    @foreach ($providers as $provider)
-                                    <tr>
-                                       <td>{{ $provider->name }}</td>
-                                       <td>{{ $provider->lists->count() }}</td>
-                                       <td>{{ $provider->delivredLists->count() }}</td>
-                                       <td>% {{ \Statistiques::percentage($provider->delivredLists->count(), $provider->lists->count()) }}</td>
-                                    </tr>
-                                  @endforeach
-                                  </tbody>
-                               </table>
-                            </div>
+                           <table class="table table-primary table-striped table-hover text-right mb-0">
+                              <thead class="table-head">
+                                 <tr class="stats-table-row d-flex">
+                                    <th class="col-5">مندوب التوصيل</th>
+                                    <th class="col-3">عدد الطلبات</th>
+                                    <th class="col">موزعة</th>
+                                    <th class="col">نسبة %</th>
+                                 </tr>
+                              </thead>
+                              <tbody class="stat-table-body">
+                              @foreach ($providers as $provider)
+                              <tr class="d-flex">
+                                 <td class="col-5">{{ $provider->name }}</td>
+                                 <td class="col-3">{{ $provider->lists->count() }}</td>
+                                 <td class="col">{{ $provider->delivredLists->count() }}</td>
+                                 <td class="col">% {{ \Statistiques::percentage($provider->delivredLists->count(), $provider->lists->count()) }}</td>
+                              </tr>
+                              @endforeach
+                              </tbody>
+                           </table>
                         </div>
                     </div>
                 </div>
