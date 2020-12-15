@@ -76,12 +76,9 @@ class Lists extends Model
         return $query->orderby('id','desc');
     }
 
-
     public function scopeByStatus($query,$status){
         return in_array($status,\Status::statuesList()) ? $query->where('status',$status) : $query;
     }
-
-
 
     public function scopeProviders($query){
         return $query->where('handler', 'provider');

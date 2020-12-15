@@ -55,6 +55,19 @@ class System {
         
     }
 
+
+    public static function is_employee(){
+        return \System::auth_type() == 'employee';
+    }
+
+    public static function is_provider(){
+        return \System::auth_type() == 'provider';
+    }
+
+    public static function is_admin(){
+        return \System::auth_type() == 'admin';
+    }
+
     public static function stats($auth = 'admin',$type = 'employee'){
 
         if($auth == 'employee' && $type == 'admin')

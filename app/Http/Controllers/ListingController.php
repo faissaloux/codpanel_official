@@ -17,6 +17,7 @@ class ListingController extends Controller {
 
     public $listing = 'dashboard.listing.index';
     public $listingView = 'dashboard.elements.new_listing_table';
+    public $filterView = '';
 
     public function trashed(Request $request)
     {
@@ -128,6 +129,8 @@ class ListingController extends Controller {
         $history = Lists::select('history')->find($id)->displayHistory();
         return response()->view('dashboard.elements.list_history', compact('history'))->setStatusCode(200);
     }
+
+    
 
 
 }

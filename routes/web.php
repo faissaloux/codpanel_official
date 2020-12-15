@@ -139,6 +139,9 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::post('/load/{id}', 'ListingController@load')->name('load');
         Route::post('/history/{id}', 'ListingController@history')->name('history');
         Route::post('/listing', 'ListingController@listing')->name('listing');
+
+        Route::post('/bulkstatus', 'ListingController@bulkstatus')->name('bulkstatus');
+        Route::post('/filter', 'ListingController@filter')->name('filter');
     });
 
     // statistiques
@@ -150,7 +153,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::get('/cities', 'StatistiquesController@cities')->name('cities');
         Route::get('/employees', 'StatistiquesController@employees')->name('employees');
         Route::get('/providers', 'StatistiquesController@providers')->name('providers');
-    });
+    });    
 
 });
 
@@ -169,6 +172,10 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/load/{id}', 'EmployeesController@load')->name('load');
     Route::post('/history', 'EmployeesController@history')->name('history');
     Route::any('/listing', 'EmployeesController@listing')->name('listing');
+    
+
+    Route::post('/bulkstatus', 'EmployeesController@bulkstatus')->name('bulkstatus');
+    Route::post('/filter', 'EmployeesController@filter')->name('filter');
 });
 
   // provider
@@ -179,7 +186,10 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
 	Route::post('/export', 'ProvidersController@export')->name('export');
 	Route::post('/statue/{id}', 'ProvidersController@statue')->name('statue');
 	Route::post('/load/{id}', 'ProvidersController@load')->name('load');
-	Route::post('/listing', 'ProvidersController@listing')->name('listing');
+    Route::post('/listing', 'ProvidersController@listing')->name('listing');
+    
+    Route::post('/bulkstatus', 'ProvidersController@bulkstatus')->name('bulkstatus');
+    Route::post('/filter', 'ProvidersController@filter')->name('filter');
 });
 
 

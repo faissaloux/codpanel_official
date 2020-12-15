@@ -28660,9 +28660,8 @@ $(document).ready(function() {
     }
 });
 
-
-
-
-
-
 /************* CheckBox Table JS **************/
+
+$('.pagination-select').on('change', function() {
+    $('body').attr("data-limit", this.value);
+});

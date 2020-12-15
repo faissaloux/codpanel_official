@@ -16,6 +16,7 @@ class EmployeesController extends Controller
     public $listingView = 'employee.elements.listing-table';
     public $listDetails = 'employee.elements.list_details';
     public $listing = 'employee.listing';
+    public $filterView = 'employee.elements.listing-table';
 
     public function create()
     {
@@ -47,5 +48,7 @@ class EmployeesController extends Controller
         ListsHelper::update($request,$id);
         return response()->json(["Success" => "updated successfuly"]);
     }
+
+    
 
 }

@@ -107,6 +107,7 @@ $('.status-click').click(function(e) {
         success: function(response) {
             $('.spinner-loader-container.d-table').attr('style', 'display:none !important');
             $('body .load-table').html(response);
+            $('body').attr('data-type', type);
         },
         error: function(response) {
             default_error();
@@ -774,8 +775,76 @@ $('.modal').on('shown.bs.modal', function(e) {
     $('body').on('click', '.removemoreproducts', function() {
         $(this).closest('.productsTosale').remove();
     });
-<<<<<<< HEAD
 });
-=======
-})
->>>>>>> 031597cbca1e1050bea287669f1fd7e5d4a61ece
+
+/************ filter ******************/
+
+function filter() {
+    $('.spinner-loader-container.d-table').attr('style', 'display:table !important');
+
+    var token = $('meta[name="csrf-token"]').attr('content');
+    var data_apage = $('body').attr('data-page');
+    var data_limit = $('body').attr("data-limit");
+    var data_type = $('body').attr("data-type");
+    var filter_by = $('.radio-filter-by:checked').val();
+    var filter_date = $('#dashboardDate').text();
+    var filter_q = $('#textsearch').val();
+    var filter_city = $('#city_selector').val();
+    var filter_product = $('#product').val();
+    var filter_employee = $('#employee').val();
+    var filter_provider = $('#provider').val();
+
+    var formData = new FormData();
+    formData.append('_token', token);
+    formData.append('filter', 'filter');
+    formData.append('data_limit', data_limit);
+    formData.append('data_type', data_type);
+    formData.append('filter_by', filter_by);
+    formData.append('filter_date', filter_date);
+    formData.append('filter_q', filter_q);
+    formData.append('filter_city', filter_city);
+    formData.append('filter_product', filter_product);
+    formData.append('filter_employee', filter_employee);
+    formData.append('filter_provider', filter_provider);
+    formData.append('data_apage', data_apage);
+
+    $.ajax({
+        url: '/dashboard/listing/filter',
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache: false,
+        dataType: "HTML",
+        beforeSend: function() {},
+        success: function(response) {
+            $('.spinner-loader-container.d-table').attr('style', 'display:none !important');
+            $('body .load-table').html(response);
+        },
+        error: function(response) {
+            default_error();
+        }
+    });
+}
+
+
+$('.mdi-reload').click(function() {
+    filter();
+});
+
+
+$(document).on('change', '.radio-filter-by', function() {
+    filter();
+});
+
+$('#sinistres-search').submit(function() {
+    filter();
+});
+
+
+$(document).ready(function() {
+    var url = window.location.pathname;
+    url = url.split('/');
+    var page = (url[3] == null) ? "new" : url[3];
+    $('body').attr('data-page', page);
+});

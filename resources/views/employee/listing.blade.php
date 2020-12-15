@@ -118,10 +118,32 @@
                                 </div>
                                 <ul class="Polaris-ChoiceList__Choices_15o76 polaris-list tx-right pr-3 mb-0">
                                     <li>
+                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton70">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input id="PolarisRadioButton70" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock radio-filter-by" value="created_at desc" checked="">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
+                                            </span>
+                                            <span class="Polaris-Choice__Label_2vd36">تم الإنشاء (الأحدث أولاً)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton69">
+                                            <span class="Polaris-Choice__Control_1u8vs">
+                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
+                                                    <input id="PolarisRadioButton69" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock radio-filter-by" value="created_at asc">
+                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
+                                                </span>
+                                            </span>
+                                            <span class="Polaris-Choice__Label_2vd36">تم الإنشاء (الأقدم أولاً)</span>
+                                        </label>
+                                    </li>
+                                    <li>
                                         <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton67">
                                             <span class="Polaris-Choice__Control_1u8vs">
                                                 <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton67" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="title asc" checked="">
+                                                    <input id="PolarisRadioButton67" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock radio-filter-by" value="name asc" >
                                                     <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
                                                 </span>
                                             </span>
@@ -132,7 +154,7 @@
                                         <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton68">
                                             <span class="Polaris-Choice__Control_1u8vs">
                                                 <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton68" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="title desc">
+                                                    <input id="PolarisRadioButton68" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock radio-filter-by" value="name desc">
                                                     <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
                                                 </span>
                                             </span>
@@ -140,32 +162,10 @@
                                         </label>
                                     </li>
                                     <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton69">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton69" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="created_at asc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">تم الإنشاء (الأقدم أولاً)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton70">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton70" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="created_at desc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">تم الإنشاء (الأحدث أولاً)</span>
-                                        </label>
-                                    </li>
-                                    <li>
                                         <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton71">
                                             <span class="Polaris-Choice__Control_1u8vs">
                                                 <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton71" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="updated_at asc">
+                                                    <input id="PolarisRadioButton71" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock radio-filter-by" value="updated_at asc">
                                                     <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
                                                 </span>
                                             </span>
@@ -176,77 +176,11 @@
                                         <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton72">
                                             <span class="Polaris-Choice__Control_1u8vs">
                                                 <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton72" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="updated_at desc">
+                                                    <input id="PolarisRadioButton72" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock radio-filter-by" value="updated_at desc">
                                                     <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
                                                 </span>
                                             </span>
                                             <span class="Polaris-Choice__Label_2vd36">تم التحديث (الأحدث أولاً)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton73">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton73" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="inventory_total asc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">المخزون المنخفض</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton74">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton74" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="inventory_total desc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">مخزون مرتفع</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton75">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton75" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="product_type asc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">نوع المنتج أ-ي</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton76">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                            <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                <input id="PolarisRadioButton76" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="product_type desc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">نوع المنتج ي-أ</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton77">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton77" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="vendor asc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">البائع أ-ي</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="Polaris-Choice_j5gzq" for="PolarisRadioButton78">
-                                            <span class="Polaris-Choice__Control_1u8vs">
-                                                <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                    <input id="PolarisRadioButton78" name="PolarisChoiceList8" type="radio" class="Polaris-RadioButton__Input_30ock" value="vendor desc">
-                                                    <span class="Polaris-RadioButton__Backdrop_1x2i2"></span>
-                                                </span>
-                                            </span>
-                                            <span class="Polaris-Choice__Label_2vd36">البائع ي-أ</span>
                                         </label>
                                     </li>
                                 </ul>
@@ -422,7 +356,7 @@
         </div>
 
         <div class="search-form-panel pt-4 mb-4">
-            <form action="/sinistres/search" id='sinistres-search' method="GET">
+            <form action="javascript:;" data-link="{{ route('employee.filter') }}" id='sinistres-search' method="GET">
                 <div class="panel">
                     <div class="panel-body">
                         <div class="row">
@@ -430,6 +364,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-10">
                                         <input  type="text"
+                                                id="textsearch"
                                                 class="form-control"
                                                 name="q"
                                                 placeholder="إسم أو هاتف أو عنوان">
@@ -450,7 +385,7 @@
                                                 <label for="city_selector" class="float-right">
                                                     <b>المدينة</b>
                                                 </label>
-                                                <select class="selectpicker form-control" name="city_selector" data-style="btn-default" data-live-search="true">
+                                                <select class="selectpicker form-control" id="city_selector" data-style="btn-default" data-live-search="true">
                                                     <option></option>
                                                     @foreach ($lists['cities'] as $city)
                                                         <option value="{{$city->id}}">{{$city->name}}</option>
@@ -463,10 +398,10 @@
                                                 <label for="provider" class="float-right">
                                                     <b>مندوب التوصيل</b>
                                                 </label>
-                                                <select class="selectpicker form-control" name="provider" data-style="btn-default" data-live-search="true">
+                                                <select class="selectpicker form-control" id="provider" data-style="btn-default" data-live-search="true">
                                                     <option></option>
                                                     @foreach ($lists['providers'] as $provider)
-                                                        <option value="{{$provider->id}}">{{$provider->id}}</option>
+                                                        <option value="{{$provider->id}}">{{$provider->name}}</option>
                                                     @endforeach
                                                     
                                                 </select>
@@ -477,10 +412,10 @@
                                                 <label for="product" class="float-right">
                                                     <b>المنتوج</b>
                                                 </label>
-                                                <select class="selectpicker form-control" name="product" data-style="btn-default" data-live-search="true">
+                                                <select class="selectpicker form-control" id="product" data-style="btn-default" data-live-search="true">
                                                     <option></option>
                                                     @foreach ($lists['products'] as $product)
-                                                        <option value="{{$product->id}}">{{$product->id}}</option>
+                                                        <option value="{{$product->id}}">{{$product->name}}</option>
                                                     @endforeach
                                                     
                                                 </select>
@@ -513,7 +448,12 @@
             <table class="table table-primary table-hover">
                 <thead>
                     <tr>
-                        <th scope="col"><input id="checkAll" type="checkbox" class="show-actions-menu"/></th>
+                        <th scope="col">
+                            <div class="mg-l-15 d-flex custom-control custom-checkbox">
+                                <input type="checkbox" class="show-actions-menu custom-control-input" id="checkAll">
+                                <label class="custom-control-label" for="checkAll"></label>
+                            </div>
+                        </th>
                         <th scope="col" data-type="requestId">
                             رقم
                         </th>
@@ -542,7 +482,12 @@
                 <tbody class="table-body-listing">
                     @foreach($lists['lists'] as $list)
                         <tr class="{{ 'list_'.$list->id }}" >
-                            <th scope="row"><input type="checkbox"  data-item="{{ $list->id }}" class="hoverRow check"/></th>
+                            <th scope="row">
+                                <div class="mg-l-15 d-flex custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input check" data-item="{{ $list->id }}" id="{{'customCheck1'.$list->id}}">
+                                    <label class="custom-control-label" for="{{'customCheck1'.$list->id}}"></label>
+                                </div>
+                            </th>
                             <td data-type="requestId" class="tx-right">
                                 {{ '#'.$list->id }}
                             </td>

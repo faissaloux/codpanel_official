@@ -9,7 +9,7 @@
     <head>
         @include('dashboard.inc.head')
     </head>
-    <body dir="rtl" class="employees-listing-page" data-auth-id="{{ System::employee()->id }}" data-auth-type="{{ System::auth_type() }}" data-limit="20" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="employee" data-type="">
+    <body dir="rtl" class="employees-listing-page" data-auth-id="{{ System::employee()->id }}" data-auth-type="{{ System::auth_type() }}" data-limit="15" data-product="" data-employee="" data-provider=""  data-search="" data-city="" data-orderby="" data-from="" data-to="" data-handler="employee" data-type="all">
         @include('dashboard.inc.actions')
         <!--================================-->
         <!-- Page Container Start -->

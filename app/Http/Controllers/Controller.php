@@ -38,9 +38,39 @@ class Controller extends BaseController
         return response()->view( $this->listingView , compact('lists'))->setStatusCode(200);
     }
 
+    public function filter(Request $request)
+    {
+        $lists = ListsHelper::list_relatives(\System::auth_type(),$request)[0];
+        $view = "ar";
+        $lists = $lists['lists'];
+        if(!$this->filterView){
+            $filters = [
+                'trashed' => 'dashboard.elements.trashed_listing_table',
+                'providers' => 'dashboard.elements.listing-table',
+                'employees' => 'dashboard.elements.listing-table',
+                'new' => 'dashboard.elements.new_listing_table'
+            ];
+    
+            $this->filterView = $filters[$request->data_apage];
+        }
+        return response()->view($this->filterView , compact('lists','view'))->setStatusCode(200);
+    }
+
     public function statue(Request $request , $id)
     {
         $message = ListsHelper::setStatus($request,$id);
+        return response()->json($message)->setStatusCode(200);
+    }
+
+    public function bulkstatus(Request $request )
+    {
+        $ids = $request->ids;
+        $ids = explode(",",$ids);
+        
+        $lists = Lists::whereIn('id',$ids)->get();
+        foreach ($lists as $list ) {
+            $message = ListsHelper::setStatus($request,$list->id);
+        }
         return response()->json($message)->setStatusCode(200);
     }
 

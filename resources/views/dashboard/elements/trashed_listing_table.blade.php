@@ -60,15 +60,15 @@
                         href="javascript:;"
                         class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showhistory"
                         data-id="{{ $list->id }}"
-                        data-link="{{ route('dashboard.listing.destroy' , ['id' => $list->id ]) }}">
+                        data-link="{{ route('dashboard.listing.restore' , ['id' => $list->id ]) }}">
 
-                        الأحداث
+                        استرجاع
                     </a>
                     <a type="button" 
                         href="javascript:;"
                         class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white delete deleteList"
                         data-id="{{ $list->id }}"
-                        data-link="{{ route('dashboard.listing.restore' , ['id' => $list->id ]) }}"">
+                        data-link="{{ route('dashboard.listing.destroy' , ['id' => $list->id ]) }}"">
 
                         حذف نهائي
                     </a>

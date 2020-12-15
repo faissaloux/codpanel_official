@@ -9,7 +9,7 @@
             </div>
             <div class="d-flex col-8 justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-12">
-                    <div class="d-flex">
+                    <div class="d-flex text-center">
                         <span class="action d-flex align-items-center ml-2">
                             <a  class="table-top-btn"
                                 style="color: white"
@@ -35,6 +35,7 @@
                                 <a class="dropdown-item" data-type="confirmed" href="javascript:;">تأكيد</a>
                             </div>
                         </span>
+                        @if(\System::auth_type() == 'admin')
                         <span class="dropdown action d-flex align-items-center ml-2">
                             <a   class="dropdown-toggle d-flex align-items-center"
                                     id="dropdownMenuButton"
@@ -61,6 +62,7 @@
                                 <span class="sm-hide mr-2">حذف</span>
                             </a>
                         </span>
+                        @endif
                     </div>
                 </div>
             </div>
