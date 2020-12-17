@@ -6,16 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\JsonDecoder;
+
 
 class Lists extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
 
     protected $guarded = ['id'];
     protected $table = 'lists';
 
 
+    
+    public function restore(){
+        $this->deleted_at = Null;
+        return $this->save();
+    }
+
+    public function scopeOnlyTrashed($query){
+        return $query->whereNotNull('deleted_at');
+    }
     
     /**
      * The "booting" method of the model.
@@ -113,9 +122,13 @@ class Lists extends Model
         return json_decode($this->history); 
     }
 
+    public function scopeByProduct($query,$product_id){
+        return  $query->whereHas('items',function($query) use($product_id){
+            $query->where('product_id',$product_id);
+        });
+    }
 
-
-
+  
 
 
 

@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Cities;
-use App\Provider;
 
 class CitiesHelper{
 

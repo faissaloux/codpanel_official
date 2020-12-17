@@ -67,7 +67,7 @@
                                                         name="employee"
                                                         placeholder="الموظفة">
                                                         <option value="N-A">اختار عميل الإتصال</option>
-                                                        @foreach ($users as $user)
+                                                        @foreach ($employees as $user)
                                                             <option @if ( $user->id == $content->employee_id ) { selected="selected" } @endif value="{{ $user->id }}">{{ $user->name }}</option>
                                                         @endforeach
                                                     

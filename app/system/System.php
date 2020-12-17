@@ -102,7 +102,7 @@ class System {
 
     }
 
-    public static function mergedPaginate($items, $baseUrl = null, $perPage = 10, $page = null, $options = [])
+    public static function mergedPaginate($items, $baseUrl = null, $perPage = 5, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
 

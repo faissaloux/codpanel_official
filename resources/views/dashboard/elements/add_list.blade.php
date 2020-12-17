@@ -64,7 +64,7 @@
                                                         name="employee"
                                                         placeholder="الموظفة">
                                                         <option value="N-A">اختار عميل الإتصال</option>
-                                                        @foreach ($users as $user)
+                                                        @foreach ($employees as $user)
                                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                         @endforeach
                                                     

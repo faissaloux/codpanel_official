@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Cities;
 use App\Provider;
 use Illuminate\Http\Request;
-use App\Helpers\CitiesHelper;
 use App\Http\Controllers\Controller;
 
 class CitiesController extends Controller
@@ -27,7 +26,7 @@ class CitiesController extends Controller
 
     public function store(Request $request)
     {
-        return CitiesHelper::store($request);
+        return \CitiesHelper::store($request);
     }
 
     public function edit($id)
@@ -40,11 +39,11 @@ class CitiesController extends Controller
 
     public function update(Request $request, $id)
     {
-        return CitiesHelper::update($request, $id);
+        return \CitiesHelper::update($request, $id);
     }
 
     public function delete($id)
     {
-        return CitiesHelper::delete($id);
+        return \CitiesHelper::delete($id);
     }
 }

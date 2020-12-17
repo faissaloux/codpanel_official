@@ -20,7 +20,7 @@
         "maatwebsite/excel": "^3.1",
         "paypal/rest-api-sdk-php": "*",
         "stripe/stripe-php": "^7.66",
-      "ext-json": "*"
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -41,6 +41,9 @@
         }
     },
     "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },

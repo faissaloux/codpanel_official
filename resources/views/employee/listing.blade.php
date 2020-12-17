@@ -201,118 +201,105 @@
                                 <div class="columns-container">
                                     <ul class="Polaris-ChoiceList__Choices_15o76 polaris-list tx-right px-2 mb-0">
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton67">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="requestId">
                                                 <div>
                                                     <i data-feather="info" class="show-columns-item-icon"></i>
                                                     <span class="Polaris-Choice__Label_2vd36">رقم</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="requestId" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
                                         </li>
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton67">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="requestDate">
                                                 <div>
                                                     <i data-feather="info" class="show-columns-item-icon"></i>
                                                     <span class="Polaris-Choice__Label_2vd36">تاريخ الإنشاء</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="requestDate" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
                                         </li>
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton67">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="requestStatus">
                                                 <div>
                                                     <i data-feather="info" class="show-columns-item-icon"></i>
                                                     <span class="Polaris-Choice__Label_2vd36">حالة الطلب</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="requestStatus" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
                                         </li>
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton68">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="name">
                                                 <div>
                                                     <i data-feather="user" class="show-columns-item-icon"></i>
                                                     <span class="Polaris-Choice__Label_2vd36">الإسم</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="name" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
                                         </li>
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton68">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="phone">
                                                 <div>
                                                     <i data-feather="phone" class="show-columns-item-icon"></i>
                                                     <span class="Polaris-Choice__Label_2vd36">الهاتف</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="phone" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
                                         </li>
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton69">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="products">
                                                 <div>
                                                     <i data-feather="info" class="show-columns-item-icon"></i>
                                                     <span class="Polaris-Choice__Label_2vd36">المنتوجات</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="products" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
                                         </li>
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton70">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="employee">
                                                 <div>
                                                     <i data-feather="headphones" class="show-columns-item-icon"></i>    
                                                     <span class="Polaris-Choice__Label_2vd36">عميل الإتصال</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="employee" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
                                         </li>
                                         <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton70">
+                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="provider">
                                                 <div>
                                                     <i data-feather="truck" class="show-columns-item-icon"></i> 
                                                     <span class="Polaris-Choice__Label_2vd36">مندوب التوصيل</span>
                                                 </div>
                                                 <span class="Polaris-Choice__Control_1u8vs">
                                                     <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
-                                                    </span>
-                                                </span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="Polaris-Choice_j5gzq d-flex justify-content-between" for="PolarisRadioButton71">
-                                                <div>
-                                                    <i data-feather="phone-call" class="show-columns-item-icon"></i> 
-                                                    <span class="Polaris-Choice__Label_2vd36">محاولات الإتصال</span>
-                                                </div>
-                                                <span class="Polaris-Choice__Control_1u8vs">
-                                                    <span class="Polaris-RadioButton_bsatr Polaris-RadioButton--newDesignLanguage_1rik8">
-                                                        <input type="checkbox" class="toggle">
+                                                        <input type="checkbox" name="provider" class="toggle show-col active">
                                                     </span>
                                                 </span>
                                             </label>
@@ -321,8 +308,8 @@
                                 </div>
                                 <div class="show-columns-dropdown-footer pt-2 px-2">
                                     <div class="d-flex justify-content-between" style="cursor: auto">
-                                        <button>إظهار الكل</button>
-                                        <button>إخفاء الكل</button>
+                                        <button class="active-all-cols">إظهار الكل</button>
+                                        <button class="inactive-all-cols">إخفاء الكل</button>
                                     </div>
                                 </div>
                             </div>
@@ -448,71 +435,71 @@
             <table class="table table-primary table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">
+                        <th scope="col" class="active">
                             <div class="mg-l-15 d-flex custom-control custom-checkbox">
                                 <input type="checkbox" class="show-actions-menu custom-control-input" id="checkAll">
                                 <label class="custom-control-label" for="checkAll"></label>
                             </div>
                         </th>
-                        <th scope="col" data-type="requestId">
+                        <th scope="col" data-type="requestId" class="toggle-col active">
                             رقم
                         </th>
-                        <th scope="col" data-type="requestDate">
+                        <th scope="col" data-type="requestDate" class="toggle-col active">
                             تاريخ الإنشاء
                         </th>
-                        <th scope="col" data-type="requestStatus">
+                        <th scope="col" data-type="requestStatus" class="toggle-col active">
                             حالة الطلب
                         </th>
-                        <th scope="col" data-type="name">
+                        <th scope="col" data-type="name" class="toggle-col active">
                             الإسم
                         </th>
-                        <th scope="col" data-type="phone">
+                        <th scope="col" data-type="phone" class="toggle-col active">
                             الهاتف
                         </th>
-                        <th scope="col" data-type="products">
+                        <th scope="col" data-type="products" class="toggle-col active">
                             المنتوجات
                         </th>
-                        <th scope="col" data-type="employee">عميل <br>الإتصال</th>
-                        <th scope="col" data-type="distributor">
-                            مندوب<br> التوصيل
+                        <th scope="col" data-type="employee" class="toggle-col active">عميل <br class="sm-break">الإتصال</th>
+                        <th scope="col" data-type="provider" class="toggle-col active">
+                            مندوب<br class="sm-break"> التوصيل
                         </th>
-                        <th scope="col">تعديل</th>
+                        <th scope="col" class="toggle-col active">تعديل</th>
                     </tr>
                 </thead>
                 <tbody class="table-body-listing">
                     @foreach($lists['lists'] as $list)
                         <tr class="{{ 'list_'.$list->id }}" >
-                            <th scope="row">
+                            <th scope="row" class="active">
                                 <div class="mg-l-15 d-flex custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input check" data-item="{{ $list->id }}" id="{{'customCheck1'.$list->id}}">
                                     <label class="custom-control-label" for="{{'customCheck1'.$list->id}}"></label>
                                 </div>
                             </th>
-                            <td data-type="requestId" class="tx-right">
+                            <td data-type="requestId" class="tx-right toggle-col active">
                                 {{ '#'.$list->id }}
                             </td>
-                            <td data-type="requestDate" class="tx-right">
+                            <td data-type="requestDate" class="tx-righ toggle-col active">
                                 {{ $list->created_at }}
                             </td>
-                            <td data-type="requestStatus" class="tx-right">
+                            <td data-type="requestStatus" class="tx-right toggle-col active">
                                 {{ $list->status }}
                             </td>
-                            <td data-type="name">
+                            <td data-type="name" class="toggle-col active">
                                 {{ $list->name }}
                             </td>
-                            <td data-type="phone">
+                            <td data-type="phone" class="toggle-col active">
                                 <a href="tel: {{ $list->phone }}">{{ $list->phone }}</a>
                             </td>
-                            <td data-type="products">
+                            <td data-type="products" class="toggle-col active">
                                 {{ $list->total() }}
                               </td>
-                            <td data-type="employee">
+                            <td data-type="employee" class="toggle-col active">
                                 {{ $list->employee->name }}
                             </td>
-                            <td data-type="distributor">
+                            <td data-type="provider" class="toggle-col active">
                                 {{ $list->provider->name }}
                             </td>
-                            <td>
+                            <td class="active">
                                 <a type="button" 
 
                                     class="btn btn-primary btn-lg border-none loadactions rounded-custom text-white details showdetails"

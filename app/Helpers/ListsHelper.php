@@ -18,7 +18,6 @@ class ListsHelper {
     
     public static function setStatus($request,$id){
         $recall_at = (!empty($request->recall_date) and !empty($request->recall_time))?  $request->recall_date . ' ' . $request->recall_time : NULL;
-
      
         $message =  \Status::list($id)->status($request->statue)->reason($request->cancel_reason)->recall_at($recall_at)->save_status() ? ["Success" => "changed successfuly"] : ["error" => "unexpected error occured "];
         unset($recall_at );
@@ -29,12 +28,11 @@ class ListsHelper {
         $list_array = [];
         $scope = $handler.'s';
         
-        $has = $request->filter ?? null ? $request->filter : false;
-        
+        $has = $request->filter ?? null ? $request->filter : false;        
         
         if(\System::auth_type() != 'provider' && $has == false){
-            $employees = Employee::orderby('id','desc')->get();
-            $providers = Provider::orderby('id','desc')->get();
+            $employees = Loader::employees();
+            $providers = Loader::providers();
         }
         if($handler != 'admin' && $handler != 'trashed' && $has == false){
             $result =  \System::stats($handler,\System::auth_type());
@@ -48,9 +46,8 @@ class ListsHelper {
             $lists = Lists::with('employee','items','provider')->OrderByID()->paginate(15);
         }
         
-        
-        $cities = Cities::orderby('id','desc')->get();
-        $products = Products::orderby('id','desc')->get();
+        $cities = Loader::cities();
+        $products = Loader::products();
         array_push($list_array,['result' => $result ?? null,'cities' => $cities,'providers' => $providers ?? null,'employees' => $employees ?? null,'products' => $products , 'lists' => $lists ]);
         return $list_array;
     }
@@ -69,16 +66,30 @@ class ListsHelper {
         return $model->id;
     }
     
+
+    // create_items($list,$post)
     // the action of saving the products of the listing
     public static function multiSaleProductsSave($post,$list_id){
-        for($x=0, $count=count($post['ProductID']); $x < $count; $x++){
+
+        $count  = count($post['ProductID']);
+        for($x=0 ; $x < $count ; $x++){
+
+            /*
              $pro             = new Items();
              $pro->list_id    = $list_id;
              $pro->product_id = $post['ProductID'][$x];
              $pro->price      = $post['prix'][$x];
              $pro->quantity   = $post['quantity'][$x];
              $pro->save();
+            */
+           
+             $list->items->create([  
+                'productID'  => $post['ProductID'][$x],
+                'price'      => $post['prix'][$x],
+                'quantity'   => $post['quantity'][$x],
+             ]);
          }
+         unset($post,$count);
     }
  
      // save OR update the products of the order

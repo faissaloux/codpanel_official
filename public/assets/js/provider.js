@@ -1,160 +1,28 @@
-///////////load list details
-$('body').on('click', '.showdetails', function(e) {
+import {
+    filterCols,
+    loadListDetails,
+    setCancelReason,
+    setRecallTime,
+    setStatus,
+    showStatusListing
+} from './common.js';
 
-    var token = $('meta[name="csrf-token"]').attr('content');
-    var link = $(this).attr('data-link');
-
-    var formData = new FormData();
-    formData.append('_token', token);
-
-
-    $.ajax({
-        url: link,
-        type: 'POST',
-        processData: false, // important
-        contentType: false, // important
-        data: formData,
-        cache: false,
-        dataType: "HTML",
-        beforeSend: function() {},
-        success: function(response) {
-            $('body #detailsModalCenter').modal('show');
-            $('body #detailsModalCenter .modal-body').html(response);
-        },
-        error: function(response) {
-            default_error();
-        }
-    });
-
+$('.showdetails').click(function() {
+    loadListDetails($(this).attr('data-link'));
 });
 
-
-//////// change status
-$('.modal').on('shown.bs.modal', function(e) {
-    $('.chnage_statue a').click(function(e) {
-
-        var token = $('meta[name="csrf-token"]').attr('content');
-        var link = $('.chnage_statue').attr('data-link');
-        var statue = $(this).attr('data-type');
-        var list_id = $('.chnage_statue').attr('data-id');
-
-        var formData = new FormData();
-        formData.append('_token', token);
-        formData.append('statue', statue);
-
-        if (statue == "canceled") {
-            $('body #detailsModalCenter').modal('hide');
-            $('body #cancelReasonModal').modal('show');
-            return false;
-        }
-
-        if (statue == "recall") {
-            $('body #detailsModalCenter').modal('hide');
-            $('body #recalltimemodal').modal('show');
-            return false;
-        }
-
-        $.ajax({
-            url: link,
-            type: 'POST',
-            processData: false, // important
-            contentType: false, // important
-            data: formData,
-            cache: false,
-            dataType: "HTML",
-            beforeSend: function() {},
-            success: function(response) {
-                $.each(JSON.parse(response), function(key, value) {
-                    statue_toast("success", value)
-                });
-                $('body .list_' + list_id).remove();
-                $('body #detailsModalCenter').modal('hide');
-            },
-            error: function(response) {
-                default_error();
-            }
-        });
-
+$('.modal').on('shown.bs.modal', function() {
+    $('.chnage_statue a').click(function() {
+        setStatus($(this).attr('data-type'));
     });
 });
 
-//////// change status cancel
-
-$('#cancelReason a').click(function(e) {
-
-    var token = $('meta[name="csrf-token"]').attr('content');
-    var link = $('.chnage_statue').attr('data-link');
-    var statue = "canceled";
-    var list_id = $('.chnage_statue').attr('data-id');
-    var cancel_reason = $('#cancelreasontext').val();
-
-    var formData = new FormData();
-    formData.append('_token', token);
-    formData.append('statue', statue);
-    formData.append('cancel_reason', cancel_reason);
-
-
-    $.ajax({
-        url: link,
-        type: 'POST',
-        processData: false, // important
-        contentType: false, // important
-        data: formData,
-        cache: false,
-        dataType: "HTML",
-        beforeSend: function() {},
-        success: function(response) {
-            $.each(JSON.parse(response), function(key, value) {
-                statue_toast("success", value)
-            });
-            $('body .list_' + list_id).remove();
-            $('body #cancelReasonModal').modal('hide');
-        },
-        error: function(response) {
-            default_error();
-        }
-    });
+$('#cancelReason a').click(function() {
+    setCancelReason();
 });
-
-
-//////// recall time
 
 $('#recalltime a').click(function(e) {
-
-    var token = $('meta[name="csrf-token"]').attr('content');
-    var link = $('.chnage_statue').attr('data-link');
-    var statue = "recall";
-    var list_id = $('.chnage_statue').attr('data-id');
-    var recall_date = $('#recall_date').val();
-    var recall_time = $('#recall_time').val();
-
-    var formData = new FormData();
-    formData.append('_token', token);
-    formData.append('statue', statue);
-    formData.append('recall_date', recall_date);
-    formData.append('recall_time', recall_time);
-
-
-    $.ajax({
-        url: link,
-        type: 'POST',
-        processData: false, // important
-        contentType: false, // important
-        data: formData,
-        cache: false,
-        dataType: "HTML",
-        beforeSend: function() {},
-        success: function(response) {
-            $.each(JSON.parse(response), function(key, value) {
-                statue_toast("success", value)
-            });
-            $('body .list_' + list_id).remove();
-            $('body #recalltimemodal').modal('hide');
-        },
-        error: function(response) {
-            default_error();
-        }
-    });
+    setRecallTime();
 });
 
 //all urls

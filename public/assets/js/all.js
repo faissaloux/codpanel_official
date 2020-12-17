@@ -28628,8 +28628,6 @@ $(document).ready(function() {
 
     function getselected() {
 
-
-
         var $ids = new Array();
         $(".table tbody .check[type=checkbox]:checked").each(function() {
             $ids.push($(this).data('item'));
@@ -28659,6 +28657,16 @@ $(document).ready(function() {
 
     }
 });
+
+//close action bar
+
+$('.close-actions-menu').click(function() {
+    $('.table :checkbox').prop('checked', false);
+    $(".get-down").removeClass("margin-top-60");
+    $(".actions-menu").slideUp(600);
+    $('body #selected').val('');
+    $('body #selected').attr('data-count', '');
+})
 
 /************* CheckBox Table JS **************/
 
