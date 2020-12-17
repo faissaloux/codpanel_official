@@ -38,7 +38,7 @@ class AdminCreator extends Command
     public function handle()
     {
 
-        \App\User::create([
+        \App\Admin::create([
             'email' => 'admin@admin.com',
             'role'  => "admin",
             'name'  => "admin",
