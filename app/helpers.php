@@ -3,8 +3,7 @@
 use App\Helpers\Listing;
 
 /*  
-       usage example : 
-        
+       usage example :         
        $params = [
             'limit' => 100 ,
             'with' => ['employee','provider','items'] ,
@@ -24,9 +23,20 @@ use App\Helpers\Listing;
         $lists = lists($params);
 
         if you like to get results only :
-        $lists = lists($params,true);
+        
+        $params = parameters of listing
+        $auth = Current logged in auth type
+        $result = return only result
+
+        $lists = lists($params,$auth,$result);
 */
-function lists($params,$result = false){
+
+function lists($auth,$params = null,$result = false){
+    if($auth == 'employee'){
+        $params = config('lists.employee');
+    }elseif($auth == 'provider'){
+        $params = config('lists.provider');
+    }
     if(!$result){
         return new Listing($params);
     }

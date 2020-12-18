@@ -20,6 +20,7 @@ class Listing {
     public $return_by_default = 'object';
     public $handlers = ['employee','provider'];
     public $order_bys = ['created_at','name','updated_at','asc','desc'];
+    public $default_with = ['employee','provider','items'];
     
     public $limit;
     public $type;
@@ -102,9 +103,12 @@ class Listing {
             $this->query->with($this->with);
         }elseif(!empty($this->with) and !is_array($this->with)) {
             $this->query->with([$this->with]);
+        }else{
+            $this->query->with($this->default_with);
         }
         return $this;
     }
+    
 
     public function deleted(){
         if(is_bool($this->deleted)){
@@ -167,10 +171,19 @@ class Listing {
             unset($q);
         }
         return $this;
-    }    
+    }
+
+    public function limit(){
+        if(!empty($this->limit) and is_numeric($this->limit) and $this->limit > 0  and $this->limit < 300 ){
+            $pg_limit = $this->limit;
+        }else{
+            $pg_limit = $this->limit_by_default;
+        }
+        return $pg_limit;
+    }
 
 
-    public function return_by($return){
+    public function return_by($return,$limit){
         if($return == 'json'){
             $this->result = $this->query->get()->toJson();
         }
@@ -178,7 +191,7 @@ class Listing {
             $this->result = $this->query->get()->toArray();
         }
         elseif($return == 'object'){
-            $this->result = $this->query->get();
+            $this->result = $this->query->paginate($limit);
         }
         unset($return);
         return $this;
@@ -188,28 +201,19 @@ class Listing {
     public function returned(){
         $return_types = ['array','json','object'];
         if(!empty($this->returned) and is_string($this->returned) and in_array($this->returned,$return_types) ){
-            $this->return_by($this->returned);
+            $this->return_by($this->returned,$this->limit());
         }else {
 
-            $this->return_by($this->return_by_default);
+            $this->return_by($this->return_by_default,$this->limit());
         }
         unset($return_types);
-        return $this;
-    }
-
-    public function limit(){
-        if(!empty($this->limit) and is_numeric($this->limit) and $this->limit > 0  and $this->limit < 300 ){
-            $this->query->paginate($this->limit);
-        }else{
-            $this->limit = $this->limit_by_default;
-        }
         return $this;
     }
 
 
 
     public function get(){
-        $this->type()->handler()->provider()->employee()->deleted()->city()->order_by()->product()->date()->search()->returned()->limit();
+        $this->type()->handler()->provider()->employee()->deleted()->city()->order_by()->product()->date()->search()->returned();
         return $this->result;
     }
 

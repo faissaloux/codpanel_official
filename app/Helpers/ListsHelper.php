@@ -12,6 +12,8 @@ class ListsHelper {
         if(in_array($request->handler,$handlers)){
             $scope = $request->handler.'s';
             $lists = Lists::$scope()->with("items","employee","provider")->OrderByID()->byStatus($request->type)->get();
+        }elseif($request->handler == "admin"){
+            $lists = Lists::with("items","employee","provider")->OrderByID()->byStatus($request->type)->get();
         }
         return $lists;
     }

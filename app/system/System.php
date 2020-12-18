@@ -89,7 +89,7 @@ class System {
 
 
         $result =   DB::select('SELECT 
-        ( ' . $count . ' and deleted_at IS NULL ) as al ,
+        ( ' . $count . ' and deleted_at IS NULL ) as all ,
         ( ' . $count . ' and STATUS="new" and deleted_at IS NULL ) as  new ,
         ( ' . $count . ' and STATUS="canceled" and deleted_at IS NULL ) as  canceled ,
         ( ' . $count . ' and STATUS="unanswered" and deleted_at IS NULL ) as unanswered ,

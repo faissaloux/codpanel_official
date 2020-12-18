@@ -453,7 +453,7 @@ class="new-listing-page"
 
         <nav aria-label="Page navigation example">
             <ul class="justify-content-center paginate">
-                {!! $lists->appends(['sort' => 'votes','sorta' => 'votes'])->links() !!}
+                {!! $lists->links() !!}
             </ul>
         </nav>
     </div>

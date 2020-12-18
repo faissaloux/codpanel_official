@@ -16,15 +16,8 @@ class ListingController extends Controller {
     public $filterView = '';
 
 
-    public function trashed(Request $request)
-    {   
-        $params = [
-            'limit' => 200 ,
-            'with' => ['employee','provider','items'] ,
-            'deleted' => true ,
-        ];
-        
-        $lists = System::mergedPaginate(lists($params,true));
+    public function trashed(Request $request){   
+        $lists = lists(\System::auth_type(),config('lists.trashed'),true);
         if($request->ajax()){
             return response_view('element.trashed_table',compact('lists'));
         }
@@ -32,19 +25,18 @@ class ListingController extends Controller {
     }
 
     public function employees(Request $request){
-        $lists = ListsHelper::list_relatives('employee')[0];
+        $lists = lists(\System::auth_type(),config('lists.employee'),true);
         if($request->ajax()){
             $lists = $lists['lists'];
-            $view = "employee";            
+            $view = "employee";
             return response_view('element.table',compact('lists','view'));
         }
         return response_view('list.employee',compact('lists'));
     }
 
     public function providers(Request $request){
-        $lists = ListsHelper::list_relatives('provider')[0];     
+        $lists = lists(\System::auth_type(),config('lists.provider'),true); 
         if($request->ajax()){
-            $lists = $lists['lists'];
             $view = "provider";
             return response_view('element.table',compact('lists','view'));
         }
@@ -86,7 +78,7 @@ class ListingController extends Controller {
     }
 
     public function listing(Request $request){
-        $lists = System::mergedPaginate(ListsHelper::load($request),'/dashboard/listing/listing?handler='.$request->handler.'&type='.$request->type.'');
+        $lists = System::mergedPaginate(ListsHelper::load($request),'/dashboard/listing/listing?handler='.$request->handler.'&type='.$request->type);
         return response_view('element.table',compact('lists'));
     }
 

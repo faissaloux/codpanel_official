@@ -22,10 +22,10 @@ class Controller extends BaseController
         View::share('providers',Loader::providers());
         View::share('cities',Loader::cities());
         View::share('products',Loader::products());
-    }    
+    }
 
     public function index(Request $request){
-        $lists = ListsHelper::list_relatives(\System::auth_type())[0];
+        $lists = lists(\System::auth_type());
         if($request->ajax()){
             $lists = $lists['lists'];
             $view = "ar";
@@ -37,9 +37,9 @@ class Controller extends BaseController
     public function listing(Request $request){
         $lists = ListsHelper::load($request);
         if(\System::auth_type() == 'employee'){
-            $lists = \System::mergedPaginate($lists,'/employee/listing?handler='.$request->handler.'&type='.$request->type.'');
+            $lists = \System::mergedPaginate($lists,'/employee/listing?handler='.$request->handler.'&type='.$request->type);
         }elseif(\System::auth_type() == 'provider'){
-            $lists = \System::mergedPaginate($lists,'/provider/listing?handler='.$request->handler.'&type='.$request->type.'');
+            $lists = \System::mergedPaginate($lists,'/provider/listing?handler='.$request->handler.'&type='.$request->type);
         }
         
         return response()->view( $this->listingView , compact('lists'))->setStatusCode(200);
