@@ -13,6 +13,8 @@ class Items extends Model
         return  $this->belongsTo('App\Products', 'product_id')->withDefault(['name' => 'N-A']);
     }
 
-
+    public function delivredList(){
+        return $this->belongsTo('App\Lists', 'list_id')->where('delivred_at', '<>', NULL);
+    }
    
 }

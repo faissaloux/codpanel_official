@@ -33,13 +33,12 @@ $factory->define(Lists::class, function (Faker $faker) {
         'duplicated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         'checked_at' => Carbon::now()->format('Y-m-d H:i:s'),
         'recall_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        'history' => $faker->realText($maxNbChars = 50),
         'product' => ($faker->randomElement($products_name))->name,
         'city' => ($faker->randomElement($cities_name))->name,
         'quantity' => $faker->numberBetween($min = 1, $max = 9999),
         'price' => $faker->numberBetween($min = 1, $max = 999),
         'status' => $faker->randomElement(['new', 'confirmed', 'recall', 'unanswered', 'canceled']),
         'unanswered_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        'accepted_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        'confirmed_at' => Carbon::now()->format('Y-m-d H:i:s'),
     ];
 });
