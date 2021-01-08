@@ -86,6 +86,6 @@
 </table>
 <nav aria-label="Page navigation example">
     <ul class="justify-content-center paginate {{ $view ?? null ? '' : 'paginatepost'  }}">
-        {!! $lists->links() !!}
+        {!! $handler ?? null ? $lists->appends(['handler' => $handler , 'type' => $type])->links() :  $lists->links() !!}
     </ul>
 </nav>

@@ -16,11 +16,12 @@ class Listing {
 
     
     public $query;
-    public $limit_by_default = 15;
+    public $limit_by_default = 5;
     public $return_by_default = 'object';
     public $handlers = ['employee','provider'];
     public $order_bys = ['created_at','name','updated_at','asc','desc'];
     public $default_with = ['employee','provider','items'];
+    public $deleted_by_default =  false;
     
     public $limit;
     public $type;
@@ -111,6 +112,9 @@ class Listing {
     
 
     public function deleted(){
+        if(empty($this->deleted)){
+            $this->deleted = $this->deleted_by_default;
+        }
         if(is_bool($this->deleted)){
             $where = $this->deleted == true ?  'whereNotNull' : 'whereNull';
             $this->query->$where('deleted_at');
@@ -134,6 +138,8 @@ class Listing {
             if(is_string($myfilter[0]) and is_string($myfilter[1]) and in_array($myfilter[0],$this->order_bys) and in_array($myfilter[1],$this->order_bys)){
                 $this->query->orderBy($myfilter[0], $myfilter[1]);
             }
+        }else{
+            $this->query->orderBy('id','desc');
         }
         
         return $this;

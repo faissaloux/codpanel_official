@@ -416,7 +416,7 @@ class="new-listing-page"
                 </tr>
             </thead>
             <tbody class="table-body-listing">
-                @foreach($lists['lists'] as $list)
+                @foreach($lists as $list)
                     <tr class="{{ 'list_'.$list->id }}" >
                         <th scope="row" class="active">
                             <div class="mg-l-15 d-flex custom-control custom-checkbox">
@@ -485,7 +485,7 @@ class="new-listing-page"
 
         <nav aria-label="Page navigation example">
             <ul class="justify-content-center paginate">
-                {!! $lists['lists']->links() !!}
+                {!! $lists->links() !!}
             </ul>
         </nav>
 

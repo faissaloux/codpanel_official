@@ -1,5 +1,6 @@
 <?php
 
+use App\System\System;
 use App\Helpers\Listing;
 
 /*  
@@ -31,11 +32,14 @@ use App\Helpers\Listing;
         $lists = lists($params,$auth,$result);
 */
 
-function lists($auth,$params = null,$result = false){
-    if($auth == 'employee'){
-        $params = config('lists.employee');
-    }elseif($auth == 'provider'){
-        $params = config('lists.provider');
+function lists($params = null,$result = false){
+    $config = [
+        'employee' =>  config('lists.employee'),
+        'provider' =>  config('lists.provider'),
+        'admin' =>  config('lists.new'),
+    ];
+    if($params == null){
+        $params = $config[System::auth_type()];
     }
     if(!$result){
         return new Listing($params);

@@ -13,11 +13,10 @@ class ListingController extends Controller {
 
     public $listing = 'dashboard.listing.index';
     public $listingView = 'dashboard.elements.new_listing_table';
-    public $filterView = '';
 
 
     public function trashed(Request $request){   
-        $lists = lists(\System::auth_type(),config('lists.trashed'),true);
+        $lists = lists(config('lists.trashed'),true);
         if($request->ajax()){
             return response_view('element.trashed_table',compact('lists'));
         }
@@ -25,22 +24,24 @@ class ListingController extends Controller {
     }
 
     public function employees(Request $request){
-        $lists = lists(\System::auth_type(),config('lists.employee'),true);
+        $lists = lists(config('lists.employee'),true);
+        $result = System::stats('employee');
         if($request->ajax()){
             $lists = $lists['lists'];
             $view = "employee";
             return response_view('element.table',compact('lists','view'));
         }
-        return response_view('list.employee',compact('lists'));
+        return response_view('list.employee',compact('lists','result'));
     }
 
     public function providers(Request $request){
-        $lists = lists(\System::auth_type(),config('lists.provider'),true); 
+        $lists = lists(config('lists.provider'),true);
+        $result = System::stats('provider');
         if($request->ajax()){
             $view = "provider";
             return response_view('element.table',compact('lists','view'));
         }
-        return response_view('list.provider',compact('lists'));
+        return response_view('list.provider',compact('lists','result'));
     }
 
     public function new(){
@@ -78,8 +79,10 @@ class ListingController extends Controller {
     }
 
     public function listing(Request $request){
-        $lists = System::mergedPaginate(ListsHelper::load($request),'/dashboard/listing/listing?handler='.$request->handler.'&type='.$request->type);
-        return response_view('element.table',compact('lists'));
+        $lists = $lists = ListsHelper::load($request);
+        $handler = $request->handler;
+        $type = $request->type;
+        return response_view('element.table',compact('lists','handler','type'));
     }
 
     public function history($id) {

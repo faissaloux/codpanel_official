@@ -10,10 +10,14 @@ class ListsHelper {
         $handlers = ['employee','provider'];
         $lists = [];
         if(in_array($request->handler,$handlers)){
-            $scope = $request->handler.'s';
-            $lists = Lists::$scope()->with("items","employee","provider")->OrderByID()->byStatus($request->type)->get();
+            $params = [
+                'handler' => $request->handler, 
+                'type' => $request->type
+            ];
+            $lists = lists($params,true);
         }elseif($request->handler == "admin"){
-            $lists = Lists::with("items","employee","provider")->OrderByID()->byStatus($request->type)->get();
+            $params = ['type' => $request->type];
+            $lists = lists($params,true);
         }
         return $lists;
     }
@@ -26,33 +30,33 @@ class ListsHelper {
         return $message;
     }
 
-    public static function list_relatives($handler,$request = null){
-        $list_array = [];
-        $scope = $handler.'s';
+    // public static function list_relatives($handler,$request = null){
+    //     $list_array = [];
+    //     $scope = $handler.'s';
         
-        $has = $request->filter ?? null ? $request->filter : false;        
+    //     $has = $request->filter ?? null ? $request->filter : false;        
         
-        if(\System::auth_type() != 'provider' && $has == false){
-            $employees = Loader::employees();
-            $providers = Loader::providers();
-        }
-        if($handler != 'admin' && $handler != 'trashed' && $has == false){
-            $result =  \System::stats($handler,\System::auth_type());
-            $lists = Lists::$scope()->with('employee','items','provider')->OrderByID()->paginate(15);
-        }elseif($handler == 'trashed' && $has == false){
-            $lists = Lists::onlyTrashed()->with('employee','items','provider')->OrderByID()->paginate(15);
-        }elseif($has == 'filter'){
-            $lists = FilterHelper::filter($request);
-        }
-        else{
-            $lists = Lists::with('employee','items','provider')->OrderByID()->paginate(15);
-        }
+    //     if(\System::auth_type() != 'provider' && $has == false){
+    //         $employees = Loader::employees();
+    //         $providers = Loader::providers();
+    //     }
+    //     if($handler != 'admin' && $handler != 'trashed' && $has == false){
+    //         $result =  \System::stats($handler,\System::auth_type());
+    //         $lists = Lists::$scope()->with('employee','items','provider')->OrderByID()->paginate(15);
+    //     }elseif($handler == 'trashed' && $has == false){
+    //         $lists = Lists::onlyTrashed()->with('employee','items','provider')->OrderByID()->paginate(15);
+    //     }elseif($has == 'filter'){
+    //         $lists = FilterHelper::filter($request);
+    //     }
+    //     else{
+    //         $lists = Lists::with('employee','items','provider')->OrderByID()->paginate(15);
+    //     }
         
-        $cities = Loader::cities();
-        $products = Loader::products();
-        array_push($list_array,['result' => $result ?? null,'cities' => $cities,'providers' => $providers ?? null,'employees' => $employees ?? null,'products' => $products , 'lists' => $lists ]);
-        return $list_array;
-    }
+    //     $cities = Loader::cities();
+    //     $products = Loader::products();
+    //     array_push($list_array,['result' => $result ?? null,'cities' => $cities,'providers' => $providers ?? null,'employees' => $employees ?? null,'products' => $products , 'lists' => $lists ]);
+    //     return $list_array;
+    // }
 
     // creating the list OR update
     public static function saveList($model,$post, $checkNumber = false){

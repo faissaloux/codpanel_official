@@ -7,17 +7,22 @@ return [
     ],
 
     'new' => [
-        'deleted' => false ,
-        'status' => 'new' 
+        'type' => 'new' 
     ],
 
     'employee' => [
-        'deleted' => false ,
         'handler' => 'employee' 
     ],
 
     'provider' => [
-        'deleted' => false ,
+        'handler' => 'provider' 
+    ],
+
+    'listBy_status_admin' => [
+        'handler' => 'provider' 
+    ],
+
+    'listBy_status' => [
         'handler' => 'provider' 
     ],
 
