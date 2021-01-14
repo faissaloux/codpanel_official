@@ -474,7 +474,12 @@ class="new-listing-page"
         <table class="table table-primary table-hover">
             <thead>
                 <tr>
-                    <th scope="col"><input type="checkbox" class="show-actions-menu"/></th>
+                    <th scope="col">
+                        <div class="mg-l-15 d-flex custom-control custom-checkbox">
+                            <input type="checkbox" class="show-actions-menu custom-control-input" id="checkAll">
+                            <label class="custom-control-label" for="checkAll"></label>
+                        </div>
+                    </th>
                     <th scope="col" data-type="requestId" class="toggle-col active">
                         رقم
                     </th>
@@ -503,7 +508,12 @@ class="new-listing-page"
             <tbody class="table-body-listing">
                 @foreach($lists as $list)
                     <tr class="{{ 'list_'.$list->id }}" >
-                        <th scope="row"><input type="checkbox" class="hoverRow"/></th>
+                        <th scope="row">
+                            <div class="mg-l-15 d-flex custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input check" data-item="{{ $list->id }}" id="{{'customCheck1'.$list->id}}">
+                                <label class="custom-control-label" for="{{'customCheck1'.$list->id}}"></label>
+                            </div>
+                        </th>
                         <td data-type="requestId" class="tx-right toggle-col active">
                             {{ '#'.$list->id }}
                         </td>
