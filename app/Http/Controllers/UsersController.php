@@ -80,6 +80,22 @@ class UsersController extends Controller
         return view('dashboard.users.edit',compact('content'));
     }
 
+    public function editEmployee($role, $id)
+    {
+        $content = \Role::find($id, $role);
+        $content->role = substr($content->getTable(), 0, -1);
+
+        return view('employee.edit',compact('content'));
+    }
+
+    public function editProvider($role, $id)
+    {
+        $content = \Role::find($id, $role);
+        $content->role = substr($content->getTable(), 0, -1);
+
+        return view('provider.edit',compact('content'));
+    }
+
     public function update(Request $request, $role, $id)
     {
         if(!in_array($request->role, \System::$roles)) abort(403);

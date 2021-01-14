@@ -33,6 +33,13 @@
                         <div class="col-md-9"><a href="tel:{{ $employee->phone }}">{{ $employee->phone }}</a></div>
                    </div>
                 </div>
+                <div class="card-body tx-right" >
+                  <a href="{{ route('employee.profile.edit', ['role' => $employee->roleEn, 'id' => $employee->id]) }}"
+                     class="btn btn-primary"
+                  >
+                     تعديل
+                  </a>
+                </div>
                 <div class="card-footer text-center p-0">
                    <div class="row no-gutters row-bordered row-border-light">
                       <a href="#" class="d-flex col flex-column  py-3">

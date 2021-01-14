@@ -176,6 +176,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
 
     Route::post('/bulkstatus', 'EmployeesController@bulkstatus')->name('bulkstatus');
     Route::post('/filter', 'EmployeesController@filter')->name('filter');
+    Route::get('/edit/{role}/{id}', 'UsersController@editEmployee')->name('profile.edit');
 });
 
   // provider
@@ -190,6 +191,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     
     Route::post('/bulkstatus', 'ProvidersController@bulkstatus')->name('bulkstatus');
     Route::post('/filter', 'ProvidersController@filter')->name('filter');
+    Route::get('/edit/{role}/{id}', 'UsersController@editProvider')->name('profile.edit');
 });
 
 
