@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-<div class="d-flex justify-content-between p-2 bg-white p-4">
+<div class="d-flex justify-content-between align-items-center p-2 bg-white p-4">
     <h3 class="header-title">تعديل  المستخدم </h3>
+    <a href="{{ route('employee.profile') }}" class="ml-2"><i class="fa fa-arrow-left"></i></a>
 </div>
 <div class="message">
     @if(session()->has('success'))

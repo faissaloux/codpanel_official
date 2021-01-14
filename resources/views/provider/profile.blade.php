@@ -12,6 +12,7 @@
             <div class="card mg-b-30">
                 <div class="card-header d-flex align-items-center justify-content-between">
                    <h6 class="tx-16 tx-semibold mg-b-0">الملف الشخصي</h6>
+                   <a href="{{ route('provider.index') }}" class="ml-2"><i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="card-body tx-right">
                    <h6 class="my-3">المعلومات الشخصية</h6>
