@@ -18,7 +18,7 @@ $('.status-click').click(function() {
     showStatusListing('/dashboard/listing/listing', $(this).attr('data-type'));
 });
 
-$('.showdetails').click(function() {
+$("html").on('click', '.showdetails', function(){
     loadListDetails($(this).attr('data-link'));
 });
 
@@ -34,7 +34,7 @@ $('#addnewlist').click(function() {
     showAddNewListModal($(this).attr('data-link'));
 });
 
-$('.editlist').on('click', function() {
+$('html').on('click', '.editlist', function() {
     showEditListModal($(this).attr('data-link'));
 });
 
@@ -643,14 +643,12 @@ $('.restore').on('click', function(e) {
 });
 
 ///////////load history
-$('.showhistory').on('click', function(e) {
-
+$("html").on("click", ".showhistory", function() {
     var token = $('meta[name="csrf-token"]').attr('content');
     var link = $(this).attr('data-link');
 
     var formData = new FormData();
     formData.append('_token', token);
-
 
     $.ajax({
         url: link,
@@ -671,7 +669,6 @@ $('.showhistory').on('click', function(e) {
     });
 
 });
-
 
 $('.modal').on('shown.bs.modal', function() {
     $('.chnage_statue a').click(function() {
