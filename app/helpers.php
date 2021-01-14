@@ -34,16 +34,19 @@ use App\Helpers\Listing;
 
 function lists($params = null,$result = false){
     $config = [
-        'employee' =>  config('lists.employee'),
-        'provider' =>  config('lists.provider'),
-        'admin' =>  config('lists.new'),
+        'employee'  =>  config('lists.employee'),
+        'provider'  =>  config('lists.provider'),
+        'admin'     =>  config('lists.new'),
     ];
+
     if($params == null){
         $params = $config[System::auth_type()];
     }
+    
     if(!$result){
         return new Listing($params);
     }
+    
     return (new Listing($params))->result;
 }
 
@@ -58,19 +61,20 @@ function json_success($message){
 
 function get_view($name){
     $views = [
-        'element.history' => 'dashboard.elements.list_history',
-        'element.table' => 'dashboard.elements.listing-table',
-        'element.trashed_table'  => 'dashboard.elements.trashed_listing_table',
-        'list.details' => 'dashboard.elements.list_details',
-        'list.edit'  => 'dashboard.elements.edit_list',
-        'list.add'  => 'dashboard.elements.add_list',
-        'list.index'  => 'dashboard.listing.index',
-        'list.provider'  => 'dashboard.listing.providers',
-        'list.employee'  => 'dashboard.listing.employees',
-        'list.trashed'  => 'dashboard.listing.trashed',
-        
-        'e.add_list'  => 'employee.elements.add_list',
-        'e.edit_list'  => 'employee.elements.edit_list',
+        'element.history'       => 'dashboard.elements.list_history',
+        'element.table'         => 'dashboard.elements.listing-table',
+        'element.trashed_table' => 'dashboard.elements.trashed_listing_table',
+        'list.details'          => 'dashboard.elements.list_details',
+        'list.edit'             => 'dashboard.elements.edit_list',
+        'list.add'              => 'dashboard.elements.add_list',
+        'list.index'            => 'dashboard.listing.index',
+        'list.provider'         => 'dashboard.listing.providers',
+        'list.employee'         => 'dashboard.listing.employees',
+        'list.trashed'          => 'dashboard.listing.trashed',
+        'list.new'              => 'dashboard.elements.new_listing_table',
+
+        'e.add_list'            => 'employee.elements.add_list',
+        'e.edit_list'           => 'employee.elements.edit_list',
     ];
     return $views[$name];
 }

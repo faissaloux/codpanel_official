@@ -43,19 +43,23 @@ class Controller extends BaseController
     }
 
     public function filter(Request $request){
-        $lists = ListsHelper::list_relatives(System::auth_type(),$request)[0];
-        $view = "ar";
-        $lists = $lists['lists'];
-        if(!$this->filterView){
+        $lists  = lists([
+            'type'      => $request->data_type,
+            'deleted'   => $request->data_apage == 'trashed'
+        ], true);
+        $view   = "ar";
+        
+        if(!isset($this->filterView)){
             $filters = [
-                'trashed' => 'dashboard.elements.trashed_listing_table',
-                'providers' => 'dashboard.elements.listing-table',
-                'employees' => 'dashboard.elements.listing-table',
-                'new' => 'dashboard.elements.new_listing_table'
+                'trashed'   => 'element.trashed_table',
+                'providers' => 'element.table',
+                'employees' => 'element.table',
+                'new'       => 'list.new'
             ];
-    
+            
             $this->filterView = $filters[$request->data_apage];
         }
+
         return response_view($this->filterView,compact('lists','view'));
     }
 

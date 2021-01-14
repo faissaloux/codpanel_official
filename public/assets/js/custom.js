@@ -16,6 +16,7 @@ import {
 
 $('.status-click').click(function() {
     showStatusListing('/dashboard/listing/listing', $(this).attr('data-type'));
+    $("body").attr('data-type', $(this).attr('data-type'));
 });
 
 $("html").on('click', '.showdetails', function(){

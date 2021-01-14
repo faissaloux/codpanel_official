@@ -326,27 +326,29 @@ export function bulkChangeStatus(current, dataLink) {
 /************ filter ******************/
 export function filter(dataLink) {
 
-    var token = $('meta[name="csrf-token"]').attr('content');
-    var data_limit = $('body').attr("data-limit");
-    var data_type = $('body').attr("data-type");
-    var filter_by = $('.radio-filter-by:checked').val();
-    var filter_date = $('body').attr("data-date");
-    var filter_q = $('#textsearch').val();
-    var filter_city = $('#city_selector').val();
-    var filter_provider = $('#provider').val();
-    var filter_product = $('#product').val();
+    var token                           = $('meta[name="csrf-token"]').attr('content');
+    var data_limit                      = $('body').attr("data-limit");
+    var data_type                       = $('body').attr("data-type");
+    var filter_by                       = $('.radio-filter-by:checked').val();
+    var data_apage                      = $('body').attr("data-page");
+    var filter_date                     = $('body').attr("data-date");
+    var filter_q                        = $('#textsearch').val();
+    var filter_city                     = $('#city_selector').val();
+    var filter_provider                 = $('#provider').val();
+    var filter_product                  = $('#product').val();
 
     var formData = new FormData();
-    formData.append('_token', token);
-    formData.append('filter', 'filter');
-    formData.append('data_limit', data_limit);
-    formData.append('data_type', data_type);
-    formData.append('filter_by', filter_by);
-    formData.append('filter_date', filter_date);
-    formData.append('filter_q', filter_q);
-    formData.append('filter_city', filter_city);
-    formData.append('filter_provider', filter_provider);
-    formData.append('filter_product', filter_product);
+    formData.append('_token'            , token);
+    formData.append('filter'            , 'filter');
+    formData.append('data_limit'        , data_limit);
+    formData.append('data_type'         , data_type);
+    formData.append('filter_by'         , filter_by);
+    formData.append('data_apage'        , data_apage);
+    formData.append('filter_date'       , filter_date);
+    formData.append('filter_q'          , filter_q);
+    formData.append('filter_city'       , filter_city);
+    formData.append('filter_provider'   , filter_provider);
+    formData.append('filter_product'    , filter_product);
 
     load(dataLink, formData);
 }
