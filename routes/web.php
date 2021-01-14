@@ -165,7 +165,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/store', 'EmployeesController@store')->name('store');
     Route::post('/edit/{id}', 'EmployeesController@edit')->name('edit');
     Route::get('/profile', 'ProfileController@employee')->name('profile');
-    Route::post('/update', 'EmployeesController@update')->name('update');
+    Route::post('/update/{role}/{id}', 'UsersController@update')->name('update');
     Route::post('/export', 'EmployeesController@export')->name('export');
     Route::post('/import', 'EmployeesController@import')->name('import');
     Route::post('/statue/{id}', 'EmployeesController@statue')->name('statue');
@@ -188,6 +188,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
 	Route::post('/statue/{id}', 'ProvidersController@statue')->name('statue');
 	Route::post('/load/{id}', 'ProvidersController@load')->name('load');
     Route::post('/listing', 'ProvidersController@listing')->name('listing');
+    Route::post('/update/{role}/{id}', 'UsersController@update')->name('update');
     
     Route::post('/bulkstatus', 'ProvidersController@bulkstatus')->name('bulkstatus');
     Route::post('/filter', 'ProvidersController@filter')->name('filter');

@@ -816,3 +816,22 @@ div.show-columns-container.show button .show-columns-icon {
 .toggle-col.active{
     display: table-cell;
 }
+
+.message p {
+    margin-bottom: 0;
+}
+
+.flash{
+    color: #FFF;
+    padding: 6px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.successFlash {
+    background-color: #00b640;
+}
+
+.failedFlash {
+    background-color: #e94848;
+}

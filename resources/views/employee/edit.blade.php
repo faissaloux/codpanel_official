@@ -8,12 +8,23 @@
 <div class="d-flex justify-content-between p-2 bg-white p-4">
     <h3 class="header-title">تعديل  المستخدم </h3>
 </div>
+<div class="message">
+    @if(session()->has('success'))
+    <div class="flash successFlash">
+        <p>{{ session()->get('success') }}</p>
+    </div>
+    @elseif(session()->has('failed'))
+    <div class="flash failedFlash">
+        <p>{{ session()->get('failed') }}</p>
+    </div>
+    @endif
+</div>
 <div class="page-inner mt-4">
     <div class="d-flex flex-column">
         <!-- موظفة -->
         <div class="col-12 mb-2">
             <div class="form mb-4">
-                <form action="{{ route('dashboard.users.update' , ['id' => $content->id, 'role' => $content->role ]) }}" method="POST">
+                <form action="{{ route('employee.update' , ['id' => $content->id, 'role' => $content->role ]) }}" method="POST">
                     @csrf
                     <div class="panel">
                         <div class="panel-body">

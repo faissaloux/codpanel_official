@@ -132,8 +132,8 @@ class UsersController extends Controller
             if(file_exists($file)) unlink($file);
         }
         
-        $user->save();
-        return redirect()->route('dashboard.users.index')->with('success',trans('user.updated'));
+        return $user->save() ? redirect()->back()->with('success',trans('user.updated'))
+                             : redirect()->back()->with('failed', 'Something went wrong!');
     }
 
     public function delete($role, $id)
