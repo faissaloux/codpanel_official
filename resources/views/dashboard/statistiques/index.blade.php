@@ -160,10 +160,13 @@
                         </div>
                         <div class="media-body">
                            <h6 class="tx-sans tx-uppercase tx-10 tx-spacing-1 tx-gray-500 mg-b-5">الأرباح الإجمالية</h6>
-                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">$51,958<small>.50</small></h5>
+                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">${{ $total_benefits }}</h5>
                         </div>
                         <div class="small ft-right">
-                           <span class="tx-success ml-auto d-flex align-items-center"><i class="ti-arrow-up tx-8 mr-1 tx-8"></i>+2,012</span>
+                           <span class="{{ $total_benefits_diff > 0 ? 'tx-success':'tx-danger'}} ml-auto d-flex align-items-center">
+                              <i class="{{ $total_benefits_diff > 0 ? 'ti-arrow-up':'ti-arrow-down'}} tx-8 mr-1 tx-8"></i>
+                              @if($total_benefits_diff > 0) + @endif {{ $total_benefits_diff }}
+                           </span>
                            <p class="tx-10 tx-gray-500">منذ اخر شهر</p>
                         </div>
                      </div>
@@ -210,51 +213,13 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td class="tx-13">05/04/2019</td>
-                              <td class="text-right tx-teal">2,369</td>
-                              <td class="text-right tx-pink">$258,963</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">01/05/2019</td>
-                              <td class="text-right tx-teal">1,950</td>
-                              <td class="text-right tx-pink">$123,654</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">02/05/2019</td>
-                              <td class="text-right tx-teal">1,198</td>
-                              <td class="text-right tx-pink">$369,852</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">12/06/2019</td>
-                              <td class="text-right tx-teal">1,456</td>
-                              <td class="text-right tx-pink">$789,125</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">20/06/2019</td>
-                              <td class="text-right tx-teal">1,198</td>
-                              <td class="text-right tx-pink">$357,489</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">02/06/2019</td>
-                              <td class="text-right tx-teal">1,458</td>
-                              <td class="text-right tx-pink">$541,478</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">01/07/2019</td>
-                              <td class="text-right tx-teal">1,257</td>
-                              <td class="text-right tx-pink">$951,357</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">02/07/2019</td>
-                              <td class="text-right tx-teal">1,147</td>
-                              <td class="text-right tx-pink">$124,452</td>
-                           </tr>
-                           <tr>
-                              <td class="tx-13">04/08/2019</td>
-                              <td class="text-right tx-teal">1,478</td>
-                              <td class="text-right tx-pink">$145,452</td>
-                           </tr>
+                           @foreach($stats as $stat)
+                              <tr>
+                                 <td class="tx-13">{{ $stat->created_at->toDateString() }}</td>
+                                 <td class="text-right tx-teal">{{ $stat->orders }}</td>
+                                 <td class="text-right tx-pink">${{ $stat->amount }}</td>
+                              </tr>
+                           @endforeach
                         </tbody>
                      </table>
                   </div>

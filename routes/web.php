@@ -141,7 +141,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::post('/listing', 'ListingController@listing')->name('listing');
 
         Route::post('/bulkstatus', 'ListingController@bulkstatus')->name('bulkstatus');
-        Route::post('/filter', 'ListingController@filter')->name('filter');
+        Route::any('/filter', 'ListingController@filter')->name('filter');
     });
 
     // statistiques
@@ -175,7 +175,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     
 
     Route::post('/bulkstatus', 'EmployeesController@bulkstatus')->name('bulkstatus');
-    Route::post('/filter', 'EmployeesController@filter')->name('filter');
+    Route::any('/filter', 'EmployeesController@filter')->name('filter');
     Route::get('/edit/{role}/{id}', 'UsersController@editEmployee')->name('profile.edit');
 });
 
@@ -191,7 +191,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/update/{role}/{id}', 'UsersController@update')->name('update');
     
     Route::post('/bulkstatus', 'ProvidersController@bulkstatus')->name('bulkstatus');
-    Route::post('/filter', 'ProvidersController@filter')->name('filter');
+    Route::any('/filter', 'ProvidersController@filter')->name('filter');
     Route::get('/edit/{role}/{id}', 'UsersController@editProvider')->name('profile.edit');
 });
 

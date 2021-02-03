@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Lists;
 use App\Cities;
+use App\Payment;
 use App\Employee;
-use App\Provider;
 use App\Products;
+use App\Provider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,24 +16,38 @@ class StatistiquesController extends Controller
 
     public function index(Request $request)
     {
-        $canceled = Lists::canceled()->count() ?? 0;
-        $unanswered = Lists::unanswered()->count() ?? 0;
-        $recall = Lists::recall()->count() ?? 0;
-        $delivred = Lists::delivred()->count() ?? 0;
-        $employees = Employee::with('lists', 'delivredLists')->get(['id', 'name']);
-        $providers = Provider::with('lists', 'delivredLists')->get(['id', 'name']);
-        $cities = Cities::with(['provider' => function($q){
-                                                        $q->with('lists', 'delivredLists');
-                                                    }])->get();
-        $products = Products::with(['items' => function($q){
-                                                        $q->with('delivredList');
-                                                    }])->get();
+        $canceled               = Lists::canceled()->count() ?? 0;
+        $unanswered             = Lists::unanswered()->count() ?? 0;
+        $recall                 = Lists::recall()->count() ?? 0;
+        $delivred               = Lists::delivred()->count() ?? 0;
+        $employees              = Employee::with('lists', 'delivredLists')->get(['id', 'name']);
+        $providers              = Provider::with('lists', 'delivredLists')->get(['id', 'name']);
+        $cities                 = Cities::with(['provider' => function($q){
+                                                                            $q->with('lists', 'delivredLists');
+                                                                        }])->get();
+        $products               = Products::with(['items' => function($q){
+                                                                            $q->with('delivredList');
+                                                                        }])->get();
+
+        $total_benefits         = Payment::where('paid', 1)->sum('amount');
+        $total_benefits_diff    = Payment::currentMonth()->amount - Payment::lastMonth()->amount;
+        $stats                  = Payment::stats();
 
         foreach($products as $product){
             foreach($product->items as $item){
                 if($item->delivredList != null) $product->delivred++;
             };
         }
-        return view('dashboard.statistiques.index', compact('canceled', 'unanswered', 'recall', 'delivred', 'employees', 'providers', 'cities', 'products'));
+        return view('dashboard.statistiques.index', compact('canceled',
+                                                            'unanswered',
+                                                            'recall',
+                                                            'delivred',
+                                                            'employees',
+                                                            'providers',
+                                                            'cities',
+                                                            'products',
+                                                            'total_benefits',
+                                                            'total_benefits_diff',
+                                                            'stats'));
     }
 }
