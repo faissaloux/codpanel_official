@@ -30,7 +30,7 @@ class StatistiquesController extends Controller
                                                                         }])->get();
 
         $total_benefits         = Payment::where('paid', 1)->sum('amount');
-        $total_benefits_diff    = Payment::currentMonth()->amount - Payment::lastMonth()->amount;
+        $total_benefits_diff    = Payment::currentMonth()->amount ?? 0 - Payment::lastMonth()->amount ?? 0;
         $stats                  = Payment::stats();
 
         foreach($products as $product){
