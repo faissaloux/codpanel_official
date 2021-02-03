@@ -27,7 +27,7 @@ class Controller extends BaseController
 
     public function index(Request $request){
         $lists = lists('',true);
-        System::auth_type() != 'admin' ? $result = System::stats(System::auth_type()) : '';
+        $result = System::auth_type() != 'admin' ? System::stats(System::auth_type()) : '';
         if($request->ajax()){
             $view = "ar";
             return response()->view($this->listingView , compact('lists','view'))->setStatusCode(200);
@@ -58,6 +58,7 @@ class Controller extends BaseController
             ];
             
             $this->filterView = $filters[$request->data_apage];
+            // TODO: fix pagination.
         }
 
         return response_view($this->filterView,compact('lists','view'));
