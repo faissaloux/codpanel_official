@@ -6,6 +6,9 @@
 git clone https://github.com/TakiDDine/codpanel_official.git
 ```
 ```
+cd codpanel_official
+```
+```
 composer install
 ```
 
@@ -43,3 +46,10 @@ you can login from  /dashboard
 	user : admin@admin.com
 	pass : 1234
 
+### 4. Change permissions
+	
+Run this commands from the Terminal:
+ 
+	sudo chmod -R 777 /var/www/panel.takiddine.co/storage
+	sudo chmod -R 777 /var/www/panel.takiddine.co/public
+	sudo chmod -R 777 /var/www/panel.takiddine.co/bootstrap/cache
