@@ -33,14 +33,6 @@
                                     <div class="row">
                                         <div class="form-group col">
                                             <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span   class="input-group-text d-flex justify-content-center" 
-                                                            id="basic-addon3">
-                                                        <i class="fa fa-users"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="input-group mb-3">
                                                 <span class="col-2 tx-right">اسم الموظفة</span>
                                                 <input  type="text"
                                                         class="form-control col-10"
