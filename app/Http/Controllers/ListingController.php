@@ -54,27 +54,27 @@ class ListingController extends Controller {
 
     public function store(Request $request){
         ListsHelper::store($request);
-        return json_success('saved.successfuly');  
+        return json_success(trans('list.saved'));  
     }
 
     public function update(Request $request,$id){
         ListsHelper::update($request,$id);
-        return json_success('list.updated');  
+        return json_success(trans('list.updated'));
     }
 
     public function delete($id){
         Lists::find($id)->delete();        
-        return json_success('List.deleted.successfuly');
+        return json_success(trans('list.deleted'));
     }
 
     public function destroy($id){
         Lists::onlyTrashed()->find($id)->forceDelete();        
-        return json_success('List.destroyed.successfuly');
+        return json_success(trans('list.destroyed'));
     }
 
     public function restore($id){
         Lists::onlyTrashed()->find($id)->restore();
-        return json_success('List.restored.successfully');
+        return json_success(trans('list.restored'));
     }
 
     public function listing(Request $request){

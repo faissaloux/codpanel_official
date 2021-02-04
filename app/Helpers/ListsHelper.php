@@ -76,23 +76,14 @@ class ListsHelper {
     // create_items($list,$post)
     // the action of saving the products of the listing
     public static function multiSaleProductsSave($post,$list_id){
-
-        $count  = count($post['ProductID']);
+        $list = Lists::find($list_id);
+        
+        $count  = count(isset($post['ProductID']) ? $post['ProductID'] : []);
         for($x=0 ; $x < $count ; $x++){
-
-            /*
-             $pro             = new Items();
-             $pro->list_id    = $list_id;
-             $pro->product_id = $post['ProductID'][$x];
-             $pro->price      = $post['prix'][$x];
-             $pro->quantity   = $post['quantity'][$x];
-             $pro->save();
-            */
-           
-             $list->items->create([  
-                'productID'  => $post['ProductID'][$x],
-                'price'      => $post['prix'][$x],
-                'quantity'   => $post['quantity'][$x],
+             $list->items()->create([  
+                'product_id'    => $post['ProductID'][$x],
+                'price'         => $post['prix'     ][$x],
+                'quantity'      => $post['quantity' ][$x],
              ]);
          }
          unset($post,$count);
@@ -101,23 +92,23 @@ class ListsHelper {
      // save OR update the products of the order
     public static function saveMultiSale($post,$list_id,$update = false){
         if($update){
-                Items::where('list_id', $list_id)->delete();
-                self::multiSaleProductsSave($post,$list_id);
+            Items::where('list_id', $list_id)->delete();
+            self::multiSaleProductsSave($post,$list_id);
         }
         else self::multiSaleProductsSave($post,$list_id);
     }
 
     public static function store($request){
-        $post =  $request->All();
-        $Lists = new Lists();
-        $list_id = self::saveList($Lists,$post,true);
+        $post       =  $request->All();
+        $Lists      = new Lists();
+        $list_id    = self::saveList($Lists,$post,true);
         self::saveMultiSale($post,$list_id);
      }
      
     public static function update($request, $id){
-        $post =  $request->All();
-        $Lists = Lists::find($id);
-        $list_id = self::saveList($Lists,$post);
+        $post       =  $request->All();
+        $Lists      = Lists::find($id);
+        $list_id    = self::saveList($Lists,$post);
         self::saveMultiSale($post,$list_id,true);
     }
 }
