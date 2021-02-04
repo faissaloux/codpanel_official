@@ -78,7 +78,6 @@ class ListingController extends Controller {
     }
 
     public function listing(Request $request){
-        dd($request);
         $lists = ListsHelper::load($request);
         $handler = $request->handler;
         $type = $request->type;
