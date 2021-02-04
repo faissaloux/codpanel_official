@@ -1,10 +1,9 @@
 import {
-    filterCols,
     loadListDetails,
     setCancelReason,
     setRecallTime,
     setStatus,
-    showStatusListing
+    bulkChangeStatus
 } from './common.js';
 
 $('.showdetails').click(function() {
@@ -109,6 +108,10 @@ function filter() {
     });
 }
 
+// Bulk change status
+$('#changeSelectedStatus a').click(function() {
+    bulkChangeStatus(this, '/provider/bulkstatus');
+});
 
 $('.mdi-reload').click(function() {
     filter();

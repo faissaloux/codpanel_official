@@ -45,6 +45,8 @@
     
     @include('dashboard.inc.modals')
 
+    <input type="hidden" id="selected" data-count="" />
+
     <!--================================-->
     <!-- Footer Script -->
     <!--================================-->

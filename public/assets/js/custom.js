@@ -10,7 +10,6 @@ import {
     showEditListModal,
     addProduct,
     removeProduct,
-    bulkChangeStatus,
     filter
 } from './common.js';
 

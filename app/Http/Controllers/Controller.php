@@ -58,7 +58,6 @@ class Controller extends BaseController
             ];
             
             $this->filterView = $filters[$request->data_apage];
-            // TODO: fix pagination.
         }
 
         return response_view($this->filterView,compact('lists','view'));
