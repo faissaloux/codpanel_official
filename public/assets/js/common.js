@@ -200,11 +200,11 @@ export function setStatus(dataType) {
 }
 
 /*  Show status listing.                              */
-export function showStatusListing(listingURL, dataType) {
+export function showStatusListing(listingURL, dataType, dataHandler) {
     const token = $('meta[name="csrf-token"]').attr('content');
-    const handler = $('body').attr('data-handler');
+    const handler = dataHandler != undefined ? dataHandler : $('body').attr('data-handler');
     const auth_type = $('body').attr('data-auth-type');
-
+    
     const formData = new FormData();
     formData.append('_token', token);
     formData.append('type', dataType);

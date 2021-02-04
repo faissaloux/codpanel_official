@@ -15,7 +15,7 @@ import {
 } from './common.js';
 
 $('.status-click').click(function() {
-    showStatusListing('/dashboard/listing/listing', $(this).attr('data-type'));
+    showStatusListing('/dashboard/listing/listing', $(this).attr('data-type'), $(this).attr('data-handler'));
     $("body").attr('data-type', $(this).attr('data-type'));
 });
 
