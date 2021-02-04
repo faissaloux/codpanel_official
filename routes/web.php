@@ -52,6 +52,7 @@ Route::view('/re-password', 're-password')->name('re-password');
 Route::view('/singup', 'singup')->name('singup');
 
 
+Route::post('listing//statue/{id}', 'ListingController@statue')->name('listing.statue');
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => 'IsAdmin' ], function () {
 
@@ -135,7 +136,6 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::post('/restore/{id}', 'ListingController@restore')->name('restore');
         Route::view('/export', 'admin.users.create')->name('export');
         Route::view('/import', 'admin.users.create')->name('import');
-        Route::post('/statue/{id}', 'ListingController@statue')->name('statue');
         Route::post('/load/{id}', 'ListingController@load')->name('load');
         Route::post('/history/{id}', 'ListingController@history')->name('history');
         Route::post('/listing', 'ListingController@listing')->name('listing');

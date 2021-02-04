@@ -6,7 +6,7 @@ import {
     bulkChangeStatus
 } from './common.js';
 
-$('.showdetails').click(function() {
+$("html").on('click', '.showdetails', function(){
     loadListDetails($(this).attr('data-link'));
 });
 

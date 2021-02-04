@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12 col-lg-12 text-center chnage_statue" data-id="{{ $list->id }}" data-link="{{ route('dashboard.listing.statue' , ['id' => $list->id ]) }}">
+    <div class="col-md-12 col-lg-12 text-center chnage_statue" data-id="{{ $list->id }}" data-link="{{ route('listing.statue' , ['id' => $list->id ]) }}">
         <a href="javascript:;" data-type="unanswered" class="btn btn-primary rounded ">لا يجيب</a>
         <a href="javascript:;" data-type="recall" class="btn btn-primary rounded ">إعادة الإتصال</a>
         <a href="javascript:;" data-type="canceled" class="btn btn-primary rounded ">ملغى</a>
