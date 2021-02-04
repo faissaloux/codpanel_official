@@ -27,7 +27,6 @@ class ListingController extends Controller {
         $lists = lists(config('lists.employee'),true);
         $result = System::stats('employee');
         if($request->ajax()){
-            $lists = $lists['lists'];
             $view = "employee";
             return response_view('element.table',compact('lists','view'));
         }
@@ -79,7 +78,8 @@ class ListingController extends Controller {
     }
 
     public function listing(Request $request){
-        $lists = $lists = ListsHelper::load($request);
+        dd($request);
+        $lists = ListsHelper::load($request);
         $handler = $request->handler;
         $type = $request->type;
         return response_view('element.table',compact('lists','handler','type'));

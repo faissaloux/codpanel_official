@@ -122,8 +122,8 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
         Route::get('/', 'ListingController@index')->name('index');
         Route::get('/trashed', 'ListingController@trashed')->name('trashed');
         Route::get('/new', 'ListingController@new')->name('new');
-        Route::get('/employees', 'ListingController@employees')->name('employees');
-        Route::get('/providers', 'ListingController@providers')->name('providers');
+        Route::any('/employees', 'ListingController@employees')->name('employees');
+        Route::any('/providers', 'ListingController@providers')->name('providers');
 
         Route::post('/create', 'ListingController@create')->name('create');
         Route::post('/store', 'ListingController@store')->name('store');
