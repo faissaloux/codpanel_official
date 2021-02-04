@@ -1,6 +1,6 @@
 <div class="modal-cont modal-top mb-3 float-right">
     <div class="d-flex flex-column">
-        <form id="updatelisting" action="javascript:;" data-link="{{ route('dashboard.listing.update' , ['id' => $content->id ]) }}" method="POST">
+        <form id="updatelisting" action="javascript:;" data-link="{{ route('employee.listing.update' , ['id' => $content->id ]) }}" method="POST">
             @csrf
             <div class="row">
                 <div>

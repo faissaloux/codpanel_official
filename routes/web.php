@@ -172,7 +172,7 @@ Route::group(['prefix' => '/employee', 'as' => 'employee.' , 'middleware' => 'Is
     Route::post('/load/{id}', 'EmployeesController@load')->name('load');
     Route::post('/history', 'EmployeesController@history')->name('history');
     Route::any('/listing', 'EmployeesController@listing')->name('listing');
-    
+    Route::post('/listing/update/{id}', 'ListingController@update')->name('listing.update');
 
     Route::post('/bulkstatus', 'EmployeesController@bulkstatus')->name('bulkstatus');
     Route::any('/filter', 'EmployeesController@filter')->name('filter');

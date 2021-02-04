@@ -14,7 +14,7 @@ import {
     filter
 } from './common.js';
 
-$('.showdetails').click(function() {
+$("html").on('click', '.showdetails', function(){
     loadListDetails($(this).attr('data-link'));
 });
 
@@ -30,7 +30,7 @@ $('#addnewlist').click(function() {
     showAddNewListModal($(this).attr('data-link'));
 });
 
-$('.editlist').on('click', function() {
+$('html').on('click', '.editlist', function() {
     showEditListModal($(this).attr('data-link'));
 });
 
@@ -55,6 +55,36 @@ $('.modal').on('shown.bs.modal', function() {
     // Remove product Row
     $('.removemoreproducts').click(function() {
         removeProduct($(this));
+    });
+});
+
+//update productsList
+$('.modal').on('shown.bs.modal', function(e) {
+    $('#updatelisting').submit(function(event) {
+        var link = $(this).attr('data-link');
+        var datastring = $(this).serialize();
+
+
+        $.ajax({
+            url: link,
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            type: 'POST',
+            data: datastring,
+            dataType: "JSON",
+            success: function(response) {
+                $('body #addOrderModalCenter').modal('hide');
+
+                $.each(response, function(key, value) {
+                    statue_toast("success", value)
+                });
+
+                $('body #updatelisting').reset();
+            },
+            error: function(response) {
+                default_error();
+            }
+        });
+
     });
 });
 

@@ -79,7 +79,7 @@ class Controller extends BaseController
     public function load($id)
     {
         $list = Lists::with("items")->find($id);
-        return response_view($this->filterView,compact('lists'));
+        return response_view($this->filterView,compact('list'));
     }
 
     

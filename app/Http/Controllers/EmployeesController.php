@@ -12,8 +12,8 @@ class EmployeesController extends Controller
 {
     public $listingView = 'employee.elements.listing-table';
     public $listDetails = 'employee.elements.list_details';
-    public $listing = 'employee.listing';
-    public $filterView = 'employee.elements.listing-table';
+    public $listing     = 'employee.listing';
+    public $filterView  = 'list.details';
 
     public function create(){
         $auth = Auth::guard('employees')->user();
