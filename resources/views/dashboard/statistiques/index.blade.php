@@ -160,7 +160,7 @@
                         </div>
                         <div class="media-body">
                            <h6 class="tx-sans tx-uppercase tx-10 tx-spacing-1 tx-gray-500 mg-b-5">الأرباح الإجمالية</h6>
-                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">${{ $total_benefits }}</h5>
+                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">${{ $total_benefits[0] }}<small>.{{ $total_benefits[1] }}</small></h5>
                         </div>
                         <div class="small ft-right">
                            <span class="{{ $total_benefits_diff > 0 ? 'tx-success':'tx-danger'}} ml-auto d-flex align-items-center">
@@ -177,11 +177,14 @@
                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> 
                         </div>
                         <div class="media-body">
-                           <h6 class="tx-sans tx-uppercase tx-10 tx-spacing-1 tx-gray-500 mg-b-5">صافي الأرباح</h6>
-                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">$31,608<small>.50</small></h5>
+                           <h6 class="tx-sans tx-uppercase tx-10 tx-spacing-1 tx-gray-500 mg-b-5">مجموع المدن</h6>
+                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">{{ $cities->count() }}</h5>
                         </div>
                         <div class="small ft-right">
-                           <span class="tx-success ml-auto d-flex align-items-center"><i class="ti-arrow-up tx-8 mr-1 tx-8"></i>+3,258</span>
+                           <span class="{{ $cities_diff > 0 ? 'tx-success':'tx-danger'}} ml-auto d-flex align-items-center">
+                              <i class="{{ $cities_diff > 0 ? 'ti-arrow-up':'ti-arrow-down'}} tx-8 mr-1 tx-8"></i>
+                              @if($cities_diff > 0) + @endif {{ $cities_diff }}
+                           </span>
                            <p class="tx-10 tx-gray-500">منذ اخر شهر</p>
                         </div>
                      </div>
@@ -192,11 +195,14 @@
                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> 
                         </div>
                         <div class="media-body">
-                           <h6 class="tx-sans tx-uppercase tx-10 tx-spacing-1 tx-gray-500 mg-b-5">الضرائب المحتجزة</h6>
-                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">$24,769<small>.50</small></h5>
+                           <h6 class="tx-sans tx-uppercase tx-10 tx-spacing-1 tx-gray-500 mg-b-5">مجموع المنتجات</h6>
+                           <h5 class="tx-20 tx-sm-18 tx-md-20  tx-medium tx-rubik mg-b-0">{{ $products->count() }}</h5>
                         </div>
                         <div class="small ft-right">
-                           <span class="tx-danger ml-auto d-flex align-items-center"><i class="ti-arrow-down tx-8 mr-1 tx-8"></i>-1,241</span>
+                           <span class="{{ $products_diff > 0 ? 'tx-success':'tx-danger'}} ml-auto d-flex align-items-center">
+                              <i class="{{ $products_diff > 0 ? 'ti-arrow-up':'ti-arrow-down'}} tx-8 mr-1 tx-8"></i>
+                              @if($products_diff > 0) + @endif {{ $products_diff }}
+                           </span>
                            <p class="tx-10 tx-gray-500">منذ اخر شهر</p>
                         </div>
                      </div>

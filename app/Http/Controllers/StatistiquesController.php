@@ -8,6 +8,7 @@ use App\Payment;
 use App\Employee;
 use App\Products;
 use App\Provider;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -25,11 +26,14 @@ class StatistiquesController extends Controller
         $cities                 = Cities::with(['provider' => function($q){
                                                                             $q->with('lists', 'delivredLists');
                                                                         }])->get();
+        $cities_diff            = Cities::currentMonth() - Cities::lastMonth();
+
         $products               = Products::with(['items' => function($q){
                                                                             $q->with('delivredList');
                                                                         }])->get();
+        $products_diff          = Products::currentMonth() - Products::lastMonth();
 
-        $total_benefits         = Payment::where('paid', 1)->sum('amount');
+        $total_benefits         = explode(".", number_format(Payment::where('paid', 1)->sum('amount'), 2));
         $total_benefits_diff    = Payment::currentMonth()->amount ?? 0 - Payment::lastMonth()->amount ?? 0;
         $stats                  = Payment::stats();
 
@@ -45,7 +49,9 @@ class StatistiquesController extends Controller
                                                             'employees',
                                                             'providers',
                                                             'cities',
+                                                            'cities_diff',
                                                             'products',
+                                                            'products_diff',
                                                             'total_benefits',
                                                             'total_benefits_diff',
                                                             'stats'));
