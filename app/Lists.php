@@ -60,6 +60,10 @@ class Lists extends Model
         return  $this->hasMany('App\Items', 'list_id');
     }
 
+    public function paid_payments(){
+        return  $this->hasMany('App\Payment', 'order_id')->where('paid', 1);
+    }
+
     public function city(){
         return  $this->belongsTo('App\Cities', 'city_id')->withDefault(['name' => 'N-A']);
     }

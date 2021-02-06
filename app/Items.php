@@ -17,4 +17,7 @@ class Items extends Model
         return $this->belongsTo('App\Lists', 'list_id')->where('delivred_at', '<>', NULL);
     }
    
+    public function lists(){
+        return $this->belongsTo('App\Lists', 'list_id');
+    }
 }

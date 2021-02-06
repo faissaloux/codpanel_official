@@ -53,18 +53,19 @@
             <a type="button">Retour</a>
         </div>
         <div class="ml-4 btn py-0">
-            <a type="button">المتبقي</a>
+            <span>المتبقي</span>
+            <span class="quantity">{{ $total_enter - $total_paid }}</span>
         </div>
         <div class="ml-4 btn py-0">
             <a type="button">
                 <span>الخروج</span>
-                <span class="quantity">0</span>
+                <span class="quantity">{{ $total_paid }}</span>
             </a>
         </div>
         <div class="ml-4 btn py-0">
             <a type="button">
                 <span>الدخول</span>
-                <span class="quantity">0</span>
+                <span class="quantity">{{ $total_enter }}</span>
             </a>
         </div>
     </div>
@@ -84,21 +85,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="product">
-                                <span>آخــر صــيـحـات القبعة والمـعـطـف السـاخــن NOIR</span>
-                            </td>
-                            <td data-type="enter">
-                                <span>711</span>
-                            </td>
-                            <td data-type="exit">
-                                <span>697
-                            </td>
-                            <td data-type="last">
-                                <span>14
-                            </td>
-                        </tr>
+                        @foreach($products as $product)
+                            <tr height="50">
+                                <th scope="row"><input type="checkbox" class="hoverRow"/></th>
+                                <td data-type="product">
+                                    <span>{{ $product->name }}</span>
+                                </td>
+                                <td data-type="enter">
+                                    <span>{{ $product->enter }}</span>
+                                </td>
+                                <td data-type="exit">
+                                    <span>{{ $product->paid }}</span>
+                                </td>
+                                <td data-type="last">
+                                    <span>{{ $product->enter - $product->paid }}</span>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
