@@ -11,14 +11,19 @@ class StockController extends Controller
 
     public function index(Request $request)
     {
+        $totalProducts  = Products::with(['items' => function($q){
+                                                                $q->with(['lists' => function($qq){
+                                                                    $qq->withCount('paid_payments');
+                                                                }]);
+                                                            }])->orderby('id','desc')->get();
         $products       = Products::with(['items' => function($q){
-                                                            $q->with(['lists' => function($qq){
-                                                                $qq->withCount('paid_payments');
-                                                            }]);
-                                                        }])->orderby('id','desc')->paginate(10);
+                                                                $q->with(['lists' => function($qq){
+                                                                    $qq->withCount('paid_payments');
+                                                                }]);
+                                                            }])->orderby('id','desc')->paginate(10);
         $total_enter    = 0;
         $total_paid     = 0;
-        foreach($products as $product){
+        foreach($totalProducts as $product){
             foreach($product->items as $item){
                 if(!isset($item->lists)){
                     $item['lists'] = new \stdClass();
@@ -33,6 +38,21 @@ class StockController extends Controller
             $total_enter    += $product->enter;
             $total_paid     += $product->paid;
         }
+
+        foreach($products as $product){
+            foreach($product->items as $item){
+                if(!isset($item->lists)){
+                    $item['lists'] = new \stdClass();
+                    $item->lists->paid_payments_count = 0;
+                    $product->enter += 0;
+                    $product->paid  += $item->lists->paid_payments_count;
+                }else{
+                    $product->enter += $item->quantity;
+                    $product->paid  += $item->lists->paid_payments_count * $item->quantity;
+                }
+            }
+        }
+        
         if($request->ajax()){
             return response()->view($this->listingView , compact('products'))->setStatusCode(200);
         }
