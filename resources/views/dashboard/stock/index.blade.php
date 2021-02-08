@@ -73,7 +73,19 @@
 <div class="page-inner">
     <div class="d-flex flex-column">
         <div class="col-12 mt-3">
-            <div class="card-body pd-0 tx-center">
+            <!-- spinner -->
+            <center class="mt-2 ">
+                <div class="spinner-loader-container d-table">
+                    <div class="spinner-loader d-table-cell align-middle">
+                        <div class="spinner-border mb-2 text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </center>
+            <!-- End spinner -->
+
+            <div class="card-body pd-0 tx-center load-table">
                 <table class="table table-primary table-hover tx-right">
                     <thead>
                         <tr>
@@ -104,6 +116,11 @@
                         @endforeach
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="justify-content-center paginate">
+                        {!! $products->links() !!}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
+    public $listingView = 'dashboard.elements.stock_table';
+
     public function index(Request $request)
     {
-        $products  = Products::with(['items' => function($q){
+        $products       = Products::with(['items' => function($q){
                                                             $q->with(['lists' => function($qq){
                                                                 $qq->withCount('paid_payments');
                                                             }]);
-                                                        }])->orderby('id','desc')->get();
+                                                        }])->orderby('id','desc')->paginate(10);
         $total_enter    = 0;
         $total_paid     = 0;
         foreach($products as $product){
@@ -30,6 +32,9 @@ class StockController extends Controller
             }
             $total_enter    += $product->enter;
             $total_paid     += $product->paid;
+        }
+        if($request->ajax()){
+            return response()->view($this->listingView , compact('products'))->setStatusCode(200);
         }
         return view('dashboard.stock.index',compact('products', 'total_enter', 'total_paid'));
     }
