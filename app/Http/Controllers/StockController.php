@@ -20,7 +20,7 @@ class StockController extends Controller
                                                                 $q->with(['lists' => function($qq){
                                                                     $qq->withCount('paid_payments');
                                                                 }]);
-                                                            }])->orderby('id','desc')->paginate(10);
+                                                            }])->orderby('id','desc')->paginate(5);
         $total_enter    = 0;
         $total_paid     = 0;
         foreach($totalProducts as $product){

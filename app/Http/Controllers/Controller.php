@@ -45,6 +45,7 @@ class Controller extends BaseController
     public function filter(Request $request){
         $lists  = lists([
             'type'      => $request->data_type,
+            'search'    => $request->filter_q,
             'deleted'   => $request->data_apage == 'trashed'
         ], true);
         $view   = "ar";

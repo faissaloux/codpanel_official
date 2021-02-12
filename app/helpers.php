@@ -42,11 +42,9 @@ function lists($params = null,$result = false){
     if($params == null){
         $params = $config[System::auth_type()];
     }
-    
     if(!$result){
         return new Listing($params);
     }
-    
     return (new Listing($params))->result;
 }
 
