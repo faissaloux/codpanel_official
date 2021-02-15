@@ -409,7 +409,8 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column">
-                <form action="" method="">
+                <form action="{{ route('dashboard.stock.create.entree') }}" method="post">
+                    @csrf
                     <div class="d-flex flex-column">
                         <div class="form-group d-flex align-items-center">
                             <label for="product" class="col-1 pr-0 text-right">المنتوج</label>
@@ -531,7 +532,7 @@
                     </div>
                     <div class="d-flex justify-content-end mt-4">
                         <p class="p-0">
-                            <a href="#" type="button" class="btn btn-success btn-block">إضافة السلعة للمخزون</a>
+                            <button type="submit" class="btn btn-success btn-block">إضافة السلعة للمخزون</button>
                         </p>
                     </div>
                 </form>

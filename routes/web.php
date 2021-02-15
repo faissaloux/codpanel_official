@@ -52,7 +52,7 @@ Route::view('/re-password', 're-password')->name('re-password');
 Route::view('/singup', 'singup')->name('singup');
 
 
-Route::post('listing//statue/{id}', 'ListingController@statue')->name('listing.statue');
+Route::post('listing/statue/{id}', 'ListingController@statue')->name('listing.statue');
 
 Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => 'IsAdmin' ], function () {
 
@@ -108,6 +108,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     // stock
     Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
         Route::get('/', 'StockController@index')->name('index');
+        Route::post('/create_entree', 'StockController@store_entree')->name('create.entree'); // Create Stock
         Route::view('/reception', 'dashboard.stock.reception')->name('reception');
         Route::get('/create', 'StockController@create')->name('create');
         Route::post('/store', 'StockController@store')->name('store');
