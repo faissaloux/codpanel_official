@@ -9,7 +9,7 @@ Route::group(['prefix' => '/dashboard/stock', 'as' => 'stock.' ], function (){
     Route::get('/create_entree', 'StockController@create_entree')->name('stockGeneral.create.entree');
     //Route::post('/create_entree', 'StockController@store_entree')->name('stockGeneral.create.entree');
     Route::get('/create_sortie', 'StockController@create_sortie')->name('stockGeneral.create.sortie');
-    Route::post('/create_sortie', 'StockController@store_sortie')->name('stockGeneral.create.sortie');
+    // Route::post('/create_sortie', 'StockController@store_sortie')->name('stockGeneral.create.sortie');
     Route::get('/waiting', 'StockController@waitingGet')->name('stockGeneral.waitingGet');
     Route::post('/waiting', 'StockController@waitingAction')->name('stockGeneral.waitingAction');
     Route::post('/validateEntree', 'StockController@validateEntree')->name('stockGeneral.validateEntree');

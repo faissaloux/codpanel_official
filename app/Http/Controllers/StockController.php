@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Stock;
 use App\Products;
 use App\StockEntree;
 use App\StockRetour;
+use App\StockSortie;
 use App\HistoryEntree;
+use App\StockSortieList;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -64,7 +67,7 @@ class StockController extends Controller
 
     public function store_entree(Request $request)
     {
-        $stock = new StockEntree;
+        $stock              = new StockEntree;
         $stock->productID   = $request->product;
         $stock->quantity    = $request->quantity;
         $stock->note        = $request->note;
@@ -74,7 +77,7 @@ class StockController extends Controller
 
     public function saveRetour(Request $request)
     { 
-        for($x=0, $quantityCount=count($request['quantity']); $x < $quantityCount; $x++){
+        for($x=0, $quantityCount=count($request->quantity); $x < $quantityCount; $x++){
                         
             $data  = [
                 'productID' => $request->product,
@@ -93,9 +96,34 @@ class StockController extends Controller
 
         HistoryEntree::create($entree);
 
+        unset($stock);
         unset($entree);
-        unset($post);
         
+        return redirect()->back();
+    }
+
+    public function store_sortie(Request $request)
+    {
+        $sortie = StockSortie::create([ 'productID' => $request->product ]);
+        for($x=0, $quantityCount=count($request->quantity); $x < $quantityCount; $x++){
+            $data  = [
+                'sortie_list_id'    => $sortie->id,
+                'quantity'          => $request->quantity[$x],
+                'cityID'            => $request->cities[$x],
+            ];
+            StockSortieList::create($data);
+            $Stock = Stock::where('CityID',$request->cities[$x])->where('ProduitID',$request->product)->first();
+            if($Stock){
+                $Stock->stockVirtuel = $request->quantity[$x];
+                $Stock->save(); 
+            }else {
+                Stock::create([
+                    'CityID'         => $request->cities[$x], 
+                    'ProduitID'      => $request->product,
+                    'stockVirtuel'   => $request->quantity[$x] ,
+                ]);
+            }
+        }
         return redirect()->back();
     }
 
