@@ -723,3 +723,12 @@ $(document).ready(function() {
 
     filterCols();
 });
+
+$("html").on('click', '#addRowSortie', function(){
+    $(this).closest(".clonedSortie").clone().appendTo(".sortieAppend");
+    $(this).attr("id", "removeRowSortie").empty()[0].innerHTML = "-";
+});
+
+$("html").on('click', '#removeRowSortie', function(){
+    $(this).closest(".clonedSortie").remove();
+});

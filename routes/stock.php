@@ -7,7 +7,7 @@ Route::group(['prefix' => '/dashboard/stock', 'as' => 'stock.' ], function (){
     Route::get('/', 'StockController@index')->name('index');
     Route::post('/get/rest', 'StockController@rest')->name('rest');
     Route::get('/create_entree', 'StockController@create_entree')->name('stockGeneral.create.entree');
-    Route::post('/create_entree', 'StockController@store_entree')->name('stockGeneral.create.entree');
+    //Route::post('/create_entree', 'StockController@store_entree')->name('stockGeneral.create.entree');
     Route::get('/create_sortie', 'StockController@create_sortie')->name('stockGeneral.create.sortie');
     Route::post('/create_sortie', 'StockController@store_sortie')->name('stockGeneral.create.sortie');
     Route::get('/waiting', 'StockController@waitingGet')->name('stockGeneral.waitingGet');
@@ -17,7 +17,7 @@ Route::group(['prefix' => '/dashboard/stock', 'as' => 'stock.' ], function (){
     Route::post('/validateSortieList', 'StockController@validateSortieList')->name('stockGeneral.validateSortieList');
     Route::any('/loadEntreeHistory', 'StockController@loadEntreeHistory')->name('stockGeneral.loadEntreeHistory');
     Route::any('/loadHistorySortie', 'StockController@loadHistorySortie')->name('stockGeneral.loadSortieHistory');
-    Route::any('/save/retour', 'StockController@saveRetour')->name('stockGeneral.save.retour');
+    //Route::any('/save/retour', 'StockController@saveRetour')->name('stockGeneral.save.retour');
     Route::any('/list/retour', 'StockController@listRetour')->name('stockGeneral.retour');        
 });
 

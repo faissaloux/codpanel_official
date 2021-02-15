@@ -835,3 +835,9 @@ div.show-columns-container.show button .show-columns-icon {
 .failedFlash {
     background-color: #e94848;
 }
+
+#removeRowSortie{
+    background-color: rgb(255, 0, 0);
+    border: none;
+    padding: 10px 22px;
+}

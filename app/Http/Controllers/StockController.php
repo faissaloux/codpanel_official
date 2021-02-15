@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Products;
 use App\StockEntree;
+use App\StockRetour;
+use App\HistoryEntree;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -67,6 +69,33 @@ class StockController extends Controller
         $stock->quantity    = $request->quantity;
         $stock->note        = $request->note;
         $stock->save();
+        return redirect()->back();
+    }
+
+    public function saveRetour(Request $request)
+    { 
+        for($x=0, $quantityCount=count($request['quantity']); $x < $quantityCount; $x++){
+                        
+            $data  = [
+                'productID' => $request->product,
+                'cityID'    => $request->cities[$x],
+                'quantity'  => $request->quantity[$x],
+            ];
+            StockRetour::create($data);
+        }
+        
+        $entree = [
+            'productID' => $request->product,
+            'quantity'  => array_sum($request->quantity),
+            'valid'     => array_sum($request->quantity),
+            'note'      => 'had stock dyal retour',
+        ];
+
+        HistoryEntree::create($entree);
+
+        unset($entree);
+        unset($post);
+        
         return redirect()->back();
     }
 

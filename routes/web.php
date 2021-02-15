@@ -109,6 +109,7 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
         Route::get('/', 'StockController@index')->name('index');
         Route::post('/create_entree', 'StockController@store_entree')->name('create.entree'); // Create Stock
+        Route::post('/save/retour', 'StockController@saveRetour')->name('save.retour');
         Route::view('/reception', 'dashboard.stock.reception')->name('reception');
         Route::get('/create', 'StockController@create')->name('create');
         Route::post('/store', 'StockController@store')->name('store');
