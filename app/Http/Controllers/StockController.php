@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cities;
 use App\Stock;
 use App\Products;
 use App\StockEntree;
@@ -15,54 +16,41 @@ class StockController extends Controller
 {
     public $listingView = 'dashboard.elements.stock_table';
 
+    private function getStockGeneralNotification(){
+        return [
+            'entree'  => StockEntree::count(),
+            'sortie'  => StockSortie::whereNULL('statue')->count()
+        ];
+    }
+
     public function index(Request $request)
     {
-        $totalProducts  = Products::with(['items' => function($q){
-                                                                $q->with(['lists' => function($qq){
-                                                                    $qq->withCount('paid_payments');
-                                                                }]);
-                                                            }])->orderby('id','desc')->get();
-        $products       = Products::with(['items' => function($q){
-                                                                $q->with(['lists' => function($qq){
-                                                                    $qq->withCount('paid_payments');
-                                                                }]);
-                                                            }])->orderby('id','desc')->paginate(5);
-        $total_enter    = 0;
-        $total_paid     = 0;
-        foreach($totalProducts as $product){
-            foreach($product->items as $item){
-                if(!isset($item->lists)){
-                    $item['lists'] = new \stdClass();
-                    $item->lists->paid_payments_count = 0;
-                    $product->enter += 0;
-                    $product->paid  += $item->lists->paid_payments_count;
-                }else{
-                    $product->enter += $item->quantity;
-                    $product->paid  += $item->lists->paid_payments_count * $item->quantity;
-                }
-            }
-            $total_enter    += $product->enter;
-            $total_paid     += $product->paid;
-        }
+        $nots = $this->getStockGeneralNotification();
+            
+        $products = [];
 
-        foreach($products as $product){
-            foreach($product->items as $item){
-                if(!isset($item->lists)){
-                    $item['lists'] = new \stdClass();
-                    $item->lists->paid_payments_count = 0;
-                    $product->enter += 0;
-                    $product->paid  += $item->lists->paid_payments_count;
-                }else{
-                    $product->enter += $item->quantity;
-                    $product->paid  += $item->lists->paid_payments_count * $item->quantity;
-                }
+        $HistoryEntree = HistoryEntree::groupBy( 'productID' )
+        ->select(   \DB::raw('sum(quantity) as sum_quantity'),
+                    \DB::raw('sum(valid) as sum_valid'),
+                    'productID')
+        ->get();
+        
+        foreach($HistoryEntree as $item ){
+            if($item->product){
+                $validSortie = StockSortieList::where('productID',$item->product->id)
+                                                ->selectRaw('sum(quantity) as sum_quantity, sum(valid) as sum_valid')
+                                                ->get()->toArray();
+                
+                array_push($products, [
+                    'product_id'   => $item->product->id,
+                    'product_name' => $item->product->name,
+                    'total_sortie' => $validSortie[0]['sum_valid'],
+                    'total_entree' => $item->sum_valid ,
+                    'rest'         => $item->sum_valid - $validSortie[0]['sum_valid'] ,
+                ]);
             }
         }
-        
-        if($request->ajax()){
-            return response()->view($this->listingView , compact('products'))->setStatusCode(200);
-        }
-        return view('dashboard.stock.index',compact('products', 'total_enter', 'total_paid'));
+        return view('dashboard.stock.index',compact('nots', 'products'));
     }
 
     public function store_entree(Request $request)
@@ -129,7 +117,25 @@ class StockController extends Controller
 
     public function create()
     {
-        return view('admin.users.create');
+        $products = Products::orderby('id','desc')->get();
+        return response()->view('dashboard.elements.add_stock', compact('products'))
+                         ->setStatusCode(200);
+    }
+
+    public function return()
+    {
+        $products   = Products::orderby('id','desc')->get();
+        $cities     = Cities::orderby('id','desc')->get();
+        return response()->view('dashboard.elements.return_stock', compact('products', 'cities'))
+                         ->setStatusCode(200);
+    }
+
+    public function export()
+    {
+        $products   = Products::orderby('id','desc')->get();
+        $cities     = Cities::orderby('id','desc')->get();
+        return response()->view('dashboard.elements.return_stock', compact('products', 'cities'))
+                         ->setStatusCode(200);
     }
 
     public function store()

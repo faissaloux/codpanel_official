@@ -10,7 +10,10 @@
         <h3 class="header-title">المخزون</h3>
         <div class="d-flex justify-content-around">
             <div class="btn-group btn-top d-flex justify-content-end add-stock-btn btn-action-sm-box" role="group">
-                <a href="#" class="btn btn-primary d-flex col border-none">
+                <a  href="#"
+                    class="btn btn-primary d-flex col border-none"
+                    id="addNewStock"
+                    data-link="{{ route('dashboard.stock.create') }}">
                     <span class="d-flex justify-content-center add-new-icon">
                         <i class="mdi mdi-plus d-flex align-items-center text-white"></i>
                     </span>
@@ -22,7 +25,10 @@
                 </a>
             </div>
             <div class="btn-group btn-top d-flex justify-content-center mx-2 return-btn btn-action-sm-box" role="group">
-                <a href="#" class="btn btn-primary d-flex col-12 border-none">
+                <a  href="#"
+                    class="btn btn-primary d-flex col-12 border-none"
+                    id="returnStock"
+                    data-link="{{ route('dashboard.stock.return') }}">
                     <span class="d-flex justify-content-center add-new-icon">
                         <i class="mdi mdi-keyboard-backspace d-flex align-items-center text-white"></i>
                     </span>
@@ -34,7 +40,10 @@
                 </a>
             </div>
             <div class="btn-group btn-top d-flex justify-content-end export-stock-btn btn-action-sm-box" role="group">
-                <a href="#" class="btn btn-primary d-flex col-12 border-none">
+                <a  href="#"
+                    class="btn btn-primary d-flex col-12 border-none"
+                    id="exportStock"
+                    data-link="{{ route('dashboard.stock.export') }}">
                     <span class="d-flex justify-content-center add-new-icon">
                         <i class="mdi mdi-export d-flex align-items-center text-white"></i>
                     </span>
@@ -54,18 +63,18 @@
         </div>
         <div class="ml-4 btn py-0">
             <span>المتبقي</span>
-            <span class="quantity">{{ $total_enter - $total_paid }}</span>
+            <span class="quantity">{{ $nots['entree'] - $nots['sortie'] }}</span>
         </div>
         <div class="ml-4 btn py-0">
             <a type="button">
                 <span>الخروج</span>
-                <span class="quantity">{{ $total_paid }}</span>
+                <span class="quantity">{{ $nots['sortie'] }}</span>
             </a>
         </div>
         <div class="ml-4 btn py-0">
             <a type="button">
                 <span>الدخول</span>
-                <span class="quantity">{{ $total_enter }}</span>
+                <span class="quantity">{{ $nots['entree'] }}</span>
             </a>
         </div>
     </div>
@@ -101,16 +110,16 @@
                             <tr height="50">
                                 <th scope="row"><input type="checkbox" class="hoverRow"/></th>
                                 <td data-type="product">
-                                    <span>{{ $product->name }}</span>
+                                    <span>{{ $product['product_name'] }}</span>
                                 </td>
                                 <td data-type="enter">
-                                    <span>{{ $product->enter }}</span>
+                                    <span>{{ $product['total_entree'] }}</span>
                                 </td>
                                 <td data-type="exit">
-                                    <span>{{ $product->paid }}</span>
+                                    <span>{{ $product['total_sortie'] }}</span>
                                 </td>
                                 <td data-type="last">
-                                    <span>{{ $product->enter - $product->paid }}</span>
+                                    <span>{{ $product['rest'] }}</span>
                                 </td>
                             </tr>
                         @endforeach
@@ -118,7 +127,7 @@
                 </table>
                 <nav aria-label="Page navigation example">
                     <ul class="justify-content-center paginate">
-                        {!! $products->links() !!}
+                        {{-- {!! $products->links() !!} --}}
                     </ul>
                 </nav>
             </div>

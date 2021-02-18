@@ -732,3 +732,89 @@ $("html").on('click', '#addRowSortie', function(){
 $("html").on('click', '#removeRowSortie', function(){
     $(this).closest(".clonedSortie").remove();
 });
+
+///////show moda addnewstock
+
+$('#addNewStock').click(function() {
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var link    = $(this).attr('data-link');
+
+    var formData = new FormData();
+    formData.append('_token', token);
+
+
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache: false,
+        dataType: "HTML",
+        success: function(response) {
+            $('body #addToStockModalCenter').modal('show');
+            $('body #addToStockModalCenter .modal-body').html(response);
+        },
+        error: function(response) {
+            default_error();
+        }
+    });
+
+});
+
+///////show moda returnstock
+
+$('#returnStock').click(function() {
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var link    = $(this).attr('data-link');
+
+    var formData = new FormData();
+    formData.append('_token', token);
+
+
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache: false,
+        dataType: "HTML",
+        success: function(response) {
+            $('body #returnStockModalCenter').modal('show');
+            $('body #returnStockModalCenter .modal-body').html(response);
+        },
+        error: function(response) {
+            default_error();
+        }
+    });
+
+});
+
+///////show moda exportstock
+
+$('#exportStock').click(function() {
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var link    = $(this).attr('data-link');
+
+    var formData = new FormData();
+    formData.append('_token', token);
+
+    $.ajax({
+        url: link,
+        type: 'POST',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        cache: false,
+        dataType: "HTML",
+        success: function(response) {
+            $('body #exportStockModalCenter').modal('show');
+            $('body #exportStockModalCenter .modal-body').html(response);
+        },
+        error: function(response) {
+            default_error();
+        }
+    });
+
+});
