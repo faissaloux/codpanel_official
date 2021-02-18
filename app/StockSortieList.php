@@ -8,4 +8,8 @@ class StockSortieList extends Model
 {
     protected $guarded  = ['id'];
     protected $table    = 'stock_sortie_list';
+
+    public function product(){
+        return $this->belongsTo('\App\Products', 'productID');
+   }
 }

@@ -46,7 +46,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapStockRoutes();
     }
 
     /**
@@ -61,6 +61,18 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapStockRoutes()
+    {
+        Route::group([
+            'middleware'    => 'web',
+            'prefix'        => '/dashboard/stock',
+            'as'            => 'dashboard.stock.',
+            'namespace'     => $this->namespace
+        ], function () {
+            require base_path('routes/stock.php');
+        });
     }
 
     /**

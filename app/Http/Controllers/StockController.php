@@ -23,6 +23,28 @@ class StockController extends Controller
         ];
     }
 
+    private function validateSortieItem($productID, $CityID, $quantity){
+    
+        $stock = Stock::where('CityID', $CityID)->where('ProduitID', $productID)->first();
+        
+        if(!$stock){
+            $data = [
+                'CityID'=> $CityID,
+                'ProduitID'=> $productID,
+                'Recue'=>$quantity,
+                'StockPhisique'=>$quantity,
+            ];
+            Stock::Create($data);
+        }
+        
+        if($stock){
+           $stock->Recue            =  $stock->Recue + $quantity;
+           $stock->StockPhisique    =  $stock->StockPhisique + $quantity;
+           $stock->save();  
+        }
+        
+    }
+
     public function index(Request $request)
     {
         $nots = $this->getStockGeneralNotification();
@@ -95,9 +117,10 @@ class StockController extends Controller
         $sortie = StockSortie::create([ 'productID' => $request->product ]);
         for($x=0, $quantityCount=count($request->quantity); $x < $quantityCount; $x++){
             $data  = [
-                'sortie_list_id'    => $sortie->id,
-                'quantity'          => $request->quantity[$x],
+                'productID'         => $request->product,
                 'cityID'            => $request->cities[$x],
+                'quantity'          => $request->quantity[$x],
+                'sortie_list_id'    => $sortie->id,
             ];
             StockSortieList::create($data);
             $Stock = Stock::where('CityID',$request->cities[$x])->where('ProduitID',$request->product)->first();
@@ -112,7 +135,19 @@ class StockController extends Controller
                 ]);
             }
         }
-        return redirect()->back();
+        return redirect()->route('dashboard.stock.create.sortie');
+    }
+
+    public function create_sortie()
+    {
+        $sortie         = StockSortie::whereNull('statue')->get();
+        $HistorySortie  = StockSortieList::groupBy('productID')
+                                        ->select(   \DB::raw('sum(quantity) as sum_quantity'),
+                                                    \DB::raw('sum(valid) as sum_valid'),
+                                                    'productID'
+                                                )->get();
+        $nots = $this->getStockGeneralNotification();
+        return view('dashboard.stock.sortie',compact('sortie','HistorySortie','nots'));
     }
 
     public function create()
@@ -134,27 +169,70 @@ class StockController extends Controller
     {
         $products   = Products::orderby('id','desc')->get();
         $cities     = Cities::orderby('id','desc')->get();
-        return response()->view('dashboard.elements.return_stock', compact('products', 'cities'))
+        return response()->view('dashboard.elements.export_stock', compact('products', 'cities'))
                          ->setStatusCode(200);
     }
 
-    public function store()
+    public function rest(Request $request)
     {
-        return view('admin.users.create');
+        $id             = $request->id;
+
+        $HistoryEntree  = HistoryEntree::where('productID', $id)
+                                        ->select(\DB::raw('sum(valid) as sum_valid'))
+                                        ->get()->toArray();
+
+        $entree         = $HistoryEntree[0]['sum_valid'];
+
+        $validSortie    = StockSortieList::where('productID', $id)
+                                        ->select(\DB::raw('sum(valid) as sum_valid'))
+                                        ->get()->toArray();
+
+        $sortie         = $validSortie[0]['sum_valid'];
+        $rest           = $entree - $sortie;
+
+        return $rest;
     }
 
-    public function edit()
+    public function loadSortieList(Request $request)
     {
-        return view('admin.users.create');
+        $id         = $request->id;
+        $list       = StockSortieList::where('sortie_list_id', $id)->get();
+        $cities     = Cities::orderby('id','desc')->get();
+
+        return view('dashboard.elements.sortie_list',compact('list', 'cities'));
     }
 
-    public function update()
+    public function validateSortieList(Request $request)
     {
-        return view('admin.users.create');
-    }
-
-    public function delete()
-    {
-        return view('admin.users.create');
+        $sortieRow = StockSortie::find($request->SortieListID);
+        // delete Old Sortie Stock list
+        StockSortieList::where('sortie_list_id', $request->SortieListID)->delete();
+        
+        // Create new Sortie List 
+        for($x=0, $citiesCount=count( $request->cities ); $x < $citiesCount; $x++){          
+            $data  = [
+                      'productID'       => $sortieRow->productID ,
+                      'sortie_list_id'  => $request->SortieListID,
+                      'quantity'        => $request->quantities[$x],
+                      'valid'           => $request->valid[$x],
+                      'cityID'          => $request->cities[$x],
+                      'statue'          => 1,
+            ];
+            StockSortieList::create($data);
+        }
+         
+       // set the sortie list to valid
+       $edit = StockSortie::find($request->SortieListID);
+       $edit->statue = 1;
+       $edit->save();
+         
+        // add the stock sortie to stockgeneral
+        
+        // add the stock to delivers stock
+        for($x=0, $citiesCount=count( $request->cities ); $x < $citiesCount; $x++){
+            $this->validateSortieItem($request->ProductID, $request->cities[$x], $request->valid[$x]);
+        } 
+         
+        return redirect()->route('dashboard.stock.create.sortie');
     }
 }

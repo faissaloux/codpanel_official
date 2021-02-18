@@ -62,7 +62,7 @@
                     <a href="{{ route('dashboard.stock.index') }}" class="d-flex justify-content-between tx-right">
                         <i>
                             <i data-feather="archive"></i>
-                            <span>المخزون</span>
+                            <span>المستودع</span>
                         </i>
                     </a>
                 </li>
@@ -73,9 +73,9 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('dashboard.stock.reception') }}" class="tx-right">
+                    <a href="{{ route('dashboard.reception') }}" class="tx-right">
                         <i data-feather="grid"></i>
-                        <span>عمليات المخزون</span>
+                        <span>المخزون</span>
                     </a>
                 </li>
             </ul>

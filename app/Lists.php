@@ -47,6 +47,10 @@ class Lists extends Model
     public function total(){
         return $this->items->sum('price');
     }
+
+    public function products(){
+        return $this->hasMany('\App\MultiSale','listID');
+    }
     
     public function provider(){
         return  $this->belongsTo('App\Provider', 'provider_id')->withDefault(['name' => 'N-A']);

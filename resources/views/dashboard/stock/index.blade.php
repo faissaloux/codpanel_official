@@ -7,7 +7,7 @@
 @section('content')
 <div class="d-flex flex-column bg-white pt-4">
     <div class="d-flex justify-content-between align-items-center pr-4 pl-4">
-        <h3 class="header-title">المخزون</h3>
+        <h3 class="header-title">المستودع</h3>
         <div class="d-flex justify-content-around">
             <div class="btn-group btn-top d-flex justify-content-end add-stock-btn btn-action-sm-box" role="group">
                 <a  href="#"

@@ -24,46 +24,9 @@
             </button>
             <div    class="dropdown-menu by-city-dropdown tx-right"
                     aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">الرباط</a>
-                <a class="dropdown-item" href="#">أكادير</a>
-                <a class="dropdown-item" href="#">مراكش</a>
-                <a class="dropdown-item" href="#">الرباط</a>
-                <a class="dropdown-item" href="#">أكادير</a>
-                <a class="dropdown-item" href="#">مراكش</a>
-                <a class="dropdown-item" href="#">الرباط</a>
-                <a class="dropdown-item" href="#">أكادير</a>
-                <a class="dropdown-item" href="#">مراكش</a>
-                <a class="dropdown-item" href="#">الرباط</a>
-                <a class="dropdown-item" href="#">أكادير</a>
-                <a class="dropdown-item" href="#">مراكش</a>
-            </div>
-        </div>
-        <div class="dropdown dropdown-product">
-            <button class="dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown" 
-                    aria-haspopup="true"
-                    aria-expanded="false">
-                حسب المنتج
-            </button>
-            <div    class="dropdown-menu by-product-dropdown tx-right"
-                    aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">فوو</a>
-                <a class="dropdown-item" href="#">بوو</a>
-                <a class="dropdown-item" href="#">فوو بوو</a>
-                <a class="dropdown-item" href="#">فوو</a>
-                <a class="dropdown-item" href="#">بوو</a>
-                <a class="dropdown-item" href="#">فوو بوو</a>
-                <a class="dropdown-item" href="#">فوو</a>
-                <a class="dropdown-item" href="#">بوو</a>
-                <a class="dropdown-item" href="#">فوو بوو</a>
-                <a class="dropdown-item" href="#">فوو</a>
-                <a class="dropdown-item" href="#">بوو</a>
-                <a class="dropdown-item" href="#">فوو بوو</a>
-                <a class="dropdown-item" href="#">فوو</a>
-                <a class="dropdown-item" href="#">بوو</a>
-                <a class="dropdown-item" href="#">فوو بوو</a>
+                @foreach($cities as $city)
+                    <a class="dropdown-item" href="?city={{ $city->id }}">{{ $city->name }}</a>
+                @endforeach
             </div>
         </div>
     </div>
@@ -100,311 +63,53 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr height="50">
-                            <td colspan="10" class="city">
-                                Rabat
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                            <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
-                        <tr height="50">
-                            <th scope="row"><input type="checkbox" class="hoverRow"/></th>
-                            <td data-type="reference">
-                                <span>SN27</span>
-                            </td>
-                            <td data-type="productname">
-                                <span>المفرمة الكهربائية <br class="sm-break">صنع الماني</span>
-                            </td>
-                            <td data-type="retour">
-                                <span>0</span>
-                            </td>
-                            <td data-type="received">
-                                <span>6</span>
-                            </td>
-                            <td data-type="real">
-                                <span>12</span>
-                            </td>
-                            <td data-type="delivered">
-                                <span>1</span>
-                            </td>
-                            <td data-type="physicalStock">
-                                <span>6</span>
-                            </td>
-                            <td data-type="theoreticalStock">
-                                <span>28</span>
-                            </td>
-                            <td data-type="currentStock">
-                                <span>0</span>
-                            </td>
-                        </tr>
+                        @foreach($reception as $key => $list)
+                            <tr height="50">
+                                <td colspan="10" class="city">
+                                    {{ $key }}
+                                </td>
+                            </tr>
+                            @foreach($list as $item)
+                                @if(    $item['retour'      ] !== 0 ||
+                                        $item['real'        ] !== 0 ||
+                                        $item['livre'       ] !== 0 ||
+                                        $item['recue'       ] !== 0 ||
+                                        $item['theorique'   ] !== 0 ||
+                                        $item['encours'     ] !== 0
+                                    )
+                                    <tr height="50">
+                                        <th scope="row"><input type="checkbox" class="hoverRow"/></th>
+                                        <td data-type="reference">
+                                            <span>{{ $item['product_ref'] }}</span>
+                                        </td>
+                                        <td data-type="productname">
+                                            <span>{{ $item['product_name'] }}</span>
+                                        </td>
+                                        <td data-type="retour">
+                                            <span>{{ $item['retour'] }}</span>
+                                        </td>
+                                        <td data-type="received">
+                                            <span>{{ $item['recue'] }}</span>
+                                        </td>
+                                        <td data-type="real">
+                                            <span>{{ $item['real'] }}</span>
+                                        </td>
+                                        <td data-type="delivered">
+                                            <span>{{ $item['livre'] }}</span>
+                                        </td>
+                                        <td data-type="physicalStock">
+                                            <span class="{{ $item['physique']   < 0 ? 'badge badge-danger' : '' }}">{{ $item['physique'] }}</span>
+                                        </td>
+                                        <td data-type="theoreticalStock">
+                                            <span class="{{ $item['theorique']  < 0 ? 'badge badge-danger' : '' }}">{{ $item['theorique'] }}</span>
+                                        </td>
+                                        <td data-type="currentStock">
+                                            <span>{{ $item['encours'] }}</span>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>

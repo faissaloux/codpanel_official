@@ -818,3 +818,53 @@ $('#exportStock').click(function() {
     });
 
 });
+
+
+
+$(document).on('click', '#loadProductsList', function() {
+    var token           = $('meta[name="csrf-token"]').attr('content');
+    var sortie_list_id  = $(this).data('listproduct');
+    var SortieProductID = $(this).data('sortieproductid');
+
+    $('#editSortieStockModalCenter #SortieProductID').val(SortieProductID);
+    $('#editSortieStockModalCenter #SortieListID').val(sortie_list_id);
+  
+    var formData = new FormData();
+    formData.append('_token', token);
+    formData.append('id', sortie_list_id);
+
+    $.ajax( {
+      type: "POST",
+      url: '/dashboard/stock/loadSortieLists/',
+      processData: false, // important
+      contentType: false, // important
+      data: formData,
+      success: function( response ) {
+        var loaded =  $('#loadedSortielist');
+          loaded.html(response);
+          loaded.find('select').each(function(){
+              var kk = $(this).data('val');
+              $(this).val(kk);
+          });
+      }
+    });
+
+    var formData = new FormData();
+    formData.append('_token', token);
+    formData.append('id', SortieProductID);
+    
+     $.ajax( {
+        type: "POST",
+        url: '/dashboard/stock/get/rest',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        dataType: 'html',
+        success: function( response ) {
+            $('.foundStock').html(response);
+            $('#currentStockAvailable').val(response);
+        }
+    });
+    
+    return false;
+}); 

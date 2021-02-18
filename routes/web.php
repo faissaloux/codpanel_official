@@ -3,24 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
-/*
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-*/
-
-
-
-
-
-
-
-//Auth::routes();
-
 Route::post('/apilisting', 'ApiController@listing')->name('apilisting');
 
 //admins Login
@@ -105,21 +87,8 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.' , 'middleware' => '
     });
 
 
-    // stock
-    Route::group(['prefix' => '/stock', 'as' => 'stock.' ], function () {
-        Route::get('/', 'StockController@index')->name('index');
-        Route::post('/create_entree', 'StockController@store_entree')->name('create.entree'); // Create Stock
-        Route::post('/save/retour', 'StockController@saveRetour')->name('save.retour'); // Retour stock
-        Route::post('/create_sortie', 'StockController@store_sortie')->name('create.sortie'); // Create sortie
-        Route::post('/create', 'StockController@create')->name('create');
-        Route::post('/return', 'StockController@return')->name('return');
-        Route::post('/export', 'StockController@export')->name('export');
-        Route::view('/reception', 'dashboard.stock.reception')->name('reception');
-        Route::post('/store', 'StockController@store')->name('store');
-        Route::get('/edit', 'StockController@edit')->name('edit');
-        Route::post('/update', 'StockController@update')->name('update');
-        Route::get('/delete', 'StockController@delete')->name('store');
-    });
+    //reception
+    Route::get('/reception', 'ReceptionController@index')->name('reception');
 
 
     // lists

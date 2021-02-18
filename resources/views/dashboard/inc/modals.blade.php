@@ -464,3 +464,57 @@
     </div>
 </div>
 <!--/ Export stock modal End -->
+
+<!--================================-->
+<!-- Edit sortie stock modal Start -->
+<!--================================-->
+<div    class="modal fade"
+        id="editSortieStockModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="editSortieStockModalCenterTitle"
+        aria-hidden="true"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body"> 
+              
+                <form   class="form-horizontal text-right"
+                        id='confirm_stock_form'
+                        method='post'
+                        action="{{ route('dashboard.stock.validateSortieList') }}"
+                        autocomplete="off">
+                    @csrf
+                    <span>الكمية المتوفرة من هدا المنتوج  <i class="foundStock"></i>   </span>
+                       <input type="hidden" value="" class='dontvalidate' name="ProductID" id='SortieProductID' />
+                       <input type="hidden" value="" class='dontvalidate' name="SortieListID" id='SortieListID' />
+                       <input type="hidden" value=""  class='dontvalidate' id='currentStockAvailable' />
+                        <fieldset class="content-group" id="leeetch">
+                                <div class="form-group">
+                                    <div class="col-lg-11">
+                                       
+                                        </div>
+                                </div>
+                
+                                <div id="loadedSortielist">
+                                    
+                                </div>
+                                
+                        </fieldset>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-block btn-success" id="confirm_stock">
+                             تعديل وموافقة المخزون 
+                                <i class="icon-arrow-left13 position-right"></i>
+                            </button>
+                        </div>
+        
+                </form>
+              
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ Edit sortie stock modal End -->
