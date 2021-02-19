@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Cities;
 use App\Stock;
+use App\Cities;
+use App\Retour;
 use App\Products;
 use App\StockEntree;
 use App\StockRetour;
@@ -234,5 +235,13 @@ class StockController extends Controller
         } 
          
         return redirect()->route('dashboard.stock.create.sortie');
+    }
+
+    public function listRetour()
+    {
+        $nots   = $this->getStockGeneralNotification();
+        $retour = Retour::with('product', 'city', 'city.user')->get();
+        
+        return view('dashboard.stock.retour',compact('retour', 'nots'));
     }
 }
