@@ -12,7 +12,7 @@
     <div class="content">
         <div class="panel panel-flat">
             <div class="panel-body text-left">
-                <table class="table table-striped datatable entreetable text-right">
+                <table class="table table-primary table-striped datatable entreetable text-right">
                     <thead>
                         <tr>
                             <th><b> التاريخ </b></th>

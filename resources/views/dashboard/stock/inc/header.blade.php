@@ -67,7 +67,7 @@
             </a>
         </div>
         <div class="ml-4 btn py-0">
-            <a type="button">
+            <a href="{{ route('dashboard.stock.create.entree') }}" type="button">
                 <span>الدخول</span>
                 <span class="quantity">{{ $nots['entree'] }}</span>
             </a>

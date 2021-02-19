@@ -9,6 +9,7 @@ use App\Products;
 use App\StockEntree;
 use App\StockRetour;
 use App\StockSortie;
+use App\StockGeneral;
 use App\HistoryEntree;
 use App\StockSortieList;
 use Illuminate\Http\Request;
@@ -243,5 +244,53 @@ class StockController extends Controller
         $retour = Retour::with('product', 'city', 'city.user')->get();
         
         return view('dashboard.stock.retour',compact('retour', 'nots'));
+    }
+
+    public function create_entree()
+    {
+        $stocks     = StockEntree::all();
+
+        $HistoryEntree = HistoryEntree::groupBy( 'productID' )
+                                    ->select(   \DB::raw('sum(quantity) as sum_quantity'),
+                                                \DB::raw('sum(valid) as sum_valid'),
+                                                'productID')
+                                    ->get();
+        $nots = $this->getStockGeneralNotification();
+        
+        return view('dashboard.stock.entree', compact('stocks','HistoryEntree','nots'));
+    }
+
+    public function validateEntree(Request $request)
+    {
+        // get the stock entree
+        $entree         = StockEntree::find($request->id);
+            
+        // add the stock entree to history
+        $new            = new HistoryEntree();
+        $new->productID = $entree->productID;
+        $new->quantity  = $entree->quantity;
+        $new->note      = $entree->note;
+        $new->valid     = $request->valid;
+        $new->save();
+
+        // search and check if the stock general has already this product
+        $stock = StockGeneral::where('ProductID', $entree->productID)->first();
+  
+        if($stock) {
+            // if the stock general has already this product this add the new quantity to the existing quantity
+            if(!empty($stock->Entree) && is_numeric($stock->Entree)){
+                $stock->Entree = $stock->Entree + $request->valid;
+            }else {
+                $stock->Entree = $request->valid;
+            }
+          
+            $stock->save();
+            
+         }else {
+                // if it dosnt exist add it
+               StockGeneral::create(['Entree' => $request->valid , 'ProductID' => $entree->productID]); 
+          }
+         
+        return $entree->delete();
     }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // /dashboard/stock
 
 Route::get('/',                     'StockController@index'             )->name('index'                 );
+Route::get('/create_entree',        'StockController@create_entree'     )->name('create.entree'         );
 Route::post('/create_entree',       'StockController@store_entree'      )->name('create.entree'         );
 Route::post('/save/retour',         'StockController@saveRetour'        )->name('save.retour'           );
 Route::get('/create_sortie',        'StockController@create_sortie'     )->name('create.sortie'         );
@@ -16,5 +17,6 @@ Route::post('/validateSortieList',  'StockController@validateSortieList')->name(
 
 Route::post('/get/rest',            'StockController@rest'              )->name('rest'                  );
 Route::post('/loadSortieLists',     'StockController@loadSortieList'    )->name('loadSortieList'        );
-
 Route::get('/list/retour',          'StockController@listRetour'        )->name('retour'                );
+
+Route::post('/validateEntree',      'StockController@validateEntree'    )->name('validateEntree'        );

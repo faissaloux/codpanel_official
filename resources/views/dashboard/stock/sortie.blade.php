@@ -8,20 +8,14 @@
 
 @include('dashboard.stock.inc.header')
 
-<!-- Main content -->
 <div class="content-wrapper p-4">
 
-<!-- Content area -->
     <div class="content">
-
-    <div class="panel panel-flat">
-
+        @if( count($HistorySortie) > 0 )
+            <div class="panel panel-flat">
                 <div class="panel-body text-center">
-
                     <div class="table-responsive tablodyali">
-                    
-                    
-                        <table class="table table-striped datatable sortietable" >
+                        <table class="table table-primary table-striped datatable sortietable" >
                             <thead>
                                 <tr>
                                     <th><b> التاريخ </b></th>
@@ -33,32 +27,22 @@
                                 </tr>
                             </thead>
                             <tbody>  
-                    
-                                
-                            @foreach( $HistorySortie as $item )
-                                <tr>
-                                    <td >N-A</td>
-                                    <td>{{ $item->product->name }}</td>
-                                    <td>N-A</td>
-                                    <td>{{ $item->sum_quantity }}</td>
-                                    <td style="width:150px;">{{ $item->sum_valid }} </td>
-                                    <td><a  id='loadSortieProductHistory' href="javascript:;" data-product='{{ $item->product->id }}'><i data-feather="eye"></i></a></td>
-                                </tr>
-                            @endforeach
+                                @foreach( $HistorySortie as $item )
+                                    <tr>
+                                        <td >N-A</td>
+                                        <td>{{ $item->product->name }}</td>
+                                        <td>N-A</td>
+                                        <td>{{ $item->sum_quantity }}</td>
+                                        <td style="width:150px;">{{ $item->sum_valid }} </td>
+                                        <td><a  id='loadSortieProductHistory' href="javascript:;" data-product='{{ $item->product->id }}'><i data-feather="eye"></i></a></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                    
-                
                     </div>
-
                 </div>
             </div>
-
-
-
-
-
-
+        @endif
 
         <style>
             table.table.table-bordered tr td {
@@ -76,15 +60,12 @@
             }
         </style>
         
-            @if( !empty($sortie) )
-                <div class="panel panel-flat">
-
-                    <div class="panel-body text-center">
-
-                        <div class="table-responsive tablodyali">
-                        
+        @if( count($sortie) )
+            <div class="panel panel-flat">
+                <div class="panel-body text-center">
+                    <div class="table-responsive tablodyali">
                         <div class="panel panel-flat">
-                            <table class="table table-striped datatable userstable" >
+                            <table class="table table-primary table-striped datatable userstable" >
                                 <thead>
                                     <tr>
                                         <th><b> التاريخ </b></th>
@@ -95,62 +76,51 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach( $sortie as $srt )
-                                    <tr>
-                                        <td>{{ $srt->created_at }}</td>
-                                        <td>{{ $srt->product->name }}</td>
-                                        <td>
-                                            
-                                            <table class="table table-bordered">
-                                                <th>المدينة</th>
-                                                <th>الكمية</th>
-
-                                                @foreach($srt->ListQuantities as $listQuantity)
-                                                    <tr>
-                                                        <td> {{ \App\Cities::find($listQuantity['cityID'])->name }} </td>
-                                                        <td> {{ $listQuantity['quantity'] }} </td>
-                                                    </tr>
-                                               @endforeach
-                                            </table>
-                                            
-                                        </td>
-                                        
-                                        <td>
+                                    @foreach( $sortie as $srt )
+                                        <tr>
+                                            <td>{{ $srt->created_at }}</td>
+                                            <td>{{ $srt->product->name }}</td>
+                                            <td>
+                                                <table class="table table-bordered">
+                                                    <th>المدينة</th>
+                                                    <th>الكمية</th>
+                                                    @foreach($srt->ListQuantities as $listQuantity)
+                                                        <tr>
+                                                            <td> {{ \App\Cities::find($listQuantity['cityID'])->name }} </td>
+                                                            <td> {{ $listQuantity['quantity'] }} </td>
+                                                        </tr>
+                                                @endforeach
+                                                </table>
+                                            </td>
+                                            <td>
+                                                @if( empty($srt->statue) )
+                                                    غير مفعل
+                                                @else
+                                                    تم التفعيل
+                                                @endif
+                                            </td>
+                                            <td>
                                             @if( empty($srt->statue) )
-                                                غير مفعل
-                                            @else
-                                                تم التفعيل
+                                                <a  href="javascript:;"
+                                                    id='loadProductsList' 
+                                                    data-SortieProductID="{{ $srt->product->id }}"
+                                                    data-SortieListID="{{ $srt->id }}" 
+                                                    data-listProduct='{{ $srt->id }}'
+                                                    data-toggle="modal"
+                                                    data-target="#editSortieStockModalCenter"
+                                                    class="btn btn-primary">تعديل وموافقة
+                                                </a>
                                             @endif
-                                        </td>
-                                        <td>
-                                        
-                                        @if( empty($srt->statue) )
-                                            <a  href="javascript:;"
-                                                id='loadProductsList' 
-                                                data-SortieProductID="{{ $srt->product->id }}"
-                                                data-SortieListID="{{ $srt->id }}" 
-                                                data-listProduct='{{ $srt->id }}'
-                                                data-toggle="modal"
-                                                data-target="#editSortieStockModalCenter"
-                                                class="btn btn-primary">تعديل وموافقة
-                                            </a>
-                                        @endif
-                                        </td>
-                                        
-                                    </tr>
-                                @endforeach
-                                
-                            
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    
-                        </div>
-
                     </div>
                 </div>
-            @endif
-
+            </div>
+        @endif
     </div>
 </div>
 @endsection

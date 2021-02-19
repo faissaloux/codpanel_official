@@ -868,3 +868,35 @@ $(document).on('click', '#loadProductsList', function() {
     
     return false;
 }); 
+
+$(document).on('change', '.entreetable .activate_me', function() {
+    var token   = $('meta[name="csrf-token"]').attr('content');
+    var id      = $(this).data('entree');
+    var valid   = $('[data-valid="'+id+'"]').val();
+
+    var formData = new FormData();
+    formData.append('_token', token);
+    formData.append('id', id);
+    formData.append('valid', valid);
+
+    if( valid == ''){
+        alert('المرجوا ادخال الرقم ');
+        $(this).prop('checked',false);
+    }else{
+        $.ajax( {
+            type: "POST",
+            url: '/dashboard/stock/validateEntree',
+            processData: false, // important
+            contentType: false, // important
+            data: formData,
+            success: function( response ) {
+                $('#item-'+id).remove();
+                alert('تم التفعيل بنجاح');
+            },
+            error: function( response ) {
+                alert('حصل خطا ما');
+            }
+        });
+    }
+    
+});
