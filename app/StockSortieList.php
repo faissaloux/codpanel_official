@@ -11,5 +11,9 @@ class StockSortieList extends Model
 
     public function product(){
         return $this->belongsTo('\App\Products', 'productID');
-   }
+    }
+
+    public function city(){
+        return $this->belongsTo('\App\Cities', 'cityID');
+    }
 }

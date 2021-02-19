@@ -736,10 +736,10 @@ $("html").on('click', '#removeRowSortie', function(){
 ///////show moda addnewstock
 
 $('#addNewStock').click(function() {
-    var token   = $('meta[name="csrf-token"]').attr('content');
-    var link    = $(this).attr('data-link');
+    const token   = $('meta[name="csrf-token"]').attr('content');
+    const link    = $(this).attr('data-link');
 
-    var formData = new FormData();
+    const formData = new FormData();
     formData.append('_token', token);
 
 
@@ -765,10 +765,10 @@ $('#addNewStock').click(function() {
 ///////show moda returnstock
 
 $('#returnStock').click(function() {
-    var token   = $('meta[name="csrf-token"]').attr('content');
-    var link    = $(this).attr('data-link');
+    const token   = $('meta[name="csrf-token"]').attr('content');
+    const link    = $(this).attr('data-link');
 
-    var formData = new FormData();
+    const formData = new FormData();
     formData.append('_token', token);
 
 
@@ -794,10 +794,10 @@ $('#returnStock').click(function() {
 ///////show moda exportstock
 
 $('#exportStock').click(function() {
-    var token   = $('meta[name="csrf-token"]').attr('content');
-    var link    = $(this).attr('data-link');
+    const token   = $('meta[name="csrf-token"]').attr('content');
+    const link    = $(this).attr('data-link');
 
-    var formData = new FormData();
+    const formData = new FormData();
     formData.append('_token', token);
 
     $.ajax({
@@ -822,9 +822,9 @@ $('#exportStock').click(function() {
 
 
 $(document).on('click', '#loadProductsList', function() {
-    var token           = $('meta[name="csrf-token"]').attr('content');
-    var sortie_list_id  = $(this).data('listproduct');
-    var SortieProductID = $(this).data('sortieproductid');
+    const token           = $('meta[name="csrf-token"]').attr('content');
+    const sortie_list_id  = $(this).data('listproduct');
+    const SortieProductID = $(this).data('sortieproductid');
 
     $('#editSortieStockModalCenter #SortieProductID').val(SortieProductID);
     $('#editSortieStockModalCenter #SortieListID').val(sortie_list_id);
@@ -849,7 +849,7 @@ $(document).on('click', '#loadProductsList', function() {
       }
     });
 
-    var formData = new FormData();
+    formData = new FormData();
     formData.append('_token', token);
     formData.append('id', SortieProductID);
     
@@ -870,11 +870,11 @@ $(document).on('click', '#loadProductsList', function() {
 }); 
 
 $(document).on('change', '.entreetable .activate_me', function() {
-    var token   = $('meta[name="csrf-token"]').attr('content');
-    var id      = $(this).data('entree');
-    var valid   = $('[data-valid="'+id+'"]').val();
+    const token   = $('meta[name="csrf-token"]').attr('content');
+    const id      = $(this).data('entree');
+    const valid   = $('[data-valid="'+id+'"]').val();
 
-    var formData = new FormData();
+    const formData = new FormData();
     formData.append('_token', token);
     formData.append('id', id);
     formData.append('valid', valid);
@@ -899,4 +899,56 @@ $(document).on('change', '.entreetable .activate_me', function() {
         });
     }
     
+});
+
+$('.entreetable a').click(function(){
+    const token       = $('meta[name="csrf-token"]').attr('content');   
+    const productID   = $(this).data('product');
+
+    const formData    = new FormData();
+    formData.append('_token', token);
+    formData.append('productID', productID);
+   
+    $.ajax({
+        type: "POST",
+        url: '/dashboard/stock/loadEntreeHistory/',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        success: function( response ) {
+            const modal = $('#DetailsModal');
+            modal.modal('show');
+            modal.find('.modal-body').html(response);      
+        }
+    });
+    
+    return false;
+});
+
+$('.sortietable  #loadSortieProductHistory').click(function(){
+    const token     = $('meta[name="csrf-token"]').attr('content');     
+    const productID = $(this).data('product');
+
+    const formData    = new FormData();
+    formData.append('_token', token);
+    formData.append('productID', productID);
+   
+    $.ajax( {
+
+        type: "POST",
+        url: '/dashboard/stock/loadHistorySortie/',
+        processData: false, // important
+        contentType: false, // important
+        data: formData,
+        
+        success: function( response ) {
+            const modal = $('#DetailsModal');
+            modal.modal('show');
+            modal.find('.modal-body').html(response);      
+        }
+
+    });
+    
+    
+    return false;
 });

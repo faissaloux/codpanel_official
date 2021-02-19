@@ -293,4 +293,17 @@ class StockController extends Controller
          
         return $entree->delete();
     }
+
+    public function loadEntreeHistory(Request $request)
+    {
+        $data = HistoryEntree::where('productID', $request->productID)->get();
+        return view('dashboard.elements.history_entree', compact('data'));
+    }
+
+    public function loadHistorySortie(Request $request)
+    {
+        $list = StockSortieList::with('city', 'product')->where('productID', $request->productID)->get();
+        return view('dashboard.elements.history_sortie', compact('list'));
+    }
+
 }

@@ -14,9 +14,9 @@ Route::post('/create',              'StockController@create'            )->name(
 Route::post('/return',              'StockController@return'            )->name('return'                );
 Route::post('/export',              'StockController@export'            )->name('export'                );
 Route::post('/validateSortieList',  'StockController@validateSortieList')->name('validateSortieList'    );
-
 Route::post('/get/rest',            'StockController@rest'              )->name('rest'                  );
 Route::post('/loadSortieLists',     'StockController@loadSortieList'    )->name('loadSortieList'        );
 Route::get('/list/retour',          'StockController@listRetour'        )->name('retour'                );
-
 Route::post('/validateEntree',      'StockController@validateEntree'    )->name('validateEntree'        );
+Route::post('/loadEntreeHistory',   'StockController@loadEntreeHistory' )->name('loadEntreeHistory'     );
+Route::post('/loadHistorySortie',   'StockController@loadHistorySortie' )->name('loadSortieHistory'     );
