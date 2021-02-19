@@ -11,7 +11,7 @@
                             <h1 class="heading font-weight-bold mb-3">ركز على المهم،  المزيد من المبيعات </h1>
                             <p class="para-desc mx-auto text-muted"> تحكم في عملك التجاري بشكل كامل ، منذ وصول الطلب الى لحظة التسليم ، مع حساب الارباح والمصاريف بشكل دقيق ، كل هذا والمزيد في انتظارك في أداة واحدة سهلة الاستخدام</p>
                             <div class="mt-4 pt-2">
-                                <a href="{{route('singup')}}" class="btn btn-primary">إشترك الأن <i class="mdi mdi-chevron-right"></i></a>
+                                <a href="{{route('singup')}}" class="btn btn-primary">إشترك الأن <i class="mdi mdi-chevron-left"></i></a>
                             </div>
                         </div>
 
@@ -73,36 +73,36 @@
                 </div><!--end row-->
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="col-lg-4 col-md-6 mt-5 text-right">
                         <div class="media features">
                             <div class="icons m-0 rounded h2 text-primary text-center px-3">
                                 <i class="uil uil-comment-verify"></i>
                             </div>
-                            <div class="content ml-4">
+                            <div class="content mr-4">
                                 <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">متابعة طلبات العملاء بكل حالاتها</a></h5>
                                 <p class="text-muted mb-0">يمكنك متابعة حالة طلبات زبنائك من خلال لوحة التحكم بشكل عملي و سلس و إمكانية تحديث حالاتها (جديد، جاري التجهيز ، جاهز …) </p>
                             </div>
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="col-lg-4 col-md-6 mt-5 text-right">
                         <div class="media features">
                             <div class="icons m-0 rounded h2 text-primary text-center px-3">
                                 <i class="uil uil-image"></i>
                             </div>
-                            <div class="content ml-4">
+                            <div class="content mr-4">
                                 <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark"> تطور</a></h5>
                                 <p class="text-muted mb-0">  سهولة التطور من عملية بيع واحدة إلى 1000 مبيعة، لأنك تتحكم في كل شيء ، تعرف أرقامك ، ويمكنك إدارة كل شيء وتتبعه دون أي جهد </p>
                             </div>
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="col-lg-4 col-md-6 mt-5 text-right">
                         <div class="media features">
                             <div class="icons m-0 rounded h2 text-primary text-center px-3">
                                 <i class="uil uil-video"></i>
                             </div>
-                            <div class="content ml-4">
+                            <div class="content mr-4">
                                 <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark"> تقارير و إحصائيات</a></h5>
                                 <p class="text-muted mb-0"> 
 تقارير واحصائيات مفصله بالأرقام حول اداء  العمل الخاص بك يمكنك الاستعانه بها للتطور او في التسويق
@@ -111,24 +111,24 @@
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="col-lg-4 col-md-6 mt-5 text-right">
                         <div class="media features">
                             <div class="icons m-0 rounded h2 text-primary text-center px-3">
                                 <i class="uil uil-database-alt"></i>
                             </div>
-                            <div class="content ml-4">
+                            <div class="content mr-4">
                                 <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark"> ادارة </a></h5>
                                 <p class="text-muted mb-0"> كل ما تحتاجه لإدارة مبيعاتك: الأقسام ,المنتجات ,العملاء ,الموزعين,فريق العمل والمزيد ...  </p>
                             </div>
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="col-lg-4 col-md-6 mt-5 text-right">
                         <div class="media features">
                             <div class="icons m-0 rounded h2 text-primary text-center px-3">
                                 <i class="uil uil-users-alt"></i>
                             </div>
-                            <div class="content ml-4">
+                            <div class="content mr-4">
                                 <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">تدبير فريق الموزعين</a></h5>
                                 <p class="text-muted mb-0">
 اضافه فريق الموزعين الخاصه بك وتكليفهم بالطلبيات، كما يمكنهم تغيير حالة الطلبية عبر حسابهم بالمنصة
@@ -137,12 +137,12 @@
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="col-lg-4 col-md-6 mt-5 text-right">
                         <div class="media features">
                             <div class="icons m-0 rounded h2 text-primary text-center px-3">
                                 <i class="uil uil-apps"></i>
                             </div>
-                            <div class="content ml-4">
+                            <div class="content mr-4">
                                 <h5 class="mb-1"><a href="javascript:void(0)" class="text-dark">واجهة  تفاعلية  </a></h5>
                                 <p class="text-muted mb-0"> من المؤكد انك مللت من استخدام   google sheet و كل تلك الواجهات المملة التي يمكن أن تفقدك كل معلوماتك و حساباتك بخطأ  واحد غير مقصود   </p>
                             </div>
@@ -153,7 +153,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 mt-5">
                         <div class="watch-video text-center">
-                            <a href=" {{route('singup')}}" class="btn btn-primary mb-2 mr-2">إشترك الأن <i class="mdi mdi-chevron-right"></i></a>
+                            <a href=" {{route('singup')}}" class="btn btn-primary mb-2 mr-2">إشترك الأن <i class="mdi mdi-chevron-left"></i></a>
                            <!--<a href="http://vimeo.com/99025203" class="video-play-icon watch title-dark text-dark mb-2"><i class="mdi mdi-play play-icon-circle text-center d-inline-block mr-2 rounded-circle text-white title-dark position-relative play play-iconbar"></i> WATCH VIDEO</a>-->
                         </div>
                     </div><!--end col-->
@@ -169,13 +169,13 @@
                     </div><!--end col-->
 
                     <div class="col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <div class="section-title ml-lg-5">
+                        <div class="section-title ml-lg-5 text-right">
                             <h4 class="title mb-4">وفر مئات الساعات من العمل</h4>
                             <p class="text-muted">سواء كنت محترفا او مبتدئ في مجال التجارة الإلكترونية لابد أنك لاحظت الكم الهائل للمهام المتعددة التي تقوم بها وتكررها يوميا من بين هذه المشاكل تحميل الملفات الخاصة بالفيسبوك او المتجر الاكتروني كل يوم , التأخر في تأكيد الطلبات, اشعار العملاء بحالة الطلبية يدويا الذي يكلف الكثير من الوقت. و من بعد ذلك يأتي عملية تتبع الطلبات في مختلف منصات الموزعين و تتبع حالة المخزون و العديد من المشاكل الأخرى٫ نحن عانينا مثلك تماما من هذه المهام والتي تمنينا أن تتم بطريقة اوتوماتيكية خصوصا أنها لا تحتاج إلى تفكير٫ ولكن في نفس الوقت هي مهام ضرورية لتطوير  العمل الخاص بك
 
 </p>
                             
-                            <a href="{{route('singup')}}" class="mt-3 h6 text-primary">إشترك الأن <i class="mdi mdi-chevron-right"></i></a>
+                            <a href="{{route('singup')}}" class="mt-3 h6 text-primary">إشترك الأن <i class="mdi mdi-chevron-left"></i></a>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -188,13 +188,13 @@
                     </div><!--end col-->
 
                     <div class="col-md-6 order-2 order-md-1">
-                        <div class="section-title ml-lg-5">
+                        <div class="section-title ml-lg-5 text-right">
                             <h4 class="title mb-4">تحليل و إدارة البيانات</h4>
                             <p class="text-muted"> ما فائدة البيانات من دون تحليل؟ عندما تجمع كميات هائلة من بيانات المبيعات، من المهم أن يكون لديك برنامج لإدارة عملية المبيعات يساعد على تتبّع المبيعات وتحديد الاتجاهات الأساسية ومساعدتك على اتخاذ قرارات أفضل في المستقبل. وبصفتك مدير مبيعات، ستتمكن من مراقبة كل المستجدات بشأن مقاييس الأداء الرئيسية والمسار والأهداف المحددة للشهر عن كثب
 
 </p>
                             
-                            <a href="javascript:void(0)" class="mt-3 h6 text-primary">إشترك الأن<i class="mdi mdi-chevron-right"></i></a>
+                            <a href="javascript:void(0)" class="mt-3 h6 text-primary">إشترك الأن<i class="mdi mdi-chevron-left"></i></a>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -210,11 +210,11 @@
     <div class="container mt-100 mt-60">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-6 order-2 order-md-1 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <div class="section-title">
+                        <div class="section-title text-right">
                             <h4 class="title mb-4"> سرع تطويرك <br> مع  <span class="text-primary"> Codpanel</span></h4>
                             <p class="text-muted"> التعامل معنا يعني عدم القلق بشأن إدارة المبيعات عند الإستلام </p>
                              <p class="text-muted">  الهدف من هذه المنصة هو مساعدة البائعين على بيع منتجاتهم عبر الانترنت وزيادة نسبة مبيعاتهم وأرباحهم من خلال متاجر الكترونية مطورة خصيصا للتجارة الالكترونية بالدفع عند الاستلام, وكذلك مساعدة المهتمين بالمجال والذين لا يتوفرون على أي خبرة تقنية أو معرفة سابقة للبدأ ببيع منتجاتهم وتحقيق أرباح مهمة من خلال التجارة الالكترونية. </p>
-                            <a href="{{route('singup')}}" class="mt-3 h6 text-primary">إشترك الأن <i class="mdi mdi-chevron-right"></i></a>
+                            <a href="{{route('singup')}}" class="mt-3 h6 text-primary">إشترك الأن <i class="mdi mdi-chevron-left"></i></a>
                         </div>
                     </div><!--end col-->
 
@@ -222,7 +222,7 @@
                         <div class="card rounded border-0 shadow ml-lg-5">
                             <div class="card-body">
 
-                                <div class="content mt-4 pt-2">
+                                <div class="content mt-4 pt-2 text-right">
                                     <form>
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -281,7 +281,7 @@
 
                 <div class="row">
                     <div class="col-md-4 col-12">
-                        <div class="features mt-5">
+                        <div class="features mt-5 text-right">
                             <div class="image position-relative d-inline-block">
                                 <img src="images/icon/pen.svg" class="avatar avatar-small" alt="">
                             </div>
@@ -295,7 +295,7 @@
                     </div><!--end col-->
                     
                     <div class="col-md-4 col-12 mt-5">
-                        <div class="features">
+                        <div class="features text-right">
                             <div class="image position-relative d-inline-block">
                                 <img src="images/icon/video.svg" class="avatar avatar-small" alt="">
                             </div>
@@ -309,7 +309,7 @@
                     </div><!--end col-->
                     
                     <div class="col-md-4 col-12 mt-5">
-                        <div class="features">
+                        <div class="features text-right">
                             <div class="image position-relative d-inline-block">
                                 <img src="images/icon/intellectual.svg" class="avatar avatar-small" alt="">
                             </div>
@@ -324,7 +324,7 @@
                     </div><!--end col-->
 
                     <div class="col-md-4 col-12 mt-5">
-                        <div class="features">
+                        <div class="features text-right">
                             <div class="image position-relative d-inline-block">
                                 <img src="images/icon/user.svg" class="avatar avatar-small" alt="">
                             </div>
@@ -337,7 +337,7 @@
                     </div><!--end col-->
                     
                     <div class="col-md-4 col-12 mt-5">
-                        <div class="features">
+                        <div class="features text-right">
                             <div class="image position-relative d-inline-block">
                                 <img src="images/icon/calendar.svg" class="avatar avatar-small" alt="">
                             </div>
@@ -351,7 +351,7 @@
                     </div><!--end col-->
                     
                     <div class="col-md-4 col-12 mt-5">
-                        <div class="features">
+                        <div class="features text-right">
                             <div class="image position-relative d-inline-block">
                                 <img src="images/icon/sand-clock.svg" class="avatar avatar-small" alt="">
                             </div>
@@ -380,9 +380,9 @@
 <section class="section bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12 text-right">
                         <div class="media">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary ml-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0"> ماهي  وظيفتنا   ؟        </h5>
                                 <p class="answer text-muted mb-0s."> أنت تعرف جيدا، و نحن كذلك نعلم ، أن التجارة بالدفع عند الاستلام لها مميزات خاصة. لهذا السبب نحن هنا. كل ما تحتاجه لمشروعك في مكان واحد</p>
@@ -391,9 +391,9 @@
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0 text-right">
                         <div class="media">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary ml-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0"> كيفية تفعيل نظام الدفع عند الإستلام داخل المتاجر الإلكترونية  ؟      </h5>
                                 <p class="answer text-muted mb-0">في البداية لابد أن تعلم أن تفعيل نظام الدفع عند الاستلام داخل متجرك الإلكتروني يتوقف على الاتفاق مع شركة الشحن المُتعاقد معها على توفير خدمة تحصيل الأموال، وهي تُعتبر واحدة من أهم الخدمات التي توفرها معظم شركات الشحن.</p>
@@ -402,9 +402,9 @@
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-md-6 col-12 mt-4 pt-2">
+                    <div class="col-md-6 col-12 mt-4 pt-2 text-right">
                         <div class="media">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary ml-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0"> ماهي التكلفة التي تفرضها شركات الشحن على الدفع عند الإستلام؟</h5>
                                 <p class="answer text-muted mb-0">أما فيما يخص التكلفة التي تتحصل عليها أو تفرضها شركات الشحن التي يتعاقد معها المتجر الإلكتروني أو موقع البيع أونلاين نظير خدمة تحصيل الأموال من العملاء بعد استلام المنتج، فنجد أن رسوم تلك الخدمة تختلف من شركة شحن لأخرى على حسب سياسات تلك الشركة.
@@ -415,9 +415,9 @@
                         </div>
                     </div><!--end col-->
                     
-                    <div class="col-md-6 col-12 mt-4 pt-2">
+                    <div class="col-md-6 col-12 mt-4 pt-2 text-right">
                         <div class="media">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary mr-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle fea icon-ex-md text-primary ml-2 mt-1"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             <div class="media-body">
                                 <h5 class="mt-0"> ماذا لو رفض العميل استلام المنتج من مندوب شركة الشحن؟   </h5>
                                 <p class="answer text-muted mb-0"> في حالة وصول مندوب شركة الشحن بالمنتج إلى منزل العميل، وقام العميل برفض استلام المنتج والدفع له، يتكفل المتجر الإلكتروني أو موقع البيع الأونلاين في هذه الحالة بالتكاليف التي تحملتها شركة الشحن من أجل إيصال المنتج وتحصيل المبالغ المستحقة من العميل، ولكن هناك إجراءات لابد للمتجر القيام بها لتجنب حدوث مثل هذا مرة أخرى. تتمثل تلك في الإجراءات في التالي</p>
@@ -434,7 +434,8 @@
                             <p class="text-muted para-desc mx-auto">التي ستوفرلك كل ما تحتاجه لإدارة المبيعات بالدفع عند الإستلام<span class="text-primary font-weight-bold">Codpanel</span> ابدأ العمل  الان مع</p>
                             <div class="mt-4 pt-2">
                                 <a href="page-contact-two.html" class="btn btn-primary"> تواصل معنا
- <i class="mdi mdi-arrow-right"></i></a>
+                                    <i class="mdi mdi-arrow-left"></i>
+                                </a>
                             </div>
                         </div>
                     </div><!--end col-->

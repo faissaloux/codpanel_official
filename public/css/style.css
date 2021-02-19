@@ -29,6 +29,8 @@
  *     18.  Footer               *
  ================================*/
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&amp;display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
+
 .bg-primary {
   background-color: #2f55d4 !important;
 }
@@ -2191,7 +2193,7 @@ p {
   left: 0;
   top: 0;
   z-index: 1030;
-  background-color: transparent;
+  background-color: #FFF;
   border: 0;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
@@ -3193,7 +3195,7 @@ p {
   content: "";
   position: absolute;
   bottom: 5px;
-  right: -15px;
+  left: -15px;
   width: 70px;
   height: 70px;
   border-radius: 6px;
@@ -4968,4 +4970,9 @@ p {
   #style-switcher {
     display: none;
   }
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, a {
+  font-family: 'Almarai', sans-serif !important;
+  letter-spacing: 0 !important;
 }

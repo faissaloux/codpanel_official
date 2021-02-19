@@ -4,11 +4,11 @@
         <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2 text-right">
                         <a href="{{route('index')}}" class="logo-footer">
                             <img src="images/logo-light.png" height="24" alt="">
                         </a>
-                        <p class="mt-4">ابدأ العمل مع Codpanelالتي يمكن أن توفر كل ما تحتاجه لادارة مبيعاتك و زيادتها</p>
+                        <p class="mt-4">ابدأ العمل مع Codpanel التي يمكن أن توفر كل ما تحتاجه لادارة مبيعاتك و زيادتها</p>
                          <ul class="list-unstyled social-icon social mb-0 mt-4">
                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook fea icon-sm fea-social"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram fea icon-sm fea-social"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a></li>
@@ -17,32 +17,32 @@
                         </ul>
                     </div><!--end col-->
                     
-                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0 text-right">
                         <h4 class="text-light footer-head">Codpanel</h4>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="{{route('about')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i>معلومات عنا</a></li>
+                        <ul class="list-unstyled footer-list mt-4 pr-0" dir="ltr">
+                            <li><a href="{{route('about')}}" class="text-foot"><i class="mdi mdi-chevron-left mr-1"></i>معلومات عنا</a></li>
                              
                              
                              
-                            <li><a href="{{route('faq')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> الأسئلة المتكررة</a></li>
-                             <li><a href="{{route('contact')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> تواصل معنا</a></li>
+                            <li><a href="{{route('faq')}}" class="text-foot"><i class="mdi mdi-chevron-left mr-1"></i> الأسئلة المتكررة</a></li>
+                             <li><a href="{{route('contact')}}" class="text-foot"><i class="mdi mdi-chevron-left mr-1"></i> تواصل معنا</a></li>
                              
-                            <li><a href="{{route('singin')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> تسجيل الدخول</a></li>
+                            <li><a href="{{route('singin')}}" class="text-foot"><i class="mdi mdi-chevron-left mr-1"></i> تسجيل الدخول</a></li>
                         </ul>
                     </div><!--end col-->
                     
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0 text-right">
                         <h4 class="text-light footer-head">Usefull Links</h4>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="{{route('terms')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
-                            <li><a href="{{route('privacy')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
+                        <ul class="list-unstyled footer-list mt-4 pr-0" dir="ltr">
+                            <li><a href="{{route('terms')}}" class="text-foot"><i class="mdi mdi-chevron-left mr-1"></i> Terms of Services</a></li>
+                            <li><a href="{{route('privacy')}}" class="text-foot"><i class="mdi mdi-chevron-left mr-1"></i> Privacy Policy</a></li>
                              
                              
                              
                         </ul>
                     </div><!--end col-->
 
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0 text-right">
                         <h4 class="text-light footer-head">النشرة الإخبارية</h4>
                         <p class="mt-4">قم بالتسجيل وتلقي أحدث النصائح عبر البريد الإلكتروني.</p>
                         <form>
@@ -67,13 +67,13 @@
             <div class="container text-center">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
-                        <div class="text-sm-left">
+                        <div class="text-sm-right">
                             <p class="mb-0">© 2020  Codpanel<i class=" "></i>  </p>
                         </div>
                     </div><!--end col-->
 
                     <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled text-sm-right mb-0">
+                        <ul class="list-unstyled text-sm-left mb-0">
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/american-ex.png" class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/discover.png" class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/master-card.png" class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>

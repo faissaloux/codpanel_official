@@ -1,5 +1,5 @@
   <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 
     
 <!-- Mirrored from shreethemes.in/landrick/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 05 Nov 2020 12:16:16 GMT -->
